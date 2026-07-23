@@ -75,7 +75,11 @@ jobs:
       - name: Checkout Website Target Repository
         run: |
           echo "Cloning target website repository: ${TARGET_REPO_OWNER}/${TARGET_REPO_NAME} branch: ${TARGET_REPO_BRANCH}"
-          git clone --branch "${TARGET_REPO_BRANCH}" "https://${TARGET_REPO_PAT}@github.com/${TARGET_REPO_OWNER}/${TARGET_REPO_NAME}.git" website-target
+          git clone --branch "${TARGET_REPO_BRANCH}" "https://x-access-token:${TARGET_REPO_PAT}@github.com/${TARGET_REPO_OWNER}/${TARGET_REPO_NAME}.git" website-target
+          if [[ ! -f "website-target/apps/web/data.json" ]]; then
+            echo "::error::Target website repository file website-target/apps/web/data.json not found! Please verify TARGET_REPO_PAT, TARGET_REPO_OWNER, and TARGET_REPO_NAME secrets."
+            exit 1
+          fi
 
       - name: Build args
         id: args

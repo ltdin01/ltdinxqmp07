@@ -45,7 +45,7 @@ jobs:
 
       - name: Checkout Website Target Repository
         run: |
-          git clone --branch "${TARGET_REPO_BRANCH}" "https://${TARGET_REPO_PAT}@github.com/${TARGET_REPO_OWNER}/${TARGET_REPO_NAME}.git" website-target
+          git clone --branch "${TARGET_REPO_BRANCH}" "https://x-access-token:${TARGET_REPO_PAT}@github.com/${TARGET_REPO_OWNER}/${TARGET_REPO_NAME}.git" website-target
 
       - name: Analyze compactable groups
         if: github.event.inputs.apply_changes != 'true'
