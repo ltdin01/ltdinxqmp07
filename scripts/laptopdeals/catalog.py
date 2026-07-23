@@ -553,13 +553,10 @@ def format_catalog(
             formatted.setdefault(category, []).append(row)
             count += 1
 
-    # Preserve archived products from existing data that weren't in the raw catalog
+    # Preserve all existing products from existing data that weren't re-scraped
     processed_ids = {normalize_id(row.get("id")) for rows in formatted.values() for row in rows}
     for sku, existing_product in existing.items():
         if sku in processed_ids:
-            continue
-        is_archived = bool(existing_product.get("archived") or existing_product.get("archived_at") or existing_product.get("availability") == "out of stock")
-        if not is_archived:
             continue
         cat = "Uncategorized"
         fc = existing_product.get("full_category", "")
