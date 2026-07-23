@@ -1,0 +1,67 @@
+name: History Maintenance (Scripts Repo)
+
+on:
+  workflow_dispatch:
+    inputs:
+      target_branch:
+        description: 'Branch whose first-parent history should be compacted'
+        required: true
+        default: main
+      apply_changes:
+        description: 'Rewrite and force-push target branch'
+        type: boolean
+        required: true
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: history-maintenance-${{ github.event.inputs.target_branch }}
+  cancel-in-progress: false
+
+jobs:
+  compact:
+    runs-on: ubuntu-latest
+    env:
+      TZ: Asia/Kolkata
+      TARGET_REPO_OWNER: ${{ secrets.TARGET_REPO_OWNER || 'kryptobolt07' }}
+      TARGET_REPO_NAME: ${{ secrets.TARGET_REPO_NAME || 'laptopdeals' }}
+      TARGET_REPO_BRANCH: ${{ github.event.inputs.target_branch || secrets.TARGET_REPO_BRANCH || 'main' }}
+      TARGET_REPO_PAT: ${{ secrets.TARGET_REPO_PAT }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Checkout Website Target Repository
+        run: |
+          git clone --branch "${TARGET_REPO_BRANCH}" "https://${TARGET_REPO_PAT}@github.com/${TARGET_REPO_OWNER}/${TARGET_REPO_NAME}.git" website-target
+
+      - name: Analyze compactable groups
+        if: github.event.inputs.apply_changes != 'true'
+        working-directory: website-target
+        run: |
+          python ../scripts/maintenance.py compact-commits --branch "${TARGET_REPO_BRANCH}"
+
+      - name: Rewrite compacted history
+        if: github.event.inputs.apply_changes == 'true'
+        id: compact
+        working-directory: website-target
+        run: |
+          python ../scripts/maintenance.py compact-commits --branch "${TARGET_REPO_BRANCH}" --apply
+
+      - name: Force-push rewritten branch
+        if: github.event.inputs.apply_changes == 'true' && steps.compact.outputs.rewritten == 'true'
+        working-directory: website-target
+        run: |
+          git push --force-with-lease origin "${{ steps.compact.outputs.new_head }}:refs/heads/${TARGET_REPO_BRANCH}"

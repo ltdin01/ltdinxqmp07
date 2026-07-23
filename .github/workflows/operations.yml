@@ -1,0 +1,168 @@
+name: Operations (Scripts Repo)
+
+on:
+  workflow_dispatch:
+    inputs:
+      task:
+        description: 'Operation to run'
+        type: choice
+        options: [scrape-catalog, lenovo-current, bitbns-history, stats, compress-history, cto, archive-check, archive-restore, inventory, cleanup-history]
+        default: stats
+      product_ids:
+        description: 'Optional SKU list, comma/space separated'
+        required: false
+        default: ''
+      ids_file:
+        description: 'Optional JSON IDs file path'
+        required: false
+        default: ''
+      bitbns_mode:
+        description: 'BitBns mode'
+        type: choice
+        options: [extend, replace]
+        default: extend
+      apply_changes:
+        description: 'Apply file changes where relevant'
+        type: boolean
+        default: false
+      scrape_only_new:
+        description: 'Only scrape new listings (for scrape-catalog task)'
+        type: boolean
+        default: true
+      commit_changes:
+        description: 'Commit and push changed files to target website repo'
+        type: boolean
+        default: false
+      archive_max:
+        description: 'Archive safety cap'
+        required: false
+        default: '25'
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    env:
+      TZ: Asia/Kolkata
+      PYTHONUNBUFFERED: '1'
+      TARGET_REPO_OWNER: ${{ secrets.TARGET_REPO_OWNER || 'kryptobolt07' }}
+      TARGET_REPO_NAME: ${{ secrets.TARGET_REPO_NAME || 'laptopdeals' }}
+      TARGET_REPO_BRANCH: ${{ secrets.TARGET_REPO_BRANCH || 'main' }}
+      TARGET_REPO_PAT: ${{ secrets.TARGET_REPO_PAT }}
+      TASK: ${{ github.event.inputs.task }}
+      PRODUCT_IDS: ${{ github.event.inputs.product_ids }}
+      IDS_FILE: ${{ github.event.inputs.ids_file }}
+      BITBNS_MODE: ${{ github.event.inputs.bitbns_mode }}
+      APPLY_CHANGES: ${{ github.event.inputs.apply_changes }}
+      SCRAPE_ONLY_NEW: ${{ github.event.inputs.scrape_only_new }}
+      COMMIT_CHANGES: ${{ github.event.inputs.commit_changes }}
+      ARCHIVE_MAX: ${{ github.event.inputs.archive_max }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Checkout Website Target Repository
+        run: |
+          git clone --branch "${TARGET_REPO_BRANCH}" "https://${TARGET_REPO_PAT}@github.com/${TARGET_REPO_OWNER}/${TARGET_REPO_NAME}.git" website-target
+
+      - name: Build args
+        id: args
+        shell: bash
+        run: |
+          target_args=()
+          ids="${PRODUCT_IDS//,/ }"
+          for product_id in ${ids}; do
+            target_args+=(--id "$product_id")
+          done
+          if [[ -n "${IDS_FILE}" ]]; then
+            target_args+=(--ids-file "${IDS_FILE}")
+          fi
+          apply_args=()
+          if [[ "${APPLY_CHANGES}" == 'true' ]]; then
+            apply_args+=(--apply)
+          fi
+          printf 'targets=%q ' "${target_args[@]}" >> "$GITHUB_OUTPUT"
+          printf '\napply=%q ' "${apply_args[@]}" >> "$GITHUB_OUTPUT"
+
+      - name: Run selected operation
+        shell: bash
+        run: |
+          case "${TASK}" in
+            scrape-catalog)
+              only_new=''
+              if [[ "${SCRAPE_ONLY_NEW}" == 'true' && -z "${PRODUCT_IDS}" ]]; then
+                only_new='--only-new'
+              fi
+              python scripts/catalog.py scrape --output data/lenovo-catalog.json ${only_new} --existing-file website-target/apps/web/data.json --new-ids-output data/lenovo-new-ids.json --workers 8 ${{ steps.args.outputs.targets }}
+
+              python scripts/cto.py --data website-target/apps/web/data.json --output-dir website-target/apps/web/cto_configs
+
+              python scripts/psref.py --verbose || echo "::warning::PSREF build failed, using stale data"
+
+              dry=''
+              [[ "${APPLY_CHANGES}" == 'true' ]] || dry='--dry-run'
+              python scripts/catalog.py format --input data/lenovo-catalog.json --output website-target/apps/web/data.json --existing-data website-target/apps/web/data.json ${dry}
+              ;;
+            lenovo-current)
+              dry=''
+              [[ "${APPLY_CHANGES}" == 'true' ]] || dry='--dry-run'
+              python scripts/prices.py lenovo-current ${dry} --data website-target/apps/web/data.json --history-dir website-target/apps/web/price_history ${{ steps.args.outputs.targets }}
+              ;;
+            bitbns-history)
+              mode='--extend-history'
+              [[ "${BITBNS_MODE}" == 'replace' ]] && mode='--replace-history'
+              dry=''
+              [[ "${APPLY_CHANGES}" == 'true' ]] || dry='--dry-run'
+              python scripts/prices.py bitbns-history "${mode}" ${dry} --data website-target/apps/web/data.json --history-dir website-target/apps/web/price_history ${{ steps.args.outputs.targets }}
+              ;;
+            stats)
+              dry=''
+              [[ "${APPLY_CHANGES}" == 'true' ]] || dry='--dry-run'
+              python scripts/prices.py stats ${dry} --data website-target/apps/web/data.json --history-dir website-target/apps/web/price_history ${{ steps.args.outputs.targets }}
+              ;;
+            compress-history)
+              dry='--dry-run'
+              [[ "${APPLY_CHANGES}" == 'true' ]] && dry=''
+              python scripts/prices.py compress ${dry} --history-dir website-target/apps/web/price_history ${{ steps.args.outputs.targets }}
+              ;;
+            cto)
+              dry='--dry-run'
+              [[ "${APPLY_CHANGES}" == 'true' ]] && dry=''
+              python scripts/cto.py ${dry} --data website-target/apps/web/data.json --output-dir website-target/apps/web/cto_configs ${{ steps.args.outputs.targets }}
+              ;;
+            archive-check)
+              python scripts/archive.py check --data website-target/apps/web/data.json --archive website-target/apps/web/archive.json --max-archive "${ARCHIVE_MAX}" ${{ steps.args.outputs.apply }} ${{ steps.args.outputs.targets }}
+              ;;
+            archive-restore)
+              python scripts/archive.py restore --data website-target/apps/web/data.json --archive website-target/apps/web/archive.json ${{ steps.args.outputs.apply }} ${{ steps.args.outputs.targets }}
+              ;;
+            inventory)
+              python scripts/maintenance.py inventory --input website-target/apps/web/data.json --output website-target/data/spec_inventory.json
+              ;;
+            cleanup-history)
+              python scripts/maintenance.py cleanup-history --history-dir website-target/apps/web/price_history ${{ steps.args.outputs.apply }}
+              ;;
+          esac
+
+      - name: Commit and Push Changes to Target Website Repo
+        if: env.COMMIT_CHANGES == 'true'
+        working-directory: website-target
+        run: |
+          git config user.email "laptopdeals-bot[bot]@users.noreply.github.com"
+          git config user.name "laptopdeals-bot[bot]"
+          git add apps/web/data.json apps/web/archive.json apps/web/price_history/ apps/web/cto_configs/ data/spec_inventory.json
+          if [[ -n "$(git status --porcelain)" ]]; then
+            git commit -m "Manual operation ${TASK} - $(date +'%Y-%m-%d %H:%M:%S IST')"
+            git push origin "${TARGET_REPO_BRANCH}"
+          else
+            echo "No changes to commit."
+          fi
