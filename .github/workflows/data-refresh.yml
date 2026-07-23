@@ -75,6 +75,8 @@ jobs:
       CTO_WORKERS: ${{ github.event.inputs.cto_workers || '4' }}
       REFRESH_CTO: ${{ github.event_name == 'schedule' && 'false' || inputs.refresh_cto }}
       COMMIT_CHANGES: ${{ github.event_name == 'schedule' && 'true' || inputs.commit_changes }}
+      GIT_COMMIT_AUTHOR_NAME: ${{ secrets.GIT_COMMIT_AUTHOR_NAME || 'github-actions[bot]' }}
+      GIT_COMMIT_AUTHOR_EMAIL: ${{ secrets.GIT_COMMIT_AUTHOR_EMAIL || '41898282+github-actions[bot]@users.noreply.github.com' }}
 
     steps:
       - uses: actions/checkout@v4
@@ -145,8 +147,8 @@ jobs:
         working-directory: website-target
         run: |
           echo "=== Checking Git Diff and Committing to Target Website Repository ==="
-          git config user.email "laptopdeals-bot[bot]@users.noreply.github.com"
-          git config user.name "laptopdeals-bot[bot]"
+          git config user.email "${GIT_COMMIT_AUTHOR_EMAIL}"
+          git config user.name "${GIT_COMMIT_AUTHOR_NAME}"
           git add apps/web/data.json apps/web/price_history/ apps/web/cto_configs/
           git status
           if [[ -n "$(git status --porcelain)" ]]; then

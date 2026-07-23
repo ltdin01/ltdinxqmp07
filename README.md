@@ -33,6 +33,8 @@ In your GitHub repository settings (**Settings -> Secrets and variables -> Actio
 * `TARGET_REPO_OWNER` *(optional)*: GitHub username or organization owning the website repo (defaults to `kryptobolt07`).
 * `TARGET_REPO_NAME` *(optional)*: Name of the target website repository (defaults to `laptopdeals`).
 * `TARGET_REPO_BRANCH` *(optional)*: Target branch to push changes to (defaults to `main`).
+* `GIT_COMMIT_AUTHOR_EMAIL` *(optional)*: Verified GitHub email associated with your account or bot user (e.g. `your-name@users.noreply.github.com`).
+* `GIT_COMMIT_AUTHOR_NAME` *(optional)*: Name to display on automated commits (defaults to `github-actions[bot]`).
 
 ### 3. Running Locally
 
