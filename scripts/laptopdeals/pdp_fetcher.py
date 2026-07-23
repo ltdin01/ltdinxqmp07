@@ -24,6 +24,7 @@ class PDPResult:
     specs_by_code: dict[str, str] = field(default_factory=dict)
     json_ld: dict[str, Any] = field(default_factory=dict)
     breadcrumbs: list[dict[str, str]] = field(default_factory=list)
+    raw_data: dict[str, Any] = field(default_factory=dict)
     fetched_at: str = field(default_factory=lambda: datetime.now(timezone.utc).isoformat())
 
 
@@ -78,6 +79,19 @@ class PDPFetcher:
             specs_rows, specs_label, specs_code = lenovo.extract_detail_specs(text)
             json_ld = lenovo.product_ld(text)
             breadcrumbs = lenovo.breadcrumb_ld(text)
+            
+            page_config = lenovo.extract_balanced_json_after(text, "var $pageConfigData = ") or {}
+            pdp_params = lenovo.extract_balanced_json_after(text, "var $pdpAllParams = ") or {}
+            
+            raw_data = {
+                "taxonomy_type": lenovo.clean_text(page_config.get("taxonomyType")),
+                "page_type_name": lenovo.clean_text(page_config.get("pageTypeName")),
+                "pdp_product_number": lenovo.clean_text(pdp_params.get("productNumber")).upper(),
+                "jsonld_sku": lenovo.clean_text(json_ld.get("sku")).upper() if isinstance(json_ld, dict) else "",
+                "jsonld_mpn": lenovo.clean_text(json_ld.get("mpn")).upper() if isinstance(json_ld, dict) else "",
+                "meta_productstatus": lenovo.extract_meta_content(text, "productstatus"),
+                "text_snippet": text[:250_000]
+            }
 
             price, mrp = None, None
             if product_id:
@@ -99,6 +113,7 @@ class PDPFetcher:
                 specs_by_code=specs_code,
                 json_ld=json_ld,
                 breadcrumbs=breadcrumbs,
+                raw_data=raw_data,
             )
 
         with self._lock:

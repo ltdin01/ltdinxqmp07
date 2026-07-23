@@ -9,6 +9,7 @@ from typing import Any
 from .datafile import iter_products
 from .ids import normalize_id
 from .jsonio import read_json, write_json
+from .pdp_fetcher import PDPFetcher
 from .sources import lenovo
 from .timeutil import ist_stamp
 
@@ -47,28 +48,27 @@ def check_product(product: dict[str, Any], *, html_dir: Path | None = None) -> d
     pid = normalize_id(product.get("id"))
     url = str(product.get("store_link") or "")
     evidence = {"url": url, "status_code": 0}
-    text = ""
-    if html_dir and (html_dir / f"{pid}.html").exists():
-        text = (html_dir / f"{pid}.html").read_text(encoding="utf-8", errors="ignore")
-        evidence["status_code"] = 200
-    elif url:
-        session = lenovo.require_requests().Session(impersonate="chrome120")
-        response = session.get(url, headers=lenovo.request_headers(lenovo.SITE_BASE), timeout=30)
-        text = response.text
-        evidence["status_code"] = response.status_code
 
+    if not url:
+        return {"archive": False, "reasons": [], "evidence": evidence}
+
+    fetcher = PDPFetcher.get_instance()
+    res = fetcher.fetch(url, pid)
+    
+    evidence["status_code"] = res.status_code
     reasons: list[str] = []
+    
     if evidence["status_code"] in {404, 410}:
         reasons.append(f"http_{evidence['status_code']}")
-    page_config = lenovo.extract_balanced_json_after(text, "var $pageConfigData = ") or {}
-    pdp_params = lenovo.extract_balanced_json_after(text, "var $pdpAllParams = ") or {}
-    ld = lenovo.product_ld(text)
-    taxonomy_type = lenovo.clean_text(page_config.get("taxonomyType"))
-    page_type_name = lenovo.clean_text(page_config.get("pageTypeName"))
-    pdp_product_number = lenovo.clean_text(pdp_params.get("productNumber")).upper()
-    ld_sku = lenovo.clean_text(ld.get("sku")).upper() if isinstance(ld, dict) else ""
-    ld_mpn = lenovo.clean_text(ld.get("mpn")).upper() if isinstance(ld, dict) else ""
-    meta_status = lenovo.extract_meta_content(text, "productstatus")
+
+    raw = res.raw_data or {}
+    taxonomy_type = raw.get("taxonomy_type", "")
+    page_type_name = raw.get("page_type_name", "")
+    pdp_product_number = raw.get("pdp_product_number", "")
+    ld_sku = raw.get("jsonld_sku", "")
+    ld_mpn = raw.get("jsonld_mpn", "")
+    meta_status = raw.get("meta_productstatus", "")
+    
     evidence.update(
         {
             "taxonomy_type": taxonomy_type,
@@ -85,21 +85,20 @@ def check_product(product: dict[str, Any], *, html_dir: Path | None = None) -> d
         reasons.append("converted_to_model_selector")
     if ld_sku and ld_sku != pid and ld_mpn == pid:
         reasons.append("converted_to_model_selector")
-    offers = ld.get("offers") if isinstance(ld, dict) else {}
-    if isinstance(offers, list):
-        offers = offers[0] if offers else {}
-    availability = lenovo.clean_text((offers or {}).get("availability"))
+
+    availability = res.availability
     evidence["jsonld_availability"] = availability
-    if availability and "InStock" not in availability:
+    if availability and "InStock" not in availability and availability != "in stock":
         reasons.append("not_in_stock")
     meta_bad = bad_status(meta_status)
     if meta_bad:
         reasons.append(f"bad_product_status:{meta_bad}")
     if not availability and not meta_status:
-        status = bad_status(text[:250_000])
+        status = bad_status(raw.get("text_snippet", ""))
         if status:
             reasons.append(f"bad_page_text:{status}")
     return {"archive": bool(reasons), "reasons": sorted(set(reasons)), "evidence": evidence}
+
 
 
 def remove_from_raw_catalog(raw: dict[str, Any], ids_to_remove: set[str]) -> tuple[dict[str, Any], int]:
