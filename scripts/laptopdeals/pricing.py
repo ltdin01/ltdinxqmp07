@@ -78,12 +78,23 @@ def update_from_bitbns(
     delay: float = 2.0,
     dry_run: bool = False,
 ) -> dict[str, Any]:
+    found_ids: set[str] = set()
     products = []
     for product in selected_products(data, ids):
         pid = normalize_id(product.get("id"))
+        if pid:
+            found_ids.add(pid)
         if missing_history_only and pid and history.load_history(history_dir, pid):
             continue
         products.append(product)
+
+    if ids:
+        for target_id in ids:
+            pid = normalize_id(target_id)
+            if pid and pid not in found_ids:
+                if missing_history_only and history.load_history(history_dir, pid):
+                    continue
+                products.append({"id": pid})
     result = {"checked": 0, "changed": 0, "failed": 0, "products": []}
 
     def process(product: dict[str, Any]) -> dict[str, Any]:
