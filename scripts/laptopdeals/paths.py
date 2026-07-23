@@ -14,9 +14,10 @@ RAW_CATALOG = REPO_ROOT / "data/lenovo-catalog.json"
 NEW_IDS = REPO_ROOT / "data/lenovo-new-ids.json"
 SPEC_INVENTORY = TARGET_ROOT / "data/spec_inventory.json"
 PRICE_CLEANUP_REPORT = REPO_ROOT / "data/price-history-cleanup-report.json"
-PSREF_DIR = REPO_ROOT / "data/lenovo_psref"
+PSREF_DIR = TARGET_ROOT / "data/lenovo_psref"
 PSREF_SKU_DIR = PSREF_DIR / "by_sku"
 PSREF_MAP = PSREF_DIR / "final_sku_specs.json"
+
 
 
 def resolve(path: str | Path) -> Path:

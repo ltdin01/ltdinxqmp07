@@ -177,11 +177,6 @@ jobs:
           echo "=== Refreshing Lenovo CTO Options ==="
           python -u scripts/cto.py --data website-target/apps/web/data.json --output-dir website-target/apps/web/cto_configs --workers "${CTO_WORKERS}"
 
-      - name: Re-enrich CTO specs
-        if: env.FETCH_CTO == 'true'
-        run: |
-          echo "=== Re-enriching CTO Specs ==="
-          python -u scripts/cto.py --data website-target/apps/web/data.json --output-dir website-target/apps/web/cto_configs --reenrich --force
 
       - name: Build PSREF specs
         if: steps.new_ids.outputs.count != '0' || env.SCRAPE_ALL == 'true' || github.event_name == 'workflow_dispatch'
@@ -202,7 +197,16 @@ jobs:
             --output website-target/apps/web/data.json \
             --existing-data website-target/apps/web/data.json \
             --history-dir website-target/apps/web/price_history \
-            --cto-dir website-target/apps/web/cto_configs
+            --cto-dir website-target/apps/web/cto_configs \
+            --psref-map website-target/data/lenovo_psref/final_sku_specs.json \
+            --psref-dir website-target/data/lenovo_psref/by_sku
+
+      - name: Re-enrich CTO specs
+        if: env.FETCH_CTO == 'true'
+        run: |
+          echo "=== Re-enriching CTO Specs ==="
+          python -u scripts/cto.py --data website-target/apps/web/data.json --output-dir website-target/apps/web/cto_configs --reenrich --force
+
 
       - name: Refresh current prices after catalog rebuild
         run: |
