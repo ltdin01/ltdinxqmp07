@@ -10,10 +10,50 @@ on:
         type: choice
         options: [lenovo, bitbns, both]
         default: lenovo
+      product_ids:
+        description: 'Optional SKU list, comma/space separated'
+        required: false
+        default: ''
+      ids_file:
+        description: 'Optional JSON IDs file path'
+        required: false
+        default: ''
+      bitbns_mode:
+        description: 'BitBns history merge mode'
+        type: choice
+        options: [extend, replace]
+        default: extend
+      refresh_cto:
+        description: 'Refresh CTO configs'
+        type: boolean
+        default: false
+      lenovo_workers:
+        description: 'Lenovo price workers'
+        required: false
+        default: '6'
+      bitbns_workers:
+        description: 'BitBns workers'
+        required: false
+        default: '1'
+      bitbns_delay:
+        description: 'Seconds to wait before each BitBns request'
+        required: false
+        default: '5'
+      cto_workers:
+        description: 'CTO config workers'
+        required: false
+        default: '4'
       commit_changes:
-        description: 'Commit and push changes to target website repo'
+        description: 'Commit and push changes'
         type: boolean
         default: true
+
+permissions:
+  contents: write
+
+concurrency:
+  group: data-refresh-${{ github.ref }}
+  cancel-in-progress: false
 
 jobs:
   refresh:
@@ -25,6 +65,16 @@ jobs:
       TARGET_REPO_NAME: ${{ secrets.TARGET_REPO_NAME || 'laptopdeals' }}
       TARGET_REPO_BRANCH: ${{ secrets.TARGET_REPO_BRANCH || 'main' }}
       TARGET_REPO_PAT: ${{ secrets.TARGET_REPO_PAT }}
+      PRICE_SOURCE: ${{ github.event_name == 'schedule' && 'lenovo' || inputs.price_source }}
+      PRODUCT_IDS: ${{ github.event.inputs.product_ids || '' }}
+      IDS_FILE: ${{ github.event.inputs.ids_file || '' }}
+      BITBNS_MODE: ${{ github.event_name == 'schedule' && 'extend' || inputs.bitbns_mode }}
+      LENOVO_WORKERS: ${{ github.event.inputs.lenovo_workers || '6' }}
+      BITBNS_WORKERS: ${{ github.event.inputs.bitbns_workers || '1' }}
+      BITBNS_DELAY: ${{ github.event.inputs.bitbns_delay || '5' }}
+      CTO_WORKERS: ${{ github.event.inputs.cto_workers || '4' }}
+      REFRESH_CTO: ${{ github.event_name == 'schedule' && 'false' || inputs.refresh_cto }}
+      COMMIT_CHANGES: ${{ github.event_name == 'schedule' && 'true' || inputs.commit_changes }}
 
     steps:
       - uses: actions/checkout@v4
@@ -43,23 +93,57 @@ jobs:
         run: |
           git clone --branch "${TARGET_REPO_BRANCH}" "https://${TARGET_REPO_PAT}@github.com/${TARGET_REPO_OWNER}/${TARGET_REPO_NAME}.git" website-target
 
-      - name: Refresh Lenovo current prices
+      - name: Build target args
+        id: targets
+        shell: bash
         run: |
-          python scripts/prices.py lenovo-current --data website-target/apps/web/data.json --history-dir website-target/apps/web/price_history
+          args=()
+          ids="${PRODUCT_IDS//,/ }"
+          for product_id in ${ids}; do
+            args+=(--id "$product_id")
+          done
+          if [[ -n "${IDS_FILE}" ]]; then
+            args+=(--ids-file "${IDS_FILE}")
+          fi
+          if [[ ${#args[@]} -gt 0 ]]; then
+            printf 'args=%q ' "${args[@]}" >> "$GITHUB_OUTPUT"
+          else
+            echo 'args=' >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Extend or replace BitBns history
+        if: env.PRICE_SOURCE == 'bitbns' || env.PRICE_SOURCE == 'both'
+        shell: bash
+        run: |
+          mode_arg='--extend-history'
+          if [[ "${BITBNS_MODE}" == 'replace' ]]; then
+            mode_arg='--replace-history'
+          fi
+          python scripts/prices.py bitbns-history ${mode_arg} --data website-target/apps/web/data.json --history-dir website-target/apps/web/price_history --workers "${BITBNS_WORKERS}" --delay "${BITBNS_DELAY}" ${{ steps.targets.outputs.args }}
+
+      - name: Refresh Lenovo current prices
+        if: env.PRICE_SOURCE == 'lenovo' || env.PRICE_SOURCE == 'both'
+        run: |
+          python scripts/prices.py lenovo-current --data website-target/apps/web/data.json --history-dir website-target/apps/web/price_history --workers "${LENOVO_WORKERS}" ${{ steps.targets.outputs.args }}
+
+      - name: Refresh CTO configs
+        if: env.REFRESH_CTO == 'true'
+        run: |
+          python scripts/cto.py --data website-target/apps/web/data.json --output-dir website-target/apps/web/cto_configs --workers "${CTO_WORKERS}" ${{ steps.targets.outputs.args }}
 
       - name: Recalculate stats
         run: |
-          python scripts/prices.py stats --data website-target/apps/web/data.json --history-dir website-target/apps/web/price_history
+          python scripts/prices.py stats --data website-target/apps/web/data.json --history-dir website-target/apps/web/price_history ${{ steps.targets.outputs.args }}
 
       - name: Commit and Push Changes to Target Website Repo
-        if: inputs.commit_changes != false
+        if: env.COMMIT_CHANGES == 'true'
         working-directory: website-target
         run: |
           git config user.email "laptopdeals-bot[bot]@users.noreply.github.com"
           git config user.name "laptopdeals-bot[bot]"
-          git add apps/web/data.json apps/web/price_history/
+          git add apps/web/data.json apps/web/price_history/ apps/web/cto_configs/
           if [[ -n "$(git status --porcelain)" ]]; then
-            git commit -m "Automated price refresh - $(date +'%Y-%m-%d %H:%M:%S IST')"
+            git commit -m "Automated data refresh - $(date +'%Y-%m-%d %H:%M:%S IST')"
             git push origin "${TARGET_REPO_BRANCH}"
           else
             echo "No price changes to commit."
