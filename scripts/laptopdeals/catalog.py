@@ -325,7 +325,7 @@ def scrape_catalog(
         if price_val <= 0:
             print(f"[new-product-rejected] Discarding {sku} — invalid/zero cost price: {raw_price}")
             return None
-        if ld_sku and lenovo.GROUP_CODE_RE.match(ld_sku):
+        if ld_sku and lenovo.GROUP_CODE_RE.match(ld_sku) and "CTO" not in sku_upper:
             print(f"[new-product-rejected] Discarding {sku} — PDP refers to model selector group code {ld_sku}")
             return None
 

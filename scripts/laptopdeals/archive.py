@@ -35,6 +35,13 @@ def is_archived(product: dict[str, Any]) -> bool:
     return bool(product.get("archived") or product.get("archived_at") or product.get("availability") == "out of stock")
 
 
+def is_cto_product(pid: str) -> bool:
+    """CTO (custom-to-order) products are configurable SKUs. Lenovo legitimately
+    serves their PDPs as subseries/model-selector pages, so a model-selector page
+    is their normal presentation and must not be treated as an archival signal."""
+    return "CTO" in normalize_id(pid)
+
+
 def bad_status(text: str) -> str:
     lower = lenovo.clean_text(text).lower()
     for pattern in BAD_STATUS_PATTERNS:
@@ -79,18 +86,24 @@ def check_product(product: dict[str, Any], *, html_dir: Path | None = None) -> d
             "meta_productstatus": meta_status,
         }
     )
-    if taxonomy_type.lower() == "subseriespage" or "subseries" in page_type_name.lower():
-        reasons.append("converted_to_model_selector")
-    if pdp_product_number and pdp_product_number.startswith("LEN"):
-        reasons.append("converted_to_model_selector")
-    if ld_sku and ld_sku != pid and ld_mpn == pid:
-        reasons.append("converted_to_model_selector")
-
     availability = res.availability
     evidence["jsonld_availability"] = availability
-    if availability and "InStock" not in availability and availability != "in stock":
-        reasons.append("not_in_stock")
     meta_bad = bad_status(meta_status)
+    is_in_stock = (availability == "in stock") and not meta_bad
+
+    # Model-selector detection: Only trigger if the product is NOT in stock.
+    # If a product is in stock, resolving to a subseries/model-selector page is
+    # standard presentation (especially for CTO models) and must not archive it.
+    if not is_in_stock:
+        if taxonomy_type.lower() == "subseriespage" or "subseries" in page_type_name.lower():
+            reasons.append("converted_to_model_selector")
+        if pdp_product_number and pdp_product_number.startswith("LEN"):
+            reasons.append("converted_to_model_selector")
+        if ld_sku and ld_sku != pid and ld_mpn == pid:
+            reasons.append("converted_to_model_selector")
+
+    if availability == "out of stock":
+        reasons.append("not_in_stock")
     if meta_bad:
         reasons.append(f"bad_product_status:{meta_bad}")
     if not availability and not meta_status:
