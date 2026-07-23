@@ -91,6 +91,7 @@ jobs:
 
       - name: Checkout Website Target Repository
         run: |
+          echo "Cloning target website repository: ${TARGET_REPO_OWNER}/${TARGET_REPO_NAME} branch: ${TARGET_REPO_BRANCH}"
           git clone --branch "${TARGET_REPO_BRANCH}" "https://${TARGET_REPO_PAT}@github.com/${TARGET_REPO_OWNER}/${TARGET_REPO_NAME}.git" website-target
 
       - name: Build target args
@@ -115,36 +116,43 @@ jobs:
         if: env.PRICE_SOURCE == 'bitbns' || env.PRICE_SOURCE == 'both'
         shell: bash
         run: |
+          echo "=== Running BitBns History Refresh ==="
           mode_arg='--extend-history'
           if [[ "${BITBNS_MODE}" == 'replace' ]]; then
             mode_arg='--replace-history'
           fi
-          python scripts/prices.py bitbns-history ${mode_arg} --data website-target/apps/web/data.json --history-dir website-target/apps/web/price_history --workers "${BITBNS_WORKERS}" --delay "${BITBNS_DELAY}" ${{ steps.targets.outputs.args }}
+          python -u scripts/prices.py --data website-target/apps/web/data.json --history-dir website-target/apps/web/price_history bitbns-history ${mode_arg} --workers "${BITBNS_WORKERS}" --delay "${BITBNS_DELAY}" ${{ steps.targets.outputs.args }}
 
       - name: Refresh Lenovo current prices
         if: env.PRICE_SOURCE == 'lenovo' || env.PRICE_SOURCE == 'both'
         run: |
-          python scripts/prices.py lenovo-current --data website-target/apps/web/data.json --history-dir website-target/apps/web/price_history --workers "${LENOVO_WORKERS}" ${{ steps.targets.outputs.args }}
+          echo "=== Refreshing Lenovo Current Prices ==="
+          python -u scripts/prices.py --data website-target/apps/web/data.json --history-dir website-target/apps/web/price_history lenovo-current --workers "${LENOVO_WORKERS}" ${{ steps.targets.outputs.args }}
 
       - name: Refresh CTO configs
         if: env.REFRESH_CTO == 'true'
         run: |
-          python scripts/cto.py --data website-target/apps/web/data.json --output-dir website-target/apps/web/cto_configs --workers "${CTO_WORKERS}" ${{ steps.targets.outputs.args }}
+          echo "=== Refreshing CTO Configs ==="
+          python -u scripts/cto.py --data website-target/apps/web/data.json --output-dir website-target/apps/web/cto_configs --workers "${CTO_WORKERS}" ${{ steps.targets.outputs.args }}
 
       - name: Recalculate stats
         run: |
-          python scripts/prices.py stats --data website-target/apps/web/data.json --history-dir website-target/apps/web/price_history ${{ steps.targets.outputs.args }}
+          echo "=== Recalculating Price History Statistics ==="
+          python -u scripts/prices.py --data website-target/apps/web/data.json --history-dir website-target/apps/web/price_history stats ${{ steps.targets.outputs.args }}
 
       - name: Commit and Push Changes to Target Website Repo
         if: env.COMMIT_CHANGES == 'true'
         working-directory: website-target
         run: |
+          echo "=== Checking Git Diff and Committing to Target Website Repository ==="
           git config user.email "laptopdeals-bot[bot]@users.noreply.github.com"
           git config user.name "laptopdeals-bot[bot]"
           git add apps/web/data.json apps/web/price_history/ apps/web/cto_configs/
+          git status
           if [[ -n "$(git status --porcelain)" ]]; then
             git commit -m "Automated data refresh - $(date +'%Y-%m-%d %H:%M:%S IST')"
             git push origin "${TARGET_REPO_BRANCH}"
+            echo "Successfully pushed changes to ${TARGET_REPO_OWNER}/${TARGET_REPO_NAME} branch ${TARGET_REPO_BRANCH}"
           else
             echo "No price changes to commit."
           fi

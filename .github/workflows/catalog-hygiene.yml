@@ -110,11 +110,13 @@ jobs:
 
       - name: Checkout Website Target Repository
         run: |
+          echo "Cloning target repo: ${TARGET_REPO_OWNER}/${TARGET_REPO_NAME} branch: ${TARGET_REPO_BRANCH}"
           git clone --branch "${TARGET_REPO_BRANCH}" "https://${TARGET_REPO_PAT}@github.com/${TARGET_REPO_OWNER}/${TARGET_REPO_NAME}.git" website-target
 
       - name: Scrape Lenovo listings
         shell: bash
         run: |
+          echo "=== Starting Lenovo Catalog Scrape ==="
           only_new_arg='--only-new'
           if [[ "${SCRAPE_ALL}" == 'true' || -n "${PRODUCT_IDS}" ]]; then
             only_new_arg=''
@@ -134,25 +136,29 @@ jobs:
           for item in ${SERIES}; do
             args+=("${item}")
           done
-          python scripts/catalog.py "${args[@]}"
+          python -u scripts/catalog.py "${args[@]}"
 
       - name: Restore reappeared archive entries
         run: |
-          python scripts/archive.py restore --ids-file data/lenovo-new-ids.json --data website-target/apps/web/data.json --archive website-target/apps/web/archive.json --apply
+          echo "=== Restoring reappeared archive entries ==="
+          python -u scripts/archive.py restore --ids-file data/lenovo-new-ids.json --data website-target/apps/web/data.json --archive website-target/apps/web/archive.json --apply
 
       - name: Count new Lenovo IDs
         id: new_ids
         run: |
           count=$(python -c 'import json; from pathlib import Path; p=Path("data/lenovo-new-ids.json"); print(len(json.loads(p.read_text())) if p.exists() else 0)')
           echo "count=${count}" >> "$GITHUB_OUTPUT"
-          echo "New Lenovo IDs: ${count}"
+          echo "Newly Discovered Lenovo SKUs: ${count}"
 
       - name: BitBns primary history for new listings
         if: steps.new_ids.outputs.count != '0'
         run: |
-          python scripts/prices.py bitbns-history \
-            --ids-file data/lenovo-new-ids.json \
+          echo "=== Seeding BitBns History for New Listings ==="
+          python -u scripts/prices.py \
+            --data website-target/apps/web/data.json \
             --history-dir website-target/apps/web/price_history \
+            bitbns-history \
+            --ids-file data/lenovo-new-ids.json \
             --replace-history \
             --workers "${BITBNS_WORKERS}" \
             --delay "${BITBNS_DELAY}" \
@@ -161,26 +167,30 @@ jobs:
       - name: Refresh CTO configs
         if: env.FETCH_CTO == 'true'
         run: |
-          python scripts/cto.py --data website-target/apps/web/data.json --output-dir website-target/apps/web/cto_configs --workers "${CTO_WORKERS}"
+          echo "=== Refreshing Lenovo CTO Options ==="
+          python -u scripts/cto.py --data website-target/apps/web/data.json --output-dir website-target/apps/web/cto_configs --workers "${CTO_WORKERS}"
 
       - name: Re-enrich CTO specs
         if: env.FETCH_CTO == 'true'
         run: |
-          python scripts/cto.py --data website-target/apps/web/data.json --output-dir website-target/apps/web/cto_configs --reenrich --force
+          echo "=== Re-enriching CTO Specs ==="
+          python -u scripts/cto.py --data website-target/apps/web/data.json --output-dir website-target/apps/web/cto_configs --reenrich --force
 
       - name: Build PSREF specs
         if: steps.new_ids.outputs.count != '0' || env.SCRAPE_ALL == 'true' || github.event_name == 'workflow_dispatch'
         continue-on-error: true
         run: |
+          echo "=== Building PSREF Sidecar Specs ==="
           if [[ "${SCRAPE_ALL}" == 'true' ]]; then
-            python scripts/psref.py --verbose
+            python -u scripts/psref.py --verbose
           else
-            python scripts/psref.py --ids-file data/lenovo-new-ids.json --verbose
+            python -u scripts/psref.py --ids-file data/lenovo-new-ids.json --verbose
           fi
 
       - name: Rebuild public catalog
         run: |
-          python scripts/catalog.py format \
+          echo "=== Rebuilding Public Web Catalog ==="
+          python -u scripts/catalog.py format \
             --input data/lenovo-catalog.json \
             --output website-target/apps/web/data.json \
             --existing-data website-target/apps/web/data.json \
@@ -189,34 +199,40 @@ jobs:
 
       - name: Refresh current prices after catalog rebuild
         run: |
-          python scripts/prices.py lenovo-current --data website-target/apps/web/data.json --history-dir website-target/apps/web/price_history --workers "${PRICE_WORKERS}"
+          echo "=== Refreshing Live Lenovo Current Prices ==="
+          python -u scripts/prices.py --data website-target/apps/web/data.json --history-dir website-target/apps/web/price_history lenovo-current --workers "${PRICE_WORKERS}"
 
       - name: Archive stale Lenovo models
         if: github.event_name == 'schedule' || env.ARCHIVE_STALE == 'true'
         shell: bash
         run: |
+          echo "=== Archive Check for Unavailable Models ==="
           args=(check --apply --max-archive "${ARCHIVE_MAX}" --data website-target/apps/web/data.json --archive website-target/apps/web/archive.json --raw-catalog data/lenovo-catalog.json)
           ids="${ARCHIVE_PRODUCT_IDS//,/ }"
           for product_id in ${ids}; do
             args+=(--id "${product_id}")
           done
-          python scripts/archive.py "${args[@]}"
+          python -u scripts/archive.py "${args[@]}"
 
       - name: Recalculate stats and inventory
         run: |
-          python scripts/prices.py stats --data website-target/apps/web/data.json --history-dir website-target/apps/web/price_history
-          python scripts/maintenance.py inventory --input website-target/apps/web/data.json --output website-target/data/spec_inventory.json
+          echo "=== Recalculating Statistics & Exporting Filter Inventory ==="
+          python -u scripts/prices.py --data website-target/apps/web/data.json --history-dir website-target/apps/web/price_history stats
+          python -u scripts/maintenance.py inventory --input website-target/apps/web/data.json --output website-target/data/spec_inventory.json
 
       - name: Commit and Push Changes to Target Website Repo
         if: env.COMMIT_CHANGES == 'true'
         working-directory: website-target
         run: |
+          echo "=== Checking Git Diff and Committing to Target Website Repository ==="
           git config user.email "laptopdeals-bot[bot]@users.noreply.github.com"
           git config user.name "laptopdeals-bot[bot]"
           git add apps/web/data.json apps/web/archive.json apps/web/price_history/ apps/web/cto_configs/ data/spec_inventory.json
+          git status
           if [[ -n "$(git status --porcelain)" ]]; then
             git commit -m "Catalog hygiene - $(date +'%Y-%m-%d %H:%M:%S IST')"
             git push origin "${TARGET_REPO_BRANCH}"
+            echo "Successfully pushed changes to ${TARGET_REPO_OWNER}/${TARGET_REPO_NAME} branch ${TARGET_REPO_BRANCH}"
           else
-            echo "No changes to commit."
+            echo "No changes detected. Skipping push."
           fi

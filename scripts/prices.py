@@ -14,19 +14,21 @@ def add_targets(parser: argparse.ArgumentParser) -> None:
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description="Price history and live price operations")
-    parser.add_argument("--data", default=str(paths.APP_DATA), help="App data JSON")
-    parser.add_argument("--history-dir", default=str(paths.PRICE_HISTORY), help="Price history directory")
+    common = argparse.ArgumentParser(add_help=False)
+    common.add_argument("--data", default=str(paths.APP_DATA), help="App data JSON")
+    common.add_argument("--history-dir", default=str(paths.PRICE_HISTORY), help="Price history directory")
+
+    parser = argparse.ArgumentParser(description="Price history and live price operations", parents=[common])
     sub = parser.add_subparsers(dest="command", required=True)
 
-    lenovo_parser = sub.add_parser("lenovo-current", help="Fetch current Lenovo price and append only changed price points")
+    lenovo_parser = sub.add_parser("lenovo-current", parents=[common], help="Fetch current Lenovo price and append only changed price points")
     add_targets(lenovo_parser)
     lenovo_parser.add_argument("--workers", type=int, default=4)
     lenovo_parser.add_argument("--delay-min", type=float, default=1.0)
     lenovo_parser.add_argument("--delay-max", type=float, default=4.0)
     lenovo_parser.add_argument("--dry-run", action="store_true")
 
-    bitbns_parser = sub.add_parser("bitbns-history", help="Fetch BitBns history for new listings or existing products")
+    bitbns_parser = sub.add_parser("bitbns-history", parents=[common], help="Fetch BitBns history for new listings or existing products")
     add_targets(bitbns_parser)
     mode = bitbns_parser.add_mutually_exclusive_group()
     mode.add_argument("--replace-history", action="store_true", help="Replace local history with BitBns change-points")
@@ -37,11 +39,11 @@ def main() -> int:
     bitbns_parser.add_argument("--failed-ids-output", default="", help="Write failed BitBns IDs to this JSON file.")
     bitbns_parser.add_argument("--dry-run", action="store_true")
 
-    stats_parser = sub.add_parser("stats", help="Recalculate stats from local history")
+    stats_parser = sub.add_parser("stats", parents=[common], help="Recalculate stats from local history")
     add_targets(stats_parser)
     stats_parser.add_argument("--dry-run", action="store_true")
 
-    compress_parser = sub.add_parser("compress", help="Normalize history files to change-points")
+    compress_parser = sub.add_parser("compress", parents=[common], help="Normalize history files to change-points")
     add_targets(compress_parser)
     compress_parser.add_argument("--dry-run", action="store_true")
 

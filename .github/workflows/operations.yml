@@ -72,6 +72,7 @@ jobs:
 
       - name: Checkout Website Target Repository
         run: |
+          echo "Cloning target website repository: ${TARGET_REPO_OWNER}/${TARGET_REPO_NAME} branch: ${TARGET_REPO_BRANCH}"
           git clone --branch "${TARGET_REPO_BRANCH}" "https://${TARGET_REPO_PAT}@github.com/${TARGET_REPO_OWNER}/${TARGET_REPO_NAME}.git" website-target
 
       - name: Build args
@@ -96,60 +97,61 @@ jobs:
       - name: Run selected operation
         shell: bash
         run: |
+          echo "=== Executing Operation Task: ${TASK} ==="
           case "${TASK}" in
             scrape-catalog)
               only_new=''
               if [[ "${SCRAPE_ONLY_NEW}" == 'true' && -z "${PRODUCT_IDS}" ]]; then
                 only_new='--only-new'
               fi
-              python scripts/catalog.py scrape --output data/lenovo-catalog.json ${only_new} --existing-file website-target/apps/web/data.json --new-ids-output data/lenovo-new-ids.json --workers 8 ${{ steps.args.outputs.targets }}
+              python -u scripts/catalog.py scrape --output data/lenovo-catalog.json ${only_new} --existing-file website-target/apps/web/data.json --new-ids-output data/lenovo-new-ids.json --workers 8 ${{ steps.args.outputs.targets }}
 
-              python scripts/cto.py --data website-target/apps/web/data.json --output-dir website-target/apps/web/cto_configs
+              python -u scripts/cto.py --data website-target/apps/web/data.json --output-dir website-target/apps/web/cto_configs
 
-              python scripts/psref.py --verbose || echo "::warning::PSREF build failed, using stale data"
+              python -u scripts/psref.py --verbose || echo "::warning::PSREF build failed, using stale data"
 
               dry=''
               [[ "${APPLY_CHANGES}" == 'true' ]] || dry='--dry-run'
-              python scripts/catalog.py format --input data/lenovo-catalog.json --output website-target/apps/web/data.json --existing-data website-target/apps/web/data.json ${dry}
+              python -u scripts/catalog.py format --input data/lenovo-catalog.json --output website-target/apps/web/data.json --existing-data website-target/apps/web/data.json ${dry}
               ;;
             lenovo-current)
               dry=''
               [[ "${APPLY_CHANGES}" == 'true' ]] || dry='--dry-run'
-              python scripts/prices.py lenovo-current ${dry} --data website-target/apps/web/data.json --history-dir website-target/apps/web/price_history ${{ steps.args.outputs.targets }}
+              python -u scripts/prices.py lenovo-current ${dry} --data website-target/apps/web/data.json --history-dir website-target/apps/web/price_history ${{ steps.args.outputs.targets }}
               ;;
             bitbns-history)
               mode='--extend-history'
               [[ "${BITBNS_MODE}" == 'replace' ]] && mode='--replace-history'
               dry=''
               [[ "${APPLY_CHANGES}" == 'true' ]] || dry='--dry-run'
-              python scripts/prices.py bitbns-history "${mode}" ${dry} --data website-target/apps/web/data.json --history-dir website-target/apps/web/price_history ${{ steps.args.outputs.targets }}
+              python -u scripts/prices.py bitbns-history "${mode}" ${dry} --data website-target/apps/web/data.json --history-dir website-target/apps/web/price_history ${{ steps.args.outputs.targets }}
               ;;
             stats)
               dry=''
               [[ "${APPLY_CHANGES}" == 'true' ]] || dry='--dry-run'
-              python scripts/prices.py stats ${dry} --data website-target/apps/web/data.json --history-dir website-target/apps/web/price_history ${{ steps.args.outputs.targets }}
+              python -u scripts/prices.py stats ${dry} --data website-target/apps/web/data.json --history-dir website-target/apps/web/price_history ${{ steps.args.outputs.targets }}
               ;;
             compress-history)
               dry='--dry-run'
               [[ "${APPLY_CHANGES}" == 'true' ]] && dry=''
-              python scripts/prices.py compress ${dry} --history-dir website-target/apps/web/price_history ${{ steps.args.outputs.targets }}
+              python -u scripts/prices.py compress ${dry} --history-dir website-target/apps/web/price_history ${{ steps.args.outputs.targets }}
               ;;
             cto)
               dry='--dry-run'
               [[ "${APPLY_CHANGES}" == 'true' ]] && dry=''
-              python scripts/cto.py ${dry} --data website-target/apps/web/data.json --output-dir website-target/apps/web/cto_configs ${{ steps.args.outputs.targets }}
+              python -u scripts/cto.py ${dry} --data website-target/apps/web/data.json --output-dir website-target/apps/web/cto_configs ${{ steps.args.outputs.targets }}
               ;;
             archive-check)
-              python scripts/archive.py check --data website-target/apps/web/data.json --archive website-target/apps/web/archive.json --max-archive "${ARCHIVE_MAX}" ${{ steps.args.outputs.apply }} ${{ steps.args.outputs.targets }}
+              python -u scripts/archive.py check --data website-target/apps/web/data.json --archive website-target/apps/web/archive.json --max-archive "${ARCHIVE_MAX}" ${{ steps.args.outputs.apply }} ${{ steps.args.outputs.targets }}
               ;;
             archive-restore)
-              python scripts/archive.py restore --data website-target/apps/web/data.json --archive website-target/apps/web/archive.json ${{ steps.args.outputs.apply }} ${{ steps.args.outputs.targets }}
+              python -u scripts/archive.py restore --data website-target/apps/web/data.json --archive website-target/apps/web/archive.json ${{ steps.args.outputs.apply }} ${{ steps.args.outputs.targets }}
               ;;
             inventory)
-              python scripts/maintenance.py inventory --input website-target/apps/web/data.json --output website-target/data/spec_inventory.json
+              python -u scripts/maintenance.py inventory --input website-target/apps/web/data.json --output website-target/data/spec_inventory.json
               ;;
             cleanup-history)
-              python scripts/maintenance.py cleanup-history --history-dir website-target/apps/web/price_history ${{ steps.args.outputs.apply }}
+              python -u scripts/maintenance.py cleanup-history --history-dir website-target/apps/web/price_history ${{ steps.args.outputs.apply }}
               ;;
           esac
 
@@ -157,12 +159,15 @@ jobs:
         if: env.COMMIT_CHANGES == 'true'
         working-directory: website-target
         run: |
+          echo "=== Checking Git Diff and Committing to Target Website Repository ==="
           git config user.email "laptopdeals-bot[bot]@users.noreply.github.com"
           git config user.name "laptopdeals-bot[bot]"
           git add apps/web/data.json apps/web/archive.json apps/web/price_history/ apps/web/cto_configs/ data/spec_inventory.json
+          git status
           if [[ -n "$(git status --porcelain)" ]]; then
             git commit -m "Manual operation ${TASK} - $(date +'%Y-%m-%d %H:%M:%S IST')"
             git push origin "${TARGET_REPO_BRANCH}"
+            echo "Successfully pushed changes to ${TARGET_REPO_OWNER}/${TARGET_REPO_NAME} branch ${TARGET_REPO_BRANCH}"
           else
             echo "No changes to commit."
           fi
