@@ -207,19 +207,27 @@ def restore_ids(*, data_path: Path, archive_path: Path, ids: set[str], raw_catal
         raw_data = read_json(raw_catalog_path, {})
         for _, product in iter_products(raw_data):
             pid = normalize_id(product.get("id") or product.get("product_code"))
-            if pid and product.get("availability") != "out of stock":
+            avail = product.get("availability")
+            if pid and avail != "out of stock":
                 target_ids.add(pid)
 
     archive = read_json(archive_path, {"products": []})
     products = archive.get("products") if isinstance(archive, dict) else []
     kept = []
-    restored = []
+    restored_items = []
+    restored_pids = []
     for product in products if isinstance(products, list) else []:
-        if isinstance(product, dict) and normalize_id(product.get("id")) in target_ids:
-            restored.append(product)
+        pid = normalize_id(product.get("id")) if isinstance(product, dict) else ""
+        if pid and pid in target_ids:
+            restored_items.append(product)
+            restored_pids.append(pid)
+            print(f"[unarchive-restored] {pid}: found in live scraped catalog / target IDs — restoring to in-stock")
         else:
             kept.append(product)
-    if apply:
+
+    print(f"[unarchive-summary] Restored {len(restored_pids)} model(s) from archive.json to active in-stock catalog: {sorted(restored_pids)}")
+
+    if apply and restored_pids:
         archive["products"] = kept
         archive["generated_at"] = ist_stamp()
         write_json(archive_path, archive, indent=4)
@@ -233,4 +241,4 @@ def restore_ids(*, data_path: Path, archive_path: Path, ids: set[str], raw_catal
                 product.pop("archive_evidence", None)
                 product["availability"] = "in stock"
         write_json(data_path, data, indent=4)
-    return {"requested": len(target_ids), "restored": len(restored), "applied": apply}
+    return {"requested": len(target_ids), "restored": len(restored_pids), "restored_ids": sorted(restored_pids), "applied": apply}

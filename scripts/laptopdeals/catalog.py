@@ -10,7 +10,7 @@ from pathlib import Path
 from typing import Any
 from urllib.parse import quote
 
-from .datafile import product_index
+from .datafile import iter_products, product_index
 from .history import load_history, latest_price, stats
 from .ids import normalize_id
 from .jsonio import read_json, write_json
@@ -121,7 +121,12 @@ def existing_ids_from(paths: list[Path]) -> set[str]:
     ids: set[str] = set()
     for path in paths:
         payload = read_json(path, {})
-        ids.update(product_index(payload).keys())
+        for _, product in iter_products(payload):
+            pid = normalize_id(product.get("id") or product.get("product_code"))
+            if pid:
+                is_arch = bool(product.get("archived") or product.get("archived_at") or product.get("availability") == "out of stock")
+                if not is_arch:
+                    ids.add(pid)
     return ids
 
 
@@ -285,7 +290,12 @@ def scrape_catalog(
 
         with known_lock:
             if sku_upper in known and not target_ids:
+                if verbose:
+                    print(f"[catalog-skip] {sku}: already present in active in-stock catalog")
                 return None
+
+        if verbose:
+            print(f"[catalog-scrape] Scrape target {sku} (store link: {card.get('url')})")
 
         store_link = lenovo.absolute_url(card.get("url"))
         breadcrumb: list[dict[str, str]] = []
