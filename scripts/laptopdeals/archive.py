@@ -201,13 +201,21 @@ def archive_unavailable(
     return {"checked": len(candidates), "archive": len(to_archive), "already_archived": len(already_archived), "applied": apply}
 
 
-def restore_ids(*, data_path: Path, archive_path: Path, ids: set[str], apply: bool) -> dict[str, Any]:
+def restore_ids(*, data_path: Path, archive_path: Path, ids: set[str], raw_catalog_path: Path | None = None, apply: bool) -> dict[str, Any]:
+    target_ids = set(ids)
+    if raw_catalog_path and raw_catalog_path.exists():
+        raw_data = read_json(raw_catalog_path, {})
+        for _, product in iter_products(raw_data):
+            pid = normalize_id(product.get("id") or product.get("product_code"))
+            if pid and product.get("availability") != "out of stock":
+                target_ids.add(pid)
+
     archive = read_json(archive_path, {"products": []})
     products = archive.get("products") if isinstance(archive, dict) else []
     kept = []
     restored = []
     for product in products if isinstance(products, list) else []:
-        if isinstance(product, dict) and normalize_id(product.get("id")) in ids:
+        if isinstance(product, dict) and normalize_id(product.get("id")) in target_ids:
             restored.append(product)
         else:
             kept.append(product)
@@ -218,11 +226,11 @@ def restore_ids(*, data_path: Path, archive_path: Path, ids: set[str], apply: bo
         data = read_json(data_path, {})
         for _, product in iter_products(data):
             pid = normalize_id(product.get("id"))
-            if pid in ids:
+            if pid in target_ids:
                 product.pop("archived", None)
                 product.pop("archived_at", None)
                 product.pop("archive_reason", None)
                 product.pop("archive_evidence", None)
                 product["availability"] = "in stock"
         write_json(data_path, data, indent=4)
-    return {"requested": len(ids), "restored": len(restored), "applied": apply}
+    return {"requested": len(target_ids), "restored": len(restored), "applied": apply}

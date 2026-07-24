@@ -545,6 +545,8 @@ def format_catalog(
             if sku in existing:
                 for field in LIVE_FIELDS:
                     if field in existing[sku]:
+                        if field == "availability" and row.get("availability") == "in stock":
+                            continue
                         row[field] = existing[sku][field]
             cto_path = cto_dir / f"{sku}.json"
             if "CTO" in sku and cto_path.exists():

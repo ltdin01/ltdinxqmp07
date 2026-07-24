@@ -24,6 +24,7 @@ def main() -> int:
 
     restore = sub.add_parser("restore", help="Remove selected products from archive")
     restore.add_argument("--data", default=str(paths.APP_DATA))
+    restore.add_argument("--raw-catalog", default=str(paths.RAW_CATALOG))
     restore.add_argument("--archive", default=str(paths.ARCHIVE))
     restore.add_argument("--id", action="append", default=[])
     restore.add_argument("--ids-file", default="")
@@ -42,7 +43,13 @@ def main() -> int:
             apply=args.apply,
         )
     else:
-        result = archive.restore_ids(data_path=paths.resolve(args.data), archive_path=paths.resolve(args.archive), ids=ids_from_args(args), apply=args.apply)
+        result = archive.restore_ids(
+            data_path=paths.resolve(args.data),
+            archive_path=paths.resolve(args.archive),
+            raw_catalog_path=paths.resolve(args.raw_catalog) if args.raw_catalog else None,
+            ids=ids_from_args(args),
+            apply=args.apply,
+        )
     print(result)
     return 0
 

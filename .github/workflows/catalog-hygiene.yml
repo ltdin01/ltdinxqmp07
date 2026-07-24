@@ -148,7 +148,7 @@ jobs:
       - name: Restore reappeared archive entries
         run: |
           echo "=== Restoring reappeared archive entries ==="
-          python -u scripts/archive.py restore --ids-file data/lenovo-new-ids.json --data website-target/apps/web/data.json --archive website-target/apps/web/archive.json --apply
+          python -u scripts/archive.py restore --raw-catalog data/lenovo-catalog.json --ids-file data/lenovo-new-ids.json --data website-target/apps/web/data.json --archive website-target/apps/web/archive.json --apply
 
       - name: Count new Lenovo IDs
         id: new_ids
