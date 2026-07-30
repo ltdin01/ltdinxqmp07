@@ -154,7 +154,7 @@ def parse_cpu_psref(raw: str) -> dict[str, Any]:
         "full_model": full_model,
         "cores": first_int(text, r"(\d+)C\b"),
         "threads": first_int(text, r"/\s*(\d+)T\b"),
-        "base_clock_ghz": first_float(text, r"\b(\d+(?:\.\d+)?)\s*/\s*\d+(?:\.\d+)?GHz"),
+        "base_clock_ghz": min([float(v) for v in re.findall(r"(\d+(?:\.\d+)?)GHz", text)] or [0]) or None,
         "boost_clock_ghz": max([float(v) for v in re.findall(r"(\d+(?:\.\d+)?)GHz", text)] or [0]) or None,
     }
 

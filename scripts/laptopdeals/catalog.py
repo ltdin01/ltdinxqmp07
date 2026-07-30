@@ -14,6 +14,7 @@ from .datafile import iter_products, product_index
 from .history import load_history, latest_price, stats
 from .ids import normalize_id
 from .jsonio import read_json, write_json
+from .normalize_hardware import normalize_product
 from .sources import lenovo
 from .specs import clean_text, parse_spec_codes
 from .timeutil import iso_date
@@ -615,6 +616,13 @@ def format_catalog(
                 row["title"] = best
                 row["model_name"] = model_name(best)
 
+    # Hardware normalization: apply CPU/GPU normalization as final pipeline step
     if not dry_run:
+        for rows in formatted.values():
+            for row in rows:
+                try:
+                    normalize_product(row)
+                except Exception:
+                    pass  # Leave specs unchanged on normalization failure
         write_json(output_path, formatted, indent=4)
     return {"formatted": count, "categories": len(formatted), "psref_applied": psref_applied}
