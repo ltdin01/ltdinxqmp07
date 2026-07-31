@@ -2,11 +2,9 @@ from __future__ import annotations
 
 import hashlib
 import html
-import io
 import re
-import zipfile
-import xml.etree.ElementTree as ET
 from collections import Counter, OrderedDict
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
@@ -24,13 +22,12 @@ from .specs import (
     parse_memory_psref,
     parse_network_psref,
     parse_storage_psref,
+    parse_spec_codes,
 )
 
 
-MAIN_NS = "{http://schemas.openxmlformats.org/spreadsheetml/2006/main}"
-REL_NS = "{http://schemas.openxmlformats.org/package/2006/relationships}"
 MENU_URL = "https://psref.lenovo.com/api/home/menu/info"
-EXPORT_URL = "https://psref.lenovo.com/api/search/DefinitionFilterAndSearch/ShowModelExcelExport"
+SHOW_MODEL_URL = "https://psref.lenovo.com/api/search/DefinitionFilterAndSearch/ShowModel"
 HEADERS = {
     "user-agent": (
         "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 "
@@ -41,18 +38,26 @@ HEADERS = {
     "origin": "https://psref.lenovo.com",
     "x-requested-with": "XMLHttpRequest",
 }
-GPU_VENDOR_PRIORITY = {"NVIDIA": 100, "AMD": 60, "Intel": 30, "Qualcomm": 25, "Unknown": 0}
-CPU_VENDOR_PRIORITY = {"Intel": 100, "AMD": 95, "Qualcomm": 70, "Unknown": 0}
 
 
-def _request_bytes(url: str, accept: str | None = None) -> bytes:
+def _request_bytes(url: str, accept: str | None = None, retries: int = 3, timeout: int = 120) -> bytes:
     headers = dict(HEADERS)
     if accept:
         headers["accept"] = accept
     session = curl_requests()
-    response = session.get(url, headers=headers, impersonate="chrome120", timeout=60)
-    response.raise_for_status()
-    return response.content
+    last_err: Exception | None = None
+    for attempt in range(retries):
+        try:
+            response = session.get(url, headers=headers, impersonate="chrome120", timeout=timeout)
+            response.raise_for_status()
+            return response.content
+        except Exception as err:
+            last_err = err
+            import time
+            time.sleep(1.5 * (attempt + 1))
+    if last_err:
+        raise last_err
+    raise RuntimeError(f"Failed to fetch {url}")
 
 
 def safe_slug(value: str) -> str:
@@ -62,68 +67,6 @@ def safe_slug(value: str) -> str:
 def stable_spec_id(prefix: str, raw_value: str) -> str:
     digest = hashlib.sha1(clean_text(raw_value).encode("utf-8")).hexdigest()[:12]
     return f"{prefix}_{digest}"
-
-
-def column_index(cell_ref: str) -> int:
-    match = re.match(r"([A-Z]+)", cell_ref or "")
-    if not match:
-        return 0
-    value = 0
-    for ch in match.group(1):
-        value = value * 26 + ord(ch) - 64
-    return value - 1
-
-
-def parse_xlsx_rows(blob: bytes) -> list[dict[str, str]]:
-    with zipfile.ZipFile(io.BytesIO(blob)) as workbook:
-        shared_strings: list[str] = []
-        if "xl/sharedStrings.xml" in workbook.namelist():
-            root = ET.fromstring(workbook.read("xl/sharedStrings.xml"))
-            for item in root.findall(f"{MAIN_NS}si"):
-                shared_strings.append("".join(t.text or "" for t in item.iter(f"{MAIN_NS}t")))
-
-        wb = ET.fromstring(workbook.read("xl/workbook.xml"))
-        first_sheet = wb.find(f"{MAIN_NS}sheets/{MAIN_NS}sheet")
-        if first_sheet is None:
-            return []
-        rel_id = first_sheet.attrib.get("{http://schemas.openxmlformats.org/officeDocument/2006/relationships}id", "")
-
-        rels = ET.fromstring(workbook.read("xl/_rels/workbook.xml.rels"))
-        target = "worksheets/sheet1.xml"
-        for rel in rels.findall(f"{REL_NS}Relationship"):
-            if rel.attrib.get("Id") == rel_id:
-                target = rel.attrib.get("Target", target)
-                break
-        target = target.lstrip("/")
-        if not target.startswith("xl/"):
-            target = "xl/" + target
-
-        ws = ET.fromstring(workbook.read(target))
-        rows: list[list[str]] = []
-        for row in ws.findall(f".//{MAIN_NS}row"):
-            values: list[str] = []
-            for cell in row.findall(f"{MAIN_NS}c"):
-                idx = column_index(cell.attrib.get("r", "A1"))
-                while len(values) <= idx:
-                    values.append("")
-                value_node = cell.find(f"{MAIN_NS}v")
-                if value_node is None:
-                    continue
-                value = value_node.text or ""
-                if cell.attrib.get("t") == "s" and value.isdigit():
-                    value = shared_strings[int(value)]
-                values[idx] = clean_text(value)
-            if any(values):
-                rows.append(values)
-
-    if not rows:
-        return []
-    headers = rows[0]
-    output_rows: list[dict[str, str]] = []
-    for row in rows[1:]:
-        padded = row + [""] * (len(headers) - len(row))
-        output_rows.append({headers[idx]: padded[idx] for idx in range(len(headers))})
-    return output_rows
 
 
 def build_mt_map(menu_payload: Any) -> dict[str, dict[str, Any]]:
@@ -244,132 +187,319 @@ def compact_specs(specs: Any) -> Any:
     return specs
 
 
-def classify_cto_option(label: str) -> str:
-    low = clean_text(label).lower()
-    if "processor" in low:
-        return "processor"
-    if "graphic" in low or "gpu" in low or "video" in low:
-        return "graphics"
-    if "memory" in low or "ram" in low:
-        return "memory"
-    if "solid state" in low or "storage" in low or "drive" in low or "ssd" in low:
-        return "storage"
-    if "display" in low or "screen" in low:
-        return "display"
-    return ""
-
-
-def feature_signature(category: str, parsed: dict[str, Any]) -> str:
-    if category == "processor":
-        return clean_text(parsed.get("model") or parsed.get("full_model"))
-    if category == "graphics":
-        return clean_text(parsed.get("model") or parsed.get("full_model"))
-    if category == "memory":
-        return clean_text(f"{parsed.get('amount_gb') or ''} {parsed.get('type') or ''} {parsed.get('speed_mhz') or ''}")
-    if category == "storage":
-        return clean_text(f"{parsed.get('capacity_gb') or ''} {parsed.get('type') or ''}")
-    if category == "display":
-        return clean_text(f"{parsed.get('size_inches') or ''} {parsed.get('resolution') or ''} {parsed.get('type') or ''} {parsed.get('refresh_hz') or ''}")
-    return clean_text(parsed.get("raw") or "")
-
-
-def choice_parser(category: str):
-    return {
-        "processor": parse_cpu_psref,
-        "graphics": parse_gpu_psref,
-        "memory": parse_memory_psref,
-        "storage": parse_storage_psref,
-        "display": parse_display_psref,
-    }.get(category)
-
-
-def build_cto_expectations(product: dict[str, Any], cto_config: dict[str, Any] | None) -> dict[str, Any]:
-    expectations: dict[str, Any] = {"required": {}, "allowed": {}, "has_cto": bool(cto_config)}
-    if not cto_config:
-        return expectations
-    for option in cto_config.get("options") or []:
-        category = classify_cto_option(option.get("label", ""))
-        parser = choice_parser(category)
-        if not category or not parser:
-            continue
-        signatures: set[str] = set()
-        default_signature = ""
-        scored: list[tuple[float, str]] = []
-        for choice in option.get("choices") or []:
-            parsed = parser(choice.get("label", ""))
-            signature = feature_signature(category, parsed)
-            if not signature:
-                continue
-            signatures.add(signature)
-            score = float(choice.get("gapPrice") or 0)
-            scored.append((score, signature))
-            if choice.get("isDefault"):
-                default_signature = signature
-        if signatures:
-            expectations["allowed"][category] = signatures
-        if default_signature:
-            expectations["required"][category] = default_signature
-        elif scored:
-            expectations["required"][category] = max(scored)[1]
-    return expectations
-
-
-def row_sort_power(specs: dict[str, Any]) -> tuple:
-    cpu = specs.get("processor") or {}
-    gpu = specs.get("graphics") or {}
-    mem = specs.get("memory") or {}
-    sto = specs.get("storage") or {}
-    dpy = specs.get("display") or {}
-    return (
-        GPU_VENDOR_PRIORITY.get(gpu.get("brand"), 0),
-        gpu.get("tgp_w") or 0,
-        gpu.get("vram_gb") or 0,
-        CPU_VENDOR_PRIORITY.get(cpu.get("brand"), 0),
-        cpu.get("boost_clock_ghz") or 0,
-        cpu.get("cores") or 0,
-        mem.get("amount_gb") or 0,
-        sto.get("capacity_gb") or 0,
-        dpy.get("refresh_hz") or 0,
-        dpy.get("brightness_nits") or 0,
-    )
-
-
-def score_candidate_row(row: dict[str, str], expectations: dict[str, Any]) -> tuple[tuple, dict[str, Any]]:
-    specs = build_specs_from_row(row)
-    required_hits = 0
-    allowed_hits = 0
-    reject_reasons: list[str] = []
-    for category, expected in (expectations.get("required") or {}).items():
-        signature = feature_signature(category, specs.get(category) or {})
-        if signature == expected:
-            required_hits += 1
-        else:
-            reject_reasons.append(f"{category}:expected:{expected}:got:{signature}")
-    for category, allowed in (expectations.get("allowed") or {}).items():
-        signature = feature_signature(category, specs.get(category) or {})
-        if signature in allowed:
-            allowed_hits += 1
-    country = clean_text(row.get("Country/Region"))
-    country_priority = 10 if country.lower() == "india" else (6 if "india" in country.lower() else 0)
-    diagnostics = {
-        "required_hits": required_hits,
-        "allowed_hits": allowed_hits,
-        "reject_reasons": reject_reasons,
-        "country_priority": country_priority,
-        "power": row_sort_power(specs),
+def hydrate_sku_specs(spec_refs: dict[str, str], spec_pool: dict[str, dict[str, Any]], platform_defaults: dict[str, Any]) -> dict[str, Any]:
+    specs: dict[str, Any] = OrderedDict()
+    pool_map = {
+        "processor": spec_pool.get("processors", {}),
+        "graphics": spec_pool.get("graphics", {}),
+        "memory": spec_pool.get("memory", {}),
+        "storage": spec_pool.get("storage", {}),
+        "display": spec_pool.get("displays", {}),
     }
-    return (required_hits, allowed_hits, country_priority, *row_sort_power(specs)), diagnostics
+    for category in ["processor", "graphics", "memory", "storage", "display"]:
+        ref_id = (spec_refs or {}).get(category, "")
+        if ref_id and category in pool_map:
+            item = pool_map[category].get(ref_id)
+            if item:
+                specs[category] = item.get("normalized") if isinstance(item, dict) and "normalized" in item else item
+    for key, val in (platform_defaults or {}).items():
+        if key not in specs and val:
+            specs[key] = val
+    return compact_specs(specs)
 
 
-def save_workbook_cache(output_dir: Path, prefix: str, mt_entry: dict[str, Any], refresh: bool) -> list[dict[str, str]]:
-    product_key = mt_entry["product_key"]
-    workbook_path = output_dir / "xlsx" / f"{prefix}_{safe_slug(product_key)}.xlsx"
-    if refresh or not workbook_path.exists():
-        url = f"{EXPORT_URL}?pageindex=0&pagesize=10000&product_key={quote(product_key)}"
-        blob = _request_bytes(url, accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,*/*")
-        workbook_path.parent.mkdir(parents=True, exist_ok=True)
-        workbook_path.write_bytes(blob)
-    return parse_xlsx_rows(workbook_path.read_bytes())
+def fetch_mt_model_data_json(product_key: str) -> tuple[list[dict[str, str]], dict[str, list[str]]]:
+    pageindex = 1
+    pagesize = 2000
+    output_rows: list[dict[str, str]] = []
+    cleaned_filters: dict[str, list[str]] = {}
+
+    while True:
+        url = f"{SHOW_MODEL_URL}?pageindex={pageindex}&pagesize={pagesize}&product_key={quote(product_key)}"
+        blob = _request_bytes(url, accept="application/json, text/plain, */*")
+        payload = __import__("json").loads(blob.decode("utf-8-sig"))
+        data = payload.get("data") or {}
+        cols = [clean_text(c) for c in (data.get("cols") or [])]
+        rows = data.get("rows") or []
+        filter_value_array = data.get("filter_value_array") or {}
+
+        if not cleaned_filters and isinstance(filter_value_array, dict):
+            for k, v in filter_value_array.items():
+                if isinstance(v, list):
+                    cleaned_filters[k] = [clean_text(x) for x in v if clean_text(x)]
+
+        for row in rows:
+            if isinstance(row, list):
+                padded = row + [""] * (len(cols) - len(row))
+                output_rows.append({cols[idx]: clean_text(padded[idx]) for idx in range(len(cols))})
+
+        total = data.get("total") or len(output_rows)
+        if len(output_rows) >= total or not rows:
+            break
+        pageindex += 1
+
+    return output_rows, cleaned_filters
+
+
+def build_mt_datasheet(prefix: str, prefix_rows: list[dict[str, str]], mt_entry: dict[str, Any], filter_options: dict[str, list[str]] | None = None) -> dict[str, Any]:
+    filter_options = filter_options or {}
+    spec_pool: dict[str, dict[str, Any]] = {
+        "processors": OrderedDict(),
+        "graphics": OrderedDict(),
+        "memory": OrderedDict(),
+        "storage": OrderedDict(),
+        "displays": OrderedDict(),
+    }
+    platform_defaults: dict[str, Any] = OrderedDict()
+    models: dict[str, Any] = OrderedDict()
+
+    # Pre-populate spec_pool with filter_value_array options if available
+    for raw_proc in filter_options.get("Processor") or []:
+        cpu_id = stable_spec_id("cpu", raw_proc)
+        if cpu_id not in spec_pool["processors"]:
+            spec_pool["processors"][cpu_id] = {"id": cpu_id, "raw": raw_proc, "normalized": parse_cpu_psref(raw_proc)}
+
+    for raw_gpu in filter_options.get("Graphics") or []:
+        gpu_id = stable_spec_id("gpu", raw_gpu)
+        if gpu_id not in spec_pool["graphics"]:
+            spec_pool["graphics"][gpu_id] = {"id": gpu_id, "raw": raw_gpu, "normalized": parse_gpu_psref(raw_gpu)}
+
+    for raw_mem in filter_options.get("Memory") or []:
+        mem_id = stable_spec_id("mem", raw_mem)
+        if mem_id not in spec_pool["memory"]:
+            spec_pool["memory"][mem_id] = {"id": mem_id, "raw": raw_mem, "normalized": parse_memory_psref(raw_mem)}
+
+    for raw_sto in filter_options.get("Storage") or []:
+        sto_id = stable_spec_id("sto", raw_sto)
+        if sto_id not in spec_pool["storage"]:
+            spec_pool["storage"][sto_id] = {"id": sto_id, "raw": raw_sto, "normalized": parse_storage_psref(raw_sto)}
+
+    for raw_dpy in filter_options.get("Display") or []:
+        dpy_id = stable_spec_id("dpy", raw_dpy)
+        if dpy_id not in spec_pool["displays"]:
+            spec_pool["displays"][dpy_id] = {"id": dpy_id, "raw": raw_dpy, "normalized": parse_display_psref(raw_dpy)}
+
+    # Map model rows
+    for row in prefix_rows:
+        row_specs = build_specs_from_row(row)
+        sku = clean_text(row.get("Model")).upper()
+
+        proc_raw = (row_specs.get("processor") or {}).get("raw", "")
+        cpu_id = stable_spec_id("cpu", proc_raw) if proc_raw else ""
+        if cpu_id and cpu_id not in spec_pool["processors"]:
+            spec_pool["processors"][cpu_id] = {"id": cpu_id, "raw": proc_raw, "normalized": row_specs.get("processor")}
+
+        gpu_raw = (row_specs.get("graphics") or {}).get("raw", "")
+        gpu_id = stable_spec_id("gpu", gpu_raw) if gpu_raw else ""
+        if gpu_id and gpu_id not in spec_pool["graphics"]:
+            spec_pool["graphics"][gpu_id] = {"id": gpu_id, "raw": gpu_raw, "normalized": row_specs.get("graphics")}
+
+        mem_raw = (row_specs.get("memory") or {}).get("raw", "")
+        mem_id = stable_spec_id("mem", mem_raw) if mem_raw else ""
+        if mem_id and mem_id not in spec_pool["memory"]:
+            spec_pool["memory"][mem_id] = {"id": mem_id, "raw": mem_raw, "normalized": row_specs.get("memory")}
+
+        sto_raw = (row_specs.get("storage") or {}).get("raw", "")
+        sto_id = stable_spec_id("sto", sto_raw) if sto_raw else ""
+        if sto_id and sto_id not in spec_pool["storage"]:
+            spec_pool["storage"][sto_id] = {"id": sto_id, "raw": sto_raw, "normalized": row_specs.get("storage")}
+
+        dpy_raw = (row_specs.get("display") or {}).get("raw", "")
+        dpy_id = stable_spec_id("dpy", dpy_raw) if dpy_raw else ""
+        if dpy_id and dpy_id not in spec_pool["displays"]:
+            spec_pool["displays"][dpy_id] = {"id": dpy_id, "raw": dpy_raw, "normalized": row_specs.get("display")}
+
+        if sku:
+            models[sku] = {
+                "country_region": clean_text(row.get("Country/Region")),
+                "match_type": "exact",
+                "psref_model": sku,
+                "psref_product": clean_text(row.get("Product")),
+                "spec_refs": {
+                    "processor": cpu_id,
+                    "graphics": gpu_id,
+                    "memory": mem_id,
+                    "storage": sto_id,
+                    "display": dpy_id,
+                },
+            }
+
+    if prefix_rows:
+        sample = build_specs_from_row(prefix_rows[0])
+        for key in ["network", "power", "battery", "ports", "memory_slots", "storage_slots", "camera", "audio", "keyboard", "dimensions", "build", "software", "security", "warranty", "certifications"]:
+            if sample.get(key):
+                platform_defaults[key] = sample[key]
+
+    return {
+        "machine_type": prefix,
+        "product_key": mt_entry.get("product_key"),
+        "product_name": mt_entry.get("product_name"),
+        "marketing_name": mt_entry.get("marketing_name"),
+        "marketing_name_primary": (mt_entry.get("marketing_name") or "").split(" / ")[0],
+        "platform_code": extract_platform_code(mt_entry.get("product_key") or ""),
+        "product_id": mt_entry.get("product_id"),
+        "psref_href": mt_entry.get("psref_href"),
+        "series_name": mt_entry.get("series_name"),
+        "productline_name": mt_entry.get("productline_name"),
+        "classification_name": mt_entry.get("classification_name"),
+        "generated_at": datetime.now(timezone.utc).isoformat(),
+        "filter_options": filter_options,
+        "spec_pool": spec_pool,
+        "platform_defaults": platform_defaults,
+        "models": models,
+    }
+
+
+def _extract_scraped_spec_strings(product: dict[str, Any]) -> dict[str, str]:
+    specs_by_code = product.get("specs_by_code") or {}
+    scraped: dict[str, str] = {
+        "processor": str(specs_by_code.get("LOIS_SCA_CPU") or ""),
+        "graphics": str(specs_by_code.get("LOIS_SCA_VIDEO") or ""),
+        "memory": str(specs_by_code.get("LOIS_SCA_MEM") or ""),
+        "storage": str(specs_by_code.get("LOIS_SCA_HDD") or ""),
+        "display": str(specs_by_code.get("LOIS_SCA_DPY") or ""),
+    }
+    specs_list = product.get("specs")
+    if isinstance(specs_list, list):
+        for item in specs_list:
+            if not isinstance(item, dict):
+                continue
+            lbl = clean_text(item.get("label")).lower()
+            val = clean_text(item.get("value"))
+            if "processor" in lbl and not scraped["processor"]:
+                scraped["processor"] = val
+            elif "graphic" in lbl and not scraped["graphics"]:
+                scraped["graphics"] = val
+            elif "memory" in lbl and not scraped["memory"]:
+                scraped["memory"] = val
+            elif "storage" in lbl and not scraped["storage"]:
+                scraped["storage"] = val
+            elif "display" in lbl and not scraped["display"]:
+                scraped["display"] = val
+    return scraped
+
+
+def match_product_against_mt(product: dict[str, Any], mt_datasheet: dict[str, Any]) -> tuple[dict[str, Any], dict[str, Any]]:
+    sku = clean_text(product.get("id") or product.get("product_code")).upper()
+    models = mt_datasheet.get("models") or {}
+    spec_pool = mt_datasheet.get("spec_pool") or {}
+    platform_defaults = mt_datasheet.get("platform_defaults") or {}
+
+    if sku in models:
+        model_entry = models[sku]
+        hydrated = hydrate_sku_specs(model_entry.get("spec_refs") or {}, spec_pool, platform_defaults)
+        return hydrated, model_entry
+
+    scraped_strings = _extract_scraped_spec_strings(product)
+    parsed_scraped = parse_spec_codes(product.get("specs_by_code") or {})
+    spec_refs: dict[str, str] = {}
+
+    # Match CPU
+    raw_cpu = scraped_strings.get("processor")
+    matched_cpu_id = ""
+    if raw_cpu:
+        for cpu_id, item in (spec_pool.get("processors") or {}).items():
+            item_norm = item.get("normalized") or {}
+            cpu_model = clean_text(item_norm.get("model") or item_norm.get("full_model"))
+            scraped_model = clean_text((parsed_scraped.get("processor") or {}).get("model"))
+            if cpu_model and scraped_model and (cpu_model in raw_cpu or scraped_model in item.get("raw", "")):
+                matched_cpu_id = cpu_id
+                break
+        if not matched_cpu_id:
+            parsed_cpu = parse_cpu_psref(raw_cpu)
+            matched_cpu_id = stable_spec_id("cpu", raw_cpu)
+            spec_pool.setdefault("processors", {})[matched_cpu_id] = {
+                "id": matched_cpu_id,
+                "raw": raw_cpu,
+                "normalized": parsed_cpu,
+            }
+    spec_refs["processor"] = matched_cpu_id
+
+    # Match GPU
+    raw_gpu = scraped_strings.get("graphics")
+    matched_gpu_id = ""
+    if raw_gpu:
+        for gpu_id, item in (spec_pool.get("graphics") or {}).items():
+            item_norm = item.get("normalized") or {}
+            gpu_model = clean_text(item_norm.get("model") or item_norm.get("full_model"))
+            scraped_gpu = clean_text((parsed_scraped.get("graphics") or {}).get("model"))
+            if gpu_model and scraped_gpu and (gpu_model in raw_gpu or scraped_gpu in item.get("raw", "")):
+                matched_gpu_id = gpu_id
+                break
+        if not matched_gpu_id:
+            parsed_gpu = parse_gpu_psref(raw_gpu)
+            matched_gpu_id = stable_spec_id("gpu", raw_gpu)
+            spec_pool.setdefault("graphics", {})[matched_gpu_id] = {
+                "id": matched_gpu_id,
+                "raw": raw_gpu,
+                "normalized": parsed_gpu,
+            }
+    spec_refs["graphics"] = matched_gpu_id
+
+    # Match Memory
+    raw_mem = scraped_strings.get("memory")
+    matched_mem_id = ""
+    if raw_mem:
+        for mem_id, item in (spec_pool.get("memory") or {}).items():
+            if clean_text(raw_mem) in clean_text(item.get("raw", "")):
+                matched_mem_id = mem_id
+                break
+        if not matched_mem_id:
+            parsed_mem = parse_memory_psref(raw_mem)
+            matched_mem_id = stable_spec_id("mem", raw_mem)
+            spec_pool.setdefault("memory", {})[matched_mem_id] = {
+                "id": matched_mem_id,
+                "raw": raw_mem,
+                "normalized": parsed_mem,
+            }
+    spec_refs["memory"] = matched_mem_id
+
+    # Match Storage
+    raw_sto = scraped_strings.get("storage")
+    matched_sto_id = ""
+    if raw_sto:
+        for sto_id, item in (spec_pool.get("storage") or {}).items():
+            if clean_text(raw_sto) in clean_text(item.get("raw", "")):
+                matched_sto_id = sto_id
+                break
+        if not matched_sto_id:
+            parsed_sto = parse_storage_psref(raw_sto)
+            matched_sto_id = stable_spec_id("sto", raw_sto)
+            spec_pool.setdefault("storage", {})[matched_sto_id] = {
+                "id": matched_sto_id,
+                "raw": raw_sto,
+                "normalized": parsed_sto,
+            }
+    spec_refs["storage"] = matched_sto_id
+
+    # Match Display
+    raw_dpy = scraped_strings.get("display")
+    matched_dpy_id = ""
+    if raw_dpy:
+        for dpy_id, item in (spec_pool.get("displays") or {}).items():
+            if clean_text(raw_dpy) in clean_text(item.get("raw", "")):
+                matched_dpy_id = dpy_id
+                break
+        if not matched_dpy_id:
+            parsed_dpy = parse_display_psref(raw_dpy)
+            matched_dpy_id = stable_spec_id("dpy", raw_dpy)
+            spec_pool.setdefault("displays", {})[matched_dpy_id] = {
+                "id": matched_dpy_id,
+                "raw": raw_dpy,
+                "normalized": parsed_dpy,
+            }
+    spec_refs["display"] = matched_dpy_id
+
+    model_entry = {
+        "country_region": "India",
+        "match_type": "mt_datasheet_matched",
+        "psref_model": sku,
+        "psref_product": mt_datasheet.get("product_name"),
+        "spec_refs": spec_refs,
+    }
+    models[sku] = model_entry
+    hydrated = hydrate_sku_specs(spec_refs, spec_pool, platform_defaults)
+    return hydrated, model_entry
 
 
 def build_inventory(entries: list[dict[str, Any]]) -> dict[str, Any]:
@@ -408,57 +538,26 @@ def _spec_raw_fields(specs: dict[str, Any]) -> dict[str, str]:
     }
 
 
-def build_spec_database(entries: list[dict[str, Any]]) -> tuple[dict[str, Any], dict[str, dict[str, str]]]:
-    buckets: dict[str, dict[str, Any]] = {key: OrderedDict() for key in ["processors", "graphics", "memory", "storage", "displays"]}
-    prefixes = {"processors": "cpu", "graphics": "gpu", "memory": "mem", "storage": "sto", "displays": "dpy"}
-    spec_key_map = {"processors": "processor", "graphics": "graphics", "memory": "memory", "storage": "storage", "displays": "display"}
-    index: dict[str, dict[str, str]] = {value: {} for value in spec_key_map.values()}
-
-    for entry in entries:
-        specs = entry.get("tech_specs") or {}
-        for bucket_name, spec_key in spec_key_map.items():
-            spec = specs.get(spec_key) or {}
-            raw = clean_text(spec.get("raw") if isinstance(spec, dict) else "")
-            if not raw:
-                continue
-            bucket = buckets[bucket_name]
-            if raw not in bucket:
-                bucket[raw] = {
-                    "id": stable_spec_id(prefixes[bucket_name], raw),
-                    "raw": raw,
-                    "normalized": spec,
-                    "count": 0,
-                    "example_skus": [],
-                }
-            bucket[raw]["count"] += 1
-            if len(bucket[raw]["example_skus"]) < 8:
-                bucket[raw]["example_skus"].append(entry.get("id"))
-            index[spec_key][raw] = bucket[raw]["id"]
-
-    return {
-        "generated_at": datetime.now(timezone.utc).isoformat(),
-        **{name: list(values.values()) for name, values in buckets.items()},
-    }, index
-
-
-def build_final_sku_specs(entries: list[dict[str, Any]], spec_index: dict[str, dict[str, str]]) -> dict[str, Any]:
+def build_final_sku_specs(entries: list[dict[str, Any]]) -> dict[str, Any]:
     final: OrderedDict[str, Any] = OrderedDict()
     for entry in entries:
-        specs = entry.get("tech_specs") or {}
-        spec_refs: dict[str, str] = {}
-        missing_refs: list[str] = []
-        for spec_key in ["processor", "graphics", "memory", "storage", "display"]:
-            raw = clean_text((specs.get(spec_key) or {}).get("raw"))
-            ref = spec_index.get(spec_key, {}).get(raw)
-            if ref:
-                spec_refs[spec_key] = ref
-            elif raw:
-                missing_refs.append(spec_key)
         payload = OrderedDict(entry)
-        payload["spec_refs"] = spec_refs
-        payload["missing_spec_refs"] = missing_refs
         final[entry["id"]] = payload
     return final
+
+
+def _process_prefix(prefix: str, mt_entry: dict[str, Any], datasheets_dir: Path, refresh: bool) -> tuple[str, dict[str, Any]]:
+    datasheet_path = datasheets_dir / f"{prefix}.json"
+    if refresh or not datasheet_path.exists():
+        rows, filter_options = fetch_mt_model_data_json(mt_entry["product_key"])
+        prefix_rows = [row for row in rows if clean_text(row.get("Machine Type")).upper() == prefix]
+        if not prefix_rows and rows:
+            prefix_rows = rows
+        mt_datasheet = build_mt_datasheet(prefix, prefix_rows, mt_entry, filter_options=filter_options)
+        write_json(datasheet_path, mt_datasheet)
+    else:
+        mt_datasheet = read_json(datasheet_path, {})
+    return prefix, mt_datasheet
 
 
 def build(
@@ -468,6 +567,7 @@ def build(
     output_dir: Path,
     refresh: bool = False,
     sku_filter: set[str] | None = None,
+    write_sidecars: bool = False,
     verbose: bool = False,
 ) -> dict[str, Any]:
     raw_catalog = read_json(catalog_path, {})
@@ -477,17 +577,17 @@ def build(
 
     menu_cache = output_dir / "menu.json"
     mt_cache = output_dir / "machine_type_map.json"
+    datasheets_dir = output_dir / "datasheets"
     sidecar_dir = output_dir / "by_sku"
     report_path = output_dir / "report.json"
 
-    # Always fetch fresh menu to discover new machine types (small API call).
-    # Xlsx workbooks are still cached per-prefix — only missing ones are downloaded.
+    datasheets_dir.mkdir(parents=True, exist_ok=True)
+
     try:
         menu_payload = _request_bytes(MENU_URL, accept="application/json, text/plain, */*")
         menu_payload = __import__("json").loads(menu_payload.decode("utf-8-sig"))
         write_json(menu_cache, menu_payload)
     except Exception:
-        # Fall back to cached menu if PSREF API is unreachable
         menu_payload = read_json(menu_cache, {})
 
     mt_map = build_mt_map(menu_payload)
@@ -502,7 +602,23 @@ def build(
 
     results: list[dict[str, Any]] = []
     missing: list[dict[str, Any]] = []
-    workbook_meta: dict[str, Any] = {}
+    datasheet_meta: dict[str, Any] = {}
+
+    # Parallelize fetching and creation of MTM datasheets
+    valid_prefixes = [(prefix, mt_map[prefix]) for prefix in sorted(grouped.keys()) if prefix in mt_map]
+    datasheets: dict[str, dict[str, Any]] = {}
+
+    if verbose:
+        print(f"[psref] Fetching MTM datasheets for {len(valid_prefixes)} Machine Types in parallel (workers=8)...")
+
+    with ThreadPoolExecutor(max_workers=8) as executor:
+        futures = [
+            executor.submit(_process_prefix, prefix, mt_entry, datasheets_dir, refresh)
+            for prefix, mt_entry in valid_prefixes
+        ]
+        for future in as_completed(futures):
+            pfx, ds = future.result()
+            datasheets[pfx] = ds
 
     for prefix, prefix_products in sorted(grouped.items()):
         mt_entry = mt_map.get(prefix)
@@ -514,58 +630,23 @@ def build(
                 missing.append(entry)
             continue
 
-        rows = save_workbook_cache(output_dir, prefix, mt_entry, refresh)
-        prefix_rows = [row for row in rows if clean_text(row.get("Machine Type")).upper() == prefix]
-        country_counts = Counter(clean_text(row.get("Country/Region")) for row in prefix_rows)
-        workbook_meta[prefix] = {
+        mt_datasheet = datasheets[prefix]
+        datasheet_path = datasheets_dir / f"{prefix}.json"
+        datasheet_meta[prefix] = {
             "machine_type": prefix,
             "product_key": mt_entry["product_key"],
             "product_name": mt_entry.get("product_name"),
-            "row_count": len(prefix_rows),
-            "country_counts": dict(country_counts.most_common()),
+            "model_count": len(mt_datasheet.get("models") or {}),
         }
-        model_map = {clean_text(row.get("Model")).upper(): row for row in prefix_rows}
 
+        datasheet_updated = False
         for product in prefix_products:
             sku = clean_text(product.get("id") or product.get("product_code")).upper()
-            exact = model_map.get(sku)
-            match_type = "exact"
-            chosen = exact
-            diagnostics: dict[str, Any] = {}
+            hydrated_specs, model_entry = match_product_against_mt(product, mt_datasheet)
+            match_type = model_entry.get("match_type", "mt_datasheet_matched")
+            if match_type == "mt_datasheet_matched":
+                datasheet_updated = True
 
-            if chosen is None:
-                cto_config = read_json(cto_dir / f"{sku}.json", None)
-                expectations = build_cto_expectations(product, cto_config)
-                scored = []
-                for row in prefix_rows:
-                    score, diag = score_candidate_row(row, expectations)
-                    scored.append((score, diag, row))
-                scored.sort(key=lambda item: item[0], reverse=True)
-                if scored:
-                    chosen = scored[0][2]
-                    diagnostics = scored[0][1]
-                    match_type = "cto_heuristic" if "CTO" in sku else "heuristic"
-
-            if chosen is None:
-                entry = {
-                    "id": sku,
-                    "status": "missing",
-                    "match_type": "missing",
-                    "machine_type": prefix,
-                    "product_key": mt_entry.get("product_key"),
-                    "product_name": mt_entry.get("product_name"),
-                    "marketing_name": mt_entry.get("marketing_name"),
-                    "marketing_name_primary": (mt_entry.get("marketing_name") or "").split(" / ")[0],
-                    "platform_code": extract_platform_code(mt_entry.get("product_key") or ""),
-                    "product_id": mt_entry.get("product_id"),
-                    "psref_href": mt_entry.get("psref_href"),
-                    "tech_specs": {},
-                }
-                results.append(entry)
-                missing.append(entry)
-                continue
-
-            specs = build_specs_from_row(chosen)
             entry = OrderedDict(
                 [
                     ("id", sku),
@@ -579,30 +660,30 @@ def build(
                     ("platform_code", extract_platform_code(mt_entry.get("product_key") or "")),
                     ("product_id", mt_entry.get("product_id")),
                     ("psref_href", mt_entry.get("psref_href")),
-                    ("psref_product", clean_text(chosen.get("Product"))),
+                    ("psref_product", model_entry.get("psref_product") or mt_entry.get("product_name")),
                     ("series_name", mt_entry.get("series_name")),
                     ("productline_name", mt_entry.get("productline_name")),
                     ("classification_name", mt_entry.get("classification_name")),
-                    ("country_region", clean_text(chosen.get("Country/Region"))),
-                    ("psref_model", clean_text(chosen.get("Model"))),
-                    ("diagnostics", diagnostics),
-                    ("tech_specs", specs),
-                    ("raw_psref", chosen),
+                    ("country_region", model_entry.get("country_region", "India")),
+                    ("psref_model", model_entry.get("psref_model", sku)),
+                    ("spec_refs", model_entry.get("spec_refs", {})),
+                    ("tech_specs", hydrated_specs),
                 ]
             )
             results.append(entry)
-            write_json(sidecar_dir / f"{sku}.json", entry)
+            if write_sidecars:
+                sidecar_dir.mkdir(parents=True, exist_ok=True)
+                write_json(sidecar_dir / f"{sku}.json", entry)
             if verbose:
                 print(f"[psref] {sku} {match_type}")
 
+        if datasheet_updated:
+            write_json(datasheet_path, mt_datasheet)
+
     inventory = build_inventory(results)
-    spec_db, spec_index = build_spec_database(results)
-    final_sku_specs = build_final_sku_specs(results, spec_index)
-    for entry in final_sku_specs.values():
-        entry.pop("raw_psref", None)
+    final_sku_specs = build_final_sku_specs(results)
 
     write_json(output_dir / "inventory.json", inventory)
-    write_json(output_dir / "spec_database.json", spec_db)
     write_json(output_dir / "final_sku_specs.json", final_sku_specs)
     write_json(
         report_path,
@@ -613,7 +694,7 @@ def build(
             "resolved": sum(1 for item in results if item.get("status") == "resolved"),
             "missing": len(missing),
             "match_types": dict(Counter(item.get("match_type") for item in results)),
-            "workbooks": workbook_meta,
+            "datasheets": datasheet_meta,
             "missing_entries": missing,
         },
     )

@@ -91,16 +91,21 @@ def check_product(product: dict[str, Any], *, html_dir: Path | None = None) -> d
     meta_bad = bad_status(meta_status)
     is_in_stock = (availability == "in stock") and not meta_bad
 
-    # Model-selector detection: Only trigger if the product is NOT in stock.
-    # If a product is in stock, resolving to a subseries/model-selector page is
-    # standard presentation (especially for CTO models) and must not archive it.
-    if not is_in_stock:
-        if taxonomy_type.lower() == "subseriespage" or "subseries" in page_type_name.lower():
-            reasons.append("converted_to_model_selector")
-        if pdp_product_number and pdp_product_number.startswith("LEN"):
-            reasons.append("converted_to_model_selector")
-        if ld_sku and ld_sku != pid and ld_mpn == pid:
-            reasons.append("converted_to_model_selector")
+    final_url = raw.get("final_url", "")
+    evidence["final_url"] = final_url
+
+    # Subseries / model selector page conversion detection:
+    # When a specific model SKU (e.g. 83JXCTO1WWIN1) resolves or redirects to a subseries page
+    # (e.g. LEN101Y0053 or taxonomy_type "subseriespage"), its role has been shifted to the main page.
+    is_subseries_conversion = (
+        taxonomy_type.lower() == "subseriespage" or
+        "subseries" in page_type_name.lower() or
+        (bool(pdp_product_number) and pdp_product_number.startswith("LEN") and pdp_product_number != pid) or
+        (bool(ld_sku) and ld_sku.startswith("LEN") and ld_sku != pid) or
+        (bool(final_url) and "/len" in final_url.lower() and not pid.startswith("LEN"))
+    )
+    if is_subseries_conversion:
+        reasons.append("converted_to_model_selector")
 
     if availability == "out of stock":
         reasons.append("not_in_stock")

@@ -14,6 +14,7 @@ def main() -> int:
     parser.add_argument("--sku", action="append", help="Limit build to one or more specific SKUs")
     parser.add_argument("--ids-file", help="JSON file containing target SKUs (e.g. data/lenovo-new-ids.json)")
     parser.add_argument("--refresh", action="store_true", help="Re-fetch PSREF menu and workbooks")
+    parser.add_argument("--write-sidecars", action="store_true", help="Write individual per-SKU JSON sidecars under by_sku/")
     parser.add_argument("--verbose", action="store_true")
     args = parser.parse_args()
     sku_filter = ids.split_ids(args.sku) | ids.read_ids_file(args.ids_file)
@@ -23,6 +24,7 @@ def main() -> int:
         output_dir=paths.resolve(args.output_dir),
         refresh=args.refresh,
         sku_filter=sku_filter or None,
+        write_sidecars=args.write_sidecars,
         verbose=args.verbose,
     )
     print(result)

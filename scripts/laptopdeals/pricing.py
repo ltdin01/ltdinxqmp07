@@ -35,6 +35,8 @@ def update_from_lenovo(
             availability = lenovo.fetch_page_availability(product.get("store_link", ""))
             price, mrp = lenovo.fetch_current_price(pid)
             if not price:
+                product["availability"] = "out of stock"
+                product["last_checked"] = ist_stamp()
                 return {"id": pid, "status": "no_price"}
             new_history, changed = history.apply_current_price(
                 history_dir,

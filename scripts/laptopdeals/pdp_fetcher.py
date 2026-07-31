@@ -13,6 +13,7 @@ from .sources import lenovo
 @dataclass
 class PDPResult:
     url: str
+    final_url: str = ""
     product_id: str = ""
     status_code: int = 200
     price: int | None = None
@@ -83,7 +84,9 @@ class PDPFetcher:
             page_config = lenovo.extract_balanced_json_after(text, "var $pageConfigData = ") or {}
             pdp_params = lenovo.extract_balanced_json_after(text, "var $pdpAllParams = ") or {}
             
+            final_url = str(getattr(resp, "url", url) or url)
             raw_data = {
+                "final_url": final_url,
                 "taxonomy_type": lenovo.clean_text(page_config.get("taxonomyType")),
                 "page_type_name": lenovo.clean_text(page_config.get("pageTypeName")),
                 "pdp_product_number": lenovo.clean_text(pdp_params.get("productNumber")).upper(),
@@ -102,6 +105,7 @@ class PDPFetcher:
 
             result = PDPResult(
                 url=url,
+                final_url=final_url,
                 product_id=product_id,
                 status_code=200,
                 price=price,

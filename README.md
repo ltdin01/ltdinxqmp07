@@ -69,7 +69,7 @@ pipeline/scripts/
 ├── laptopdeals/
 │   ├── normalize_hardware.py       # ⚡ Centralized CPU/GPU Normalization Engine
 │   ├── catalog.py                  # 📦 Main Lenovo Catalog Ingestion CLI
-│   ├── psref.py                    # 📑 Lenovo PSREF Excel Specification Matcher
+│   ├── psref.py                    # 📑 Lenovo PSREF MTM Spec Pool Matcher & Datasheet Generator
 │   ├── cto.py                      # ⚙️ Lenovo Custom Build (CTO) Option Generator
 │   ├── prices.py                   # 📈 Price History Tracking & Statistics Math
 │   ├── archive.py                  # 🗃️ Out-of-Stock & Product Archiving Tool

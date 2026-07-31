@@ -177,7 +177,7 @@ def parse_gpu_psref(raw: str) -> dict[str, Any]:
     primary = text.split(",")[0].strip()
     brand = detect_gpu_brand_psref(text)
     model = re.sub(r"^(NVIDIA|AMD|Intel|Qualcomm)\s+", "", primary, flags=re.IGNORECASE).strip()
-    dedicated = not bool(re.search(r"\bintegrated\b|shared|onboard", text, flags=re.IGNORECASE))
+    dedicated = bool(re.search(r"\b(rtx|gtx|geforce|quadro|titan|radeon rx|radeon pro|arc [ab]\d)\b|blackwell|ada lovelace", text, flags=re.IGNORECASE))
     return {
         "raw": text,
         "brand": brand,
