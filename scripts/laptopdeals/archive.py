@@ -102,7 +102,7 @@ def check_product(product: dict[str, Any], *, html_dir: Path | None = None) -> d
         "subseries" in page_type_name.lower() or
         (bool(pdp_product_number) and pdp_product_number.startswith("LEN") and pdp_product_number != pid) or
         (bool(ld_sku) and ld_sku.startswith("LEN") and ld_sku != pid) or
-        (bool(final_url) and "/len" in final_url.lower() and not pid.startswith("LEN"))
+        (bool(final_url) and re.search(r"/len[0-9]", final_url.lower()) and not pid.startswith("LEN"))
     )
     if is_subseries_conversion:
         reasons.append("converted_to_model_selector")
