@@ -682,6 +682,11 @@ def build(
 
     inventory = build_inventory(results)
     final_sku_specs = build_final_sku_specs(results)
+    if sku_filter and (output_dir / "final_sku_specs.json").exists():
+        existing_sidecar = read_json(output_dir / "final_sku_specs.json", {})
+        for sku, entry in final_sku_specs.items():
+            existing_sidecar[sku] = entry
+        final_sku_specs = existing_sidecar
 
     write_json(output_dir / "inventory.json", inventory)
     write_json(output_dir / "final_sku_specs.json", final_sku_specs)

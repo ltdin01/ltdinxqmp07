@@ -207,6 +207,11 @@ jobs:
           echo "=== Re-enriching CTO Specs ==="
           python -u scripts/cto.py --data website-target/apps/web/data.json --output-dir website-target/apps/web/cto_configs --reenrich --force
 
+      - name: Normalize hardware specs from inventory
+        run: |
+          echo "=== Normalizing Hardware Specs from Inventory ==="
+          python -u scripts/normalize.py
+
 
       - name: Refresh current prices after catalog rebuild
         run: |
@@ -238,7 +243,7 @@ jobs:
           echo "=== Checking Git Diff and Committing to Target Website Repository ==="
           git config user.email "${GIT_COMMIT_AUTHOR_EMAIL}"
           git config user.name "${GIT_COMMIT_AUTHOR_NAME}"
-          git add apps/web/data.json apps/web/archive.json apps/web/price_history/ apps/web/cto_configs/ data/spec_inventory.json
+          git add apps/web/data.json apps/web/archive.json apps/web/price_history/ apps/web/cto_configs/ data/spec_inventory.json data/lenovo_psref/
           git status
           if [[ -n "$(git status --porcelain)" ]]; then
             git commit -m "Catalog hygiene - $(date +'%Y-%m-%d %H:%M:%S IST')"

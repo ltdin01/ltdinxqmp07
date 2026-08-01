@@ -97,10 +97,8 @@ def parse_spec_codes(raw_map: dict[str, Any]) -> dict[str, Any]:
         specs["display"]["brightness"] = f"{nits.group(1)} nits" if nits else "Unknown"
         panel = re.search(r"(IPS|OLED|TN|VA)", dpy_raw, flags=re.I)
         specs["display"]["type"] = panel.group(1).upper() if panel else "Unknown"
-        if "sRGB" in dpy_raw:
-            specs["display"]["color"] = "100% sRGB"
-        elif "DCI-P3" in dpy_raw:
-            specs["display"]["color"] = "100% DCI-P3"
+        gamut = re.findall(r"(\d+\s*%\s*(?:sRGB|DCI-P3|NTSC|Adobe RGB))", dpy_raw, flags=re.IGNORECASE)
+        specs["display"]["color"] = clean_text(", ".join(re.sub(r"\s*%\s*", "% ", m) for m in gamut)) if gamut else "Unknown"
 
     wifi_raw = str(raw_map.get("LOIS_SCA_WIFI", ""))
     if wifi_raw:
@@ -146,7 +144,9 @@ def parse_cpu_psref(raw: str) -> dict[str, Any]:
     model = base
     for token in ("Intel ", "AMD ", "Qualcomm "):
         model = re.sub(rf"^{token}", "", model, flags=re.IGNORECASE).strip()
+    model = re.sub(r"\b(?:Processor|CPU)\s*$", "", model, flags=re.IGNORECASE).strip()
     full_model = f"{brand} {model}".strip() if brand != "Unknown" else model
+    base_pair = re.search(r"(\d+(?:\.\d+)?)\s*(?:GHz)?\s*(?:/|up to)\s*(\d+(?:\.\d+)?)GHz", text)
     return {
         "raw": text,
         "brand": brand,
@@ -154,8 +154,8 @@ def parse_cpu_psref(raw: str) -> dict[str, Any]:
         "full_model": full_model,
         "cores": first_int(text, r"(\d+)C\b"),
         "threads": first_int(text, r"/\s*(\d+)T\b"),
-        "base_clock_ghz": min([float(v) for v in re.findall(r"(\d+(?:\.\d+)?)GHz", text)] or [0]) or None,
-        "boost_clock_ghz": max([float(v) for v in re.findall(r"(\d+(?:\.\d+)?)GHz", text)] or [0]) or None,
+        "base_clock_ghz": float(base_pair.group(1)) if base_pair else None,
+        "boost_clock_ghz": max([float(v) for v in re.findall(r"(\d+(?:\.\d+)?)\s*GHz", text)] or [0]) or None,
     }
 
 
@@ -287,7 +287,8 @@ def parse_display_psref(raw: str) -> dict[str, Any]:
         "brightness_nits": brightness_nits,
         "refresh": f"{refresh_hz}Hz" if refresh_hz else "",
         "refresh_hz": refresh_hz,
-        "color": clean_text(", ".join(re.findall(r"\d+%\s+(?:sRGB|DCI-P3|NTSC|Adobe RGB)", text, flags=re.IGNORECASE))),
+        "color": clean_text(", ".join(re.sub(r"\s*%\s*", "% ", m)
+                                      for m in re.findall(r"\d+\s*%\s*(?:sRGB|DCI-P3|NTSC|Adobe RGB)", text, flags=re.IGNORECASE))),
         "touch": "Yes" if re.search(r"\btouch\b", text, re.I) and not re.search(r"non[- ]?touch", text, re.I) else "No",
         "surface": "Anti-glare" if "anti-glare" in text.lower() else ("Glossy" if "glossy" in text.lower() else ""),
     }

@@ -27,13 +27,13 @@ RAW_CATALOG = REPO_ROOT / "data/lenovo-catalog.json"
 NEW_IDS = REPO_ROOT / "data/lenovo-new-ids.json"
 SPEC_INVENTORY = TARGET_ROOT / "data/spec_inventory.json"
 PRICE_CLEANUP_REPORT = REPO_ROOT / "data/price-history-cleanup-report.json"
-PSREF_DIR = REPO_ROOT / "data/lenovo_psref"
+PSREF_DIR = TARGET_ROOT / "data/lenovo_psref"
 PSREF_DATASHEETS_DIR = PSREF_DIR / "datasheets"
 PSREF_SKU_DIR = PSREF_DIR / "by_sku"
 PSREF_MAP = PSREF_DIR / "final_sku_specs.json"
-CPU_INVENTORY = REPO_ROOT / "data/cpu_inventory.json"
-GPU_INVENTORY = REPO_ROOT / "data/gpu_inventory.json"
-IGPU_INVENTORY = REPO_ROOT / "data/igpu_inventory.json"
+CPU_INVENTORY = TARGET_ROOT / "data/cpu_inventory.json"
+GPU_INVENTORY = TARGET_ROOT / "data/gpu_inventory.json"
+IGPU_INVENTORY = TARGET_ROOT / "data/igpu_inventory.json"
 
 
 

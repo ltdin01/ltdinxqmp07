@@ -14,9 +14,9 @@ from .datafile import iter_products, product_index
 from .history import load_history, latest_price, stats
 from .ids import normalize_id
 from .jsonio import read_json, write_json
-from .normalize_hardware import normalize_product
+from .normalize_hardware import build_inventory_indices, normalize_product
 from .sources import lenovo
-from .specs import clean_text, parse_spec_codes
+from .specs import clean_text, parse_display_psref, parse_spec_codes
 from .timeutil import iso_date
 
 
@@ -69,13 +69,16 @@ def _normalize_psref_specs(specs: dict[str, Any]) -> dict[str, Any]:
         out["storage"] = {"capacity": sto.get("capacity", ""), "type": sto.get("type", "")}
     dpy = specs.get("display") or {}
     if dpy:
+        color = dpy.get("color", "")
+        if not color and dpy.get("raw"):
+            color = parse_display_psref(dpy["raw"]).get("color", "")
         out["display"] = {
             "size": dpy.get("size", ""),
             "resolution": dpy.get("resolution_name", "") or dpy.get("resolution", ""),
             "type": dpy.get("type", ""),
             "refresh": dpy.get("refresh", ""),
             "brightness": dpy.get("brightness", ""),
-            "color": dpy.get("color", ""),
+            "color": color,
             "touch": dpy.get("touch", ""),
             "surface": dpy.get("surface", ""),
         }
@@ -618,6 +621,7 @@ def format_catalog(
 
     # Hardware normalization: apply CPU/GPU normalization as final pipeline step
     if not dry_run:
+        build_inventory_indices()
         for rows in formatted.values():
             for row in rows:
                 try:

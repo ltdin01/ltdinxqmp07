@@ -21,9 +21,9 @@ import re
 from pathlib import Path
 from typing import Any
 
-from .paths import REPO_ROOT, APP_DATA, ARCHIVE, CPU_INVENTORY, GPU_INVENTORY, IGPU_INVENTORY
+from .paths import REPO_ROOT, APP_DATA, ARCHIVE, TARGET_ROOT, CPU_INVENTORY, GPU_INVENTORY, IGPU_INVENTORY, CTO_CONFIGS
 
-DATA_DIR = REPO_ROOT / "data"
+DATA_DIR = TARGET_ROOT / "data"
 CATALOG_PATH = APP_DATA
 REPORT_DIR = DATA_DIR / "reports"
 UNMATCHED_REPORT_PATH = REPORT_DIR / "unmatched_hardware_report.json"
@@ -47,6 +47,34 @@ def _index_igpu_file(json_file: Path) -> None:
     short_m = clean_text(item.get("short_model") or "").lower()
     if full_m: _IGPU_INDEX[full_m] = item
     if short_m: _IGPU_INDEX[short_m] = item
+
+
+def _index_cpu_file(json_file: Path) -> None:
+    try:
+        with open(json_file, "r", encoding="utf-8") as f:
+            item = json.load(f)
+    except Exception:
+        return
+    if not isinstance(item, dict):
+        return
+    full_m = clean_text(item.get("full_model") or "").lower()
+    short_m = clean_text(item.get("short_model") or "").lower()
+    if full_m: _CPU_INDEX[full_m] = item
+    if short_m: _CPU_INDEX[short_m] = item
+
+
+def _index_gpu_file(json_file: Path) -> None:
+    try:
+        with open(json_file, "r", encoding="utf-8") as f:
+            item = json.load(f)
+    except Exception:
+        return
+    if not isinstance(item, dict):
+        return
+    full_m = clean_text(item.get("full_model") or item.get("gpu_model") or "").lower()
+    short_m = clean_text(item.get("short_model") or "").lower()
+    if full_m: _GPU_INDEX[full_m] = item
+    if short_m: _GPU_INDEX[short_m] = item
 
 
 def clean_text(val: Any) -> str:
@@ -120,6 +148,18 @@ def build_inventory_indices() -> None:
             _index_igpu_file(json_file)
         for json_file in INVENTORY_DIR.joinpath("amd", "igpus").rglob("*.json"):
             _index_igpu_file(json_file)
+
+    # 1b. Fallback: per-series CPU files under data/inventory/{intel,amd}/cpus/
+    if not _CPU_INDEX and INVENTORY_DIR.exists():
+        for json_file in INVENTORY_DIR.joinpath("intel", "cpus").rglob("*.json"):
+            _index_cpu_file(json_file)
+        for json_file in INVENTORY_DIR.joinpath("amd", "cpus").rglob("*.json"):
+            _index_cpu_file(json_file)
+
+    # 2b. Fallback: per-series dGPU files under data/inventory/nvidia/gpus/
+    if not _GPU_INDEX and INVENTORY_DIR.exists():
+        for json_file in INVENTORY_DIR.joinpath("nvidia", "gpus").rglob("*.json"):
+            _index_gpu_file(json_file)
 
 
 def extract_cpu_sku(text: str) -> str:
@@ -424,10 +464,20 @@ def enrich_cpu_spec(proc: dict[str, Any], raw_cpu_model: str, brand: str = "", c
 
         clocks_obj = cpu_spec.get("clock_speeds")
         if isinstance(clocks_obj, dict):
-            if clocks_obj.get("base_clock") or clocks_obj.get("base_clock_ghz"):
-                proc["base_clock"] = clocks_obj.get("base_clock") or clocks_obj.get("base_clock_ghz")
-            if clocks_obj.get("boost_clock") or clocks_obj.get("boost_clock_ghz"):
-                proc["boost_clock"] = clocks_obj.get("boost_clock") or clocks_obj.get("boost_clock_ghz")
+            base_clock = (
+                clocks_obj.get("p_core_base_ghz")
+                or clocks_obj.get("base_clock")
+                or clocks_obj.get("base_clock_ghz")
+            )
+            if base_clock:
+                proc["base_clock"] = base_clock
+            boost_clock = (
+                clocks_obj.get("p_core_max_turbo_ghz")
+                or clocks_obj.get("boost_clock")
+                or clocks_obj.get("boost_clock_ghz")
+            )
+            if boost_clock:
+                proc["boost_clock"] = boost_clock
 
         if cpu_spec.get("igpu"):
             igpu_obj = cpu_spec["igpu"]
@@ -442,7 +492,7 @@ def enrich_cpu_spec(proc: dict[str, Any], raw_cpu_model: str, brand: str = "", c
         _report_unmatched(ctx, "CPU", raw_cpu_model, norm_full_cpu, f"UNMATCHED HARDWARE: Processor '{norm_full_cpu}' not found in local hardware inventory. Requires manual addition or wiki refresh.")
 
     # Purge raw nested dict keys so only flattened primitives render
-    for raw_key in ["clock_speeds", "power", "cache", "memory", "intel_official_specs", "intel_specs", "amd_specs", "npu", "code_name", "code_name_slug"]:
+    for raw_key in ["clock_speeds", "power", "cache", "memory", "intel_official_specs", "intel_specs", "amd_specs", "npu", "code_name", "code_name_slug", "raw", "base_clock_ghz", "boost_clock_ghz"]:
         proc.pop(raw_key, None)
 
 
@@ -585,7 +635,7 @@ def _bundle_default_cpu_spec(config: dict[str, Any]) -> dict[str, Any] | None:
 
 
 def normalize_cto_configs() -> int:
-    cto_dir = REPO_ROOT / "apps/web/cto_configs"
+    cto_dir = CTO_CONFIGS
     if not cto_dir.exists():
         return 0
 
@@ -610,11 +660,15 @@ def normalize_cto_configs() -> int:
                 if not isinstance(specs, dict):
                     continue
 
-                # --- Processor (string -> prebuilt dict shape) ---
-                if isinstance(specs.get("processor"), str) and specs.get("processor"):
+                # --- Processor (string or dict -> prebuilt dict shape) ---
+                p = specs.get("processor")
+                if isinstance(p, str) and p:
                     proc: dict[str, Any] = {}
-                    enrich_cpu_spec(proc, specs["processor"], "", ctx)
+                    enrich_cpu_spec(proc, p, "", ctx)
                     specs["processor"] = proc
+                    modified = True
+                elif isinstance(p, dict) and (p.get("model") or p.get("full_model")):
+                    enrich_cpu_spec(p, p.get("full_model") or p.get("model"), p.get("brand") or "", ctx)
                     modified = True
 
                 # --- Graphics (integrated vs dedicated, same rules as prebuilts) ---
@@ -700,6 +754,17 @@ def normalize_catalog() -> int:
                 if isinstance(prod, dict):
                     ok, _ = normalize_product(prod)
                     if ok: count += 1
+
+            if target == APP_DATA:
+                cto_configs_dir = CTO_CONFIGS
+                for prod in products:
+                    sku = str(prod.get("id") or "")
+                    if "CTO" not in sku.upper():
+                        continue
+                    sidecar = cto_configs_dir / f"{sku}.json"
+                    if sidecar.exists():
+                        payload = json.loads(sidecar.read_text(encoding="utf-8"))
+                        prod["cto_options"] = {k: v for k, v in payload.items() if k != "lastFetched"}
 
             with open(target, "w", encoding="utf-8") as f:
                 json.dump(raw_data, f, indent=2, ensure_ascii=False)
