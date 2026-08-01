@@ -22,6 +22,7 @@ from pathlib import Path
 from typing import Any
 
 from .paths import REPO_ROOT, APP_DATA, ARCHIVE, TARGET_ROOT, CPU_INVENTORY, GPU_INVENTORY, IGPU_INVENTORY, CTO_CONFIGS
+from .specs import parse_gpu_psref
 
 DATA_DIR = TARGET_ROOT / "data"
 CATALOG_PATH = APP_DATA
@@ -425,6 +426,31 @@ def is_dedicated_gpu_name(raw_gpu_model: str) -> bool:
     return False
 
 
+_NO_GRAPHICS_HINTS = (
+    "no graphics",
+    "no discrete",
+    "no dedicated",
+    "no gpu",
+    "dongle",
+    "to vga",
+    "to hdmi",
+    "to dp",
+    "to usb",
+    "hdmi to",
+    "usb-c hub",
+    "usb c hub",
+    "adapter",
+    "none",
+)
+
+
+def is_no_graphics_choice(label: str, gpu_model: str = "") -> bool:
+    text = f"{label} {gpu_model}".lower()
+    if "integrated graphics" in text:
+        return False
+    return any(hint in text for hint in _NO_GRAPHICS_HINTS)
+
+
 def _clean_gpu_name(name: str) -> str:
     cleaned = clean_text(name).strip()
     return _CANONICAL_GPU_NAME_CASE.get(cleaned.lower(), cleaned)
@@ -605,7 +631,10 @@ def normalize_product(product: dict[str, Any]) -> tuple[bool, str | None]:
 
     enrich_cpu_spec(proc, raw_cpu_model, brand, ctx)
 
-    if is_dedicated_gpu_name(raw_gpu_model):
+    if is_no_graphics_choice(raw_gpu_model):
+        gpu["dedicated"] = False
+        gpu["vram"] = "Shared"
+    elif is_dedicated_gpu_name(raw_gpu_model):
         enrich_dedicated_gpu(gpu, raw_gpu_model, ctx)
     else:
         cpu_spec = find_cpu_in_local_data(proc["full_model"])
@@ -673,7 +702,14 @@ def normalize_cto_configs() -> int:
 
                 # --- Graphics (integrated vs dedicated, same rules as prebuilts) ---
                 gpu = specs.get("graphics")
+                choice_label = choice.get("label") or ""
                 if isinstance(gpu, dict):
+                    if is_no_graphics_choice(choice_label, gpu.get("model") or ""):
+                        parsed = parse_gpu_psref(choice_label)
+                        gpu.clear()
+                        gpu.update({k: v for k, v in parsed.items() if k != "raw"})
+                        modified = True
+                        continue
                     raw_gpu_model = gpu.get("model") or ""
                     if is_dedicated_gpu_name(raw_gpu_model):
                         enrich_dedicated_gpu(gpu, raw_gpu_model, ctx)

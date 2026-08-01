@@ -6,6 +6,22 @@ from .datafile import iter_products
 from .specs import clean_text, detect_cpu_brand, normalize_cpu_model, normalize_gpu_model, processor_series
 
 
+def _classify_gpu(gpu_model: str, dedicated: Any) -> str:
+    if dedicated is False:
+        return "Integrated"
+    if dedicated is True:
+        low = gpu_model.lower()
+        return "Professional" if "rtx pro" in low else ("Discrete (NVIDIA RTX)" if "rtx" in low else "Other")
+    low = gpu_model.lower()
+    if any(token in low for token in ["integrated", "shared", "onboard"]):
+        return "Integrated"
+    if "rtx pro" in low:
+        return "Professional"
+    if "rtx" in low:
+        return "Discrete (NVIDIA RTX)"
+    return "Other"
+
+
 def build_spec_inventory(data: Any) -> dict[str, Any]:
     inventory: dict[str, Any] = {
         "processors": {},
@@ -25,8 +41,7 @@ def build_spec_inventory(data: Any) -> dict[str, Any]:
         gpu = specs.get("graphics") or {}
         gpu_model = normalize_gpu_model(gpu.get("model") or "")
         if gpu_model:
-            low = gpu_model.lower()
-            kind = "Integrated" if "integrated" in low else ("Professional" if "rtx pro" in low else ("Discrete (NVIDIA RTX)" if "rtx" in low else "Other"))
+            kind = _classify_gpu(gpu_model, gpu.get("dedicated"))
             inventory["gpus"].setdefault(kind, set()).add(gpu_model)
         display = specs.get("display") or {}
         for key, target in [("size", "sizes"), ("type", "types"), ("res", "resolutions"), ("refresh", "refresh_rates"), ("brightness", "brightness_levels"), ("color", "color_gamuts")]:

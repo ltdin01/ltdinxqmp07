@@ -680,32 +680,40 @@ def build(
         if datasheet_updated:
             write_json(datasheet_path, mt_datasheet)
 
-    inventory = build_inventory(results)
-    final_sku_specs = build_final_sku_specs(results)
-    if sku_filter and (output_dir / "final_sku_specs.json").exists():
-        existing_sidecar = read_json(output_dir / "final_sku_specs.json", {})
-        for sku, entry in final_sku_specs.items():
-            existing_sidecar[sku] = entry
-        final_sku_specs = existing_sidecar
+    final_path = output_dir / "final_sku_specs.json"
+    existing_sidecar = read_json(final_path, {}) if final_path.exists() else {}
+    new_sku_specs = build_final_sku_specs(results)
+
+    if not results and existing_sidecar:
+        print("[psref] No results to append; preserving existing final_sku_specs.json and inventory.")
+        existing_total = len(existing_sidecar)
+        existing_resolved = sum(1 for entry in existing_sidecar.values() if isinstance(entry, dict) and entry.get("status") == "resolved")
+        existing_missing = sum(1 for entry in existing_sidecar.values() if isinstance(entry, dict) and entry.get("status") == "missing")
+        return {"total": existing_total, "resolved": existing_resolved, "missing": existing_missing}
+
+    merged_sidecar = {**existing_sidecar, **new_sku_specs}
+    inventory = build_inventory(list(merged_sidecar.values()))
 
     write_json(output_dir / "inventory.json", inventory)
-    write_json(output_dir / "final_sku_specs.json", final_sku_specs)
+    write_json(final_path, merged_sidecar)
     write_json(
         report_path,
         {
             "generated_at": datetime.now(timezone.utc).isoformat(),
             "catalog": str(catalog_path),
-            "total": len(results),
-            "resolved": sum(1 for item in results if item.get("status") == "resolved"),
-            "missing": len(missing),
-            "match_types": dict(Counter(item.get("match_type") for item in results)),
-            "datasheets": datasheet_meta,
-            "missing_entries": missing,
+            "total": len(merged_sidecar),
+            "resolved": sum(1 for entry in merged_sidecar.values() if isinstance(entry, dict) and entry.get("status") == "resolved"),
+            "missing": sum(1 for entry in merged_sidecar.values() if isinstance(entry, dict) and entry.get("status") == "missing"),
+            "match_types": dict(Counter((entry.get("match_type") or "unknown") for entry in merged_sidecar.values() if isinstance(entry, dict))),
+            "datasheets": {**(read_json(report_path, {}).get("datasheets") or {}), **datasheet_meta},
+            "missing_entries": [entry for entry in merged_sidecar.values() if isinstance(entry, dict) and entry.get("status") == "missing"],
+            "new_skus": sorted(set(new_sku_specs) - set(existing_sidecar)),
         },
     )
-    resolved = sum(1 for item in results if item.get("status") == "resolved")
-    print(f"Built PSREF specs: {resolved}/{len(results)} resolved")
-    return {"total": len(results), "resolved": resolved, "missing": len(missing)}
+    merged_resolved = sum(1 for entry in merged_sidecar.values() if isinstance(entry, dict) and entry.get("status") == "resolved")
+    merged_missing = sum(1 for entry in merged_sidecar.values() if isinstance(entry, dict) and entry.get("status") == "missing")
+    print(f"Built PSREF specs: {merged_resolved}/{len(merged_sidecar)} resolved in sidecar ({len(new_sku_specs)} new this run)")
+    return {"total": len(merged_sidecar), "resolved": merged_resolved, "missing": merged_missing}
 
 
 def _iter_catalog_products(payload: Any) -> list[dict[str, Any]]:
