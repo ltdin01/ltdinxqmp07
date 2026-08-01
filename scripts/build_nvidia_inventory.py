@@ -270,7 +270,58 @@ def normalize_nvidia_model_name(raw_model: str, series_title: str) -> tuple[str,
     return full_model, short_model
 
 
-def parse_nvidia_schema_row(row_map: dict[str, str], series_title: str, anchors: list[tuple[str, str]]) -> dict[str, Any]:
+def parse_core_config_legend(legend_text: str) -> list[str]:
+    """Convert a Wikipedia 'Core config' legend line into ordered field semantics."""
+    text = clean_text(legend_text or "")
+    text = re.sub(r"^\s*\d+\s*", "", text).strip()
+    tokens = re.split(r"\s*:\s*", text)
+    fields: list[str] = []
+    for t in tokens:
+        tl = t.lower()
+        if "fp16" in tl:
+            fields.append("fp16")
+        elif "texture mapping" in tl:
+            fields.append("tmu")
+        elif "render output" in tl:
+            fields.append("rop")
+        elif "streaming multiprocessor" in tl or "multiprocessor" in tl:
+            fields.append("sm")
+        elif "tensor core" in tl or "tensor" in tl:
+            fields.append("tensor")
+        elif "ray tracing" in tl or "rt core" in tl:
+            fields.append("rt")
+        elif "cuda core" in tl or "cuda" in tl or "unified shader" in tl or "shader" in tl:
+            fields.append("cuda")
+        elif tl:
+            fields.append(None)
+    return [f for f in fields if f]
+
+
+def looks_like_core_config_legend(text: str) -> bool:
+    t = clean_text(text)
+    low = t.lower()
+    if ":" not in t or not re.search(r"\d", t):
+        return False
+    return any(k in low for k in ["shader", "cuda core", "multiprocessor", "tensor core", "rt core", "render output", "texture mapping"])
+
+
+def decode_core_config(value: str, legend_fields: list[str]) -> dict[str, int]:
+    """Decode a 'Core config' value into semantic fields using the section legend."""
+    parts = [p.strip() for p in value.split(":")]
+    nums: list[int | None] = []
+    for p in parts:
+        m = re.match(r"(\d+)", p.replace(",", ""))
+        nums.append(int(m.group(1)) if m else None)
+    if not legend_fields:
+        legend_fields = ["cuda", "tmu", "rop", "tensor", "rt"]
+    result: dict[str, int] = {}
+    for i, field in enumerate(legend_fields):
+        if field and i < len(nums) and nums[i] is not None:
+            result[field] = nums[i]
+    return result
+
+
+def parse_nvidia_schema_row(row_map: dict[str, str], series_title: str, anchors: list[tuple[str, str]], legend: str = "") -> dict[str, Any]:
     arch = ""
     code_name = ""
     process_node = ""
@@ -336,16 +387,28 @@ def parse_nvidia_schema_row(row_map: dict[str, str], series_title: str, anchors:
             if m_sm:
                 sm_count = int(m_sm.group(1))
 
-        # CUDA cores
-        if "cuda" in low_k or "core config" in low_k or "configuration" in low_k or "shaders" in low_k:
-            parts = v_clean.split(":")
-            if len(parts) >= 1 and re.match(r"^\d+", parts[0].strip().replace(",", "")):
-                cuda_cores = int(re.match(r"^\d+", parts[0].strip().replace(",", "")).group(0))
-                if len(parts) >= 4 and re.match(r"^\d+", parts[3].strip().replace(",", "")):
-                    tensor_cores = int(re.match(r"^\d+", parts[3].strip().replace(",", "")).group(0))
-                if len(parts) >= 5 and re.match(r"^\d+", parts[4].strip().replace(",", "")):
-                    rt_cores = int(re.match(r"^\d+", parts[4].strip().replace(",", "")).group(0))
+        # CUDA cores / Core config
+        # Legend-driven decode: map colon-separated "Core config" values to semantic
+        # fields using the per-section legend (e.g. CUDA:TMU:ROP:SM:Ten for Turing/Ampere
+        # workstation vs CUDA:TMU:ROP:Ten:RT for Blackwell/Ada). Exclude API keys such as
+        # "Supported API version > CUDA" which would otherwise overwrite cuda_cores.
+        if ("cuda" in low_k or "core config" in low_k or "configuration" in low_k or "shaders" in low_k) and not any(w in low_k for w in ["api", "version", "supported"]):
+            if legend:
+                legend_fields = parse_core_config_legend(legend)
             else:
+                legend_fields = []
+            decoded = decode_core_config(v_clean, legend_fields)
+            if decoded.get("cuda"):
+                cuda_cores = decoded["cuda"]
+            if decoded.get("tensor"):
+                tensor_cores = decoded["tensor"]
+            if decoded.get("rt"):
+                rt_cores = decoded["rt"]
+            if decoded.get("sm"):
+                sm_count = decoded["sm"]
+            if not decoded and re.match(r"^\d+", v_clean.replace(",", "")):
+                cuda_cores = int(re.match(r"^\d+", v_clean.replace(",", "")).group(0))
+            elif not decoded:
                 m_c = re.search(r"\b(\d{1,5})\b", v_clean.replace(",", ""))
                 if m_c and not cuda_cores:
                     cuda_cores = int(m_c.group(1))
@@ -432,6 +495,17 @@ def parse_nvidia_schema_row(row_map: dict[str, str], series_title: str, anchors:
         if any(k in series_title.lower() for k in ["50 series", "40 series", "30 series"]):
             cuda_cores = sm_count * 128
 
+    # RT cores / SM are 1:1 on RT-capable architectures (Turing and newer).
+    cn_prefix = clean_text(code_name).upper()[:2]
+    rt_capable = cn_prefix in ("TU", "GA", "AD", "GB") or any(
+        k in series_title.lower() for k in ["rtx", "ada", "blackwell", "ax000", "20 series", "30 series", "40 series", "50 series"]
+    )
+    if rt_capable:
+        if rt_cores and not sm_count:
+            sm_count = rt_cores
+        elif sm_count and not rt_cores:
+            rt_cores = sm_count
+
     year, month, raw_date = parse_year_month(launch_date)
 
     return {
@@ -498,12 +572,20 @@ def parse_nvidia_wikipedia_dom_hierarchy() -> list[dict[str, Any]]:
             sec_h2 = sec_h2.find_parent("h2")
 
         curr_h3_title = ""
+        pending_legend = ""
 
         for elem in sec_h2.find_all_next():
             if elem.name == "h2":
                 break
             if elem.name == "h3":
                 curr_h3_title = clean_text(elem.get_text().replace("[edit]", ""))
+                pending_legend = ""
+            elif elem.name == "ul" and elem.find("li"):
+                legend_texts = [clean_text(li.get_text()) for li in elem.find_all("li")]
+                for lt in legend_texts:
+                    if looks_like_core_config_legend(lt):
+                        pending_legend = lt
+                        break
             elif elem.name == "table" and "wikitable" in elem.get("class", []):
                 entries = parse_table_and_entries(elem, curr_h3_title)
                 if not entries:
@@ -529,7 +611,7 @@ def parse_nvidia_wikipedia_dom_hierarchy() -> list[dict[str, Any]]:
                     full_model, short_model = normalize_nvidia_model_name(col0, curr_h3_title)
                     series_name = curr_h3_title or "NVIDIA Mobile GPUs"
 
-                    parsed_specs = parse_nvidia_schema_row(row_map, series_name, anchors)
+                    parsed_specs = parse_nvidia_schema_row(row_map, series_name, anchors, legend=pending_legend)
 
                     entry = {
                         "full_model": full_model,

@@ -34,6 +34,7 @@ _CPU_INDEX: dict[str, dict[str, Any]] = {}
 _GPU_INDEX: dict[str, dict[str, Any]] = {}
 _IGPU_INDEX: dict[str, dict[str, Any]] = {}
 _UNMATCHED_ITEMS: list[dict[str, Any]] = []
+_PROPAGATED_VRAM_VARIANTS: set[tuple[str, int]] = set()
 
 
 def _index_igpu_file(json_file: Path) -> None:
@@ -169,7 +170,7 @@ def extract_cpu_sku(text: str) -> str:
 
 
 def extract_gpu_sku(text: str) -> str:
-    m = re.search(r"\b(rtx\s*\d{4}(?:\s*ti)?|gtx\s*\d{4}(?:\s*ti)?|rx\s*\d{4}[a-z]*)\b", text, re.I)
+    m = re.search(r"\b(rtx\s*(?:pro\s+)?\d{3,4}(?:\s*ti)?|gtx\s*\d{4}(?:\s*ti)?|rx\s*\d{4}[a-z]*)\b", text, re.I)
     return m.group(0).lower().replace(" ", "") if m else ""
 
 
@@ -210,6 +211,11 @@ def find_cpu_in_local_data(cpu_name: str) -> dict[str, Any] | None:
     return None
 
 
+def _gpu_gen_qualifier(text: str) -> str:
+    m = re.search(r"\b(blackwell|ada|ampere|turing|volta|pascal|maxwell|kepler)\b", text, re.I)
+    return m.group(1).lower() if m else ""
+
+
 def find_gpu_in_local_data(gpu_name: str) -> dict[str, Any] | None:
     target = clean_text(gpu_name).lower()
     if not target:
@@ -219,10 +225,26 @@ def find_gpu_in_local_data(gpu_name: str) -> dict[str, Any] | None:
         return _GPU_INDEX[target]
 
     t_sku = extract_gpu_sku(target)
+    t_gen = _gpu_gen_qualifier(target)
     if t_sku:
+        def _score(k: str) -> int:
+            k_gen = _gpu_gen_qualifier(k)
+            if t_gen and k_gen and t_gen != k_gen:
+                return -1
+            if t_gen and k_gen == t_gen:
+                return 2
+            return 1
+
+        best = None
+        best_score = -2
+        t_sku_nopro = t_sku.replace("pro", "")
         for k, v in _GPU_INDEX.items():
-            if extract_gpu_sku(k) == t_sku:
-                return v
+            if extract_gpu_sku(k) == t_sku or (t_sku_nopro and extract_gpu_sku(k).replace("pro", "") == t_sku_nopro):
+                s = _score(k)
+                if s > best_score:
+                    best, best_score = v, s
+        if best:
+            return best
 
     for k, v in _GPU_INDEX.items():
         if k and len(k) > 4 and (k in target or target in k):
@@ -236,6 +258,9 @@ def find_gpu_in_local_data(gpu_name: str) -> dict[str, Any] | None:
                     if isinstance(item, dict) and ("full_model" in item or "gpu_model" in item):
                         f_m = clean_text(item.get("full_model") or item.get("gpu_model") or "").lower()
                         if t_sku and extract_gpu_sku(f_m) == t_sku:
+                            _GPU_INDEX[f_m] = item
+                            return item
+                        if t_sku and extract_gpu_sku(f_m).replace("pro", "") == t_sku.replace("pro", ""):
                             _GPU_INDEX[f_m] = item
                             return item
             except Exception:
@@ -522,6 +547,97 @@ def enrich_cpu_spec(proc: dict[str, Any], raw_cpu_model: str, brand: str = "", c
         proc.pop(raw_key, None)
 
 
+def _gpu_vram_gb_from_string(vram_str: str) -> int | None:
+    m = re.search(r"\b(\d{1,2})\s*GB\b", clean_text(vram_str), re.I)
+    return int(m.group(1)) if m else None
+
+
+def propagate_gpu_vram_variant(gpu_spec: dict[str, Any], vram_gb: int, vram_str: str = "") -> None:
+    """Merge a PSREF-discovered VRAM variant into the dGPU inventory so catalog and
+    CTO data stay consistent (e.g. RTX 5070 ships as both 8 GB and 12 GB, but only
+    8 GB exists in the Wikipedia-derived inventory). Writes back to every master and
+    the per-series file the next builder consumes."""
+    if not isinstance(gpu_spec, dict):
+        return
+    memory = gpu_spec.get("memory")
+    if not isinstance(memory, dict) or not vram_gb:
+        return
+
+    options = [o for o in (memory.get("vram_gb_options") or []) if isinstance(o, (int, float))]
+    if vram_gb in options:
+        return
+
+    full_model = clean_text(gpu_spec.get("full_model") or gpu_spec.get("gpu_model") or "")
+    series_slug = gpu_spec.get("series_slug") or ""
+    if not full_model:
+        return
+
+    key = f"{series_slug}_{slugify(full_model)}" if series_slug else slugify(full_model)
+    if (key, vram_gb) in _PROPAGATED_VRAM_VARIANTS:
+        return
+    _PROPAGATED_VRAM_VARIANTS.add((key, vram_gb))
+
+    options.append(vram_gb)
+    options = sorted({int(o) for o in options})
+    memory["vram_gb_options"] = options
+    memory["vram_gb"] = max(options)
+    if vram_str:
+        m_type = re.search(r"\b(GDDR\d[X]?|DDR\d)\b", vram_str, re.I)
+        if m_type:
+            memory["memory_type"] = m_type.group(1).upper()
+    if isinstance(memory.get("vram_size"), str) and "GB" in memory["vram_size"]:
+        existing = [o for o in options if o != vram_gb]
+        memory["vram_size"] = f"{vram_gb} GB" if vram_gb == max(options) else f"{max(options)} GB"
+    elif not memory.get("vram_size"):
+        memory["vram_size"] = f"{vram_gb} GB"
+
+    gpu_spec["memory"] = memory
+
+    _persist_gpu_entry(gpu_spec, key)
+
+
+def _persist_gpu_entry(gpu_spec: dict[str, Any], key: str) -> None:
+    """Persist an updated dGPU entry to every master + the per-series raw file."""
+    targets = [
+        DATA_DIR / "nvidia_gpu_inventory.json",
+        DATA_DIR / "gpu_inventory.json",
+        DATA_DIR / "spec_inventory.json",
+    ]
+    for t in targets:
+        if not t.exists():
+            continue
+        try:
+            with open(t, "r", encoding="utf-8") as f:
+                doc = json.load(f)
+        except Exception:
+            continue
+        if not isinstance(doc.get("gpus"), dict):
+            continue
+        if key not in doc["gpus"]:
+            continue
+        doc["gpus"][key]["memory"] = gpu_spec["memory"]
+        try:
+            with open(t, "w", encoding="utf-8") as f:
+                json.dump(doc, f, indent=2, ensure_ascii=False)
+        except Exception:
+            pass
+
+    series_slug = gpu_spec.get("series_slug") or ""
+    full_model = clean_text(gpu_spec.get("full_model") or gpu_spec.get("gpu_model") or "")
+    if series_slug and full_model:
+        per_series = INVENTORY_DIR / "nvidia" / "gpus" / series_slug / f"{slugify(full_model)}.json"
+        if per_series.exists():
+            try:
+                with open(per_series, "r", encoding="utf-8") as f:
+                    item = json.load(f)
+                if isinstance(item, dict):
+                    item["memory"] = gpu_spec["memory"]
+                    with open(per_series, "w", encoding="utf-8") as f:
+                        json.dump(item, f, indent=2, ensure_ascii=False)
+            except Exception:
+                pass
+
+
 def enrich_dedicated_gpu(gpu: dict[str, Any], raw_gpu_model: str, ctx: dict[str, Any] | None = None) -> None:
     """Normalize a discrete GPU name and enrich it from the local dGPU inventory."""
     clean_gpu, extracted_vram, gpu_series = normalize_dgpu_model(raw_gpu_model, gpu.get("vram") or "")
@@ -535,6 +651,14 @@ def enrich_dedicated_gpu(gpu: dict[str, Any], raw_gpu_model: str, ctx: dict[str,
         if gpu_spec.get("tgp_range_w"): gpu["tgp"] = gpu_spec["tgp_range_w"]
         if gpu_spec.get("vram_config"): gpu["vram_config"] = gpu_spec["vram_config"]
         if gpu_spec.get("cuda_cores"): gpu["cuda_cores"] = gpu_spec["cuda_cores"]
+
+        # VRAM variant propagation: when a product exposes a VRAM size not yet listed
+        # in the inventory's vram_gb_options (e.g. RTX 5070 12 GB vs inventory 8 GB),
+        # merge it into the inventory so catalog and CTO data stay consistent.
+        product_vram = clean_text(gpu.get("vram") or extracted_vram or "")
+        product_vram_gb = _gpu_vram_gb_from_string(product_vram)
+        if product_vram_gb:
+            propagate_gpu_vram_variant(gpu_spec, product_vram_gb, product_vram)
     else:
         _report_unmatched(ctx, "dGPU", raw_gpu_model, clean_gpu, f"UNMATCHED HARDWARE: Graphics card '{clean_gpu}' not found in local hardware inventory. Requires manual addition or wiki refresh.")
 

@@ -21,6 +21,7 @@ Output Structure:
 from __future__ import annotations
 
 import hashlib
+import html as _html
 import json
 import random
 import re
@@ -54,6 +55,23 @@ MASTER_AMD_IGPU_INVENTORY = DATA_DIR / "amd_igpu_inventory.json"
 
 WIKI_URL = "https://en.wikipedia.org/wiki/List_of_AMD_Ryzen_processors"
 
+# Official AMD processor specifications page. The full list is embedded as a
+# `data-json` attribute on #product-specs-table; the individual product pages
+# referenced there carry the canonical Series / Former Codename names.
+AMD_SPECS_URL = "https://www.amd.com/en/products/specifications/processors.html"
+AMD_SPECS_CACHE = DATA_DIR / "cache" / "amd_specs_endpoint.json"
+
+# Families that belong in the mobile inventory. Form factors are filtered by the
+# 'laptop' keyword (there are multiple form-factor labels carrying the word
+# 'Laptops', e.g. 'Laptops + Desktops' or 'Gaming Laptops'), so only laptop-class
+# processors from the ~740 endpoint entries are kept.
+AMD_INVENTORY_FAMILIES = {"Ryzen", "Ryzen PRO"}
+
+
+def _is_laptop_form_factor(form_factors: list[str]) -> bool:
+    """True when any form factor string contains the word 'laptop'."""
+    return any("laptop" in (f or "").lower() for f in form_factors)
+
 # TLS Impersonation & Browser Header Rotation Pool
 # Current-gen (2025/2026) browser fingerprints; Akamai bot-manager flags stale TLS
 # fingerprints, so the profiles must track recent Chrome/Firefox releases.
@@ -84,7 +102,7 @@ PROFILES = [
 def clean_text(val: Any) -> str:
     if not val:
         return ""
-    text = str(val).replace("[™®]", "").replace("™", "").replace("®", "").replace("\xa0", " ")
+    text = str(val).replace("[™®]", "").replace("™", "").replace("®", "").replace("\xa0", " ").replace("\u200b", "")
     text = re.sub(r"\[[0-9a-zA-Z]+\]", "", text)
     return re.sub(r"\s+", " ", text).strip()
 
@@ -777,6 +795,246 @@ def parse_amd_wikipedia_dom_hierarchy() -> tuple[list[dict[str, Any]], dict[str,
     return processors, igpus_dict
 
 
+def _endpoint_element_value(el: dict[str, Any], key: str) -> Any:
+    return (el.get(key) or {}).get("value")
+
+
+def fetch_amd_specs_endpoint_items() -> list[dict[str, Any]]:
+    """Fetch and return the AMD processor-specs endpoint items (embedded data-json).
+
+    Cached on disk (AMD_SPECS_CACHE) so repeated `--append` runs do not re-download
+    the ~10MB page. Returns the raw list of per-processor dicts.
+    """
+    AMD_SPECS_CACHE.parent.mkdir(parents=True, exist_ok=True)
+    if AMD_SPECS_CACHE.exists():
+        try:
+            with open(AMD_SPECS_CACHE, "r", encoding="utf-8") as f:
+                cached = json.load(f)
+                if isinstance(cached, list) and len(cached) > 100:
+                    return cached
+        except Exception:
+            pass
+
+    req = requests.get(
+        AMD_SPECS_URL,
+        headers={"User-Agent": PROFILES[0]["user_agent"], "Accept-Language": "en-US,en;q=0.9"},
+        impersonate="chrome142",
+        timeout=60,
+    )
+    if req.status_code != 200:
+        raise RuntimeError(f"Failed to fetch AMD specs page: HTTP {req.status_code}")
+
+    m = re.search(r'data-json="([^"]+)"', req.text)
+    if not m:
+        raise RuntimeError("Could not locate embedded data-json on the AMD specs page.")
+
+    data = json.loads(_html.unescape(m.group(1)))
+    items = data.get("items") or []
+    with open(AMD_SPECS_CACHE, "w", encoding="utf-8") as f:
+        json.dump(items, f, indent=2)
+    return items
+
+
+def parse_amd_specs_endpoint() -> tuple[list[dict[str, Any]], dict[str, list[dict[str, Any]]]]:
+    """Discover AMD mobile processors from the official AMD specs endpoint.
+
+    The embedded data-json lists every AMD processor (≈740) with family / series /
+    form factor / spec fields, but NOT the marketing codename (e.g. 'Hawk Point').
+    The codename and the authoritative per-chip specs are resolved by the per-page
+    enrichment pass (process_amd_spec_enrichment) using the product URL carried here.
+
+    Returns the same (processors, igpu_groups) shape as the Wikipedia parser so the
+    caller is source-agnostic.
+    """
+    items = fetch_amd_specs_endpoint_items()
+
+    processors: list[dict[str, Any]] = []
+    igpus_dict: dict[str, list[dict[str, Any]]] = {}
+
+    for it in items:
+        el = it.get("elements", {})
+        family = _endpoint_element_value(el, "family") or []
+        form_factors = _endpoint_element_value(el, "formFactor") or []
+        if not set(family) & AMD_INVENTORY_FAMILIES:
+            continue
+        if not _is_laptop_form_factor(form_factors):
+            continue
+
+        raw_name = clean_text(_endpoint_element_value(el, "name") or "")
+        if not raw_name:
+            continue
+        product_url = (it.get("productPages") or {}).get("en", "") or ""
+        series_list = _endpoint_element_value(el, "series") or []
+        series_title = clean_text(series_list[0]) if series_list else (
+            "Ryzen PRO" if "PRO" in " ".join(family).upper() else "Ryzen")
+
+        raw_name = re.sub(r"RyzenAI", "Ryzen AI", raw_name, flags=re.I)
+        full_model = raw_name if raw_name.upper().startswith("AMD") else f"AMD {raw_name}"
+
+        cores = {
+            "total_cores": _endpoint_element_value(el, "numOfCpuCores"),
+            "total_threads": _endpoint_element_value(el, "numOfThreads"),
+            "zen_architecture": None,
+            "lithography": (_endpoint_element_value(el, "processorTechnologyForCpuCores") or [None])[0],
+        }
+
+        base = _endpoint_element_value(el, "baseClock")
+        boost = _endpoint_element_value(el, "maxBoostClock")
+
+        def fmt_clock(v: Any) -> str:
+            if v is None:
+                return None
+            return f"{float(v) / 1000:g} GHz"
+
+        clock_speeds = {
+            "base_clock_ghz": fmt_clock(base),
+            "boost_clock_ghz": f"Up to {fmt_clock(boost)}" if boost is not None else None,
+        }
+
+        l2 = _endpoint_element_value(el, "l2Cache")
+        l3 = _endpoint_element_value(el, "l3Cache")
+
+        def fmt_cache(v: Any) -> str:
+            if v is None:
+                return None
+            mb = float(v) / 1024.0
+            return f"{mb:g} MB" if mb >= 1 else f"{float(v):g} KB"
+
+        cache = {
+            "l1_cache": None,
+            "l2_cache": fmt_cache(l2),
+            "l3_cache": fmt_cache(l3),
+        }
+
+        tdp = _endpoint_element_value(el, "defaultTdp")
+        ctdp = _endpoint_element_value(el, "amdConfigurableTdpCtdp")
+        power = {
+            "processor_base_power": f"{tdp}W" if tdp is not None else None,
+            "configurable_tdp": f"{ctdp}W" if ctdp is not None else None,
+        }
+
+        igpu_model = clean_text(_endpoint_element_value(el, "graphicsModel") or "")
+        igpu_series, igpu_series_slug = derive_amd_igpu_series(igpu_model)
+        gfx_freq = _endpoint_element_value(el, "graphicsFrequency")
+        igpu = {
+            "model": igpu_model or "AMD Radeon Graphics",
+            "short_model": igpu_model.split("(")[0].strip() if igpu_model else "Radeon Graphics",
+            "series": igpu_series,
+            "series_slug": igpu_series_slug,
+            "base_frequency_mhz": None,
+            "max_dynamic_frequency_mhz": f"{gfx_freq} MHz" if gfx_freq is not None else None,
+            "clock_mhz": f"{gfx_freq} MHz" if gfx_freq is not None else None,
+            "units": int(float(_endpoint_element_value(el, "graphicsCoreCount"))) if _endpoint_element_value(el, "graphicsCoreCount") is not None else None,
+        }
+
+        launch_date = _endpoint_element_value(el, "launchDate") or ""
+        year, month, raw_date = parse_year_month(launch_date)
+
+        entry = {
+            "full_model": full_model,
+            "short_model": full_model.replace("AMD ", "").strip(),
+            "brand": "AMD",
+            "series": series_title,
+            "series_slug": slugify(series_title),
+            "code_name": series_title,
+            "code_name_slug": slugify(series_title),
+            "wikipedia_h3_series": series_title,
+            "wikipedia_h4_codename": series_title,
+            "launch_date": raw_date,
+            "launch_year": year,
+            "launch_month": month,
+            "amd_product_url": product_url if "/en/products/" in product_url else "",
+            "amd_driver_url": product_url if "/support/downloads/drivers.html" in product_url else "",
+            "cores": cores,
+            "clock_speeds": clock_speeds,
+            "cache": cache,
+            "power": power,
+            "igpu": igpu,
+            "memory": {
+                "types": ", ".join(_endpoint_element_value(el, "systemMemoryType") or []),
+                "max_channels": str(_endpoint_element_value(el, "memoryChannels") or ""),
+                "max_memory_size": _endpoint_element_value(el, "systemMemorySpecification") or "",
+            },
+            "endpoint_source": "amd.com specs",
+        }
+        if not entry["amd_product_url"] and not entry["amd_driver_url"]:
+            entry["amd_driver_url"] = derive_amd_spec_url(series_title, full_model)
+
+        processors.append(entry)
+
+        igpu_entry = {
+            "igpu_model": igpu["model"],
+            "short_model": igpu["short_model"],
+            "series": igpu["series"],
+            "series_slug": igpu["series_slug"],
+            "cpu_full_model": entry["full_model"],
+            "cpu_series": entry["series"],
+            "cpu_code_name": entry["code_name"],
+            "base_frequency_mhz": igpu["base_frequency_mhz"],
+            "max_dynamic_frequency_mhz": igpu["max_dynamic_frequency_mhz"],
+            "clock_mhz": igpu["clock_mhz"],
+            "units": igpu["units"],
+        }
+        if igpu["model"] and "Radeon Graphics" not in igpu["model"]:
+            igpus_dict.setdefault(igpu["series_slug"], []).append(igpu_entry)
+
+    return processors, igpus_dict
+
+
+def resolve_amd_placement(proc: dict[str, Any], existing: dict[str, dict[str, Any]]) -> dict[str, Any]:
+    """Assign series / code-name slugs for an endpoint-discovered processor.
+
+    The amd.com endpoint carries no marketing codename, so the authoritative
+    Series + Former Codename come from the individual product page (amd_specs).
+    A matching existing hierarchy folder (same series, code name prefix) is
+    reused so PRO chips land beside their consumer siblings exactly like the
+    current master layout. Falls back to deriving folders from the page.
+    """
+    specs = proc.get("amd_specs", {}).get("General Specifications", {})
+    series_title = clean_text(specs.get("Series") or proc.get("series") or "")
+    codename = clean_text(specs.get("Former Codename") or "")
+    if not series_title and not codename:
+        return proc
+
+    base_series_slug = slugify(re.sub(r"\bPRO\b", "", series_title))
+    codename_slug = slugify(codename)
+
+    if existing:
+        for e in existing.values():
+            if e.get("series_slug") != base_series_slug:
+                continue
+            if codename_slug and (e.get("code_name_slug") or "").startswith(codename_slug):
+                proc["series"] = e["series"]
+                proc["series_slug"] = e["series_slug"]
+                proc["code_name"] = e["code_name"]
+                proc["code_name_slug"] = e["code_name_slug"]
+                proc["wikipedia_h3_series"] = e.get("wikipedia_h3_series") or e["series"]
+                proc["wikipedia_h4_codename"] = e.get("wikipedia_h4_codename") or e["code_name"]
+                return proc
+
+        if not codename_slug:
+            sibling = next(
+                (e for e in existing.values() if e.get("series_slug") == base_series_slug),
+                None,
+            )
+            if sibling:
+                proc["series"] = sibling["series"]
+                proc["series_slug"] = sibling["series_slug"]
+                proc["code_name"] = sibling["code_name"]
+                proc["code_name_slug"] = sibling["code_name_slug"]
+                proc["wikipedia_h3_series"] = sibling.get("wikipedia_h3_series") or sibling["series"]
+                proc["wikipedia_h4_codename"] = sibling.get("wikipedia_h4_codename") or sibling["code_name"]
+                return proc
+
+    proc["series"] = series_title
+    proc["series_slug"] = base_series_slug
+    proc["code_name"] = codename or series_title
+    proc["code_name_slug"] = slugify(codename or series_title)
+    proc["wikipedia_h3_series"] = series_title
+    proc["wikipedia_h4_codename"] = codename or series_title
+    return proc
+
+
 def process_amd_spec_enrichment(proc: dict[str, Any]) -> dict[str, Any]:
     """Enrich a CPU entry with official AMD specs.
 
@@ -976,20 +1234,41 @@ def normalize_oem_h_aliases(processors: list[dict[str, Any]]) -> int:
     return aliased
 
 
-def build_amd_inventory(parallel_workers: int = 16) -> dict[str, Any]:
-    print("=== Overhauling AMD Mobile CPU & iGPU Hardware Inventory (100% Dynamic Pipeline) ===")
+def build_amd_inventory(parallel_workers: int = 16, source: str = "wikipedia",
+                        append: bool = False) -> dict[str, Any]:
+    print(f"=== Overhauling AMD Mobile CPU & iGPU Hardware Inventory (source={source}, append={append}) ===")
 
-    if AMD_CPUS_DIR.exists():
-        shutil.rmtree(AMD_CPUS_DIR)
-    if AMD_IGPUS_DIR.exists():
-        shutil.rmtree(AMD_IGPUS_DIR)
+    existing: dict[str, dict[str, Any]] = {}
+    if append and MASTER_AMD_CPU_INVENTORY.exists():
+        try:
+            with open(MASTER_AMD_CPU_INVENTORY, "r", encoding="utf-8") as f:
+                existing = json.load(f).get("processors", {})
+            print(f"[append] Loaded {len(existing)} existing processors from master inventory.")
+        except Exception as e:
+            print(f"[append-warning] Could not load existing master inventory: {e}")
+
+    if not append:
+        if AMD_CPUS_DIR.exists():
+            shutil.rmtree(AMD_CPUS_DIR)
+        if AMD_IGPUS_DIR.exists():
+            shutil.rmtree(AMD_IGPUS_DIR)
 
     AMD_CPUS_DIR.mkdir(parents=True, exist_ok=True)
     AMD_IGPUS_DIR.mkdir(parents=True, exist_ok=True)
     CACHE_DIR.mkdir(parents=True, exist_ok=True)
 
-    processors, igpu_groups = parse_amd_wikipedia_dom_hierarchy()
-    print(f"[wiki] Discovered and structured {len(processors)} AMD mobile processor entries.")
+    if source == "amd":
+        processors, igpu_groups = parse_amd_specs_endpoint()
+        print(f"[amd-endpoint] Discovered and structured {len(processors)} AMD mobile processor entries.")
+    else:
+        processors, igpu_groups = parse_amd_wikipedia_dom_hierarchy()
+        print(f"[wiki] Discovered and structured {len(processors)} AMD mobile processor entries.")
+
+    if append and existing:
+        existing_shorts = {p["short_model"].lower() for p in existing.values()}
+        before = len(processors)
+        processors = [p for p in processors if p["short_model"].lower() not in existing_shorts]
+        print(f"[append] {before} discovered, {before - len(processors)} already present, {len(processors)} new to add.")
 
     deduped_cpus: dict[str, dict[str, Any]] = {}
     for p in processors:
@@ -1012,6 +1291,8 @@ def build_amd_inventory(parallel_workers: int = 16) -> dict[str, Any]:
             model_name = future_map[future]
             try:
                 enriched = future.result()
+                if source == "amd":
+                    resolve_amd_placement(enriched, existing)
                 key = f"{enriched['series_slug']}_{enriched['code_name_slug']}_{slugify(enriched['full_model'])}"
                 enriched_procs_map[key] = enriched
                 if enriched.get("amd_specs"):
@@ -1022,8 +1303,30 @@ def build_amd_inventory(parallel_workers: int = 16) -> dict[str, Any]:
     duration = time.time() - start_time
     print(f"[scrape-pool] Finished in {duration:.2f} seconds. ({success_count}/{len(spec_targets)} enriched with official AMD section categories)")
 
+    # Re-key by full_model first so placement-slug changes can't leave stale
+    # pre-enrichment entries behind, then rebuild the slug keys.
+    by_model: dict[str, dict[str, Any]] = {}
+    for key, proc in deduped_cpus.items():
+        m_key = proc["full_model"].lower()
+        if m_key not in by_model or proc.get("amd_specs"):
+            by_model[m_key] = proc
     for key, enriched in enriched_procs_map.items():
-        deduped_cpus[key] = enriched
+        m_key = enriched["full_model"].lower()
+        if m_key not in by_model or enriched.get("amd_specs"):
+            by_model[m_key] = enriched
+    deduped_cpus = {
+        f"{p['series_slug']}_{p['code_name_slug']}_{slugify(p['full_model'])}": p
+        for p in by_model.values()
+    }
+    print(f"[dedupe] Post-enrichment unique processors (by full model): {len(deduped_cpus)}")
+
+    if append and existing:
+        for key, proc in existing.items():
+            if proc.get("endpoint_source") == "amd.com specs":
+                resolve_amd_placement(proc, existing)
+            key = f"{proc['series_slug']}_{proc['code_name_slug']}_{slugify(proc['full_model'])}"
+            deduped_cpus.setdefault(key, proc)
+        print(f"[append] Merged {len(existing)} existing + {len(processors)} new processors = {len(deduped_cpus)} total.")
 
     apply_known_amd_corrections(list(deduped_cpus.values()))
     aliased_count = normalize_oem_h_aliases(list(deduped_cpus.values()))
@@ -1052,11 +1355,37 @@ def build_amd_inventory(parallel_workers: int = 16) -> dict[str, Any]:
                 m_slug = slugify(p["full_model"])
                 if not m_slug: continue
                 file_path = c_dir / f"{m_slug}.json"
+                if append and file_path.exists():
+                    continue
                 with open(file_path, "w", encoding="utf-8") as f:
                     json.dump(p, f, indent=2)
                 cpu_file_count += 1
 
-    print(f"[storage] Cleanly created {len(hierarchy)} AMD CPU series folders ({cpu_file_count} individual CPU files) in {AMD_CPUS_DIR}.")
+    for s_slug, codenames in hierarchy.items():
+        s_dir = AMD_CPUS_DIR / s_slug
+        for c_slug, procs in codenames.items():
+            c_dir = s_dir / c_slug
+            for f in c_dir.glob("*.json"):
+                if f.stem not in {slugify(p["full_model"]) for p in procs}:
+                    f.unlink()
+
+    valid_pairs = {(s_slug, c_slug) for s_slug, codenames in hierarchy.items() for c_slug in codenames}
+    for s_dir in AMD_CPUS_DIR.iterdir():
+        if not s_dir.is_dir():
+            continue
+        for c_dir in s_dir.iterdir():
+            if not c_dir.is_dir():
+                continue
+            if (s_dir.name, c_dir.name) not in valid_pairs:
+                shutil.rmtree(c_dir)
+                continue
+            for f in c_dir.glob("*.json"):
+                if f.stem not in {slugify(p["full_model"]) for p in hierarchy[s_dir.name][c_dir.name]}:
+                    f.unlink()
+        if not any(s_dir.iterdir()):
+            s_dir.rmdir()
+
+    print(f"[storage] {len(hierarchy)} AMD CPU series folders ({cpu_file_count} CPU files written) in {AMD_CPUS_DIR}.")
 
     igpu_file_count = 0
     for i_slug, igpus in igpu_groups.items():
@@ -1101,6 +1430,15 @@ def build_amd_inventory(parallel_workers: int = 16) -> dict[str, Any]:
 
 
 if __name__ == "__main__":
-    res = build_amd_inventory(parallel_workers=4)
+    import argparse
+    parser = argparse.ArgumentParser(description="Build AMD mobile CPU/iGPU hardware inventory.")
+    parser.add_argument("--source", choices=["wikipedia", "amd"], default="wikipedia",
+                        help="Discovery source: 'wikipedia' (default) or 'amd' (official AMD specs endpoint).")
+    parser.add_argument("--append", action="store_true",
+                        help="Append-only mode: merge newly discovered processors into the existing master inventory.")
+    parser.add_argument("--workers", type=int, default=4, help="Number of parallel enrichment workers.")
+    args = parser.parse_args()
+
+    res = build_amd_inventory(parallel_workers=args.workers, source=args.source, append=args.append)
     print("=== Clean Dynamic AMD Inventory Generation Complete ===")
     print(res)
