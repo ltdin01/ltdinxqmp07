@@ -331,6 +331,40 @@ def availability_from_html(text: str) -> str:
     return normalize_availability((offers or {}).get("availability"))
 
 
+NIGHT_DEAL_COUPON_CODE = "DOORBUSTERDEAL"
+
+
+def extract_night_deal_bau_price(product_data: list[Any]) -> int | None:
+    """Return the BAU (business-as-usual, non-coupon) price when the nightly
+    DOORBUSTERDEAL coupon row is present in the price API response.
+
+    The batch-get payload lists one row per pricing scheme. When the
+    DOORBUSTERDEAL coupon is active Lenovo adds a coupon row whose final value
+    (product_data[4]) reflects the discounted price; the row itself carries the
+    pre-coupon base price in several positions. Prefer the coupon row's base
+    price, falling back to the BAU/base-price row and then to coupon+amount.
+    """
+    coupon_row: list[Any] | None = None
+    bau_row: list[Any] | None = None
+    for row in product_data:
+        if not isinstance(row, list):
+            continue
+        if len(row) > 9 and str(row[9]) == NIGHT_DEAL_COUPON_CODE:
+            coupon_row = row
+        elif bau_row is None and len(row) > 5:
+            label = str(row[5])
+            if "BAU" in label or "I-saving" in label:
+                bau_row = row
+    if coupon_row is not None:
+        if len(coupon_row) > 21 and str(coupon_row[21]).isdigit():
+            return int(coupon_row[21])
+        if len(coupon_row) > 3 and str(coupon_row[2]).isdigit() and str(coupon_row[3]).isdigit():
+            return int(coupon_row[3]) + int(coupon_row[2])
+    if bau_row is not None and len(bau_row) > 3 and str(bau_row[3]).isdigit():
+        return int(bau_row[3])
+    return None
+
+
 def fetch_current_price(product_id: str) -> tuple[int | None, int | None]:
     req = require_requests()
     url = f"{OPENAPI_BASE}/detail/price/batch/get?preSelect=1&mcode={product_id}&configId=&enteredCode="
@@ -341,6 +375,9 @@ def fetch_current_price(product_id: str) -> tuple[int | None, int | None]:
     if payload.get("msg") != "ok" or not isinstance(product_data, list):
         return None, None
     price = int(product_data[4]) if len(product_data) > 4 and str(product_data[4]).isdigit() else None
+    bau = extract_night_deal_bau_price(product_data)
+    if bau is not None and price is not None and bau > price:
+        price = bau
     mrp = None
     if len(product_data) > 13 and isinstance(product_data[13], list) and len(product_data[13]) > 3:
         raw_mrp = product_data[13][3]

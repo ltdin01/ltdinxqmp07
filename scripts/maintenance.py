@@ -23,6 +23,14 @@ def main() -> int:
     cleanup.add_argument("--start-date", default="2026-04-26")
     cleanup.add_argument("--apply", action="store_true")
 
+    dips = sub.add_parser("cleanup-coupon-dips", help="Remove transient nightly-deal coupon dips from price history")
+    dips.add_argument("--history-dir", default=str(paths.PRICE_HISTORY))
+    dips.add_argument("--report", default=str(paths.PRICE_CLEANUP_REPORT))
+    dips.add_argument("--max-revert-hours", type=float, default=48.0)
+    dips.add_argument("--min-ratio", type=float, default=0.01)
+    dips.add_argument("--start-date", default="")
+    dips.add_argument("--apply", action="store_true")
+
     compact = sub.add_parser("compact-commits", help="Compact contiguous automated price update commits")
     compact.add_argument("--branch", required=True)
     compact.add_argument("--write-ref", default="")
@@ -38,6 +46,15 @@ def main() -> int:
             report_path=paths.resolve(args.report),
             max_gap_minutes=args.max_gap_minutes,
             min_cluster_size=args.min_cluster_size,
+            start_date=args.start_date,
+            apply=args.apply,
+        )
+    elif args.command == "cleanup-coupon-dips":
+        result = maintenance.cleanup_coupon_dips(
+            history_dir=paths.resolve(args.history_dir),
+            report_path=paths.resolve(args.report),
+            max_revert_hours=args.max_revert_hours,
+            min_ratio=args.min_ratio,
             start_date=args.start_date,
             apply=args.apply,
         )

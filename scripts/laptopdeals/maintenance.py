@@ -5,7 +5,7 @@ import re
 import subprocess
 from collections import Counter, defaultdict
 from dataclasses import dataclass
-from datetime import datetime
+from datetime import datetime, timedelta
 from pathlib import Path
 from typing import Any
 
@@ -68,6 +68,133 @@ def cleanup_rapid_price_pairs(
         "changed_file_count": len(changed),
         "removed_by_product": dict(sorted(changed.items())),
         "selected_clusters": [{"bucket": bucket, "candidate_count": count} for bucket, count in clusters.most_common() if count >= min_cluster_size],
+        "removed": removals,
+    }
+    write_json(report_path, report, indent=2)
+    return report
+
+
+def cleanup_coupon_dips(
+    *,
+    history_dir: Path,
+    report_path: Path,
+    max_revert_hours: float,
+    min_ratio: float,
+    start_date: str,
+    apply: bool,
+) -> dict[str, Any]:
+    """Remove transient nightly-deal dips from price history.
+
+    A coupon dip is a change-point run that drops below a price by at least
+    ``min_ratio`` and fully reverts to that same price within ``max_revert_hours``
+    — the nightly DOORBUSTERDEAL signature (e.g. 109491 -> 98542 -> 109491). The
+    rule is purely structural and time-agnostic: it never looks at the wall clock.
+    A trailing dip (no revert yet) is removed only when its price value has
+    previously recurred as a reverted dip, so real price cuts are never dropped.
+    """
+    start = parse_date(start_date) if start_date else None
+    max_revert = timedelta(hours=max_revert_hours)
+    removals = []
+    removed_dip_values: dict[str, set[int]] = {}
+
+    for path in sorted(history_dir.glob("*.json")):
+        rows = read_json(path, [])
+        if not isinstance(rows, list):
+            continue
+        product_id = path.stem.upper()
+
+        points: list[dict[str, Any]] = []
+        last_price: int | None = None
+        for orig_index, row in enumerate(rows):
+            price = parse_price(row.get("price"))
+            if price is None:
+                continue
+            if price == last_price:
+                continue
+            points.append(
+                {
+                    "orig_index": orig_index,
+                    "date": parse_date(row.get("date")),
+                    "price": price,
+                    "raw": row,
+                }
+            )
+            last_price = price
+        if not points or any(point["date"] is None for point in points):
+            continue
+        if start:
+            points = [point for point in points if point["date"] >= start]
+
+        remove_indexes: set[int] = set()
+        dip_values: set[int] = set()
+        n = len(points)
+        i = 0
+        while i < n - 1:
+            high = points[i]["price"]
+            if points[i + 1]["price"] >= high:
+                i += 1
+                continue
+            j = i + 1
+            revert_index: int | None = None
+            while j < n:
+                current = points[j]["price"]
+                if current == high:
+                    if points[j]["date"] - points[i + 1]["date"] <= max_revert:
+                        revert_index = j
+                    break
+                if current > high:
+                    break
+                j += 1
+            if revert_index is not None:
+                dip_min = min(points[k]["price"] for k in range(i + 1, revert_index))
+                if high > 0 and (high - dip_min) / high >= min_ratio:
+                    for k in range(i + 1, revert_index):
+                        remove_indexes.add(points[k]["orig_index"])
+                        dip_values.add(points[k]["price"])
+                i = revert_index
+            else:
+                i += 1
+
+        trailing = len(points) - 1
+        if trailing > 0 and points[trailing]["orig_index"] not in remove_indexes:
+            last = points[trailing]
+            prev = points[trailing - 1]
+            if last["price"] < prev["price"] and last["price"] in dip_values:
+                remove_indexes.add(last["orig_index"])
+
+        for orig_index in sorted(remove_indexes):
+            raw = rows[orig_index]
+            removals.append(
+                {
+                    "product_id": product_id,
+                    "index": orig_index,
+                    "date": str(raw.get("date") or ""),
+                    "price": parse_price(raw.get("price")),
+                }
+            )
+        if remove_indexes:
+            removed_dip_values[product_id] = dip_values
+
+    changed: dict[str, int] = {}
+    if apply:
+        by_product: dict[str, set[int]] = defaultdict(set)
+        for item in removals:
+            by_product[item["product_id"]].add(item["index"])
+        for product_id, indexes in by_product.items():
+            path = history_dir / f"{product_id}.json"
+            rows = read_json(path, [])
+            kept = [entry for index, entry in enumerate(rows) if index not in indexes]
+            cleaned = replace_points(kept)
+            if cleaned != rows:
+                write_json(path, cleaned, indent=4)
+                changed[product_id] = len(rows) - len(cleaned)
+
+    report = {
+        "applied": apply,
+        "remove_count": len(removals),
+        "changed_file_count": len(changed),
+        "removed_by_product": dict(sorted(changed.items())),
+        "products_with_removed_dips": sorted(removed_dip_values),
         "removed": removals,
     }
     write_json(report_path, report, indent=2)
