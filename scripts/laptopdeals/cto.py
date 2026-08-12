@@ -87,10 +87,13 @@ def fetch_init_config(bundle_id: str) -> dict[str, Any] | None:
     req = require_requests()
     url = f"{lenovo.INIT_CONFIG_URL}?bundleId={bundle_id}&plant={lenovo.DEFAULT_PLANT}&vendorId={lenovo.DEFAULT_VENDOR_ID}"
     response = req.get(url, headers=headers(bundle_id), impersonate="chrome120", timeout=30)
-    if response.status_code != 200:
+    if response.status_code != 200 or not response.content or not response.content.strip():
         return None
-    data = response.json().get("data") or {}
-    return data if data.get("status") == "VALID" else None
+    try:
+        data = response.json().get("data") or {}
+        return data if data.get("status") == "VALID" else None
+    except Exception:
+        return None
 
 
 def fetch_variant_prices(bundle_id: str, variant_keys: list[str]) -> dict[str, dict[str, int]]:
@@ -99,10 +102,14 @@ def fetch_variant_prices(bundle_id: str, variant_keys: list[str]) -> dict[str, d
         return {}
     url = f"{lenovo.CVLIST_URL}?bundleId={bundle_id}&variantKeys={','.join(variant_keys)}"
     response = req.get(url, headers=headers(bundle_id), impersonate="chrome120", timeout=30)
-    if response.status_code != 200:
+    if response.status_code != 200 or not response.content or not response.content.strip():
         return {}
     price_map = {}
-    for item in response.json().get("data") or []:
+    try:
+        data = response.json().get("data") or []
+    except Exception:
+        data = []
+    for item in data:
         key = item.get("variantKey")
         if key:
             price_map[key] = {
@@ -121,9 +128,12 @@ def fetch_config_price(bundle_id: str, current_cv_list: list[dict[str, Any]]) ->
         impersonate="chrome120",
         timeout=30,
     )
-    if response.status_code != 200:
+    if response.status_code != 200 or not response.content or not response.content.strip():
         return {}
-    arr = response.json().get("data") or []
+    try:
+        arr = response.json().get("data") or []
+    except Exception:
+        arr = []
     if not isinstance(arr, list) or len(arr) <= 11:
         return {}
     pct_match = re.search(r"(\d+)", str(arr[11]))
@@ -138,10 +148,14 @@ def fetch_addons(bundle_id: str) -> list[dict[str, Any]]:
     req = require_requests()
     preselect_url = f"{lenovo.OPENAPI_BASE}/preselect/get?productNumber={bundle_id}"
     response = req.get(preselect_url, headers=headers(bundle_id), impersonate="chrome120", timeout=20)
-    if response.status_code != 200:
+    if response.status_code != 200 or not response.content or not response.content.strip():
         return []
     addons = []
-    for item in response.json().get("data") or []:
+    try:
+        raw_items = response.json().get("data") or []
+    except Exception:
+        raw_items = []
+    for item in raw_items:
         pn = item.get("preselectProductNumber")
         summary = item.get("summary", "")
         is_warranty = item.get("warrantyType") is not None or any(
@@ -154,9 +168,12 @@ def fetch_addons(bundle_id: str) -> list[dict[str, Any]]:
     pns = ",".join(item["productNumber"] for item in addons)
     price_url = f"{lenovo.OPENAPI_BASE}/batch/product/builder/price?material={pns}&mainCode={bundle_id}&psdMapping="
     price_response = req.get(price_url, headers=headers(bundle_id), impersonate="chrome120", timeout=20)
-    if price_response.status_code != 200:
+    if price_response.status_code != 200 or not price_response.content or not price_response.content.strip():
         return addons
-    prices = price_response.json().get("data") or {}
+    try:
+        prices = price_response.json().get("data") or {}
+    except Exception:
+        prices = {}
     for item in addons:
         arr = prices.get(item["productNumber"])
         if isinstance(arr, list) and len(arr) > 7:

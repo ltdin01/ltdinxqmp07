@@ -917,14 +917,23 @@ def normalize_catalog() -> int:
 
             if target == APP_DATA:
                 cto_configs_dir = CTO_CONFIGS
+                from .psref import extract_default_cto_specs
                 for prod in products:
                     sku = str(prod.get("id") or "")
-                    if "CTO" not in sku.upper():
-                        continue
+                    if "CTO" in sku.upper():
+                        prod["is_cto"] = True
+                        prod["custom_model"] = True
                     sidecar = cto_configs_dir / f"{sku}.json"
                     if sidecar.exists():
                         payload = json.loads(sidecar.read_text(encoding="utf-8"))
+                        prod["is_cto"] = True
+                        prod["custom_model"] = True
                         prod["cto_options"] = {k: v for k, v in payload.items() if k != "lastFetched"}
+                        def_cto = extract_default_cto_specs(payload)
+                        tech = prod.setdefault("tech_specs", {})
+                        for field in ("processor", "graphics", "memory", "storage", "display"):
+                            if not tech.get(field) and def_cto.get(field):
+                                tech[field] = def_cto[field]
 
             with open(target, "w", encoding="utf-8") as f:
                 json.dump(raw_data, f, indent=2, ensure_ascii=False)

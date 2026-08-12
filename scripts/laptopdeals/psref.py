@@ -390,19 +390,61 @@ def _extract_scraped_spec_strings(product: dict[str, Any]) -> dict[str, str]:
     return scraped
 
 
-def match_product_against_mt(product: dict[str, Any], mt_datasheet: dict[str, Any]) -> tuple[dict[str, Any], dict[str, Any]]:
+def extract_default_cto_specs(cto_payload: dict[str, Any]) -> dict[str, Any]:
+    specs: dict[str, Any] = {}
+    for option in cto_payload.get("options") or []:
+        choices = option.get("choices") or []
+        default_choice = next((c for c in choices if c.get("isDefault")), choices[0] if choices else None)
+        if default_choice and default_choice.get("specs"):
+            for cat, val in default_choice["specs"].items():
+                if val:
+                    specs[cat] = val
+    return specs
+
+
+def match_product_against_mt(
+    product: dict[str, Any],
+    mt_datasheet: dict[str, Any],
+    cto_dir: Path | None = None,
+) -> tuple[dict[str, Any], dict[str, Any]]:
     sku = clean_text(product.get("id") or product.get("product_code")).upper()
     models = mt_datasheet.get("models") or {}
     spec_pool = mt_datasheet.get("spec_pool") or {}
     platform_defaults = mt_datasheet.get("platform_defaults") or {}
 
+    def _apply_cto_fallback(hydrated: dict[str, Any]) -> dict[str, Any]:
+        if cto_dir and ("CTO" in sku or any(not hydrated.get(f) for f in ("processor", "graphics", "memory", "storage", "display"))):
+            cto_file = cto_dir / f"{sku}.json"
+            if cto_file.exists():
+                cto_payload = read_json(cto_file, {})
+                cto_specs = extract_default_cto_specs(cto_payload)
+                for field in ("processor", "graphics", "memory", "storage", "display", "wireless"):
+                    if not hydrated.get(field) and cto_specs.get(field):
+                        hydrated[field] = cto_specs[field]
+        return hydrated
+
     if sku in models:
         model_entry = models[sku]
         hydrated = hydrate_sku_specs(model_entry.get("spec_refs") or {}, spec_pool, platform_defaults)
+        hydrated = _apply_cto_fallback(hydrated)
         return hydrated, model_entry
 
     scraped_strings = _extract_scraped_spec_strings(product)
     parsed_scraped = parse_spec_codes(product.get("specs_by_code") or {})
+
+    if cto_dir:
+        cto_file = cto_dir / f"{sku}.json"
+        if cto_file.exists():
+            cto_payload = read_json(cto_file, {})
+            cto_specs = extract_default_cto_specs(cto_payload)
+            for field in ("processor", "graphics", "memory", "storage", "display"):
+                if not scraped_strings.get(field) and cto_specs.get(field):
+                    val = cto_specs[field]
+                    if isinstance(val, dict):
+                        scraped_strings[field] = val.get("full_model") or val.get("model") or val.get("raw") or ""
+                    elif isinstance(val, str):
+                        scraped_strings[field] = val
+
     spec_refs: dict[str, str] = {}
 
     # Match CPU
@@ -510,6 +552,7 @@ def match_product_against_mt(product: dict[str, Any], mt_datasheet: dict[str, An
     }
     models[sku] = model_entry
     hydrated = hydrate_sku_specs(spec_refs, spec_pool, platform_defaults)
+    hydrated = _apply_cto_fallback(hydrated)
     return hydrated, model_entry
 
 
@@ -663,7 +706,7 @@ def build(
         datasheet_updated = False
         for product in prefix_products:
             sku = clean_text(product.get("id") or product.get("product_code")).upper()
-            hydrated_specs, model_entry = match_product_against_mt(product, mt_datasheet)
+            hydrated_specs, model_entry = match_product_against_mt(product, mt_datasheet, cto_dir=cto_dir)
             match_type = model_entry.get("match_type", "mt_datasheet_matched")
             if match_type == "mt_datasheet_matched":
                 datasheet_updated = True
@@ -673,6 +716,8 @@ def build(
                     ("id", sku),
                     ("status", "resolved"),
                     ("match_type", match_type),
+                    ("is_cto", "CTO" in sku),
+                    ("custom_model", "CTO" in sku),
                     ("machine_type", prefix),
                     ("product_key", mt_entry.get("product_key")),
                     ("product_name", mt_entry.get("product_name")),
