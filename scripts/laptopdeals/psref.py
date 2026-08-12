@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import hashlib
 import html
+import json
 import re
 from collections import Counter, OrderedDict
 from concurrent.futures import ThreadPoolExecutor, as_completed
@@ -26,7 +27,7 @@ from .specs import (
 )
 
 
-MENU_URL = "https://psref.lenovo.com/api/home/menu/info"
+MENU_URL = "https://psref.lenovo.com/api/home/menu/info?IsPreviewProduct=true"
 SHOW_MODEL_URL = "https://psref.lenovo.com/api/search/DefinitionFilterAndSearch/ShowModel"
 HEADERS = {
     "user-agent": (
@@ -216,9 +217,19 @@ def fetch_mt_model_data_json(product_key: str) -> tuple[list[dict[str, str]], di
 
     while True:
         url = f"{SHOW_MODEL_URL}?pageindex={pageindex}&pagesize={pagesize}&product_key={quote(product_key)}"
-        blob = _request_bytes(url, accept="application/json, text/plain, */*")
-        payload = __import__("json").loads(blob.decode("utf-8-sig"))
-        data = payload.get("data") or {}
+        try:
+            blob = _request_bytes(url, accept="application/json, text/plain, */*")
+            if not blob or not blob.strip():
+                break
+            payload = json.loads(blob.decode("utf-8-sig"))
+        except Exception:
+            break
+
+        if not isinstance(payload, dict):
+            break
+        data = payload.get("data")
+        if not isinstance(data, dict):
+            break
         cols = [clean_text(c) for c in (data.get("cols") or [])]
         rows = data.get("rows") or []
         filter_value_array = data.get("filter_value_array") or {}
@@ -549,12 +560,22 @@ def build_final_sku_specs(entries: list[dict[str, Any]]) -> dict[str, Any]:
 def _process_prefix(prefix: str, mt_entry: dict[str, Any], datasheets_dir: Path, refresh: bool) -> tuple[str, dict[str, Any]]:
     datasheet_path = datasheets_dir / f"{prefix}.json"
     if refresh or not datasheet_path.exists():
-        rows, filter_options = fetch_mt_model_data_json(mt_entry["product_key"])
-        prefix_rows = [row for row in rows if clean_text(row.get("Machine Type")).upper() == prefix]
-        if not prefix_rows and rows:
-            prefix_rows = rows
-        mt_datasheet = build_mt_datasheet(prefix, prefix_rows, mt_entry, filter_options=filter_options)
-        write_json(datasheet_path, mt_datasheet)
+        try:
+            rows, filter_options = fetch_mt_model_data_json(mt_entry["product_key"])
+        except Exception:
+            rows, filter_options = [], {}
+
+        if rows:
+            prefix_rows = [row for row in rows if clean_text(row.get("Machine Type")).upper() == prefix]
+            if not prefix_rows and rows:
+                prefix_rows = rows
+            mt_datasheet = build_mt_datasheet(prefix, prefix_rows, mt_entry, filter_options=filter_options)
+            write_json(datasheet_path, mt_datasheet)
+        elif datasheet_path.exists():
+            mt_datasheet = read_json(datasheet_path, {})
+        else:
+            mt_datasheet = build_mt_datasheet(prefix, [], mt_entry, filter_options={})
+            write_json(datasheet_path, mt_datasheet)
     else:
         mt_datasheet = read_json(datasheet_path, {})
     return prefix, mt_datasheet
@@ -585,7 +606,7 @@ def build(
 
     try:
         menu_payload = _request_bytes(MENU_URL, accept="application/json, text/plain, */*")
-        menu_payload = __import__("json").loads(menu_payload.decode("utf-8-sig"))
+        menu_payload = json.loads(menu_payload.decode("utf-8-sig"))
         write_json(menu_cache, menu_payload)
     except Exception:
         menu_payload = read_json(menu_cache, {})
