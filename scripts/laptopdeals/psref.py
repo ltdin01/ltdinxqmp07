@@ -1,20 +1,25 @@
 from __future__ import annotations
 
+import base64
 import hashlib
+import hmac
 import html
 import json
 import re
+import threading
+import time
+import uuid
 from collections import Counter, OrderedDict
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
-from urllib.parse import quote
+from urllib.parse import quote, urlparse
 
 from .http import curl_requests
 from .jsonio import read_json, write_json
+from .sources.lenovo import clean_text
 from .specs import (
-    clean_text,
     first_float,
     first_int,
     parse_cpu_psref,
@@ -41,24 +46,93 @@ HEADERS = {
 }
 
 
+class PsrefSessionManager:
+    _instance = None
+    _lock = threading.Lock()
+
+    def __init__(self) -> None:
+        self._session: Any = None
+        self._jwt: str | None = None
+        self._sig_secret: str | None = None
+        self._exp: float = 0.0
+
+    @classmethod
+    def get_instance(cls) -> PsrefSessionManager:
+        with cls._lock:
+            if cls._instance is None:
+                cls._instance = cls()
+            return cls._instance
+
+    def _init_session(self) -> None:
+        now = time.time()
+        self._session = curl_requests()
+        self._session.get("https://psref.lenovo.com/", headers={"User-Agent": HEADERS["user-agent"]}, impersonate="chrome120")
+
+        headers = {
+            "Content-Type": "application/json",
+            "User-Agent": HEADERS["user-agent"],
+            "Accept": "application/json, text/plain, */*",
+            "Origin": "https://psref.lenovo.com",
+            "Referer": "https://psref.lenovo.com/",
+        }
+        res = self._session.post("https://psref.lenovo.com/api/home/auth/issue", json={}, headers=headers, impersonate="chrome120")
+        res.raise_for_status()
+        data = res.json()
+        self._jwt = data["access_token"]
+
+        payload_b64 = self._jwt.split(".")[1]
+        payload_b64 += "=" * ((4 - len(payload_b64) % 4) % 4)
+        payload_json = json.loads(base64.urlsafe_b64decode(payload_b64).decode("utf-8"))
+        self._sig_secret = payload_json["ss"]
+        self._exp = float(payload_json.get("exp", now + 1800))
+
+    def request_bytes(self, url: str, accept: str | None = None, retries: int = 3, timeout: int = 120) -> bytes:
+        with self._lock:
+            now = time.time()
+            if self._session is None or self._jwt is None or now >= self._exp - 60:
+                self._init_session()
+            session = self._session
+            jwt = self._jwt
+            sig_secret = self._sig_secret
+
+        parsed = urlparse(url)
+        path_and_query = parsed.path
+        if parsed.query:
+            path_and_query += "?" + parsed.query
+
+        body_hash = ""
+        ts = str(int(time.time()))
+        nonce = str(uuid.uuid4())
+        to_sign = f"GET|{path_and_query}|{body_hash}|{ts}|{nonce}"
+        sig = hmac.new(bytes.fromhex(sig_secret), to_sign.encode("utf-8"), hashlib.sha256).hexdigest()
+
+        req_headers = {
+            "User-Agent": HEADERS["user-agent"],
+            "Accept": accept or "application/json, text/plain, */*",
+            "Referer": "https://psref.lenovo.com/",
+            "Origin": "https://psref.lenovo.com",
+            "Authorization": f"Bearer {jwt}",
+            "X-Ts": ts,
+            "X-Nonce": nonce,
+            "X-Sig": sig,
+        }
+
+        last_err: Exception | None = None
+        for attempt in range(retries):
+            try:
+                resp = session.get(url, headers=req_headers, impersonate="chrome120", timeout=timeout)
+                resp.raise_for_status()
+                return resp.content
+            except Exception as err:
+                last_err = err
+                time.sleep(1.5 * (attempt + 1))
+        if last_err:
+            raise last_err
+        raise RuntimeError(f"Failed to fetch {url}")
+
+
 def _request_bytes(url: str, accept: str | None = None, retries: int = 3, timeout: int = 120) -> bytes:
-    headers = dict(HEADERS)
-    if accept:
-        headers["accept"] = accept
-    session = curl_requests()
-    last_err: Exception | None = None
-    for attempt in range(retries):
-        try:
-            response = session.get(url, headers=headers, impersonate="chrome120", timeout=timeout)
-            response.raise_for_status()
-            return response.content
-        except Exception as err:
-            last_err = err
-            import time
-            time.sleep(1.5 * (attempt + 1))
-    if last_err:
-        raise last_err
-    raise RuntimeError(f"Failed to fetch {url}")
+    return PsrefSessionManager.get_instance().request_bytes(url, accept=accept, retries=retries, timeout=timeout)
 
 
 def safe_slug(value: str) -> str:
@@ -142,7 +216,7 @@ def build_specs_from_row(row: dict[str, str]) -> dict[str, Any]:
     power_raw = clean_text(row.get("Power Adapter", ""))
     specs["power"] = {"raw": power_raw, "adapter": power_raw, "watt": first_int(row.get("Power Adapter", ""), r"(\d+)W")}
     battery_raw = clean_text(row.get("Battery", ""))
-    specs["battery"] = {"raw": battery_raw, "capacity_wh": first_int(row.get("Battery", ""), r"(\d+)Wh")}
+    specs["battery"] = {"raw": battery_raw, "capacity_wh": first_float(row.get("Battery", ""), r"(\d+(?:\.\d+)?)\s*Wh")}
     ports_raw = row.get("Standard Ports", "")
     specs["ports"] = {"raw": clean_text(ports_raw), "items": split_list(ports_raw)}
     specs["memory_slots"] = {"raw": clean_text(row.get("Memory Slots", "")), "max_memory": clean_text(row.get("Max Memory", ""))}
@@ -209,14 +283,15 @@ def hydrate_sku_specs(spec_refs: dict[str, str], spec_pool: dict[str, dict[str, 
     return compact_specs(specs)
 
 
-def fetch_mt_model_data_json(product_key: str) -> tuple[list[dict[str, str]], dict[str, list[str]]]:
+def fetch_mt_model_data_json(product_key: str, mt: str = "") -> tuple[list[dict[str, str]], dict[str, list[str]]]:
     pageindex = 1
     pagesize = 2000
     output_rows: list[dict[str, str]] = []
     cleaned_filters: dict[str, list[str]] = {}
 
     while True:
-        url = f"{SHOW_MODEL_URL}?pageindex={pageindex}&pagesize={pagesize}&product_key={quote(product_key)}"
+        url = f"{SHOW_MODEL_URL}?pageindex={pageindex}&pagesize={pagesize}&product_key={quote(product_key)}{'&mt=' + quote(mt) if mt else ''}&vertical=true"
+
         try:
             blob = _request_bytes(url, accept="application/json, text/plain, */*")
             if not blob or not blob.strip():
@@ -604,7 +679,7 @@ def _process_prefix(prefix: str, mt_entry: dict[str, Any], datasheets_dir: Path,
     datasheet_path = datasheets_dir / f"{prefix}.json"
     if refresh or not datasheet_path.exists():
         try:
-            rows, filter_options = fetch_mt_model_data_json(mt_entry["product_key"])
+            rows, filter_options = fetch_mt_model_data_json(mt_entry["product_key"], mt=prefix)
         except Exception:
             rows, filter_options = [], {}
 
