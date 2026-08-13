@@ -88,6 +88,7 @@ VISIBLE_CATEGORIES = {
     "NBPROCESSOR": "Processor",
     "NBGRAPHICS": "Graphics Card",
     "NBDIMM_MEMORY": "Memory",
+    "NBONBOARD_MEMORY": "Memory",  # soldered/MOP memory (Intel Core Ultra V-series, etc.)
     "NBSTORAGE_SELECTION": "Solid State Drive",
     "NBDISPLAY": "Display",
     "NBPRELOAD_OS": "Operating System",

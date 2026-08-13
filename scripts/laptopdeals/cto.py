@@ -247,7 +247,7 @@ def fetch_config(bundle_id: str, product: dict[str, Any] | None = None) -> dict[
                 "isDefault": choice.get("isDefault", False),
                 "gapPrice": choice.get("finalPrice", 0) - default_price,
             })
-        if len(enriched) > 1:
+        if len(enriched) >= 1:
             clean_options.append({"label": option["label"], "choices": enriched})
 
     return {

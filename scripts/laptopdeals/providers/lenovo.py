@@ -31,10 +31,15 @@ def _normalize_psref_specs(specs: dict[str, Any]) -> dict[str, Any]:
         out["processor"] = {
             "brand": proc.get("brand", ""),
             "model": proc.get("model", ""),
+            "full_model": proc.get("full_model", ""),
+            "series": proc.get("series", ""),
             "cores": proc.get("cores"),
             "threads": proc.get("threads"),
-            "base_clock": f"{proc['base_clock_ghz']} GHz" if proc.get("base_clock_ghz") else "",
-            "boost_clock": f"{proc['boost_clock_ghz']} GHz" if proc.get("boost_clock_ghz") else "",
+            "base_clock": f"{proc['base_clock_ghz']} GHz" if proc.get("base_clock_ghz") else proc.get("base_clock", ""),
+            "boost_clock": f"{proc['boost_clock_ghz']} GHz" if proc.get("boost_clock_ghz") else proc.get("boost_clock", ""),
+            "igpu": proc.get("igpu", ""),
+            "igpu_series": proc.get("igpu_series", ""),
+            "xe_cores": proc.get("xe_cores", ""),
         }
     gpu = specs.get("graphics") or {}
     if gpu:
@@ -488,6 +493,14 @@ def format_catalog(
                 "spec_source": spec_source,
                 "data_status": "Enriched",
                 "vendor": "lenovo",
+                "product_metadata": {
+                    "brand": "Lenovo",
+                    "series": category_from_product(product),
+                    "part_number": sku,
+                    "model_number": sku,
+                    "manufacturer": "Lenovo",
+                    "warranty": "1 Year Courier or Carry-in Warranty",
+                },
                 **hist_stats,
             }
             if psref_meta:
