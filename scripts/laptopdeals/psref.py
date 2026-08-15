@@ -957,8 +957,10 @@ def build(
     except Exception:
         menu_payload = read_json(menu_cache, {})
 
+    existing_mt_map = read_json(mt_cache, {})
     mt_map = build_mt_map(menu_payload)
-    write_json(mt_cache, mt_map)
+    merged_mt_map = {**existing_mt_map, **mt_map}
+    write_json(mt_cache, merged_mt_map)
 
     grouped: dict[str, list[dict[str, Any]]] = OrderedDict()
     for product in products:

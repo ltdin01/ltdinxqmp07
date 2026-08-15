@@ -166,7 +166,7 @@ jobs:
             --history-dir website-target/apps/web/price_history \
             bitbns-history \
             --ids-file data/lenovo-new-ids.json \
-            --replace-history \
+            --only-new \
             --workers "${BITBNS_WORKERS}" \
             --delay "${BITBNS_DELAY}" \
             --failed-ids-output data/bitbns-missing-ids.json

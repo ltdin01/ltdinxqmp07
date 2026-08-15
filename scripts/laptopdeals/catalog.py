@@ -31,7 +31,7 @@ def existing_ids_from(paths: list[Path]) -> set[str]:
         for _, product in iter_products(payload):
             pid = normalize_id(product.get("id") or product.get("product_code"))
             if pid:
-                is_arch = bool(product.get("archived") or product.get("archived_at") or product.get("availability") == "out of stock")
+                is_arch = bool(product.get("archived") or product.get("archived_at"))
                 if not is_arch:
                     ids.add(pid)
     return ids
