@@ -121,7 +121,7 @@
             "price_median": 30190,
             "price_usual": 30190,
             "has_history": true,
-            "last_checked": "2026-08-16 04:21:49"
+            "last_checked": "2026-08-16 05:11:20"
         },
         {
             "id": "82R4R004R0",
@@ -246,7 +246,7 @@
             "price_median": 32640,
             "price_usual": 33406,
             "has_history": true,
-            "last_checked": "2026-08-16 04:21:49"
+            "last_checked": "2026-08-16 05:11:20"
         },
         {
             "id": "82R4R00DR0",
@@ -369,9 +369,9 @@
             },
             "price_mean": 34041,
             "price_median": 34041,
-            "price_usual": 33791,
+            "price_usual": 33881,
             "has_history": true,
-            "last_checked": "2026-08-16 04:21:49"
+            "last_checked": "2026-08-16 05:11:20"
         },
         {
             "id": "82XQR002R0",
@@ -493,7 +493,7 @@
             "price_median": 36491,
             "price_usual": 35853,
             "has_history": true,
-            "last_checked": "2026-08-16 04:21:49"
+            "last_checked": "2026-08-16 05:11:20"
         },
         {
             "id": "82XQR00KR0",
@@ -615,7 +615,7 @@
             "price_median": 38591,
             "price_usual": 38591,
             "has_history": true,
-            "last_checked": "2026-08-16 04:21:49"
+            "last_checked": "2026-08-16 05:11:20"
         },
         {
             "id": "82XQR00FR0",
@@ -737,7 +737,7 @@
             "price_median": 46291,
             "price_usual": 49643,
             "has_history": true,
-            "last_checked": "2026-08-16 04:21:49"
+            "last_checked": "2026-08-16 05:11:20"
         },
         {
             "id": "83HRR000R0",
@@ -860,7 +860,7 @@
             "price_median": 48190,
             "price_usual": 51326,
             "has_history": true,
-            "last_checked": "2026-08-16 04:21:49"
+            "last_checked": "2026-08-16 05:11:20"
         },
         {
             "id": "83ERR000R0",
@@ -980,7 +980,7 @@
             "price_median": 41341,
             "price_usual": 40756,
             "has_history": true,
-            "last_checked": "2026-08-16 04:21:49"
+            "last_checked": "2026-08-16 05:11:20"
         },
         {
             "id": "83J1R000R0",
@@ -1104,7 +1104,7 @@
             "price_median": 49841,
             "price_usual": 53502,
             "has_history": true,
-            "last_checked": "2026-08-16 04:21:49"
+            "last_checked": "2026-08-16 05:11:20"
         },
         {
             "id": "83K1R004R0",
@@ -1226,7 +1226,7 @@
             "price_median": 49090,
             "price_usual": 53168,
             "has_history": true,
-            "last_checked": "2026-08-16 04:21:49"
+            "last_checked": "2026-08-16 05:11:20"
         },
         {
             "id": "83N3R001R0",
@@ -1234,7 +1234,7 @@
             "internal_model_code": "83N3R001R0",
             "title": "IdeaPad Slim 3x Gen 10 (15, Snapdragon)",
             "description": "The Lenovo IdeaPad Slim 3x Gen 10 offers smart computing with a Snapdragon X series processor and AI capabilities. Its vibrant display, upgradable SSD storage, and durable build make it ideal for students seeking performance and reliability.",
-            "availability": "in stock",
+            "availability": "out of stock",
             "price": "46991.00 INR",
             "mrp": "80403.00 INR",
             "image": "https://ap-img.static.pub/ss/img/2026/06/22/img.20260622060748576695.png",
@@ -1342,7 +1342,7 @@
             "price_median": 46290,
             "price_usual": 45755,
             "has_history": true,
-            "last_checked": "2026-08-16 04:21:49"
+            "last_checked": "2026-08-16 05:11:20"
         },
         {
             "id": "83KXR000R0",
@@ -1465,7 +1465,7 @@
             "price_median": 52091,
             "price_usual": 53923,
             "has_history": true,
-            "last_checked": "2026-08-16 04:21:49"
+            "last_checked": "2026-08-16 05:11:20"
         },
         {
             "id": "82XQR00HR0",
@@ -1587,7 +1587,7 @@
             "price_median": 50091,
             "price_usual": 50091,
             "has_history": true,
-            "last_checked": "2026-08-16 04:21:49"
+            "last_checked": "2026-08-16 05:11:20"
         },
         {
             "id": "83BFR001R0",
@@ -1706,7 +1706,7 @@
             "price_median": 51541,
             "price_usual": 51989,
             "has_history": true,
-            "last_checked": "2026-08-16 04:21:49"
+            "last_checked": "2026-08-16 05:11:20"
         },
         {
             "id": "83ERR008R0",
@@ -1826,7 +1826,7 @@
             "price_median": 53991,
             "price_usual": 54690,
             "has_history": true,
-            "last_checked": "2026-08-16 04:21:49"
+            "last_checked": "2026-08-16 05:11:20"
         },
         {
             "id": "82XDR000R0",
@@ -1945,7 +1945,7 @@
             "price_median": 53291,
             "price_usual": 53291,
             "has_history": true,
-            "last_checked": "2026-08-16 04:21:49"
+            "last_checked": "2026-08-16 05:11:20"
         },
         {
             "id": "83EMR005R0",
@@ -2068,7 +2068,7 @@
             "price_median": 53991,
             "price_usual": 53991,
             "has_history": true,
-            "last_checked": "2026-08-16 04:21:49"
+            "last_checked": "2026-08-16 05:11:20"
         },
         {
             "id": "83ERR003R0",
@@ -2188,7 +2188,7 @@
             "price_median": 51540,
             "price_usual": 50499,
             "has_history": true,
-            "last_checked": "2026-08-16 04:21:49"
+            "last_checked": "2026-08-16 05:11:20"
         },
         {
             "id": "83ERR002R0",
@@ -2308,7 +2308,7 @@
             "price_median": 52891,
             "price_usual": 51485,
             "has_history": true,
-            "last_checked": "2026-08-16 04:21:49"
+            "last_checked": "2026-08-16 05:11:20"
         },
         {
             "id": "83J2R001R0",
@@ -2433,7 +2433,7 @@
             "price_median": 54590,
             "price_usual": 55370,
             "has_history": true,
-            "last_checked": "2026-08-16 04:21:49"
+            "last_checked": "2026-08-16 05:11:20"
         },
         {
             "id": "83J3R000R0",
@@ -2558,7 +2558,7 @@
             "price_median": 58490,
             "price_usual": 58147,
             "has_history": true,
-            "last_checked": "2026-08-16 04:21:49"
+            "last_checked": "2026-08-16 05:11:20"
         },
         {
             "id": "82K2R00FR0",
@@ -2679,7 +2679,7 @@
             "price_median": 56090,
             "price_usual": 56090,
             "has_history": true,
-            "last_checked": "2026-08-16 04:21:49"
+            "last_checked": "2026-08-16 05:11:20"
         },
         {
             "id": "82XXR000R0",
@@ -2803,7 +2803,7 @@
             "price_median": 56090,
             "price_usual": 56090,
             "has_history": true,
-            "last_checked": "2026-08-16 04:21:49"
+            "last_checked": "2026-08-16 05:11:20"
         },
         {
             "id": "83J2R000R0",
@@ -2928,7 +2928,7 @@
             "price_median": 54590,
             "price_usual": 55242,
             "has_history": true,
-            "last_checked": "2026-08-16 04:21:49"
+            "last_checked": "2026-08-16 05:11:20"
         },
         {
             "id": "82XMR006R0",
@@ -3051,7 +3051,7 @@
             "price_median": 48791,
             "price_usual": 50456,
             "has_history": true,
-            "last_checked": "2026-08-16 04:21:49"
+            "last_checked": "2026-08-16 05:11:20"
         },
         {
             "id": "83K1R002R0",
@@ -3173,7 +3173,7 @@
             "price_median": 57491,
             "price_usual": 57372,
             "has_history": true,
-            "last_checked": "2026-08-16 04:21:49"
+            "last_checked": "2026-08-16 05:11:20"
         },
         {
             "id": "83BFR000R0",
@@ -3292,7 +3292,7 @@
             "price_median": 56791,
             "price_usual": 55153,
             "has_history": true,
-            "last_checked": "2026-08-16 04:21:49"
+            "last_checked": "2026-08-16 05:11:20"
         },
         {
             "id": "83HXR001R0",
@@ -3404,7 +3404,7 @@
             "price_median": 62991,
             "price_usual": 79137,
             "has_history": true,
-            "last_checked": "2026-08-16 04:21:49"
+            "last_checked": "2026-08-16 05:11:20"
         },
         {
             "id": "83HLR001R0",
@@ -3520,7 +3520,7 @@
             "price_median": 59590,
             "price_usual": 59540,
             "has_history": true,
-            "last_checked": "2026-08-16 04:21:49"
+            "last_checked": "2026-08-16 05:11:20"
         },
         {
             "id": "83BGR001R0",
@@ -3643,7 +3643,7 @@
             "price_median": 59990,
             "price_usual": 59990,
             "has_history": true,
-            "last_checked": "2026-08-16 04:21:49"
+            "last_checked": "2026-08-16 05:11:20"
         },
         {
             "id": "83BGR000R0",
@@ -3764,9 +3764,9 @@
             },
             "price_mean": 53491,
             "price_median": 53491,
-            "price_usual": 49160,
+            "price_usual": 49324,
             "has_history": true,
-            "last_checked": "2026-08-16 04:21:49"
+            "last_checked": "2026-08-16 05:11:20"
         },
         {
             "id": "83HLR000R0",
@@ -3882,7 +3882,7 @@
             "price_median": 59540,
             "price_usual": 58924,
             "has_history": true,
-            "last_checked": "2026-08-16 04:21:49"
+            "last_checked": "2026-08-16 05:11:20"
         },
         {
             "id": "83K1R00BR0",
@@ -4004,7 +4004,7 @@
             "price_median": 61690,
             "price_usual": 61690,
             "has_history": true,
-            "last_checked": "2026-08-16 04:21:49"
+            "last_checked": "2026-08-16 05:11:20"
         },
         {
             "id": "82XFR008R0",
@@ -4126,7 +4126,7 @@
             "price_median": 67990,
             "price_usual": 67990,
             "has_history": true,
-            "last_checked": "2026-08-16 04:21:49"
+            "last_checked": "2026-08-16 05:11:20"
         },
         {
             "id": "83DCR008R0",
@@ -4250,7 +4250,7 @@
             "price_median": 73591,
             "price_usual": 73591,
             "has_history": true,
-            "last_checked": "2026-08-16 04:21:49"
+            "last_checked": "2026-08-16 05:11:20"
         },
         {
             "id": "83DCR002R0",
@@ -4374,7 +4374,7 @@
             "price_median": 73591,
             "price_usual": 73591,
             "has_history": true,
-            "last_checked": "2026-08-16 04:21:49"
+            "last_checked": "2026-08-16 05:11:20"
         }
     ],
     "Lenovo V-series": [
@@ -4500,7 +4500,7 @@
             "price_median": 31591,
             "price_usual": 31591,
             "has_history": true,
-            "last_checked": "2026-08-16 04:21:49"
+            "last_checked": "2026-08-16 05:11:20"
         },
         {
             "id": "82TTR002R0",
@@ -4624,7 +4624,7 @@
             "price_median": 42790,
             "price_usual": 42790,
             "has_history": true,
-            "last_checked": "2026-08-16 04:21:49"
+            "last_checked": "2026-08-16 05:11:20"
         },
         {
             "id": "82TTR000R0",
@@ -4748,7 +4748,7 @@
             "price_median": 49090,
             "price_usual": 49090,
             "has_history": true,
-            "last_checked": "2026-08-16 04:21:49"
+            "last_checked": "2026-08-16 05:11:20"
         },
         {
             "id": "83A0R000R0",
@@ -4872,7 +4872,7 @@
             "price_median": 49090,
             "price_usual": 49090,
             "has_history": true,
-            "last_checked": "2026-08-16 04:21:49"
+            "last_checked": "2026-08-16 05:11:20"
         },
         {
             "id": "83CQR001R0",
@@ -4997,7 +4997,7 @@
             "price_median": 52590,
             "price_usual": 52590,
             "has_history": true,
-            "last_checked": "2026-08-16 04:21:49"
+            "last_checked": "2026-08-16 05:11:20"
         }
     ],
     "Thinkbook": [
@@ -5077,7 +5077,7 @@
             "price_median": 38591,
             "price_usual": 38591,
             "has_history": true,
-            "last_checked": "2026-08-16 04:21:49"
+            "last_checked": "2026-08-16 05:11:20"
         },
         {
             "id": "21KGR000R0",
@@ -5202,7 +5202,7 @@
             "price_median": 40691,
             "price_usual": 40691,
             "has_history": true,
-            "last_checked": "2026-08-16 04:21:49"
+            "last_checked": "2026-08-16 05:11:20"
         },
         {
             "id": "83J7R000R0",
@@ -5280,7 +5280,7 @@
             "price_median": 45590,
             "price_usual": 45590,
             "has_history": true,
-            "last_checked": "2026-08-16 04:21:49"
+            "last_checked": "2026-08-16 05:11:20"
         },
         {
             "id": "21KGR002R0",
@@ -5405,7 +5405,7 @@
             "price_median": 50491,
             "price_usual": 50491,
             "has_history": true,
-            "last_checked": "2026-08-16 04:21:49"
+            "last_checked": "2026-08-16 05:11:20"
         },
         {
             "id": "21UTR000R0",
@@ -5528,7 +5528,7 @@
             "price_median": 60991,
             "price_usual": 60991,
             "has_history": true,
-            "last_checked": "2026-08-16 04:21:49"
+            "last_checked": "2026-08-16 05:11:20"
         },
         {
             "id": "21KGR003R0",
@@ -5653,7 +5653,7 @@
             "price_median": 84090,
             "price_usual": 84090,
             "has_history": true,
-            "last_checked": "2026-08-16 04:21:49"
+            "last_checked": "2026-08-16 05:11:20"
         }
     ],
     "ThinkPad": [
@@ -5777,7 +5777,7 @@
             "price_median": 44191,
             "price_usual": 44191,
             "has_history": true,
-            "last_checked": "2026-08-16 04:21:49"
+            "last_checked": "2026-08-16 05:11:20"
         },
         {
             "id": "21E6R001R0",
@@ -5898,7 +5898,7 @@
             "price_median": 50491,
             "price_usual": 50491,
             "has_history": true,
-            "last_checked": "2026-08-16 04:21:49"
+            "last_checked": "2026-08-16 05:11:20"
         },
         {
             "id": "21JNR001R0",
@@ -6020,7 +6020,7 @@
             "price_median": 59590,
             "price_usual": 59590,
             "has_history": true,
-            "last_checked": "2026-08-16 04:21:49"
+            "last_checked": "2026-08-16 05:11:20"
         },
         {
             "id": "21JNR008R0",
@@ -6142,7 +6142,7 @@
             "price_median": 63091,
             "price_usual": 63091,
             "has_history": true,
-            "last_checked": "2026-08-16 04:21:49"
+            "last_checked": "2026-08-16 05:11:20"
         },
         {
             "id": "21JKR002R0",
@@ -6264,7 +6264,7 @@
             "price_median": 66290,
             "price_usual": 66290,
             "has_history": true,
-            "last_checked": "2026-08-16 04:21:49"
+            "last_checked": "2026-08-16 05:11:20"
         },
         {
             "id": "21JKR00ER0",
@@ -6386,7 +6386,7 @@
             "price_median": 66591,
             "price_usual": 66591,
             "has_history": true,
-            "last_checked": "2026-08-16 04:21:49"
+            "last_checked": "2026-08-16 05:11:20"
         },
         {
             "id": "21JKR00AR0",
@@ -6508,7 +6508,7 @@
             "price_median": 67990,
             "price_usual": 67990,
             "has_history": true,
-            "last_checked": "2026-08-16 04:21:49"
+            "last_checked": "2026-08-16 05:11:20"
         },
         {
             "id": "21TAR001R0",
@@ -6628,7 +6628,7 @@
             "price_median": 73591,
             "price_usual": 73591,
             "has_history": true,
-            "last_checked": "2026-08-16 04:21:49"
+            "last_checked": "2026-08-16 05:11:20"
         },
         {
             "id": "21JKR00CR0",
@@ -6750,7 +6750,7 @@
             "price_median": 73591,
             "price_usual": 73591,
             "has_history": true,
-            "last_checked": "2026-08-16 04:21:49"
+            "last_checked": "2026-08-16 05:11:20"
         },
         {
             "id": "21JKR003R0",
@@ -6872,7 +6872,7 @@
             "price_median": 73591,
             "price_usual": 73591,
             "has_history": true,
-            "last_checked": "2026-08-16 04:21:49"
+            "last_checked": "2026-08-16 05:11:20"
         },
         {
             "id": "21M7R001R0",
@@ -6999,7 +6999,7 @@
             "price_median": 73591,
             "price_usual": 73591,
             "has_history": true,
-            "last_checked": "2026-08-16 04:21:49"
+            "last_checked": "2026-08-16 05:11:20"
         },
         {
             "id": "21SSR002R0",
@@ -7122,7 +7122,7 @@
             "price_median": 80590,
             "price_usual": 80590,
             "has_history": true,
-            "last_checked": "2026-08-16 04:21:49"
+            "last_checked": "2026-08-16 05:11:20"
         },
         {
             "id": "21JKR000R0",
@@ -7244,7 +7244,7 @@
             "price_median": 80590,
             "price_usual": 80590,
             "has_history": true,
-            "last_checked": "2026-08-16 04:21:49"
+            "last_checked": "2026-08-16 05:11:20"
         },
         {
             "id": "21T9R002R0",
@@ -7366,7 +7366,7 @@
             "price_median": 80590,
             "price_usual": 80590,
             "has_history": true,
-            "last_checked": "2026-08-16 04:21:49"
+            "last_checked": "2026-08-16 05:11:20"
         },
         {
             "id": "21JLR000R0",
@@ -7488,7 +7488,7 @@
             "price_median": 80590,
             "price_usual": 80590,
             "has_history": true,
-            "last_checked": "2026-08-16 04:21:49"
+            "last_checked": "2026-08-16 05:11:20"
         },
         {
             "id": "21SYR001R0",
@@ -7613,7 +7613,7 @@
             "price_median": 85491,
             "price_usual": 85491,
             "has_history": true,
-            "last_checked": "2026-08-16 04:21:49"
+            "last_checked": "2026-08-16 05:11:20"
         },
         {
             "id": "21QGR000R0",
@@ -7739,7 +7739,7 @@
             "price_median": 87091,
             "price_usual": 87091,
             "has_history": true,
-            "last_checked": "2026-08-16 04:21:49"
+            "last_checked": "2026-08-16 05:11:20"
         },
         {
             "id": "21QDR001R0",
@@ -7865,7 +7865,7 @@
             "price_median": 110691,
             "price_usual": 110691,
             "has_history": true,
-            "last_checked": "2026-08-16 04:21:49"
+            "last_checked": "2026-08-16 05:11:20"
         },
         {
             "id": "21MLR001R0",
@@ -7990,7 +7990,7 @@
             "price_median": 126090,
             "price_usual": 126090,
             "has_history": true,
-            "last_checked": "2026-08-16 04:21:49"
+            "last_checked": "2026-08-16 05:11:20"
         },
         {
             "id": "21M8R000R0",
@@ -8116,7 +8116,7 @@
             "price_median": 132105,
             "price_usual": 132105,
             "has_history": true,
-            "last_checked": "2026-08-16 04:21:49"
+            "last_checked": "2026-08-16 05:11:20"
         },
         {
             "id": "21KSR000R0",
@@ -8243,7 +8243,7 @@
             "price_median": 140091,
             "price_usual": 140091,
             "has_history": true,
-            "last_checked": "2026-08-16 04:21:49"
+            "last_checked": "2026-08-16 05:11:20"
         },
         {
             "id": "20Y0R00WR0",
@@ -8356,7 +8356,7 @@
             "price_median": 140091,
             "price_usual": 140091,
             "has_history": true,
-            "last_checked": "2026-08-16 04:21:49"
+            "last_checked": "2026-08-16 05:11:20"
         },
         {
             "id": "21MMR002R0",
@@ -8481,7 +8481,7 @@
             "price_median": 140091,
             "price_usual": 140091,
             "has_history": true,
-            "last_checked": "2026-08-16 04:21:49"
+            "last_checked": "2026-08-16 05:11:20"
         },
         {
             "id": "21M7R002R0",
@@ -8608,7 +8608,7 @@
             "price_median": 145185,
             "price_usual": 145185,
             "has_history": true,
-            "last_checked": "2026-08-16 04:21:49"
+            "last_checked": "2026-08-16 05:11:20"
         },
         {
             "id": "21QYR000R0",
@@ -8732,7 +8732,7 @@
             "price_median": 150590,
             "price_usual": 150590,
             "has_history": true,
-            "last_checked": "2026-08-16 04:21:49"
+            "last_checked": "2026-08-16 05:11:20"
         },
         {
             "id": "21HMR000R0",
@@ -8853,7 +8853,7 @@
             "price_median": 154090,
             "price_usual": 154090,
             "has_history": true,
-            "last_checked": "2026-08-16 04:21:49"
+            "last_checked": "2026-08-16 05:11:20"
         },
         {
             "id": "21FCR000R0",
@@ -8973,7 +8973,7 @@
             "price_median": 154090,
             "price_usual": 154090,
             "has_history": true,
-            "last_checked": "2026-08-16 04:21:49"
+            "last_checked": "2026-08-16 05:11:20"
         },
         {
             "id": "21NTR000R0",
@@ -9098,7 +9098,7 @@
             "price_median": 210091,
             "price_usual": 210091,
             "has_history": true,
-            "last_checked": "2026-08-16 04:21:49"
+            "last_checked": "2026-08-16 05:11:20"
         },
         {
             "id": "21FBR000R0",
@@ -9220,7 +9220,7 @@
             "price_median": 630091,
             "price_usual": 630091,
             "has_history": true,
-            "last_checked": "2026-08-16 04:21:49"
+            "last_checked": "2026-08-16 05:11:20"
         }
     ],
     "Lenovo LOQ Laptops": [
@@ -9346,7 +9346,7 @@
             "price_median": 50491,
             "price_usual": 50491,
             "has_history": true,
-            "last_checked": "2026-08-16 04:21:49"
+            "last_checked": "2026-08-16 05:11:20"
         },
         {
             "id": "83FQR001R0",
@@ -9466,7 +9466,7 @@
             "price_median": 52590,
             "price_usual": 52590,
             "has_history": true,
-            "last_checked": "2026-08-16 04:21:49"
+            "last_checked": "2026-08-16 05:11:20"
         },
         {
             "id": "82XTR003R0",
@@ -9591,7 +9591,7 @@
             "price_median": 56090,
             "price_usual": 56090,
             "has_history": true,
-            "last_checked": "2026-08-16 04:21:49"
+            "last_checked": "2026-08-16 05:11:20"
         },
         {
             "id": "83GSR000R0",
@@ -9714,7 +9714,7 @@
             "price_median": 56090,
             "price_usual": 56090,
             "has_history": true,
-            "last_checked": "2026-08-16 04:21:49"
+            "last_checked": "2026-08-16 05:11:20"
         },
         {
             "id": "83JCR006R0",
@@ -9838,7 +9838,7 @@
             "price_median": 63091,
             "price_usual": 63091,
             "has_history": true,
-            "last_checked": "2026-08-16 04:21:49"
+            "last_checked": "2026-08-16 05:11:20"
         },
         {
             "id": "83GSR008R0",
@@ -9961,7 +9961,7 @@
             "price_median": 63091,
             "price_usual": 63091,
             "has_history": true,
-            "last_checked": "2026-08-16 04:21:49"
+            "last_checked": "2026-08-16 05:11:20"
         },
         {
             "id": "83JCR008R0",
@@ -10085,7 +10085,7 @@
             "price_median": 65190,
             "price_usual": 65190,
             "has_history": true,
-            "last_checked": "2026-08-16 04:21:49"
+            "last_checked": "2026-08-16 05:11:20"
         },
         {
             "id": "83JCR00JR0",
@@ -10209,7 +10209,7 @@
             "price_median": 81290,
             "price_usual": 81290,
             "has_history": true,
-            "last_checked": "2026-08-16 04:21:49"
+            "last_checked": "2026-08-16 05:11:20"
         },
         {
             "id": "83JER007R0",
@@ -10333,7 +10333,7 @@
             "price_median": 126791,
             "price_usual": 126791,
             "has_history": true,
-            "last_checked": "2026-08-16 04:21:49"
+            "last_checked": "2026-08-16 05:11:20"
         },
         {
             "id": "83JER004R0",
@@ -10456,7 +10456,7 @@
             "price_median": 142648,
             "price_usual": 142648,
             "has_history": true,
-            "last_checked": "2026-08-16 04:21:49"
+            "last_checked": "2026-08-16 05:11:20"
         }
     ],
     "Yoga": [
@@ -10583,7 +10583,7 @@
             "price_median": 57390,
             "price_usual": 57390,
             "has_history": true,
-            "last_checked": "2026-08-16 04:21:49"
+            "last_checked": "2026-08-16 05:11:20"
         },
         {
             "id": "83DJR005R0",
@@ -10709,7 +10709,7 @@
             "price_median": 64491,
             "price_usual": 64491,
             "has_history": true,
-            "last_checked": "2026-08-16 04:21:49"
+            "last_checked": "2026-08-16 05:11:20"
         },
         {
             "id": "83CVR005R0",
@@ -10834,7 +10834,7 @@
             "price_median": 65890,
             "price_usual": 65890,
             "has_history": true,
-            "last_checked": "2026-08-16 04:21:49"
+            "last_checked": "2026-08-16 05:11:20"
         },
         {
             "id": "83E0R001R0",
@@ -10954,7 +10954,7 @@
             "price_median": 76391,
             "price_usual": 76391,
             "has_history": true,
-            "last_checked": "2026-08-16 04:21:49"
+            "last_checked": "2026-08-16 05:11:20"
         },
         {
             "id": "83JXR002R0",
@@ -11080,7 +11080,7 @@
             "price_median": 77191,
             "price_usual": 77191,
             "has_history": true,
-            "last_checked": "2026-08-16 04:21:49"
+            "last_checked": "2026-08-16 05:11:20"
         },
         {
             "id": "82Y7R000R0",
@@ -11202,7 +11202,7 @@
             "price_median": 91090,
             "price_usual": 91090,
             "has_history": true,
-            "last_checked": "2026-08-16 04:21:49"
+            "last_checked": "2026-08-16 05:11:20"
         },
         {
             "id": "83HMR001R0",
@@ -11327,7 +11327,7 @@
             "price_median": 136591,
             "price_usual": 136591,
             "has_history": true,
-            "last_checked": "2026-08-16 04:21:49"
+            "last_checked": "2026-08-16 05:11:20"
         },
         {
             "id": "83EDR000R0",
@@ -11438,7 +11438,7 @@
             "price_median": 147091,
             "price_usual": 147091,
             "has_history": true,
-            "last_checked": "2026-08-16 04:21:49"
+            "last_checked": "2026-08-16 05:11:20"
         },
         {
             "id": "83FFR000R0",
@@ -11560,7 +11560,7 @@
             "price_median": 168791,
             "price_usual": 168791,
             "has_history": true,
-            "last_checked": "2026-08-16 04:21:49"
+            "last_checked": "2026-08-16 05:11:20"
         }
     ],
     "Legion Laptops": [
@@ -11687,7 +11687,7 @@
             "price_median": 87891,
             "price_usual": 87891,
             "has_history": true,
-            "last_checked": "2026-08-16 04:21:49"
+            "last_checked": "2026-08-16 05:11:20"
         },
         {
             "id": "82JKR001R0",
@@ -11812,7 +11812,7 @@
             "price_median": 92491,
             "price_usual": 92491,
             "has_history": true,
-            "last_checked": "2026-08-16 04:21:49"
+            "last_checked": "2026-08-16 05:11:20"
         },
         {
             "id": "82JUR005R0",
@@ -11938,7 +11938,7 @@
             "price_median": 116891,
             "price_usual": 116891,
             "has_history": true,
-            "last_checked": "2026-08-16 04:21:49"
+            "last_checked": "2026-08-16 05:11:20"
         },
         {
             "id": "83FDR001R0",
@@ -12065,7 +12065,7 @@
             "price_median": 161691,
             "price_usual": 161691,
             "has_history": true,
-            "last_checked": "2026-08-16 04:21:49"
+            "last_checked": "2026-08-16 05:11:20"
         },
         {
             "id": "83NNR000R0",
@@ -12191,7 +12191,7 @@
             "price_median": 171191,
             "price_usual": 171191,
             "has_history": true,
-            "last_checked": "2026-08-16 04:21:49"
+            "last_checked": "2026-08-16 05:11:20"
         }
     ]
 }
