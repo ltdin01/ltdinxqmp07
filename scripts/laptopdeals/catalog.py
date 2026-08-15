@@ -262,7 +262,7 @@ def path_from_breadcrumb(breadcrumb: list[dict[str, str]], title: str, sku: str,
     return parts
 
 
-def scrape_catalog(
+def _scrape_lenovo_catalog(
     *,
     series: list[str],
     output: Path,
@@ -483,7 +483,7 @@ def breadcrumb_from_product(product: dict[str, Any]) -> list[dict[str, str]]:
     return [{"name": part.strip()} for part in path.split(">") if part.strip()]
 
 
-def format_catalog(
+def _format_lenovo_catalog(
     *,
     input_path: Path,
     output_path: Path,
@@ -630,3 +630,93 @@ def format_catalog(
                     pass  # Leave specs unchanged on normalization failure
         write_json(output_path, formatted, indent=4)
     return {"formatted": count, "categories": len(formatted), "psref_applied": psref_applied}
+
+
+DEFAULT_PROVIDER = "lenovo"
+
+
+def get_provider(name: str):
+    from . import providers
+    return providers.get_provider(name)
+
+
+def scrape_catalog(
+    *,
+    series: list[str] | None = None,
+    output: Path,
+    only_new: bool = False,
+    existing_files: list[Path] | None = None,
+    new_ids_output: Path | None = None,
+    limit_per_series: int | None = None,
+    delay: tuple[float, float] = (0.8, 2.2),
+    workers: int = 4,
+    verbose: bool = False,
+    ids: set[str] | None = None,
+    provider: str = DEFAULT_PROVIDER,
+    **kwargs: Any,
+) -> dict[str, Any]:
+    if provider == "lenovo":
+        return _scrape_lenovo_catalog(
+            series=series or ["LOQ", "ThinkPad", "Legion", "IdeaPad", "ThinkBook", "Yoga"],
+            output=output,
+            only_new=only_new,
+            existing_files=existing_files,
+            new_ids_output=new_ids_output,
+            limit_per_series=limit_per_series,
+            delay=delay,
+            workers=workers,
+            verbose=verbose,
+            ids=ids,
+            **kwargs,
+        )
+    return get_provider(provider).scrape_catalog(
+        series=series,
+        output=output,
+        only_new=only_new,
+        existing_files=existing_files,
+        new_ids_output=new_ids_output,
+        limit_per_series=limit_per_series,
+        delay=delay,
+        workers=workers,
+        verbose=verbose,
+        ids=ids,
+        **kwargs,
+    )
+
+
+def format_catalog(
+    *,
+    input_path: Path,
+    output_path: Path,
+    history_dir: Path,
+    cto_dir: Path,
+    existing_data: Path | None,
+    dry_run: bool = False,
+    psref_dir: Path | None = None,
+    psref_map: Path | None = None,
+    provider: str = DEFAULT_PROVIDER,
+    **kwargs: Any,
+) -> dict[str, Any]:
+    if provider == "lenovo":
+        return _format_lenovo_catalog(
+            input_path=input_path,
+            output_path=output_path,
+            history_dir=history_dir,
+            cto_dir=cto_dir,
+            existing_data=existing_data,
+            dry_run=dry_run,
+            psref_dir=psref_dir,
+            psref_map=psref_map,
+            **kwargs,
+        )
+    return get_provider(provider).format_catalog(
+        input_path=input_path,
+        output_path=output_path,
+        history_dir=history_dir,
+        cto_dir=cto_dir,
+        existing_data=existing_data,
+        dry_run=dry_run,
+        psref_dir=psref_dir,
+        psref_map=psref_map,
+        **kwargs,
+    )

@@ -34,6 +34,7 @@ from .specs import (
 
 MENU_URL = "https://psref.lenovo.com/api/home/menu/info?IsPreviewProduct=true"
 SHOW_MODEL_URL = "https://psref.lenovo.com/api/search/DefinitionFilterAndSearch/ShowModel"
+LOAD_SPEC_DATA_URL = "https://psref.lenovo.com/api/product/Compare/LoadSpecData"
 HEADERS = {
     "user-agent": (
         "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 "
@@ -63,10 +64,20 @@ class PsrefSessionManager:
                 cls._instance = cls()
             return cls._instance
 
-    def _init_session(self) -> None:
+    def _init_session(self, retries: int = 4) -> None:
+        token_path = Path("/tmp/psref_session.json")
         now = time.time()
-        self._session = curl_requests()
-        self._session.get("https://psref.lenovo.com/", headers={"User-Agent": HEADERS["user-agent"]}, impersonate="chrome120")
+        if token_path.exists():
+            try:
+                cached = json.loads(token_path.read_text(encoding="utf-8"))
+                if isinstance(cached, dict) and cached.get("exp", 0) > now + 60:
+                    self._jwt = cached["jwt"]
+                    self._sig_secret = cached["sig_secret"]
+                    self._exp = float(cached["exp"])
+                    self._session = curl_requests()
+                    return
+            except Exception:
+                pass
 
         headers = {
             "Content-Type": "application/json",
@@ -75,16 +86,35 @@ class PsrefSessionManager:
             "Origin": "https://psref.lenovo.com",
             "Referer": "https://psref.lenovo.com/",
         }
-        res = self._session.post("https://psref.lenovo.com/api/home/auth/issue", json={}, headers=headers, impersonate="chrome120")
-        res.raise_for_status()
-        data = res.json()
-        self._jwt = data["access_token"]
+        for attempt in range(retries):
+            try:
+                now = time.time()
+                self._session = curl_requests()
+                self._session.get("https://psref.lenovo.com/", headers={"User-Agent": HEADERS["user-agent"]}, impersonate="chrome120")
+                time.sleep(1.0)
+                res = self._session.post("https://psref.lenovo.com/api/home/auth/issue", json={}, headers=headers, impersonate="chrome120")
+                res.raise_for_status()
+                data = res.json()
+                self._jwt = data["access_token"]
 
-        payload_b64 = self._jwt.split(".")[1]
-        payload_b64 += "=" * ((4 - len(payload_b64) % 4) % 4)
-        payload_json = json.loads(base64.urlsafe_b64decode(payload_b64).decode("utf-8"))
-        self._sig_secret = payload_json["ss"]
-        self._exp = float(payload_json.get("exp", now + 1800))
+                payload_b64 = self._jwt.split(".")[1]
+                payload_b64 += "=" * ((4 - len(payload_b64) % 4) % 4)
+                payload_json = json.loads(base64.urlsafe_b64decode(payload_b64).decode("utf-8"))
+                self._sig_secret = payload_json["ss"]
+                self._exp = float(payload_json.get("exp", now + 1800))
+
+                try:
+                    token_path.write_text(
+                        json.dumps({"jwt": self._jwt, "sig_secret": self._sig_secret, "exp": self._exp}),
+                        encoding="utf-8",
+                    )
+                except Exception:
+                    pass
+                return
+            except Exception as err:
+                if attempt == retries - 1:
+                    raise
+                time.sleep(3.0 * (attempt + 1))
 
     def request_bytes(self, url: str, accept: str | None = None, retries: int = 3, timeout: int = 120) -> bytes:
         with self._lock:
@@ -121,6 +151,22 @@ class PsrefSessionManager:
         for attempt in range(retries):
             try:
                 resp = session.get(url, headers=req_headers, impersonate="chrome120", timeout=timeout)
+                if resp.status_code == 401 and attempt < retries - 1:
+                    with self._lock:
+                        self._init_session()
+                        session = self._session
+                        jwt = self._jwt
+                        sig_secret = self._sig_secret
+                    ts = str(int(time.time()))
+                    nonce = str(uuid.uuid4())
+                    to_sign = f"GET|{path_and_query}|{body_hash}|{ts}|{nonce}"
+                    sig = hmac.new(bytes.fromhex(sig_secret), to_sign.encode("utf-8"), hashlib.sha256).hexdigest()
+                    req_headers["Authorization"] = f"Bearer {jwt}"
+                    req_headers["X-Ts"] = ts
+                    req_headers["X-Nonce"] = nonce
+                    req_headers["X-Sig"] = sig
+                    time.sleep(1.0)
+                    continue
                 resp.raise_for_status()
                 return resp.content
             except Exception as err:
@@ -327,6 +373,165 @@ def fetch_mt_model_data_json(product_key: str, mt: str = "") -> tuple[list[dict[
     return output_rows, cleaned_filters
 
 
+def resolve_mt_via_suggest(machine_type: str) -> dict[str, Any] | None:
+    if not machine_type:
+        return None
+    mt = machine_type.strip().upper()
+
+    for search_type in ["MT", ""]:
+        url = f"https://psref.lenovo.com/api/search/DefinitionFilterAndSearch/Suggest?kw={quote(mt)}&limit=6&IsPreviewProduct=true"
+        if search_type:
+            url += f"&SearchType={search_type}"
+        try:
+            blob = _request_bytes(url, accept="application/json, text/plain, */*")
+            if not blob or not blob.strip():
+                continue
+            payload = json.loads(blob.decode("utf-8-sig"))
+            data = payload.get("data") or []
+            for item in data:
+                if clean_text(item.get("MachineType")).upper() == mt or not item.get("MachineType"):
+                    pkey = item.get("ProductKey")
+                    if pkey:
+                        return {
+                            "machine_type": mt,
+                            "product_key": pkey,
+                            "product_name": clean_text(item.get("ProductName")),
+                            "marketing_name": clean_text(item.get("MarketingName")) or clean_text(item.get("ProductName")),
+                            "product_id": str(item.get("ProductId") or ""),
+                            "productline_name": clean_text(item.get("ProductLine")),
+                            "classification_name": clean_text(item.get("ClassificationName")) or "Laptops",
+                            "psref_href": (item.get("info") or {}).get("page") or f"https://psref.lenovo.com/l/Product/{pkey}",
+                        }
+            if data:
+                item = data[0]
+                pkey = item.get("ProductKey")
+                if pkey:
+                    return {
+                        "machine_type": mt,
+                        "product_key": pkey,
+                        "product_name": clean_text(item.get("ProductName")),
+                        "marketing_name": clean_text(item.get("MarketingName")) or clean_text(item.get("ProductName")),
+                        "product_id": str(item.get("ProductId") or ""),
+                        "productline_name": clean_text(item.get("ProductLine")),
+                        "classification_name": clean_text(item.get("ClassificationName")) or "Laptops",
+                        "psref_href": (item.get("info") or {}).get("page") or f"https://psref.lenovo.com/l/Product/{pkey}",
+                    }
+        except Exception:
+            pass
+    return None
+
+
+def fetch_datasheet_for_mt(machine_type: str, mt_entry: dict[str, Any] | None = None) -> dict[str, Any] | None:
+    mt = machine_type.strip().upper()
+    entry = mt_entry or resolve_mt_via_suggest(mt)
+    if not entry or not entry.get("product_key"):
+        return None
+    product_key = entry["product_key"]
+    rows, filters = fetch_mt_model_data_json(product_key=product_key, mt=mt)
+    if not rows and not filters:
+        rows, filters = fetch_mt_model_data_json(product_key=product_key)
+    return build_mt_datasheet(mt, rows, entry, filters)
+
+
+def fetch_product_spec_data(product_key: str) -> dict[str, Any]:
+    if not product_key:
+        return {}
+    url = f"{LOAD_SPEC_DATA_URL}?ProductKey={quote(product_key)}"
+    try:
+        blob = _request_bytes(url, accept="application/json, text/plain, */*")
+        if not blob:
+            return {}
+        payload = json.loads(blob.decode("utf-8-sig"))
+        gdata = payload.get("data", {}).get("GeneralSpecData") or []
+        if not gdata:
+            return {}
+        raw_json = gdata[0].get("GeneralSpecJson")
+        if not raw_json:
+            return {}
+        spec_obj = json.loads(raw_json)
+        spec_data = spec_obj.get("data", {}).get("SpecData", [])
+    except Exception:
+        return {}
+
+    flat: dict[str, list[str]] = {}
+    for l1 in spec_data:
+        for l2 in l1.get("L2", []):
+            for feat in l2.get("Features", []):
+                fname = clean_text(feat.get("FName"))
+                items = []
+                for fv in feat.get("FVs", []):
+                    for fvg in fv.get("FVGs", []):
+                        for item in fvg.get("FVGItem", []):
+                            v = clean_text(item.get("AttV"))
+                            if v:
+                                items.append(html.unescape(v))
+                if fname and items:
+                    flat[fname] = items
+
+    out: dict[str, Any] = OrderedDict()
+
+    # 1. Ports
+    ports_items = flat.get("Standard Ports") or []
+    if ports_items:
+        out["ports"] = {"raw": "^|^".join(ports_items), "items": ports_items}
+
+    # 2. Dimensions & Weight
+    dim_items = flat.get("Dimensions (WxDxH)") or []
+    dim_val = dim_items[-1] if dim_items else ""
+    wt_items = flat.get("Weight") or []
+    wt_val = wt_items[-1] if wt_items else ""
+    if dim_val or wt_val:
+        out["dimensions"] = {"raw": dim_val, "size": dim_val, "weight": wt_val}
+
+    # 3. Audio & Speakers
+    chip_val = flat.get("Audio Chip", [""])[0]
+    spk_val = flat.get("Speakers", [""])[0]
+    mic_val = flat.get("Microphone", [""])[0]
+    if chip_val or spk_val or mic_val:
+        out["audio"] = {"chip": chip_val, "speakers": spk_val, "microphone": mic_val}
+
+    # 4. Memory & Storage slots
+    mslots_val = flat.get("Memory Slots", [""])[0]
+    maxmem_val = flat.get("Max Memory", [""])[0]
+    if mslots_val or maxmem_val:
+        out["memory_slots"] = {"raw": mslots_val, "max_memory": maxmem_val}
+
+    sslots_val = flat.get("Storage Slot", [""])[0]
+    maxsto_val = flat.get("Storage Support", [""])[0]
+    if sslots_val or maxsto_val:
+        out["storage_slots"] = {"raw": sslots_val, "max_storage": maxsto_val}
+
+    # 5. Build, Keyboard, Security, Warranty
+    color_items = flat.get("Case Color") or []
+    color_val = ", ".join(color_items) if color_items else ""
+    mat_val = flat.get("Case Material", [""])[0]
+    surf_val = flat.get("Surface Treatment", [""])[0]
+    if color_val or mat_val or surf_val:
+        out["build"] = {"color": color_val, "material": mat_val, "surface": surf_val}
+
+    kbd_val = flat.get("Keyboard", [""])[0]
+    if kbd_val:
+        out["keyboard"] = {"raw": kbd_val}
+
+    sec_chip = flat.get("Security Chip", [""])[0]
+    fp_val = flat.get("Fingerprint Reader", [""])[0]
+    other_sec = flat.get("Other Security", [""])[0]
+    if sec_chip or fp_val or other_sec:
+        out["security"] = {"chip": sec_chip, "fingerprint": fp_val, "other": other_sec}
+
+    warr_val = flat.get("Base Warranty", [""])[0]
+    if warr_val:
+        out["warranty"] = {"base": warr_val}
+
+    green_certs = flat.get("Green Certifications") or []
+    mil_spec = flat.get("Mil-Spec Test", [""])[0]
+    other_certs = flat.get("Other Certifications") or []
+    if green_certs or mil_spec or other_certs:
+        out["certifications"] = {"green": green_certs, "mil_spec": mil_spec, "other": other_certs}
+
+    return compact_specs(out)
+
+
 def build_mt_datasheet(prefix: str, prefix_rows: list[dict[str, str]], mt_entry: dict[str, Any], filter_options: dict[str, list[str]] | None = None) -> dict[str, Any]:
     filter_options = filter_options or {}
     spec_pool: dict[str, dict[str, Any]] = {
@@ -410,11 +615,34 @@ def build_mt_datasheet(prefix: str, prefix_rows: list[dict[str, str]], mt_entry:
                 },
             }
 
-    if prefix_rows:
-        sample = build_specs_from_row(prefix_rows[0])
-        for key in ["network", "power", "battery", "ports", "memory_slots", "storage_slots", "camera", "audio", "keyboard", "dimensions", "build", "software", "security", "warranty", "certifications"]:
-            if sample.get(key):
-                platform_defaults[key] = sample[key]
+    # Merge platform defaults across all model rows
+    for row in prefix_rows:
+        row_specs = build_specs_from_row(row)
+        for key, val in row_specs.items():
+            if key in ("processor", "graphics", "memory", "storage", "display"):
+                continue
+            if not val:
+                continue
+            if key not in platform_defaults:
+                platform_defaults[key] = val
+            elif isinstance(val, dict) and isinstance(platform_defaults[key], dict):
+                for sub_k, sub_v in val.items():
+                    if sub_v and not platform_defaults[key].get(sub_k):
+                        platform_defaults[key][sub_k] = sub_v
+
+    # Load complete platform specs via LoadSpecData API for full platform defaults
+    product_key = mt_entry.get("product_key") or ""
+    if product_key:
+        api_spec_data = fetch_product_spec_data(product_key)
+        for key, val in api_spec_data.items():
+            if not val:
+                continue
+            if key not in platform_defaults:
+                platform_defaults[key] = val
+            elif isinstance(val, dict) and isinstance(platform_defaults[key], dict):
+                for sub_k, sub_v in val.items():
+                    if sub_v and not platform_defaults[key].get(sub_k):
+                        platform_defaults[key][sub_k] = sub_v
 
     return {
         "machine_type": prefix,

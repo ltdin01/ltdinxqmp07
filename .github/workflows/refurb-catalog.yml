@@ -1,0 +1,155 @@
+name: Lenovo Outlet Refurb Catalog (Hourly)
+
+on:
+  schedule:
+    # Runs every hour at minute 0
+    - cron: '0 * * * *'
+  workflow_dispatch:
+    inputs:
+      workers:
+        description: 'Parallel workers'
+        required: false
+        default: '4'
+      commit_changes:
+        description: 'Commit and push changes'
+        type: boolean
+        default: true
+
+permissions:
+  contents: write
+
+concurrency:
+  group: refurb-data-refresh-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  refurb-catalog:
+    runs-on: ubuntu-latest
+    env:
+      TZ: Asia/Kolkata
+      PYTHONUNBUFFERED: '1'
+      TARGET_REPO_OWNER: ${{ secrets.TARGET_REPO_OWNER || 'kryptobolt07' }}
+      TARGET_REPO_NAME: ${{ secrets.TARGET_REPO_NAME || 'laptopdeals' }}
+      TARGET_REPO_BRANCH: ${{ secrets.TARGET_REPO_BRANCH || 'main' }}
+      TARGET_REPO_PAT: ${{ secrets.TARGET_REPO_PAT }}
+      WORKERS: ${{ github.event.inputs.workers || '4' }}
+      COMMIT_CHANGES: ${{ github.event_name == 'schedule' && 'true' || inputs.commit_changes }}
+      GIT_COMMIT_AUTHOR_NAME: ${{ secrets.GIT_COMMIT_AUTHOR_NAME || 'github-actions[bot]' }}
+      GIT_COMMIT_AUTHOR_EMAIL: ${{ secrets.GIT_COMMIT_AUTHOR_EMAIL || '41898282+github-actions[bot]@users.noreply.github.com' }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Checkout Website Target Repository
+        run: |
+          if [[ -n "${TARGET_REPO_PAT}" ]]; then
+            echo "Cloning target repo: ${TARGET_REPO_OWNER}/${TARGET_REPO_NAME} branch: ${TARGET_REPO_BRANCH}"
+            git clone --branch "${TARGET_REPO_BRANCH}" "https://x-access-token:${TARGET_REPO_PAT}@github.com/${TARGET_REPO_OWNER}/${TARGET_REPO_NAME}.git" website-target
+          else
+            echo "No external target repo PAT configured; operating locally."
+            mkdir -p website-target/apps/web
+            if [[ -d "apps/web" ]]; then
+              cp -r apps/web website-target/apps/
+            fi
+          fi
+
+      - name: Scrape Lenovo Outlet Refurb Catalog
+        shell: bash
+        run: |
+          echo "=== Starting Lenovo Outlet Catalog Scrape ==="
+          python -u scripts/catalog.py --provider refurb scrape \
+            --output data/refurb-catalog.json \
+            --workers "${WORKERS}" \
+            --verbose
+
+      - name: Format Refurb Public Catalog & Apply PSREF Enrichment
+        run: |
+          echo "=== Formatting Refurb Public Web Catalog ==="
+          target_data="website-target/apps/web/data-refurb.json"
+          if [[ ! -f "${target_data}" && -f "apps/web/data-refurb.json" ]]; then
+            target_data="apps/web/data-refurb.json"
+          fi
+          python -u scripts/catalog.py --provider refurb format \
+            --input data/refurb-catalog.json \
+            --output "${target_data}" \
+            --existing-data "${target_data}"
+
+      - name: Update Live Refurb Prices & Inventory
+        run: |
+          echo "=== Refreshing Live Refurb Prices & Inventory ==="
+          target_data="website-target/apps/web/data-refurb.json"
+          target_hist="website-target/apps/web/price_history_refurb"
+          if [[ ! -f "${target_data}" && -f "apps/web/data-refurb.json" ]]; then
+            target_data="apps/web/data-refurb.json"
+            target_hist="apps/web/price_history_refurb"
+          fi
+          mkdir -p "${target_hist}"
+          python -u scripts/prices.py \
+            --data "${target_data}" \
+            --history-dir "${target_hist}" \
+            refurb-current \
+            --workers "${WORKERS}"
+
+      - name: Fetch BitBns Price History
+        run: |
+          echo "=== Fetching BitBns Price History ==="
+          target_data="website-target/apps/web/data-refurb.json"
+          target_hist="website-target/apps/web/price_history_refurb"
+          if [[ ! -f "${target_data}" && -f "apps/web/data-refurb.json" ]]; then
+            target_data="apps/web/data-refurb.json"
+            target_hist="apps/web/price_history_refurb"
+          fi
+          python -u scripts/prices.py \
+            --data "${target_data}" \
+            --history-dir "${target_hist}" \
+            bitbns-history \
+            --only-new \
+            --workers 1 \
+            --delay 1.5 || true
+
+      - name: Sync Artifacts to Workspace
+        run: |
+          if [[ -d "website-target/apps/web" ]]; then
+            mkdir -p apps/web
+            cp -rf website-target/apps/web/data-refurb.json apps/web/ 2>/dev/null || true
+            cp -rf website-target/apps/web/archive-refurb.json apps/web/ 2>/dev/null || true
+            cp -rf website-target/apps/web/price_history_refurb apps/web/ 2>/dev/null || true
+          fi
+
+      - name: Commit and Push Changes
+        if: env.COMMIT_CHANGES == 'true'
+        run: |
+          git config user.name "${GIT_COMMIT_AUTHOR_NAME}"
+          git config user.email "${GIT_COMMIT_AUTHOR_EMAIL}"
+
+          git add apps/web/data-refurb.json apps/web/archive-refurb.json apps/web/price_history_refurb/ data/refurb-catalog.json || true
+          
+          if git diff --staged --quiet; then
+            echo "No changes to commit in local repository."
+          else
+            git commit -m "Auto-refresh Lenovo Refurb catalog and inventory [skip ci]"
+            git push origin HEAD || true
+          fi
+
+          if [[ -n "${TARGET_REPO_PAT}" && -d "website-target/.git" ]]; then
+            cd website-target
+            git config user.name "${GIT_COMMIT_AUTHOR_NAME}"
+            git config user.email "${GIT_COMMIT_AUTHOR_EMAIL}"
+            git add apps/web/data-refurb.json apps/web/archive-refurb.json apps/web/price_history_refurb/ || true
+            if git diff --staged --quiet; then
+              echo "No changes to commit in target website repository."
+            else
+              git commit -m "Auto-refresh Lenovo Refurb catalog and inventory [skip ci]"
+              git push origin "${TARGET_REPO_BRANCH}" || true
+            fi
+          fi

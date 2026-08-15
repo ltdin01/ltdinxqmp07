@@ -1,0 +1,45 @@
+{
+  "captured_at": "2026-08-04T17:22:17Z",
+  "note": "Golden baseline for Amazon integration Phase 0. Frozen inputs bundle lives in /tmp/opencode/golden (not committed).",
+  "golden_bundle": "/tmp/opencode/golden",
+  "files": {
+    "apps/web/data.json": {
+      "sha256": "b5d665a4eb67f8aedc182017dcf733cc75da510ea27dba1b3f5cfb893b11e3db",
+      "size": 4979199,
+      "categories": {
+        "Ideacentre": 1,
+        "Ideapad": 92,
+        "Legion Laptops": 47,
+        "Lenovo LOQ Laptops": 52,
+        "ThinkPad": 156,
+        "Thinkbook": 34,
+        "Uncategorized": 2,
+        "Yoga": 60
+      }
+    },
+    "data/lenovo-catalog.json": {
+      "sha256": "b379f95137217066e0b55ae73f93e75a93a73ffa7192fc1da6cb5f0be1d00def",
+      "size": 1616448
+    },
+    "apps/web/archive.json": {
+      "sha256": "ba08efb5d078664dccafcc25d585311f5ea7f72bc900905ea4f99a83113b3f20",
+      "size": 1706386
+    },
+    "data/lenovo_psref/final_sku_specs.json": {
+      "sha256": "8ee49c1cd81cf5c03fa0ab62ce21aceef115cf686f4077ddbaeeb75021364066",
+      "size": 1403172
+    }
+  },
+  "counts": {
+    "price_history_files": 542,
+    "cto_configs_files": 186
+  },
+  "golden_snapshot": {
+    "path": "/tmp/opencode/golden/expected/lenovo-data.json",
+    "sha256": "f0e76cf01850cf0552e1d830bfbe02ea1d71da6af2b67aeca78f66d67013347c",
+    "products": 444,
+    "categories": 7,
+    "captured_at": "2026-08-04T17:28:49Z",
+    "note": "includes vendor:lenovo field (Phase 1 schema addition)"
+  }
+}

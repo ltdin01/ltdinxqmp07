@@ -1,0 +1,322 @@
+{
+  "generated_at": "2026-08-06T22:43:19Z",
+  "total_products": 1442,
+  "categories": {
+    "Amazon: Acer Travelmate": 11,
+    "Amazon: Dell Alienware": 7,
+    "Amazon: Dell Thin": 1,
+    "Amazon: Asus": 37,
+    "Amazon: Acer Aspire": 91,
+    "Amazon: Acer": 37,
+    "Amazon: Msi": 13,
+    "Amazon: Hp Pavilion": 16,
+    "Amazon: Msi Thin": 26,
+    "Amazon: Asus Vivobook": 142,
+    "Amazon: Dell": 37,
+    "Amazon: Lenovo V Series": 87,
+    "Amazon: Asus Zenbook": 30,
+    "Amazon: Acer Acer One": 16,
+    "Amazon: Dell Inspiron": 48,
+    "Amazon: Asus Expertbook": 8,
+    "Amazon: Acer Nitro": 14,
+    "Amazon: Asus Tuf": 50,
+    "Amazon: Msi Modern": 12,
+    "Amazon: Msi Katana": 12,
+    "Amazon: Msi Cyborg": 4,
+    "Amazon: Lenovo Ideapad": 127,
+    "Amazon: Asus Rog": 43,
+    "Amazon: Dell Latitude": 22,
+    "Amazon: Lenovo Thinkbook": 37,
+    "Amazon: Hp Victus": 61,
+    "Amazon: Lenovo Legion": 1,
+    "Amazon: Hp Probook": 11,
+    "Amazon: Hp": 9,
+    "Amazon: Hp Hp Essential": 226,
+    "Amazon: Dell Vostro": 5,
+    "Amazon: Hp Omen": 15,
+    "Amazon: Acer Predator": 18,
+    "Amazon: Lenovo Thinkpad": 42,
+    "Amazon: Dell G Series": 6,
+    "Amazon: Hp Elitebook": 8,
+    "Amazon: Msi Stealth": 5,
+    "Amazon: Msi Prestige": 3,
+    "Amazon: Msi Sword": 1,
+    "Amazon: Lenovo Yoga": 3,
+    "Amazon: Lenovo Loq": 49,
+    "Amazon: Msi Pulse": 2,
+    "Amazon: Acer Swift": 5,
+    "Amazon: Dell Xps": 3,
+    "Amazon: Hp Spectre": 1,
+    "Amazon: Hp Envy": 1,
+    "Amazon: Lenovo": 1,
+    "Amazon: Lenovo Essential": 36,
+    "Amazon: Asus Proart": 2
+  },
+  "fields": {
+    "processor.brand": {
+      "checked": 1442,
+      "missing": 0,
+      "unknown": 13,
+      "ok": 1429,
+      "coverage": 0.991
+    },
+    "processor.model": {
+      "checked": 1442,
+      "missing": 0,
+      "unknown": 13,
+      "ok": 1429,
+      "coverage": 0.991
+    },
+    "graphics.model": {
+      "checked": 1442,
+      "missing": 0,
+      "unknown": 23,
+      "ok": 1419,
+      "coverage": 0.984
+    },
+    "graphics.dedicated": {
+      "checked": 1442,
+      "missing": 0,
+      "unknown": 0,
+      "ok": 1442,
+      "coverage": 1
+    },
+    "memory.amount": {
+      "checked": 1442,
+      "missing": 0,
+      "unknown": 20,
+      "ok": 1422,
+      "coverage": 0.9861
+    },
+    "memory.type": {
+      "checked": 1442,
+      "missing": 0,
+      "unknown": 18,
+      "ok": 1424,
+      "coverage": 0.9875
+    },
+    "storage.capacity": {
+      "checked": 1442,
+      "missing": 0,
+      "unknown": 6,
+      "ok": 1436,
+      "coverage": 0.9958
+    },
+    "storage.type": {
+      "checked": 1442,
+      "missing": 0,
+      "unknown": 8,
+      "ok": 1434,
+      "coverage": 0.9945
+    },
+    "display.size": {
+      "checked": 1442,
+      "missing": 7,
+      "unknown": 0,
+      "ok": 1435,
+      "coverage": 0.9951
+    },
+    "display.resolution|res|resolution_name": {
+      "checked": 1442,
+      "missing": 33,
+      "unknown": 0,
+      "ok": 1409,
+      "coverage": 0.9771
+    },
+    "network.wifi": {
+      "checked": 1442,
+      "missing": 0,
+      "unknown": 139,
+      "ok": 1303,
+      "coverage": 0.9036
+    },
+    "network.bluetooth": {
+      "checked": 1442,
+      "missing": 0,
+      "unknown": 272,
+      "ok": 1170,
+      "coverage": 0.8114
+    },
+    "battery.capacity": {
+      "checked": 1442,
+      "missing": 0,
+      "unknown": 342,
+      "ok": 1100,
+      "coverage": 0.7628
+    },
+    "ports.items": {
+      "checked": 1442,
+      "missing": 3,
+      "unknown": 105,
+      "ok": 1334,
+      "coverage": 0.9251
+    },
+    "camera.webcam": {
+      "checked": 1442,
+      "missing": 3,
+      "unknown": 217,
+      "ok": 1222,
+      "coverage": 0.8474
+    },
+    "keyboard.details": {
+      "checked": 1442,
+      "missing": 3,
+      "unknown": 235,
+      "ok": 1204,
+      "coverage": 0.835
+    },
+    "dimensions.weight": {
+      "checked": 1442,
+      "missing": 0,
+      "unknown": 202,
+      "ok": 1240,
+      "coverage": 0.8599
+    },
+    "software.os": {
+      "checked": 1442,
+      "missing": 0,
+      "unknown": 16,
+      "ok": 1426,
+      "coverage": 0.9889
+    },
+    "metadata.model_number": {
+      "checked": 1442,
+      "missing": 378,
+      "unknown": 0,
+      "ok": 1064,
+      "coverage": 0.7379
+    },
+    "metadata.manufacturer": {
+      "checked": 1442,
+      "missing": 155,
+      "unknown": 0,
+      "ok": 1287,
+      "coverage": 0.8925
+    },
+    "metadata.series": {
+      "checked": 1442,
+      "missing": 80,
+      "unknown": 0,
+      "ok": 1362,
+      "coverage": 0.9445
+    }
+  },
+  "core_specs": {
+    "complete": 1108,
+    "coverage": 0.7684
+  },
+  "source_available": {
+    "observable": 0,
+    "landed": 0,
+    "coverage": 1,
+    "computable": false,
+    "raw_specs_products": 0,
+    "fields": {
+      "processor.brand": {
+        "observable": 0,
+        "landed": 0,
+        "coverage": 1
+      },
+      "processor.model": {
+        "observable": 0,
+        "landed": 0,
+        "coverage": 1
+      },
+      "graphics.model": {
+        "observable": 0,
+        "landed": 0,
+        "coverage": 1
+      },
+      "memory.amount": {
+        "observable": 0,
+        "landed": 0,
+        "coverage": 1
+      },
+      "memory.type": {
+        "observable": 0,
+        "landed": 0,
+        "coverage": 1
+      },
+      "storage.capacity": {
+        "observable": 0,
+        "landed": 0,
+        "coverage": 1
+      },
+      "storage.type": {
+        "observable": 0,
+        "landed": 0,
+        "coverage": 1
+      },
+      "display.size": {
+        "observable": 0,
+        "landed": 0,
+        "coverage": 1
+      },
+      "display.resolution|res|resolution_name": {
+        "observable": 0,
+        "landed": 0,
+        "coverage": 1
+      },
+      "network.wifi": {
+        "observable": 0,
+        "landed": 0,
+        "coverage": 1
+      },
+      "network.bluetooth": {
+        "observable": 0,
+        "landed": 0,
+        "coverage": 1
+      },
+      "battery.capacity": {
+        "observable": 0,
+        "landed": 0,
+        "coverage": 1
+      },
+      "ports.items": {
+        "observable": 0,
+        "landed": 0,
+        "coverage": 1
+      },
+      "camera.webcam": {
+        "observable": 0,
+        "landed": 0,
+        "coverage": 1
+      },
+      "keyboard.details": {
+        "observable": 0,
+        "landed": 0,
+        "coverage": 1
+      },
+      "dimensions.weight": {
+        "observable": 0,
+        "landed": 0,
+        "coverage": 1
+      },
+      "software.os": {
+        "observable": 0,
+        "landed": 0,
+        "coverage": 1
+      },
+      "metadata.model_number": {
+        "observable": 0,
+        "landed": 0,
+        "coverage": 1
+      },
+      "metadata.manufacturer": {
+        "observable": 0,
+        "landed": 0,
+        "coverage": 1
+      },
+      "metadata.series": {
+        "observable": 0,
+        "landed": 0,
+        "coverage": 1
+      }
+    }
+  },
+  "correct_regressions": {
+    "processor.cores": "Amazon's 'Processor Count' is a package count, not a physical core count. It agreed with the stored value on 146/146 products purely by coincidence of both being wrong; the parser no longer consumes it. 92% -> 0% is intended."
+  },
+  "exit": "pass",
+  "failures": []
+}

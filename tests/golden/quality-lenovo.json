@@ -1,0 +1,106 @@
+{
+  "generated_at": "2026-08-04T17:24:54Z",
+  "total_products": 444,
+  "categories": {
+    "ThinkPad": 156,
+    "Yoga": 60,
+    "Ideapad": 92,
+    "Lenovo LOQ Laptops": 52,
+    "Legion Laptops": 47,
+    "Ideacentre": 1,
+    "Thinkbook": 34,
+    "Uncategorized": 2
+  },
+  "fields": {
+    "processor.brand": {
+      "checked": 444,
+      "missing": 3,
+      "unknown": 0,
+      "ok": 441,
+      "coverage": 0.9932
+    },
+    "processor.model": {
+      "checked": 444,
+      "missing": 3,
+      "unknown": 0,
+      "ok": 441,
+      "coverage": 0.9932
+    },
+    "graphics.model": {
+      "checked": 444,
+      "missing": 3,
+      "unknown": 0,
+      "ok": 441,
+      "coverage": 0.9932
+    },
+    "graphics.dedicated": {
+      "checked": 444,
+      "missing": 0,
+      "unknown": 0,
+      "ok": 444,
+      "coverage": 1
+    },
+    "memory.amount": {
+      "checked": 444,
+      "missing": 3,
+      "unknown": 0,
+      "ok": 441,
+      "coverage": 0.9932
+    },
+    "memory.type": {
+      "checked": 444,
+      "missing": 3,
+      "unknown": 0,
+      "ok": 441,
+      "coverage": 0.9932
+    },
+    "storage.capacity": {
+      "checked": 444,
+      "missing": 3,
+      "unknown": 0,
+      "ok": 441,
+      "coverage": 0.9932
+    },
+    "storage.type": {
+      "checked": 444,
+      "missing": 3,
+      "unknown": 0,
+      "ok": 441,
+      "coverage": 0.9932
+    },
+    "display.size": {
+      "checked": 444,
+      "missing": 18,
+      "unknown": 0,
+      "ok": 426,
+      "coverage": 0.9595
+    },
+    "display.resolution|res|resolution_name": {
+      "checked": 444,
+      "missing": 3,
+      "unknown": 0,
+      "ok": 441,
+      "coverage": 0.9932
+    },
+    "network.wifi": {
+      "checked": 444,
+      "missing": 3,
+      "unknown": 0,
+      "ok": 441,
+      "coverage": 0.9932
+    },
+    "network.bluetooth": {
+      "checked": 444,
+      "missing": 3,
+      "unknown": 0,
+      "ok": 441,
+      "coverage": 0.9932
+    }
+  },
+  "core_specs": {
+    "complete": 426,
+    "coverage": 0.9595
+  },
+  "exit": "pass",
+  "failures": []
+}

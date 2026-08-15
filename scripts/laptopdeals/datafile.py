@@ -45,6 +45,10 @@ def save_products(path: Path, data: Any) -> None:
     write_json(path, data, indent=4)
 
 
+load_data = load_products
+write_data = save_products
+
+
 def selected_products(data: Any, ids: set[str] | None = None) -> list[dict[str, Any]]:
     out = []
     wanted = ids or set()

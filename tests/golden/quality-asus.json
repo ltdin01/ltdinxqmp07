@@ -1,0 +1,908 @@
+{
+  "generated_at": "2026-08-11T18:24:23Z",
+  "total_products": 275,
+  "categories": {
+    "ASUS: Chromebook": 13,
+    "ASUS: Vivobook": 165,
+    "ASUS: TUF Gaming": 34,
+    "ASUS: ROG": 35,
+    "ASUS: ProArt": 4,
+    "ASUS: Zenbook": 24
+  },
+  "fields": {
+    "processor.brand": {
+      "checked": 275,
+      "missing": 0,
+      "unknown": 0,
+      "ok": 275,
+      "coverage": 1
+    },
+    "processor.model": {
+      "checked": 275,
+      "missing": 0,
+      "unknown": 0,
+      "ok": 275,
+      "coverage": 1
+    },
+    "graphics.model": {
+      "checked": 275,
+      "missing": 0,
+      "unknown": 0,
+      "ok": 275,
+      "coverage": 1
+    },
+    "graphics.dedicated": {
+      "checked": 275,
+      "missing": 0,
+      "unknown": 0,
+      "ok": 275,
+      "coverage": 1
+    },
+    "memory.amount": {
+      "checked": 275,
+      "missing": 0,
+      "unknown": 0,
+      "ok": 275,
+      "coverage": 1
+    },
+    "memory.type": {
+      "checked": 275,
+      "missing": 0,
+      "unknown": 0,
+      "ok": 275,
+      "coverage": 1
+    },
+    "storage.capacity": {
+      "checked": 275,
+      "missing": 0,
+      "unknown": 0,
+      "ok": 275,
+      "coverage": 1
+    },
+    "storage.type": {
+      "checked": 275,
+      "missing": 0,
+      "unknown": 0,
+      "ok": 275,
+      "coverage": 1
+    },
+    "display.size": {
+      "checked": 275,
+      "missing": 0,
+      "unknown": 0,
+      "ok": 275,
+      "coverage": 1
+    },
+    "display.resolution|res|resolution_name": {
+      "checked": 275,
+      "missing": 0,
+      "unknown": 0,
+      "ok": 275,
+      "coverage": 1
+    },
+    "network.wifi": {
+      "checked": 275,
+      "missing": 0,
+      "unknown": 0,
+      "ok": 275,
+      "coverage": 1
+    },
+    "network.bluetooth": {
+      "checked": 275,
+      "missing": 0,
+      "unknown": 0,
+      "ok": 275,
+      "coverage": 1
+    },
+    "battery.capacity": {
+      "checked": 275,
+      "missing": 0,
+      "unknown": 0,
+      "ok": 275,
+      "coverage": 1
+    },
+    "ports.items": {
+      "checked": 275,
+      "missing": 0,
+      "unknown": 0,
+      "ok": 275,
+      "coverage": 1
+    },
+    "camera.webcam": {
+      "checked": 275,
+      "missing": 0,
+      "unknown": 0,
+      "ok": 275,
+      "coverage": 1
+    },
+    "keyboard.details": {
+      "checked": 275,
+      "missing": 0,
+      "unknown": 0,
+      "ok": 275,
+      "coverage": 1
+    },
+    "dimensions.weight": {
+      "checked": 275,
+      "missing": 46,
+      "unknown": 0,
+      "ok": 229,
+      "coverage": 0.8327
+    },
+    "software.os": {
+      "checked": 275,
+      "missing": 0,
+      "unknown": 0,
+      "ok": 275,
+      "coverage": 1
+    },
+    "metadata.model_number": {
+      "checked": 275,
+      "missing": 0,
+      "unknown": 0,
+      "ok": 275,
+      "coverage": 1
+    },
+    "metadata.manufacturer": {
+      "checked": 275,
+      "missing": 0,
+      "unknown": 0,
+      "ok": 275,
+      "coverage": 1
+    },
+    "metadata.series": {
+      "checked": 275,
+      "missing": 0,
+      "unknown": 0,
+      "ok": 275,
+      "coverage": 1
+    }
+  },
+  "core_specs": {
+    "complete": 275,
+    "coverage": 1
+  },
+  "source_available": {
+    "observable": 0,
+    "landed": 0,
+    "coverage": 1,
+    "computable": false,
+    "raw_specs_products": 0,
+    "fields": {
+      "processor.brand": {
+        "observable": 0,
+        "landed": 0,
+        "coverage": 1
+      },
+      "processor.model": {
+        "observable": 0,
+        "landed": 0,
+        "coverage": 1
+      },
+      "graphics.model": {
+        "observable": 0,
+        "landed": 0,
+        "coverage": 1
+      },
+      "memory.amount": {
+        "observable": 0,
+        "landed": 0,
+        "coverage": 1
+      },
+      "memory.type": {
+        "observable": 0,
+        "landed": 0,
+        "coverage": 1
+      },
+      "storage.capacity": {
+        "observable": 0,
+        "landed": 0,
+        "coverage": 1
+      },
+      "storage.type": {
+        "observable": 0,
+        "landed": 0,
+        "coverage": 1
+      },
+      "display.size": {
+        "observable": 0,
+        "landed": 0,
+        "coverage": 1
+      },
+      "display.resolution|res|resolution_name": {
+        "observable": 0,
+        "landed": 0,
+        "coverage": 1
+      },
+      "network.wifi": {
+        "observable": 0,
+        "landed": 0,
+        "coverage": 1
+      },
+      "network.bluetooth": {
+        "observable": 0,
+        "landed": 0,
+        "coverage": 1
+      },
+      "battery.capacity": {
+        "observable": 0,
+        "landed": 0,
+        "coverage": 1
+      },
+      "ports.items": {
+        "observable": 0,
+        "landed": 0,
+        "coverage": 1
+      },
+      "camera.webcam": {
+        "observable": 0,
+        "landed": 0,
+        "coverage": 1
+      },
+      "keyboard.details": {
+        "observable": 0,
+        "landed": 0,
+        "coverage": 1
+      },
+      "dimensions.weight": {
+        "observable": 0,
+        "landed": 0,
+        "coverage": 1
+      },
+      "software.os": {
+        "observable": 0,
+        "landed": 0,
+        "coverage": 1
+      },
+      "metadata.model_number": {
+        "observable": 0,
+        "landed": 0,
+        "coverage": 1
+      },
+      "metadata.manufacturer": {
+        "observable": 0,
+        "landed": 0,
+        "coverage": 1
+      },
+      "metadata.series": {
+        "observable": 0,
+        "landed": 0,
+        "coverage": 1
+      }
+    }
+  },
+  "spec_conflicts": {
+    "total": 3052,
+    "products_with_conflicts": 275,
+    "products_share": 1,
+    "by_chosen": {
+      "retailer": 2416,
+      "manufacturer": 636
+    },
+    "by_origin": {
+      "asus_family": 1355,
+      "asus_family_constructed": 1061,
+      "asus_exact": 636
+    },
+    "fields_with_conflicts": 33,
+    "top_fields": [
+      {
+        "field": "camera.webcam",
+        "count": 393,
+        "products": 198,
+        "by_chosen": {
+          "retailer": 393
+        },
+        "by_origin": {
+          "asus_family": 198,
+          "asus_family_constructed": 195
+        },
+        "distinct_pairs": 16,
+        "examples": [
+          {
+            "manufacturer": "720p HD camera, With privacy shutter",
+            "retailer": "720p HD camera || With privacy shutter",
+            "count": 194,
+            "chosen": {
+              "retailer": 194
+            },
+            "manufacturer_origin": {
+              "asus_family": 97,
+              "asus_family_constructed": 97
+            }
+          },
+          {
+            "manufacturer": "FHD camera with IR function to support Windows Hello, With privacy shutter",
+            "retailer": "FHD camera with IR function to support Windows Hello || With privacy shutter",
+            "count": 94,
+            "chosen": {
+              "retailer": 94
+            },
+            "manufacturer_origin": {
+              "asus_family": 47,
+              "asus_family_constructed": 47
+            }
+          },
+          {
+            "manufacturer": "720p HD camera, With privacy shutter",
+            "retailer": "720p HD camera With privacy shutter",
+            "count": 46,
+            "chosen": {
+              "retailer": 46
+            },
+            "manufacturer_origin": {
+              "asus_family": 23,
+              "asus_family_constructed": 23
+            }
+          }
+        ]
+      },
+      {
+        "field": "ports.raw",
+        "count": 375,
+        "products": 204,
+        "by_chosen": {
+          "retailer": 375
+        },
+        "by_origin": {
+          "asus_family": 204,
+          "asus_family_constructed": 171
+        },
+        "distinct_pairs": 59,
+        "examples": [
+          {
+            "manufacturer": "2x USB 3.2 Gen 1 Type-A (data speed up to 5Gbps) 1x USB 3.2 Gen 1 Type-C (data speed up to 5Gbps) 1x USB 2.0 Type-A (da…",
+            "retailer": "1x HDMI 1.4, 1x USB 2.0 Type-A (data speed up to 480Mbps) || 1x USB 3.2 Gen 1 Type-C (data speed up to 5Gbps) || 2x USB…",
+            "count": 68,
+            "chosen": {
+              "retailer": 68
+            },
+            "manufacturer_origin": {
+              "asus_family": 34,
+              "asus_family_constructed": 34
+            }
+          },
+          {
+            "manufacturer": "1x USB 3.2 Gen 1 Type-C (data speed up to 5Gbps) 1x USB 3.2 Gen 1 Type-A 1x USB 2.0 Type-A (data speed up to 480Mbps), …",
+            "retailer": "1x HDMI 1.4, 1x USB 2.0 Type-A (data speed up to 480Mbps) || 1x USB 3.2 Gen 1 Type-A (data speed up to 5Gbps) || 1x USB…",
+            "count": 56,
+            "chosen": {
+              "retailer": 56
+            },
+            "manufacturer_origin": {
+              "asus_family": 28,
+              "asus_family_constructed": 28
+            }
+          },
+          {
+            "manufacturer": "2x Thunderbolt 4 with support for display / power delivery (data speed up to 40Gbps) 1x USB 3.2 Gen 1 Type-A, 1x 3.5mm …",
+            "retailer": "1x HDMI 2.1 TMDS, 1x USB 3.2 Gen 1 Type-A (data speed up to 5Gbps) || 2x Thunderbolt 4 with support for display / power…",
+            "count": 34,
+            "chosen": {
+              "retailer": 34
+            },
+            "manufacturer_origin": {
+              "asus_family": 17,
+              "asus_family_constructed": 17
+            }
+          }
+        ]
+      },
+      {
+        "field": "processor.model",
+        "count": 337,
+        "products": 264,
+        "by_chosen": {
+          "manufacturer": 264,
+          "retailer": 73
+        },
+        "by_origin": {
+          "asus_exact": 264,
+          "asus_family_constructed": 37,
+          "asus_family": 36
+        },
+        "distinct_pairs": 82,
+        "examples": [
+          {
+            "manufacturer": "Intel Core 5 120U",
+            "retailer": "Core 5 120U",
+            "count": 17,
+            "chosen": {
+              "manufacturer": 17
+            },
+            "manufacturer_origin": {
+              "asus_exact": 17
+            }
+          },
+          {
+            "manufacturer": "AMD Ryzen 5 7520U",
+            "retailer": "Ryzen 5 7520U",
+            "count": 16,
+            "chosen": {
+              "manufacturer": 16
+            },
+            "manufacturer_origin": {
+              "asus_exact": 16
+            }
+          },
+          {
+            "manufacturer": "Intel Core Ultra 5 225H",
+            "retailer": "Core Ultra 5 225H",
+            "count": 16,
+            "chosen": {
+              "manufacturer": 16
+            },
+            "manufacturer_origin": {
+              "asus_exact": 16
+            }
+          }
+        ]
+      },
+      {
+        "field": "audio.details",
+        "count": 271,
+        "products": 167,
+        "by_chosen": {
+          "retailer": 271
+        },
+        "by_origin": {
+          "asus_family": 167,
+          "asus_family_constructed": 104
+        },
+        "distinct_pairs": 42,
+        "examples": [
+          {
+            "manufacturer": "Built-in array microphone Built-in speaker SonicMaster, with Cortana voice-recognition support",
+            "retailer": "SonicMaster || Built-in speaker || Built-in array microphone",
+            "count": 48,
+            "chosen": {
+              "retailer": 48
+            },
+            "manufacturer_origin": {
+              "asus_family": 28,
+              "asus_family_constructed": 20
+            }
+          },
+          {
+            "manufacturer": "Built-in array microphone Built-in speaker SonicMaster, with Cortana voice-recognition support",
+            "retailer": "SonicMaster || Built-in speaker || Built-in array microphone || 1x 3.5mm Combo Audio Jack || 1x DC-in",
+            "count": 37,
+            "chosen": {
+              "retailer": 37
+            },
+            "manufacturer_origin": {
+              "asus_family": 24,
+              "asus_family_constructed": 13
+            }
+          },
+          {
+            "manufacturer": "Built-in microphone Built-in speaker",
+            "retailer": "Built-in speaker || Built-in microphone",
+            "count": 20,
+            "chosen": {
+              "retailer": 20
+            },
+            "manufacturer_origin": {
+              "asus_family": 10,
+              "asus_family_constructed": 10
+            }
+          }
+        ]
+      },
+      {
+        "field": "graphics.model",
+        "count": 235,
+        "products": 219,
+        "by_chosen": {
+          "manufacturer": 216,
+          "retailer": 19
+        },
+        "by_origin": {
+          "asus_exact": 216,
+          "asus_family": 16,
+          "asus_family_constructed": 3
+        },
+        "distinct_pairs": 41,
+        "examples": [
+          {
+            "manufacturer": "AMD Radeon Graphics",
+            "retailer": "AMD Radeon 610M",
+            "count": 46,
+            "chosen": {
+              "manufacturer": 46
+            },
+            "manufacturer_origin": {
+              "asus_exact": 46
+            }
+          },
+          {
+            "manufacturer": "Intel UHD Graphics",
+            "retailer": "Intel UHD Graphics for 13th Gen Intel Processors",
+            "count": 27,
+            "chosen": {
+              "manufacturer": 27
+            },
+            "manufacturer_origin": {
+              "asus_exact": 27
+            }
+          },
+          {
+            "manufacturer": "NVIDIA GeForce RTX 3050",
+            "retailer": "RTX 3050 4 GB GDDR6",
+            "count": 14,
+            "chosen": {
+              "manufacturer": 14
+            },
+            "manufacturer_origin": {
+              "asus_exact": 14
+            }
+          }
+        ]
+      },
+      {
+        "field": "keyboard.details",
+        "count": 218,
+        "products": 120,
+        "by_chosen": {
+          "retailer": 218
+        },
+        "by_origin": {
+          "asus_family": 120,
+          "asus_family_constructed": 98
+        },
+        "distinct_pairs": 29,
+        "examples": [
+          {
+            "manufacturer": "Backlit Chiclet Keyboard with Num-key, 1.7mm Key-travel, Precision touchpad, With Copilot key, With Copilot key",
+            "retailer": "Backlit Chiclet Keyboard || With Copilot key",
+            "count": 32,
+            "chosen": {
+              "retailer": 32
+            },
+            "manufacturer_origin": {
+              "asus_family": 16,
+              "asus_family_constructed": 16
+            }
+          },
+          {
+            "manufacturer": "Backlit Chiclet Keyboard with Num-key Chiclet Keyboard, 1.4mm Key-travel, Precision touchpad, With Copilot key, support…",
+            "retailer": "Chiclet Keyboard",
+            "count": 30,
+            "chosen": {
+              "retailer": 30
+            },
+            "manufacturer_origin": {
+              "asus_family": 15,
+              "asus_family_constructed": 15
+            }
+          },
+          {
+            "manufacturer": "Backlit Chiclet Keyboard 4-Zone RGB | Touchpad | With Copilot key *Copilot in Windows (in preview) is rolling out gradu…",
+            "retailer": "Backlit Chiclet Keyboard 4-Zone RGB || With Copilot key",
+            "count": 16,
+            "chosen": {
+              "retailer": 16
+            },
+            "manufacturer_origin": {
+              "asus_family": 11,
+              "asus_family_constructed": 5
+            }
+          }
+        ]
+      },
+      {
+        "field": "ports.items",
+        "count": 192,
+        "products": 109,
+        "by_chosen": {
+          "retailer": 192
+        },
+        "by_origin": {
+          "asus_family": 109,
+          "asus_family_constructed": 83
+        },
+        "distinct_pairs": 12,
+        "examples": [
+          {
+            "manufacturer": "HDMI 1.4, USB-C, USB-A, 3.5 mm audio",
+            "retailer": "HDMI 1.4, USB-C, USB-A",
+            "count": 95,
+            "chosen": {
+              "retailer": 95
+            },
+            "manufacturer_origin": {
+              "asus_family": 48,
+              "asus_family_constructed": 47
+            }
+          },
+          {
+            "manufacturer": "HDMI 2.1, USB-C, USB-A, 3.5 mm audio",
+            "retailer": "HDMI 2.1, USB-C, USB-A",
+            "count": 26,
+            "chosen": {
+              "retailer": 26
+            },
+            "manufacturer_origin": {
+              "asus_family": 15,
+              "asus_family_constructed": 11
+            }
+          },
+          {
+            "manufacturer": "Thunderbolt 4, HDMI 2.1, USB-A, 3.5 mm audio",
+            "retailer": "Thunderbolt 4, HDMI 2.1, USB-A",
+            "count": 18,
+            "chosen": {
+              "retailer": 18
+            },
+            "manufacturer_origin": {
+              "asus_family": 9,
+              "asus_family_constructed": 9
+            }
+          }
+        ]
+      },
+      {
+        "field": "ports.summary",
+        "count": 192,
+        "products": 109,
+        "by_chosen": {
+          "retailer": 192
+        },
+        "by_origin": {
+          "asus_family": 109,
+          "asus_family_constructed": 83
+        },
+        "distinct_pairs": 12,
+        "examples": [
+          {
+            "manufacturer": "HDMI 1.4, USB-C, USB-A, 3.5 mm audio",
+            "retailer": "HDMI 1.4, USB-C, USB-A",
+            "count": 95,
+            "chosen": {
+              "retailer": 95
+            },
+            "manufacturer_origin": {
+              "asus_family": 48,
+              "asus_family_constructed": 47
+            }
+          },
+          {
+            "manufacturer": "HDMI 2.1, USB-C, USB-A, 3.5 mm audio",
+            "retailer": "HDMI 2.1, USB-C, USB-A",
+            "count": 26,
+            "chosen": {
+              "retailer": 26
+            },
+            "manufacturer_origin": {
+              "asus_family": 15,
+              "asus_family_constructed": 11
+            }
+          },
+          {
+            "manufacturer": "Thunderbolt 4, HDMI 2.1, USB-A, 3.5 mm audio",
+            "retailer": "Thunderbolt 4, HDMI 2.1, USB-A",
+            "count": 18,
+            "chosen": {
+              "retailer": 18
+            },
+            "manufacturer_origin": {
+              "asus_family": 9,
+              "asus_family_constructed": 9
+            }
+          }
+        ]
+      },
+      {
+        "field": "software.included",
+        "count": 187,
+        "products": 94,
+        "by_chosen": {
+          "retailer": 187
+        },
+        "by_origin": {
+          "asus_family": 94,
+          "asus_family_constructed": 93
+        },
+        "distinct_pairs": 7,
+        "examples": [
+          {
+            "manufacturer": "* Included accessories vary according to country and territory. Please check with your local ASUS retailer for details.",
+            "retailer": "MyASUS || ScreenXpert || GlideX",
+            "count": 118,
+            "chosen": {
+              "retailer": 118
+            },
+            "manufacturer_origin": {
+              "asus_family": 59,
+              "asus_family_constructed": 59
+            }
+          },
+          {
+            "manufacturer": "* Included accessories vary according to country and territory. Please check with your local ASUS retailer for details.",
+            "retailer": "CapCut || MyASUS || ScreenXpert || GlideX",
+            "count": 34,
+            "chosen": {
+              "retailer": 34
+            },
+            "manufacturer_origin": {
+              "asus_family": 17,
+              "asus_family_constructed": 17
+            }
+          },
+          {
+            "manufacturer": "* Included accessories vary according to country and territory. Please check with your local ASUS retailer for details.",
+            "retailer": "StoryCube || MyASUS || ScreenXpert || GlideX",
+            "count": 22,
+            "chosen": {
+              "retailer": 22
+            },
+            "manufacturer_origin": {
+              "asus_family": 11,
+              "asus_family_constructed": 11
+            }
+          }
+        ]
+      },
+      {
+        "field": "processor.boost_clock",
+        "count": 182,
+        "products": 142,
+        "by_chosen": {
+          "manufacturer": 135,
+          "retailer": 47
+        },
+        "by_origin": {
+          "asus_exact": 135,
+          "asus_family": 25,
+          "asus_family_constructed": 22
+        },
+        "distinct_pairs": 28,
+        "examples": [
+          {
+            "manufacturer": "4.3 GHz",
+            "retailer": "4.1 GHz",
+            "count": 26,
+            "chosen": {
+              "retailer": 26
+            },
+            "manufacturer_origin": {
+              "asus_family": 13,
+              "asus_family_constructed": 13
+            }
+          },
+          {
+            "manufacturer": "4.3 GHz",
+            "retailer": "Up to 4.3 GHz",
+            "count": 24,
+            "chosen": {
+              "manufacturer": 24
+            },
+            "manufacturer_origin": {
+              "asus_exact": 24
+            }
+          },
+          {
+            "manufacturer": "4.1 GHz",
+            "retailer": "Up to 4.1 GHz",
+            "count": 22,
+            "chosen": {
+              "manufacturer": 22
+            },
+            "manufacturer_origin": {
+              "asus_exact": 22
+            }
+          }
+        ]
+      },
+      {
+        "field": "design.color",
+        "count": 98,
+        "products": 52,
+        "by_chosen": {
+          "retailer": 98
+        },
+        "by_origin": {
+          "asus_family": 52,
+          "asus_family_constructed": 46
+        },
+        "distinct_pairs": 14,
+        "examples": [
+          {
+            "manufacturer": "Mixed Black Green Gray Cool Silver",
+            "retailer": "Cool Silver",
+            "count": 22,
+            "chosen": {
+              "retailer": 22
+            },
+            "manufacturer_origin": {
+              "asus_family": 11,
+              "asus_family_constructed": 11
+            }
+          },
+          {
+            "manufacturer": "Quiet Blue Cool Silver",
+            "retailer": "Cool Silver",
+            "count": 17,
+            "chosen": {
+              "retailer": 17
+            },
+            "manufacturer_origin": {
+              "asus_family": 9,
+              "asus_family_constructed": 8
+            }
+          },
+          {
+            "manufacturer": "Mixed Black Green Gray Cool Silver",
+            "retailer": "Mixed Black",
+            "count": 16,
+            "chosen": {
+              "retailer": 16
+            },
+            "manufacturer_origin": {
+              "asus_family": 8,
+              "asus_family_constructed": 8
+            }
+          }
+        ]
+      },
+      {
+        "field": "software.os",
+        "count": 60,
+        "products": 39,
+        "by_chosen": {
+          "retailer": 60
+        },
+        "by_origin": {
+          "asus_family": 39,
+          "asus_family_constructed": 21
+        },
+        "distinct_pairs": 4,
+        "examples": [
+          {
+            "manufacturer": "Windows 11 Home | *Windows 11 Home is available only as the Single Language edition in selected markets. Learn more abo…",
+            "retailer": "Windows 11 Home",
+            "count": 38,
+            "chosen": {
+              "retailer": 38
+            },
+            "manufacturer_origin": {
+              "asus_family": 26,
+              "asus_family_constructed": 12
+            }
+          },
+          {
+            "manufacturer": "ChromeOS",
+            "retailer": "Chrome OS",
+            "count": 8,
+            "chosen": {
+              "retailer": 8
+            },
+            "manufacturer_origin": {
+              "asus_family": 4,
+              "asus_family_constructed": 4
+            }
+          },
+          {
+            "manufacturer": "Windows 11 Home *Windows 11 Home is available only as the Single Language edition in selected markets. Learn more about…",
+            "retailer": "Windows 11 Home",
+            "count": 8,
+            "chosen": {
+              "retailer": 8
+            },
+            "manufacturer_origin": {
+              "asus_family": 6,
+              "asus_family_constructed": 2
+            }
+          }
+        ]
+      }
+    ],
+    "fields_omitted": 21,
+    "malformed_entries": 0
+  },
+  "correct_regressions": {
+    "processor.cores": "Amazon's 'Processor Count' is a package count, not a physical core count. It agreed with the stored value on 146/146 products purely by coincidence of both being wrong; the parser no longer consumes it. 92% -> 0% is intended."
+  },
+  "exit": "pass",
+  "failures": []
+}

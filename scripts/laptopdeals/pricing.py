@@ -69,6 +69,73 @@ def update_from_lenovo(
     return result
 
 
+def update_from_refurb(
+    data: Any,
+    *,
+    history_dir: Path,
+    ids: set[str] | None = None,
+    workers: int = 4,
+    delay_min: float = 0.5,
+    delay_max: float = 1.5,
+    dry_run: bool = False,
+) -> dict[str, Any]:
+    from .sources import lenovo_outlet
+
+    products = selected_products(data, ids)
+    result = {"checked": 0, "changed": 0, "failed": 0, "products": []}
+    client = lenovo_outlet.LenovoOutletClient(delay=(delay_min, delay_max), verbose=False)
+
+    all_skus = [normalize_id(p.get("id")) for p in products if normalize_id(p.get("id"))]
+    batch_inventory = client.fetch_batch_inventory(all_skus)
+    batch_prices = client.fetch_batch_prices(all_skus)
+
+    def process(product: dict[str, Any]) -> dict[str, Any]:
+        product.pop("offers", None)
+        pid = normalize_id(product.get("id"))
+        if not pid:
+            return {"id": "", "status": "skip"}
+        try:
+            store_link = str(product.get("store_link") or "")
+            availability = client.get_availability(pid, store_link, preloaded_batch=batch_inventory)
+            price_pair = batch_prices.get(pid)
+            price, mrp = price_pair if price_pair else (None, None)
+
+            if not price:
+                product["availability"] = availability if availability != "unknown" else "out of stock"
+                product["last_checked"] = ist_stamp()
+                return {"id": pid, "status": "no_price"}
+
+            new_history, changed = history.apply_current_price(
+                history_dir,
+                pid,
+                price,
+                date=ist_stamp(),
+                dry_run=dry_run,
+            )
+            product["price"] = f"{price}.00 INR"
+            if mrp:
+                product["mrp"] = f"{mrp}.00 INR"
+            product["availability"] = availability
+            product["last_checked"] = ist_stamp()
+            product.update(history.stats(new_history))
+            return {"id": pid, "status": "changed" if changed else "stable", "price": price}
+        except Exception as exc:
+            return {"id": pid, "status": "failed", "error": str(exc)}
+
+    with concurrent.futures.ThreadPoolExecutor(max_workers=max(1, workers)) as executor:
+        futures = [executor.submit(process, product) for product in products]
+        for future in concurrent.futures.as_completed(futures):
+            item = future.result()
+            result["checked"] += 1
+            if item["status"] == "changed":
+                result["changed"] += 1
+            if item["status"] == "failed":
+                result["failed"] += 1
+            result["products"].append(item)
+            print(f"[refurb] {item.get('id')} {item.get('status')} {item.get('price', '')}")
+    return result
+
+
 def update_from_bitbns(
     data: Any,
     *,
