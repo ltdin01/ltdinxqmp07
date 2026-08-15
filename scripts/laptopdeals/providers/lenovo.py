@@ -219,6 +219,7 @@ def scrape_catalog(
     workers: int,
     verbose: bool,
     ids: set[str] | None = None,
+    **kwargs: Any,
 ) -> dict[str, Any]:
     client = lenovo.LenovoCatalogClient(delay=delay, verbose=verbose)
     target_ids = {i.upper() for i in ids} if ids else set()
@@ -433,6 +434,7 @@ def format_catalog(
     dry_run: bool = False,
     psref_dir: Path | None = None,
     psref_map: Path | None = None,
+    **kwargs: Any,
 ) -> dict[str, Any]:
     raw = read_json(input_path, {})
     existing = product_index(read_json(existing_data or output_path, {}))

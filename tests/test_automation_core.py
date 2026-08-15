@@ -653,6 +653,29 @@ class CtoTests(unittest.TestCase):
             self.assertEqual(read_json(out / "ABCCTO1WWIN1.json"), {"bundleId": "ABCCTO1WWIN1", "lastFetched": "old", "options": []})
 
 
+class LenovoPricingTests(unittest.TestCase):
+    def test_extract_bau_price_ignores_customoff_discount(self) -> None:
+        # product_data with CUSTOMOFF coupon row
+        product_data = [
+            0, 1, 2, 3, "115747", "SomeLabel", 6, 7, 8, "CUSTOMOFF",
+            10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, "125000",
+        ]
+        # Wrap as list of rows
+        payload = [
+            [0, 1, "9253", "115747", "115747", "ECoupon", 6, 7, 8, "CUSTOMOFF", 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, "125000"],
+            [0, 1, "0", "125000", "125000", "BAU", 6, 7, 8, "", 10],
+        ]
+        bau = lenovo_source.extract_night_deal_bau_price(payload)
+        self.assertEqual(bau, 125000)
+
+    def test_extract_bau_price_ignores_doorbusterdeal_discount(self) -> None:
+        payload = [
+            [0, 1, "5000", "95000", "95000", "ECoupon", 6, 7, 8, "DOORBUSTERDEAL", 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, "100000"],
+        ]
+        bau = lenovo_source.extract_night_deal_bau_price(payload)
+        self.assertEqual(bau, 100000)
+
+
 class ArchiveTests(unittest.TestCase):
     def test_archive_body_text_fallback_ignored_when_structured_status_exists(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:

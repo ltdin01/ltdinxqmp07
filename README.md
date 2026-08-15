@@ -61,43 +61,52 @@ The pipeline operates in 5 distinct phases:
 
 ```text
 pipeline/scripts/
-├── amazon/                         # 🛒 Amazon Scraper Suite — ⚠ pending amazon-integration branch merge (not on main)
 ├── build_amd_inventory.py          # 🔬 AMD Mobile CPU & iGPU Inventory Builder (Wikipedia)
 ├── build_hardware_inventory.py     # 🔬 Hardware Inventory Builder (CPU, dGPU, iGPU) — consolidates local disk files
 ├── build_intel_inventory.py        # 🔬 Intel Mobile CPU & iGPU Inventory Builder (Wikipedia)
 ├── build_nvidia_inventory.py       # 🔬 NVIDIA Mobile GPU Inventory Builder (Wikipedia)
-├── catalog.py                      # 📦 Main Lenovo Catalog Ingestion CLI
+├── catalog.py                      # 📦 Main Catalog Ingestion CLI (--provider lenovo | refurb)
 ├── clean_hardware_inventory.py     # 🧹 Hardware Inventory Sanitizer & Post-Processor
 ├── cto.py                          # ⚙️ Lenovo Custom Build (CTO) Option Generator
 ├── maintenance.py                  # 🧹 Catalog Validation & Hygiene Helpers
 ├── merge_json.py                   # 🔀 JSON Feeds Merger (git-merge helper)
 ├── normalize.py                    # ⚡ Thin CLI wrapper over laptopdeals.normalize_hardware
-├── prices.py                       # 📈 Price History Tracking & Statistics Math
-├── psref.py                        # 📑 Lenovo PSREF MTM Spec Pool Matcher & Datasheet Generator
+├── prices.py                       # 📈 Price History Tracking & Statistics Math (lenovo-current, refurb-current)
+├── psref.py                        # 📑 Lenovo PSREF MTM Spec Pool Matcher & LoadSpecData Engine
 ├── archive.py                      # 🗃️ Out-of-Stock & Product Archiving Tool
+├── quality.py                      # 🛡️ Data Quality Gate & Conflict Auditor
+├── verify_all.sh                   # 🧪 Complete Pipeline Test & Workflow Verification Suite
 ├── laptopdeals/
 │   ├── normalize_hardware.py       # ⚡ Centralized CPU/GPU Normalization Engine
 │   ├── archive.py                  # 🗃️ Archiving helpers
-│   ├── catalog.py                  # 📦 Lenovo Catalog ingestion helpers
+│   ├── catalog.py                  # 📦 Catalog ingestion & provider dispatch helpers
 │   ├── cto.py                      # ⚙️ CTO option generation helpers
-│   ├── datafile.py                 # 💾 Deal data file loading/parsing
+│   ├── datafile.py                 # 💾 Deal data file loading/parsing (load_data, write_data)
+│   ├── enrich_lenovo.py            # 📑 PSREF Datasheet Generation & Spec Enrichment Ladder
 │   ├── history.py                  # 📈 Price history loading & change-point tracking
-│   ├── http.py                     # 🌐 HTTP fetch helpers
+│   ├── http.py                     # 🌐 Lazy curl-cffi loader for HTTP sessions
 │   ├── ids.py                      # 🏷️ Internal model code / ID helpers
 │   ├── inventory.py                # 🔬 Hardware inventory lookups
 │   ├── jsonio.py                   # 📄 JSON read/write helpers
 │   ├── maintenance.py              # 🧹 Catalog hygiene helpers
+│   ├── manufacturer.py             # Ladder-based Spec Resolution & Origin Tracker
 │   ├── merge_json.py               # 🔀 JSON deep-merge helpers
 │   ├── paths.py                    # 🛤️ Repo-root path resolution
 │   ├── pdp_fetcher.py              # 📥 PDP (product detail page) fetch helpers
-│   ├── pricing.py                  # 💰 Pricing statistics helpers
-│   ├── psref.py                    # 📑 PSREF spec matching & datasheet generation
+│   ├── pricing.py                  # 💰 Pricing statistics & live update helpers
+│   ├── psref.py                    # 📑 PSREF spec matching & Compare/LoadSpecData client
+│   ├── quality.py                  # 🛡️ Quality checks & spec conflict analyzer
 │   ├── router.py                   # 🌐 Internal route helpers
 │   ├── specs.py                    # 🔧 Spec normalization helpers
 │   ├── timeutil.py                 # ⏱️ Time formatting utilities
+│   ├── providers/
+│   │   ├── __init__.py             # Provider registry & lazy dispatcher
+│   │   ├── base.py                 # BaseProvider contract (scrape_catalog, format_catalog)
+│   │   └── refurb.py               # Lenovo Outlet Certified Refurbished Provider
 │   └── sources/
 │       ├── bitbns.py               # 🔗 BitBns price source adapter
-│       └── lenovo.py               # 🔗 Lenovo source adapter
+│       ├── lenovo.py               # 🔗 Lenovo India retail source adapter
+│       └── lenovo_outlet.py        # 🔗 Lenovo India Outlet scraper (batch API + inventory)
 ```
 
 ---
@@ -154,4 +163,22 @@ python3 -m pipeline.scripts.laptopdeals.normalize_hardware
 pnpm --filter web build
 ```
 
-> **Note**: The Amazon scraping steps (`python3 -m pipeline.scripts.amazon.fresh_parallel_scraper --fresh`, `python3 -m pipeline.scripts.amazon.03_parse_normalize_specs ...`) are only available on the un-merged `amazon-integration` branch — the `pipeline/scripts/amazon/` package contains no source files on `main`.
+---
+
+## 🏷️ Certified Refurbished Pipeline (`refurb`)
+
+The `refurb` provider indexes official Lenovo India Outlet clearance products, combines live inventory checks, and enriches listings with full PSREF technical specifications.
+
+### 1. Ingestion & Enrichment Flow
+1. **Scrape**: `python pipeline/scripts/catalog.py --provider refurb scrape` queries Lenovo Outlet APIs to fetch active refurbished laptop listings into `data/refurb-catalog.json`.
+2. **PSREF Resolution**:
+   - Matches the 4-character Machine Type (e.g. `82JK`, `82JU`, `20Y0`, `83HL`, `83JC`).
+   - If not in the local index, queries `https://psref.lenovo.com/api/search/DefinitionFilterAndSearch/Suggest` (with fallback to general search for newer/withdrawn series).
+   - Generates/loads datasheets via `https://psref.lenovo.com/api/product/Compare/LoadSpecData?ProductKey={ProductKey}` to extract 100% full structured platform defaults (`ports`, `dimensions`, `audio`, `memory_slots`, `storage_slots`).
+3. **Format**: `python pipeline/scripts/catalog.py --provider refurb format` applies the 4-tier manufacturer specification resolution ladder (`manufacturer.py`), normalizes model titles (e.g. `Lenovo LOQ Gen 9 (15, AMD)`), and writes `apps/web/data-refurb.json`.
+4. **Live Stock & Price Sync**: `python pipeline/scripts/prices.py refurb-current` performs batch queries against Lenovo Outlet inventory endpoints to keep availability and change-point pricing synchronized.
+
+### 2. Automated Workflow
+The pipeline runs on a scheduled GitHub Actions workflow:
+- **`.github/workflows/refurb-catalog.yml`**: Runs hourly at minute 0 to scrape new outlet listings, re-format specs, check real-time stock, and commit updates to `apps/web/data-refurb.json`.
+

@@ -332,25 +332,25 @@ def availability_from_html(text: str) -> str:
     return normalize_availability((offers or {}).get("availability"))
 
 
-NIGHT_DEAL_COUPON_CODE = "DOORBUSTERDEAL"
+AUTO_COUPON_CODES = {"DOORBUSTERDEAL", "CUSTOMOFF"}
 
 
 def extract_night_deal_bau_price(product_data: list[Any]) -> int | None:
-    """Return the BAU (business-as-usual, non-coupon) price when the nightly
-    DOORBUSTERDEAL coupon row is present in the price API response.
+    """Return the BAU (business-as-usual, non-coupon) price when a coupon
+    like DOORBUSTERDEAL, CUSTOMOFF, or any promotional discount is present.
 
-    The batch-get payload lists one row per pricing scheme. When the
-    DOORBUSTERDEAL coupon is active Lenovo adds a coupon row whose final value
-    (product_data[4]) reflects the discounted price; the row itself carries the
-    pre-coupon base price in several positions. Prefer the coupon row's base
-    price, falling back to the BAU/base-price row and then to coupon+amount.
+    The batch-get payload lists one row per pricing scheme. When a coupon
+    is active Lenovo adds a coupon row whose final value (product_data[4])
+    reflects the discounted price; the row itself carries the pre-coupon base
+    price in several positions. Prefer the coupon row's base price, falling back
+    to the BAU/base-price row and then to coupon+amount.
     """
     coupon_row: list[Any] | None = None
     bau_row: list[Any] | None = None
     for row in product_data:
         if not isinstance(row, list):
             continue
-        if len(row) > 9 and str(row[9]) == NIGHT_DEAL_COUPON_CODE:
+        if len(row) > 9 and (str(row[9]) in AUTO_COUPON_CODES or str(row[9]).strip()):
             coupon_row = row
         elif bau_row is None and len(row) > 5:
             label = str(row[5])
