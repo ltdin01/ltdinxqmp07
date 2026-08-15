@@ -340,28 +340,33 @@ def extract_night_deal_bau_price(product_data: list[Any]) -> int | None:
     like DOORBUSTERDEAL, CUSTOMOFF, or any promotional discount is present.
 
     The batch-get payload lists one row per pricing scheme. When a coupon
-    is active Lenovo adds a coupon row whose final value (product_data[4])
+    is active Lenovo adds a coupon row (type 8) whose final value (product_data[4])
     reflects the discounted price; the row itself carries the pre-coupon base
     price in several positions. Prefer the coupon row's base price, falling back
-    to the BAU/base-price row and then to coupon+amount.
+    to the BAU/base-price row (type 5) and then to coupon+amount.
     """
     coupon_row: list[Any] | None = None
     bau_row: list[Any] | None = None
-    for row in product_data:
-        if not isinstance(row, list):
+    for item in product_data:
+        if not isinstance(item, list) or len(item) < 6:
             continue
-        if len(row) > 9 and (str(row[9]) in AUTO_COUPON_CODES or str(row[9]).strip()):
-            coupon_row = row
-        elif bau_row is None and len(row) > 5:
-            label = str(row[5])
-            if "BAU" in label or "I-saving" in label:
-                bau_row = row
+        if len(item) > 9 and (
+            str(item[9]).upper() in AUTO_COUPON_CODES
+            or (item[0] == 8 and str(item[9]).isalnum())
+            or (len(item) > 7 and any(code in str(item[7]).upper() for code in AUTO_COUPON_CODES))
+        ):
+            coupon_row = item
+        if isinstance(item[5], str) and ("BAU" in item[5] or "I-saving" in item[5]):
+            bau_row = item
+
     if coupon_row is not None:
-        if len(coupon_row) > 21 and str(coupon_row[21]).isdigit():
+        if len(coupon_row) > 21 and str(coupon_row[21]).isdigit() and int(coupon_row[21]) > 0:
             return int(coupon_row[21])
         if len(coupon_row) > 3 and str(coupon_row[2]).isdigit() and str(coupon_row[3]).isdigit():
-            return int(coupon_row[3]) + int(coupon_row[2])
-    if bau_row is not None and len(bau_row) > 3 and str(bau_row[3]).isdigit():
+            c_base = int(coupon_row[3]) + int(coupon_row[2])
+            if c_base > 0:
+                return c_base
+    if bau_row is not None and len(bau_row) > 3 and str(bau_row[3]).isdigit() and int(bau_row[3]) > 0:
         return int(bau_row[3])
     return None
 
