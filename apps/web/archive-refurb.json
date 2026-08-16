@@ -122,7 +122,29 @@
             "price_mean": 32640,
             "price_median": 32640,
             "price_usual": 33406,
-            "has_history": true
+            "has_history": true,
+            "spec_origin": {
+                "network": "psref_platform",
+                "power": "psref_platform",
+                "battery": "psref_platform",
+                "ports": "psref_platform",
+                "camera": "psref_platform",
+                "keyboard": "psref_platform",
+                "dimensions": "psref_platform",
+                "build": "psref_platform",
+                "software": "psref_platform",
+                "audio": "psref_platform",
+                "memory_slots": "psref_platform",
+                "storage_slots": "psref_platform"
+            },
+            "psref_enrichment": {
+                "tier": "psref_platform",
+                "sku": "82R4R004R0",
+                "machine_type": "82R4",
+                "product_name": "IdeaPad 1 15ALC7"
+            },
+            "archived": true,
+            "archived_at": "2026-08-16"
         },
         {
             "id": "82R4R00DR0",
@@ -246,7 +268,29 @@
             "price_mean": 34041,
             "price_median": 34041,
             "price_usual": 33881,
-            "has_history": true
+            "has_history": true,
+            "spec_origin": {
+                "network": "psref_platform",
+                "power": "psref_platform",
+                "battery": "psref_platform",
+                "ports": "psref_platform",
+                "camera": "psref_platform",
+                "keyboard": "psref_platform",
+                "dimensions": "psref_platform",
+                "build": "psref_platform",
+                "software": "psref_platform",
+                "audio": "psref_platform",
+                "memory_slots": "psref_platform",
+                "storage_slots": "psref_platform"
+            },
+            "psref_enrichment": {
+                "tier": "psref_platform",
+                "sku": "82R4R00DR0",
+                "machine_type": "82R4",
+                "product_name": "IdeaPad 1 15ALC7"
+            },
+            "archived": true,
+            "archived_at": "2026-08-16"
         },
         {
             "id": "82XQR00KR0",
@@ -277,7 +321,7 @@
                 },
                 "storage": {
                     "capacity": "512 GB",
-                    "type": "SSD QLC"
+                    "type": "SSD"
                 },
                 "processor": {
                     "brand": "AMD",
@@ -367,7 +411,29 @@
             "price_mean": 38591,
             "price_median": 38591,
             "price_usual": 38591,
-            "has_history": true
+            "has_history": true,
+            "spec_origin": {
+                "network": "psref_platform",
+                "power": "psref_platform",
+                "battery": "psref_platform",
+                "ports": "psref_platform",
+                "camera": "psref_platform",
+                "keyboard": "psref_platform",
+                "dimensions": "psref_platform",
+                "build": "psref_platform",
+                "software": "psref_platform",
+                "audio": "psref_platform",
+                "memory_slots": "psref_platform",
+                "storage_slots": "psref_platform"
+            },
+            "psref_enrichment": {
+                "tier": "psref_platform",
+                "sku": "82XQR00KR0",
+                "machine_type": "82XQ",
+                "product_name": "IdeaPad Slim 3 15AMN8"
+            },
+            "archived": true,
+            "archived_at": "2026-08-16"
         },
         {
             "id": "82XQR00FR0",
@@ -398,7 +464,7 @@
                 },
                 "storage": {
                     "capacity": "512 GB",
-                    "type": "SSD QLC"
+                    "type": "SSD"
                 },
                 "processor": {
                     "brand": "AMD",
@@ -488,7 +554,29 @@
             "price_mean": 46291,
             "price_median": 46291,
             "price_usual": 49643,
-            "has_history": true
+            "has_history": true,
+            "spec_origin": {
+                "network": "psref_platform",
+                "power": "psref_platform",
+                "battery": "psref_platform",
+                "ports": "psref_platform",
+                "camera": "psref_platform",
+                "keyboard": "psref_platform",
+                "dimensions": "psref_platform",
+                "build": "psref_platform",
+                "software": "psref_platform",
+                "audio": "psref_platform",
+                "memory_slots": "psref_platform",
+                "storage_slots": "psref_platform"
+            },
+            "psref_enrichment": {
+                "tier": "psref_platform",
+                "sku": "82XQR00FR0",
+                "machine_type": "82XQ",
+                "product_name": "IdeaPad Slim 3 15AMN8"
+            },
+            "archived": true,
+            "archived_at": "2026-08-16"
         },
         {
             "id": "83HRR000R0",
@@ -519,7 +607,7 @@
                 },
                 "storage": {
                     "capacity": "1 TB",
-                    "type": "SSD Gen4 TLC"
+                    "type": "SSD Gen4"
                 },
                 "processor": {
                     "brand": "Intel",
@@ -610,7 +698,29 @@
             "price_mean": 48023,
             "price_median": 48190,
             "price_usual": 51326,
-            "has_history": true
+            "has_history": true,
+            "spec_origin": {
+                "network": "psref_platform",
+                "power": "psref_platform",
+                "battery": "psref_platform",
+                "ports": "psref_platform",
+                "camera": "psref_platform",
+                "keyboard": "psref_platform",
+                "dimensions": "psref_platform",
+                "build": "psref_platform",
+                "software": "psref_platform",
+                "audio": "psref_platform",
+                "memory_slots": "psref_platform",
+                "storage_slots": "psref_platform"
+            },
+            "psref_enrichment": {
+                "tier": "psref_platform",
+                "sku": "83HRR000R0",
+                "machine_type": "83HR",
+                "product_name": "IdeaPad Slim 5 14IRH10"
+            },
+            "archived": true,
+            "archived_at": "2026-08-16"
         },
         {
             "id": "83ERR000R0",
@@ -641,7 +751,7 @@
                 },
                 "storage": {
                     "capacity": "512 GB",
-                    "type": "SSD Gen4 QLC"
+                    "type": "SSD Gen4"
                 },
                 "processor": {
                     "brand": "Intel",
@@ -729,7 +839,29 @@
             "price_mean": 41840,
             "price_median": 41341,
             "price_usual": 40756,
-            "has_history": true
+            "has_history": true,
+            "spec_origin": {
+                "network": "psref_platform",
+                "power": "psref_platform",
+                "battery": "psref_platform",
+                "ports": "psref_platform",
+                "camera": "psref_platform",
+                "keyboard": "psref_platform",
+                "dimensions": "psref_platform",
+                "build": "psref_platform",
+                "software": "psref_platform",
+                "audio": "psref_platform",
+                "memory_slots": "psref_platform",
+                "storage_slots": "psref_platform"
+            },
+            "psref_enrichment": {
+                "tier": "psref_platform",
+                "sku": "83ERR000R0",
+                "machine_type": "83ER",
+                "product_name": "IdeaPad Slim 3 15IAH8"
+            },
+            "archived": true,
+            "archived_at": "2026-08-16"
         },
         {
             "id": "83J1R000R0",
@@ -760,7 +892,7 @@
                 },
                 "storage": {
                     "capacity": "512 GB",
-                    "type": "SSD Gen4 QLC"
+                    "type": "SSD Gen4"
                 },
                 "processor": {
                     "brand": "Intel",
@@ -852,7 +984,29 @@
             "price_mean": 49841,
             "price_median": 49841,
             "price_usual": 53502,
-            "has_history": true
+            "has_history": true,
+            "spec_origin": {
+                "network": "psref_platform",
+                "power": "psref_platform",
+                "battery": "psref_platform",
+                "ports": "psref_platform",
+                "camera": "psref_platform",
+                "keyboard": "psref_platform",
+                "dimensions": "psref_platform",
+                "build": "psref_platform",
+                "software": "psref_platform",
+                "audio": "psref_platform",
+                "memory_slots": "psref_platform",
+                "storage_slots": "psref_platform"
+            },
+            "psref_enrichment": {
+                "tier": "psref_platform",
+                "sku": "83J1R000R0",
+                "machine_type": "83J1",
+                "product_name": "IdeaPad Slim 5 16IRH10R"
+            },
+            "archived": true,
+            "archived_at": "2026-08-16"
         },
         {
             "id": "82XQR00HR0",
@@ -883,7 +1037,7 @@
                 },
                 "storage": {
                     "capacity": "512 GB",
-                    "type": "SSD QLC"
+                    "type": "SSD"
                 },
                 "processor": {
                     "brand": "AMD",
@@ -973,7 +1127,29 @@
             "price_mean": 50091,
             "price_median": 50091,
             "price_usual": 50091,
-            "has_history": true
+            "has_history": true,
+            "spec_origin": {
+                "network": "psref_platform",
+                "power": "psref_platform",
+                "battery": "psref_platform",
+                "ports": "psref_platform",
+                "camera": "psref_platform",
+                "keyboard": "psref_platform",
+                "dimensions": "psref_platform",
+                "build": "psref_platform",
+                "software": "psref_platform",
+                "audio": "psref_platform",
+                "memory_slots": "psref_platform",
+                "storage_slots": "psref_platform"
+            },
+            "psref_enrichment": {
+                "tier": "psref_platform",
+                "sku": "82XQR00HR0",
+                "machine_type": "82XQ",
+                "product_name": "IdeaPad Slim 3 15AMN8"
+            },
+            "archived": true,
+            "archived_at": "2026-08-16"
         },
         {
             "id": "83BFR001R0",
@@ -1004,7 +1180,7 @@
                 },
                 "storage": {
                     "capacity": "1 TB",
-                    "type": "SSD Gen4 TLC"
+                    "type": "SSD Gen4"
                 },
                 "processor": {
                     "brand": "Intel",
@@ -1091,7 +1267,29 @@
             "price_mean": 52365,
             "price_median": 51541,
             "price_usual": 51978,
-            "has_history": true
+            "has_history": true,
+            "spec_origin": {
+                "network": "psref_platform",
+                "power": "psref_platform",
+                "battery": "psref_platform",
+                "ports": "psref_platform",
+                "camera": "psref_platform",
+                "keyboard": "psref_platform",
+                "dimensions": "psref_platform",
+                "build": "psref_platform",
+                "software": "psref_platform",
+                "audio": "psref_platform",
+                "memory_slots": "psref_platform",
+                "storage_slots": "psref_platform"
+            },
+            "psref_enrichment": {
+                "tier": "psref_platform",
+                "sku": "83BFR001R0",
+                "machine_type": "83BF",
+                "product_name": "IdeaPad Slim 5 14IAH8"
+            },
+            "archived": true,
+            "archived_at": "2026-08-16"
         },
         {
             "id": "82XDR000R0",
@@ -1122,7 +1320,7 @@
                 },
                 "storage": {
                     "capacity": "512 GB",
-                    "type": "SSD Gen4 TLC"
+                    "type": "SSD Gen4"
                 },
                 "processor": {
                     "brand": "Intel",
@@ -1209,7 +1407,29 @@
             "price_mean": 53291,
             "price_median": 53291,
             "price_usual": 53291,
-            "has_history": true
+            "has_history": true,
+            "spec_origin": {
+                "network": "psref_platform",
+                "power": "psref_platform",
+                "battery": "psref_platform",
+                "ports": "psref_platform",
+                "camera": "psref_platform",
+                "keyboard": "psref_platform",
+                "dimensions": "psref_platform",
+                "build": "psref_platform",
+                "software": "psref_platform",
+                "audio": "psref_platform",
+                "memory_slots": "psref_platform",
+                "storage_slots": "psref_platform"
+            },
+            "psref_enrichment": {
+                "tier": "psref_platform",
+                "sku": "82XDR000R0",
+                "machine_type": "82XD",
+                "product_name": "IdeaPad Slim 5 14IRL8"
+            },
+            "archived": true,
+            "archived_at": "2026-08-16"
         },
         {
             "id": "83EMR005R0",
@@ -1240,7 +1460,7 @@
                 },
                 "storage": {
                     "capacity": "512 GB",
-                    "type": "SSD Gen4 QLC"
+                    "type": "SSD Gen4"
                 },
                 "processor": {
                     "brand": "Intel",
@@ -1331,7 +1551,29 @@
             "price_mean": 53991,
             "price_median": 53991,
             "price_usual": 53991,
-            "has_history": true
+            "has_history": true,
+            "spec_origin": {
+                "network": "psref_platform",
+                "power": "psref_platform",
+                "battery": "psref_platform",
+                "ports": "psref_platform",
+                "camera": "psref_platform",
+                "keyboard": "psref_platform",
+                "dimensions": "psref_platform",
+                "build": "psref_platform",
+                "software": "psref_platform",
+                "audio": "psref_platform",
+                "memory_slots": "psref_platform",
+                "storage_slots": "psref_platform"
+            },
+            "psref_enrichment": {
+                "tier": "psref_platform",
+                "sku": "83EMR005R0",
+                "machine_type": "83EM",
+                "product_name": "IdeaPad Slim 3 15IRH8"
+            },
+            "archived": true,
+            "archived_at": "2026-08-16"
         },
         {
             "id": "82K2R00FR0",
@@ -1362,7 +1604,7 @@
                 },
                 "storage": {
                     "capacity": "512 GB",
-                    "type": "SSD QLC"
+                    "type": "SSD"
                 },
                 "processor": {
                     "brand": "AMD",
@@ -1451,131 +1693,29 @@
             "price_mean": 56090,
             "price_median": 56090,
             "price_usual": 56090,
-            "has_history": true
-        },
-        {
-            "id": "83J2R000R0",
-            "model_name": "IdeaPad Slim 5 Gen 10 (13, AMD)",
-            "internal_model_code": "83J2R000R0",
-            "title": "IdeaPad Slim 5 Gen 10 (13, AMD)",
-            "description": "The Lenovo IdeaPad Slim 5 Gen 10 (13, AMD) is a sleek and lightweight laptop with AMD Ryzen™ processors for robust performance. It features an FHD infrared camera with Smart Login, extra-long battery life, and rapid charging, making it ideal for students on the go.",
-            "availability": "out of stock",
-            "price": "56090.00 INR",
-            "mrp": "77493.00 INR",
-            "image": "https://ap-img.static.pub/ss/img/2026/06/22/img.20260622055136319702.png",
-            "affiliate_link": "https://lenovo-in.zlvv.net/c/5890822/608695/9634?prodsku=83J2R000R0&u=https%3A%2F%2Fwww.lenovo.com%2Fin%2Foutletin%2Fen%2Fp%2Flaptops%2Fideapad%2Fideapad-s-series%2Flenovo-ideapad-slim-5-gen-10-13-inch-amd%2F83j2r000r0&intsrc=CATF_4639",
-            "store_link": "https://www.lenovo.com/in/outletin/en/p/laptops/ideapad/ideapad-s-series/lenovo-ideapad-slim-5-gen-10-13-inch-amd/83j2r000r0",
-            "listing_date": "2025-03-07",
-            "tech_specs": {
-                "display": {
-                    "size": "13.3\"",
-                    "res": "1920x1200",
-                    "refresh": "60Hz",
-                    "type": "IPS",
-                    "brightness": "400 nits",
-                    "color": "100% sRGB"
-                },
-                "memory": {
-                    "amount": "16 GB",
-                    "type": "DDR5",
-                    "speed": "6400 MHz"
-                },
-                "storage": {
-                    "capacity": "512 GB",
-                    "type": "SSD Gen4 TLC"
-                },
-                "processor": {
-                    "brand": "AMD",
-                    "model": "Ryzen 7 7735HS",
-                    "full_model": "AMD Ryzen 7 7735HS",
-                    "series": "Ryzen 7000 Series",
-                    "cores": 8,
-                    "threads": 16,
-                    "base_clock": "3.2 GHz",
-                    "boost_clock": "Up to 4.75 GHz",
-                    "igpu": "AMD Radeon 680M",
-                    "igpu_series": "Radeon 600M Series"
-                },
-                "graphics": {
-                    "model": "AMD Radeon 680M",
-                    "vram": "Shared",
-                    "dedicated": false,
-                    "series": "Radeon 600M Series",
-                    "boost_clock": "2200 MHz",
-                    "cus": 12
-                },
-                "network": {
-                    "wifi": "Wi-Fi 6E",
-                    "bluetooth": "5.3"
-                },
-                "power": {
-                    "adapter": "65W USB-C Slim (Wall-mount)",
-                    "watt": 65
-                },
-                "battery": {
-                    "capacity": "7Wh"
-                },
-                "ports": {
-                    "items": [
-                        "1x USB-A (USB 5Gbps / USB 3.2 Gen 1)",
-                        "1x USB-A (USB 5Gbps / USB 3.2 Gen 1), Always On",
-                        "2x USB-C (USB 10Gbps / USB 3.2 Gen 2), with USB PD 45-65W and DisplayPort 1.4",
-                        "1x HDMI 2.1, up to 4K/60Hz",
-                        "1x Headphone / microphone combo jack (3.5mm)",
-                        "1x microSD card reader"
-                    ]
-                },
-                "camera": {
-                    "model": "FHD 1080p + IR with Privacy Shutter, ToF Sensor"
-                },
-                "keyboard": {
-                    "type": "Backlit, Slovenian"
-                },
-                "dimensions": {
-                    "size": "295.58 x 206.95 x 14.3 mm (11.64 x 8.15 x 0.56 inches)",
-                    "weight": "Around 1.15 kg (2.54 lbs)"
-                },
-                "build": {
-                    "color": "Polar Blue",
-                    "material": "Aluminium (Top), Aluminium (Bottom)",
-                    "surface": "Aluminium Stamping (Anodized with Sandblasting)"
-                },
-                "software": {
-                    "os": "Windows 11 Home, Croatian / Slovenian / English",
-                    "bundled": "Office Trial"
-                },
-                "audio": {
-                    "chip": "High Definition (HD) Audio",
-                    "speakers": "Stereo speakers, 2W x2, optimized with Dolby Audio",
-                    "microphone": "2x, Array"
-                },
-                "memory_slots": {
-                    "raw": "Memory soldered to systemboard, no slots, dual-channel (16GB models)",
-                    "max_memory": "16GB soldered memory, not upgradable"
-                },
-                "storage_slots": {
-                    "raw": "One M.2 2280 PCIe 4.0 x4 slot",
-                    "max_storage": "One drive, up to 1TB M.2 2242 SSD"
-                }
+            "has_history": true,
+            "spec_origin": {
+                "network": "psref_platform",
+                "power": "psref_platform",
+                "battery": "psref_platform",
+                "ports": "psref_platform",
+                "camera": "psref_platform",
+                "keyboard": "psref_platform",
+                "dimensions": "psref_platform",
+                "build": "psref_platform",
+                "software": "psref_platform",
+                "audio": "psref_platform",
+                "memory_slots": "psref_platform",
+                "storage_slots": "psref_platform"
             },
-            "spec_source": "lenovo_outlet",
-            "vendor": "lenovo",
-            "brand": "Lenovo",
-            "series": "Ideapad",
-            "product_condition": "CERTIFIED REFURBISHED",
-            "product_metadata": {
-                "brand": "Lenovo",
-                "series": "Ideapad",
-                "part_number": "83J2R000R0",
-                "model_number": "83J2R000R0",
-                "manufacturer": "Lenovo",
-                "warranty": "1 Year Courier or Carry-in Warranty",
-                "condition": "Certified Refurbished"
+            "psref_enrichment": {
+                "tier": "psref_platform",
+                "sku": "82K2R00FR0",
+                "machine_type": "82K2",
+                "product_name": "IdeaPad Gaming 3 15ACH6"
             },
-            "price_mean": 53150,
-            "price_median": 54590,
-            "price_usual": 55254,
-            "has_history": true
+            "archived": true,
+            "archived_at": "2026-08-16"
         },
         {
             "id": "82XMR006R0",
@@ -1606,7 +1746,7 @@
                 },
                 "storage": {
                     "capacity": "512 GB",
-                    "type": "SSD QLC"
+                    "type": "SSD"
                 },
                 "processor": {
                     "brand": "AMD",
@@ -1697,128 +1837,29 @@
             "price_mean": 48531,
             "price_median": 48791,
             "price_usual": 50456,
-            "has_history": true
-        },
-        {
-            "id": "83K1R002R0",
-            "model_name": "IdeaPad Slim 3i Gen 10 (15, Intel)",
-            "internal_model_code": "83K1R002R0",
-            "title": "IdeaPad Slim 3i Gen 10 (15, Intel)",
-            "description": "The Lenovo IdeaPad Slim 3i Gen 10 is a 15-inch everyday laptop designed for students and multitaskers. It features Intel Core processors, immersive audio, a privacy shutter, and rapid charging, making it ideal for both work and study.",
-            "availability": "out of stock",
-            "price": "58191.00 INR",
-            "mrp": "88939.00 INR",
-            "image": "https://ap-img.static.pub/ss/img/2026/06/22/img.20260622132804983130.png",
-            "affiliate_link": "https://lenovo-in.zlvv.net/c/5890822/608695/9634?prodsku=83K1R002R0&u=https%3A%2F%2Fwww.lenovo.com%2Fin%2Foutletin%2Fen%2Fp%2Flaptops%2Fideapad%2Fideapad-300%2Flenovo-ideapad-slim-3i-gen-10-15-inch-intel%2F83k1r002r0&intsrc=CATF_4639",
-            "store_link": "https://www.lenovo.com/in/outletin/en/p/laptops/ideapad/ideapad-300/lenovo-ideapad-slim-3i-gen-10-15-inch-intel/83k1r002r0",
-            "listing_date": "2024-11-21",
-            "tech_specs": {
-                "display": {
-                    "size": "15.3\"",
-                    "res": "1920x1200",
-                    "refresh": "60Hz",
-                    "type": "IPS",
-                    "brightness": "300 nits",
-                    "color": "45% NTSC"
-                },
-                "memory": {
-                    "amount": "16 GB",
-                    "type": "DDR5",
-                    "speed": "4800 MHz"
-                },
-                "storage": {
-                    "capacity": "512 GB",
-                    "type": "SSD Gen4 QLC"
-                },
-                "processor": {
-                    "brand": "Intel",
-                    "model": "Core i7-13620H",
-                    "full_model": "Intel Core i7-13620H",
-                    "series": "Core 13th Gen",
-                    "cores": 10,
-                    "threads": 16,
-                    "boost_clock": "4.90 GHz",
-                    "igpu": "Intel UHD Graphics for 13th Gen Intel Processors",
-                    "igpu_series": "Intel UHD Graphics Series"
-                },
-                "graphics": {
-                    "model": "Intel UHD Graphics for 13th Gen Intel Processors",
-                    "vram": "Shared",
-                    "dedicated": false,
-                    "series": "Intel UHD Graphics Series",
-                    "boost_clock": "1.50 GHz"
-                },
-                "network": {
-                    "wifi": "Wi-Fi 6",
-                    "bluetooth": "5.2"
-                },
-                "power": {
-                    "adapter": "No Power Adapter"
-                },
-                "battery": {
-                    "capacity": "50Wh"
-                },
-                "ports": {
-                    "items": [
-                        "2x USB-A (USB 5Gbps / USB 3.2 Gen 1)",
-                        "1x USB-C (USB 5Gbps / USB 3.2 Gen 1), with USB PD 45-65W and DisplayPort 1.2",
-                        "1x HDMI 1.4",
-                        "1x Headphone / microphone combo jack (3.5mm)",
-                        "1x SD card reader",
-                        "1x Round tip power connector"
-                    ]
-                },
-                "camera": {
-                    "model": "HD 720p with Privacy Shutter"
-                },
-                "keyboard": {
-                    "type": "Non-backlit, Italian"
-                },
-                "dimensions": {
-                    "size": "343.4 x 239.5 x 17.9-18.9 mm (13.52 x 9.43 x 0.70-0.74 inches)",
-                    "weight": "Starting at 1.59 kg (3.51 lbs)"
-                },
-                "build": {
-                    "color": "Luna Grey",
-                    "material": "PC-ABS (Top), PC-ABS (Bottom)",
-                    "surface": "IMR (Top), Texture (Bottom)"
-                },
-                "software": {
-                    "os": "Windows 11 Home, Italian / English",
-                    "bundled": "Office Trial"
-                },
-                "audio": {
-                    "chip": "High Definition (HD) Audio",
-                    "speakers": "Stereo speakers, 2W x2, optimized with Dolby Audio",
-                    "microphone": "2x, Array"
-                },
-                "memory_slots": {
-                    "raw": "One DDR5 SODIMM slot",
-                    "max_memory": "Up to 16GB DDR5-4800 offering"
-                },
-                "storage_slots": {
-                    "raw": "Two M.2 2242 PCIe 4.0 x4 slots",
-                    "max_storage": "Up to two drives, 2x M.2 SSD • M.2 2242 SSD up to 1TB"
-                }
+            "has_history": true,
+            "spec_origin": {
+                "network": "psref_platform",
+                "power": "psref_platform",
+                "battery": "psref_platform",
+                "ports": "psref_platform",
+                "camera": "psref_platform",
+                "keyboard": "psref_platform",
+                "dimensions": "psref_platform",
+                "build": "psref_platform",
+                "software": "psref_platform",
+                "audio": "psref_platform",
+                "memory_slots": "psref_platform",
+                "storage_slots": "psref_platform"
             },
-            "spec_source": "lenovo_outlet",
-            "vendor": "lenovo",
-            "brand": "Lenovo",
-            "series": "Ideapad",
-            "product_condition": "CERTIFIED REFURBISHED",
-            "product_metadata": {
-                "brand": "Lenovo",
-                "series": "Ideapad",
-                "part_number": "83K1R002R0",
-                "model_number": "83K1R002R0",
-                "manufacturer": "Lenovo",
-                "warranty": "1 Year Courier or Carry-in Warranty",
-                "condition": "Certified Refurbished"
+            "psref_enrichment": {
+                "tier": "psref_platform",
+                "sku": "82XMR006R0",
+                "machine_type": "82XM",
+                "product_name": "IdeaPad Slim 3 15ABR8"
             },
-            "price_mean": 57210,
-            "price_median": 57491,
-            "price_usual": 57383,
-            "has_history": true
+            "archived": true,
+            "archived_at": "2026-08-16"
         },
         {
             "id": "83HXR001R0",
@@ -1849,7 +1890,7 @@
                 },
                 "storage": {
                     "capacity": "1 TB",
-                    "type": "SSD Gen4 TLC"
+                    "type": "SSD Gen4"
                 },
                 "processor": {
                     "brand": "AMD",
@@ -1929,7 +1970,29 @@
             "price_mean": 72030,
             "price_median": 62991,
             "price_usual": 79137,
-            "has_history": true
+            "has_history": true,
+            "spec_origin": {
+                "network": "psref_platform",
+                "power": "psref_platform",
+                "battery": "psref_platform",
+                "ports": "psref_platform",
+                "camera": "psref_platform",
+                "keyboard": "psref_platform",
+                "dimensions": "psref_platform",
+                "build": "psref_platform",
+                "software": "psref_platform",
+                "audio": "psref_platform",
+                "memory_slots": "psref_platform",
+                "storage_slots": "psref_platform"
+            },
+            "psref_enrichment": {
+                "tier": "psref_platform",
+                "sku": "83HXR001R0",
+                "machine_type": "83HX",
+                "product_name": "IdeaPad Slim 5 14AKP10"
+            },
+            "archived": true,
+            "archived_at": "2026-08-16"
         },
         {
             "id": "83K1R00BR0",
@@ -1960,7 +2023,7 @@
                 },
                 "storage": {
                     "capacity": "1 TB",
-                    "type": "SSD Gen4 QLC"
+                    "type": "SSD Gen4"
                 },
                 "processor": {
                     "brand": "Intel",
@@ -2050,7 +2113,29 @@
             "price_mean": 61690,
             "price_median": 61690,
             "price_usual": 61690,
-            "has_history": true
+            "has_history": true,
+            "spec_origin": {
+                "network": "psref_platform",
+                "power": "psref_platform",
+                "battery": "psref_platform",
+                "ports": "psref_platform",
+                "camera": "psref_platform",
+                "keyboard": "psref_platform",
+                "dimensions": "psref_platform",
+                "build": "psref_platform",
+                "software": "psref_platform",
+                "audio": "psref_platform",
+                "memory_slots": "psref_platform",
+                "storage_slots": "psref_platform"
+            },
+            "psref_enrichment": {
+                "tier": "psref_platform",
+                "sku": "83K1R00BR0",
+                "machine_type": "83K1",
+                "product_name": "IdeaPad Slim 3 15IRH10"
+            },
+            "archived": true,
+            "archived_at": "2026-08-16"
         },
         {
             "id": "82XFR008R0",
@@ -2081,7 +2166,7 @@
                 },
                 "storage": {
                     "capacity": "1 TB",
-                    "type": "SSD Gen4 TLC"
+                    "type": "SSD Gen4"
                 },
                 "processor": {
                     "brand": "Intel",
@@ -2171,256 +2256,27 @@
             "price_mean": 67990,
             "price_median": 67990,
             "price_usual": 67990,
-            "has_history": true
-        },
-        {
-            "id": "83K1R000R0",
-            "model_name": "IdeaPad Slim 3i Gen 10 (15, Intel)",
-            "internal_model_code": "83K1R000R0",
-            "title": "IdeaPad Slim 3i Gen 10 (15, Intel)",
-            "description": "The Lenovo IdeaPad Slim 3i Gen 10 is a 15-inch everyday laptop designed for students and multitaskers. It features Intel Core processors, immersive audio, a privacy shutter, and rapid charging, making it ideal for both work and study.",
-            "availability": "out of stock",
-            "price": "53991.00 INR",
-            "mrp": "80015.00 INR",
-            "image": "https://ap-img.static.pub/ss/img/2026/06/22/img.20260622132804983130.png",
-            "affiliate_link": "https://lenovo-in.zlvv.net/c/5890822/608695/9634?prodsku=83K1R000R0&u=https%3A%2F%2Fwww.lenovo.com%2Fin%2Foutletin%2Fen%2Fp%2Flaptops%2Fideapad%2Fideapad-300%2Flenovo-ideapad-slim-3i-gen-10-15-inch-intel%2F83k1r000r0&intsrc=CATF_4639",
-            "store_link": "https://www.lenovo.com/in/outletin/en/p/laptops/ideapad/ideapad-300/lenovo-ideapad-slim-3i-gen-10-15-inch-intel/83k1r000r0",
-            "listing_date": "2024-11-21",
-            "tech_specs": {
-                "display": {
-                    "size": "15.3\"",
-                    "res": "1920x1200",
-                    "refresh": "60Hz",
-                    "type": "IPS",
-                    "brightness": "300 nits",
-                    "color": "45% NTSC"
-                },
-                "memory": {
-                    "amount": "16 GB",
-                    "type": "DDR5",
-                    "speed": "4800 MHz"
-                },
-                "storage": {
-                    "capacity": "512 GB",
-                    "type": "SSD Gen4"
-                },
-                "processor": {
-                    "brand": "Intel",
-                    "model": "Core i5-13420H",
-                    "full_model": "Intel Core i5-13420H",
-                    "series": "Core 13th Gen",
-                    "cores": 8,
-                    "threads": 12,
-                    "boost_clock": "4.60 GHz",
-                    "igpu": "Intel UHD Graphics for 13th Gen Intel Processors",
-                    "igpu_series": "Intel UHD Graphics Series"
-                },
-                "graphics": {
-                    "model": "Intel UHD Graphics for 13th Gen Intel Processors",
-                    "vram": "Shared",
-                    "dedicated": false,
-                    "series": "Intel UHD Graphics Series",
-                    "boost_clock": "1.40 GHz"
-                },
-                "network": {
-                    "wifi": "Wi-Fi 6",
-                    "bluetooth": "5.2"
-                },
-                "power": {
-                    "adapter": "No Power Adapter"
-                },
-                "battery": {
-                    "capacity": "50Wh"
-                },
-                "ports": {
-                    "items": [
-                        "2x USB-A (USB 5Gbps / USB 3.2 Gen 1)",
-                        "1x USB-C (USB 5Gbps / USB 3.2 Gen 1), with USB PD 45-65W and DisplayPort 1.2",
-                        "1x HDMI 1.4",
-                        "1x Headphone / microphone combo jack (3.5mm)",
-                        "1x SD card reader",
-                        "1x Round tip power connector"
-                    ]
-                },
-                "camera": {
-                    "model": "HD 720p with Privacy Shutter"
-                },
-                "keyboard": {
-                    "type": "Non-backlit, Italian"
-                },
-                "dimensions": {
-                    "size": "343.4 x 239.5 x 17.9-18.9 mm (13.52 x 9.43 x 0.70-0.74 inches)",
-                    "weight": "Starting at 1.59 kg (3.51 lbs)"
-                },
-                "build": {
-                    "color": "Luna Grey",
-                    "material": "PC-ABS (Top), PC-ABS (Bottom)",
-                    "surface": "IMR (Top), Texture (Bottom)"
-                },
-                "software": {
-                    "os": "Windows 11 Home, Italian / English",
-                    "bundled": "Office Trial"
-                },
-                "audio": {
-                    "chip": "High Definition (HD) Audio",
-                    "speakers": "Stereo speakers, 2W x2, optimized with Dolby Audio",
-                    "microphone": "2x, Array"
-                },
-                "memory_slots": {
-                    "raw": "One DDR5 SODIMM slot",
-                    "max_memory": "Up to 16GB DDR5-4800 offering"
-                },
-                "storage_slots": {
-                    "raw": "Two M.2 2242 PCIe 4.0 x4 slots",
-                    "max_storage": "Up to two drives, 2x M.2 SSD • M.2 2242 SSD up to 1TB"
-                }
-            },
-            "spec_source": "lenovo_outlet",
-            "vendor": "lenovo",
-            "brand": "Lenovo",
-            "series": "Ideapad",
-            "product_condition": "CERTIFIED REFURBISHED",
-            "product_metadata": {
-                "brand": "Lenovo",
-                "series": "Ideapad",
-                "part_number": "83K1R000R0",
-                "model_number": "83K1R000R0",
-                "manufacturer": "Lenovo",
-                "warranty": "1 Year Courier or Carry-in Warranty",
-                "condition": "Certified Refurbished"
-            },
-            "price_mean": 52190,
-            "price_median": 51891,
-            "price_usual": 52555,
             "has_history": true,
-            "last_checked": "2026-08-16 21:15:34",
-            "archived": true,
-            "archived_at": "2026-08-16"
-        },
-        {
-            "id": "83J3R000R0",
-            "model_name": "IdeaPad Slim 5 Gen 10 (15, AMD)",
-            "internal_model_code": "83J3R000R0",
-            "title": "IdeaPad Slim 5 Gen 10 (15, AMD)",
-            "description": "The IdeaPad Slim 5 Gen 10 (15, AMD) is a sleek, lightweight laptop with powerful AMD Ryzen processors and AI capabilities. It features a stunning 2.5K OLED display, long battery life with Rapid Charge, and an IR camera for Smart Login, ideal for students.",
-            "availability": "out of stock",
-            "price": "56090.00 INR",
-            "mrp": "86805.00 INR",
-            "image": "https://p2-ofp.static.pub//fes/cms/2025/03/07/nio0mfb9o3j3xv4hxunsqvz66ei5pu068298.png",
-            "affiliate_link": "https://lenovo-in.zlvv.net/c/5890822/608695/9634?prodsku=83J3R000R0&u=https%3A%2F%2Fwww.lenovo.com%2Fin%2Foutletin%2Fen%2Fp%2Flaptops%2Fideapad%2Fideapad-s-series%2Flenovo-ideapad-slim-5-gen-10-15-inch-amd%2F83j3r000r0&intsrc=CATF_4639",
-            "store_link": "https://www.lenovo.com/in/outletin/en/p/laptops/ideapad/ideapad-s-series/lenovo-ideapad-slim-5-gen-10-15-inch-amd/83j3r000r0",
-            "listing_date": "2025-03-07",
-            "tech_specs": {
-                "display": {
-                    "size": "15.3\"",
-                    "res": "1920x1200",
-                    "refresh": "60Hz",
-                    "type": "IPS",
-                    "brightness": "300 nits",
-                    "color": "100% sRGB"
-                },
-                "memory": {
-                    "amount": "16 GB",
-                    "type": "DDR5",
-                    "speed": "6400 MHz"
-                },
-                "storage": {
-                    "capacity": "512 GB",
-                    "type": "SSD Gen4 QLC"
-                },
-                "processor": {
-                    "brand": "AMD",
-                    "model": "Ryzen 7 7735HS",
-                    "full_model": "AMD Ryzen 7 7735HS",
-                    "series": "Ryzen 7000 Series",
-                    "cores": 8,
-                    "threads": 16,
-                    "base_clock": "3.2 GHz",
-                    "boost_clock": "Up to 4.75 GHz",
-                    "igpu": "AMD Radeon 680M",
-                    "igpu_series": "Radeon 600M Series"
-                },
-                "graphics": {
-                    "model": "AMD Radeon 680M",
-                    "vram": "Shared",
-                    "dedicated": false,
-                    "series": "Radeon 600M Series",
-                    "boost_clock": "2200 MHz",
-                    "cus": 12
-                },
-                "network": {
-                    "wifi": "Wi-Fi 6",
-                    "bluetooth": "5.3"
-                },
-                "power": {
-                    "adapter": "65W USB-C Slim (Wall-mount)",
-                    "watt": 65
-                },
-                "battery": {
-                    "capacity": "70Wh"
-                },
-                "ports": {
-                    "items": [
-                        "1x USB-A (USB 5Gbps / USB 3.2 Gen 1)",
-                        "1x USB-A (USB 5Gbps / USB 3.2 Gen 1), Always On",
-                        "2x USB-C (USB 10Gbps / USB 3.2 Gen 2), with USB PD 45-65W and DisplayPort 1.4",
-                        "1x HDMI 2.1, up to 4K/60Hz",
-                        "1x Headphone / microphone combo jack (3.5mm)",
-                        "1x microSD card reader"
-                    ]
-                },
-                "camera": {
-                    "model": "FHD 1080p + IR with Privacy Shutter, ToF Sensor"
-                },
-                "keyboard": {
-                    "type": "Backlit, Slovenian"
-                },
-                "dimensions": {
-                    "size": "339.33 x 236 x 15.6 mm (13.36 x 9.29 x 0.61 inches)",
-                    "weight": "Around 1.49 kg (3.28 lbs)"
-                },
-                "build": {
-                    "color": "Cloud Grey",
-                    "material": "Aluminium (Top), Aluminium (Bottom)",
-                    "surface": "Aluminium Stamping (Anodized with Sandblasting)"
-                },
-                "software": {
-                    "os": "Windows 11 Home, Croatian / Slovenian / English",
-                    "bundled": "Office Trial"
-                },
-                "audio": {
-                    "chip": "High Definition (HD) Audio",
-                    "speakers": "Stereo speakers, 2W x2, optimized with Dolby Audio",
-                    "microphone": "2x, Array"
-                },
-                "memory_slots": {
-                    "raw": "Memory soldered to systemboard, no slots, dual-channel",
-                    "max_memory": "16GB soldered memory, not upgradable"
-                },
-                "storage_slots": {
-                    "raw": "Two M.2 2280 PCIe 4.0 x4 slots",
-                    "max_storage": "Up to two drives, 2x M.2 SSD • M.2 2242 SSD up to 1TB"
-                }
+            "spec_origin": {
+                "network": "psref_platform",
+                "power": "psref_platform",
+                "battery": "psref_platform",
+                "ports": "psref_platform",
+                "camera": "psref_platform",
+                "keyboard": "psref_platform",
+                "dimensions": "psref_platform",
+                "build": "psref_platform",
+                "software": "psref_platform",
+                "audio": "psref_platform",
+                "memory_slots": "psref_platform",
+                "storage_slots": "psref_platform"
             },
-            "spec_source": "lenovo_outlet",
-            "vendor": "lenovo",
-            "brand": "Lenovo",
-            "series": "Ideapad",
-            "product_condition": "CERTIFIED REFURBISHED",
-            "product_metadata": {
-                "brand": "Lenovo",
-                "series": "Ideapad",
-                "part_number": "83J3R000R0",
-                "model_number": "83J3R000R0",
-                "manufacturer": "Lenovo",
-                "warranty": "1 Year Courier or Carry-in Warranty",
-                "condition": "Certified Refurbished"
+            "psref_enrichment": {
+                "tier": "psref_platform",
+                "sku": "82XFR008R0",
+                "machine_type": "82XF",
+                "product_name": "IdeaPad Slim 5 16IRL8"
             },
-            "price_mean": 57823,
-            "price_median": 58490,
-            "price_usual": 58118,
-            "has_history": true,
-            "last_checked": "2026-08-16 21:15:34",
             "archived": true,
             "archived_at": "2026-08-16"
         },
@@ -2545,7 +2401,6 @@
             "price_median": 30190,
             "price_usual": 30190,
             "has_history": true,
-            "last_checked": "2026-08-16 21:15:34",
             "archived": true,
             "archived_at": "2026-08-16"
         },
@@ -2669,7 +2524,6 @@
             "price_median": 49090,
             "price_usual": 53168,
             "has_history": true,
-            "last_checked": "2026-08-16 21:15:34",
             "archived": true,
             "archived_at": "2026-08-16"
         },
@@ -2677,7 +2531,7 @@
             "id": "83KXR000R0",
             "model_name": "IdeaPad 5 (2-in-1) 14",
             "internal_model_code": "83KXR000R0",
-            "title": "IdeaPad 5 (2-in-1) 14 - Intel i5, 16 GB RAM, 512 SSD IdeaPad 5 (2-in-1) 14 - Intel i5, 16 GB RAM, 512 SSD Lenovo IdeaPad 5i 2 In 1 Gen 9 14 Intel",
+            "title": "IdeaPad 5 (2-in-1) 14 - Intel i5, 16 GB RAM, 512 SSD IdeaPad 5 (2-in-1) 14 - Intel i5, 16 GB RAM, 512 SSD IdeaPad 5i 2-in-1 Core (14, Intel)",
             "description": "The Lenovo IdeaPad 5i 2-in-1 Gen 9 offers versatility with its 360° hinge for multiple modes. Powered by Intel® Core™ processors, it features Dolby Audio™ speakers, a digital pen, and long battery life for productivity and entertainment.",
             "availability": "out of stock",
             "price": "49890.00 INR",
@@ -2794,7 +2648,6 @@
             "price_median": 52091,
             "price_usual": 53923,
             "has_history": true,
-            "last_checked": "2026-08-16 21:15:34",
             "archived": true,
             "archived_at": "2026-08-16"
         },
@@ -2920,7 +2773,6 @@
             "price_median": 56090,
             "price_usual": 56090,
             "has_history": true,
-            "last_checked": "2026-08-16 21:15:34",
             "archived": true,
             "archived_at": "2026-08-16"
         },
@@ -2999,7 +2851,9 @@
             "price_mean": 45590,
             "price_median": 45590,
             "price_usual": 45590,
-            "has_history": true
+            "has_history": true,
+            "archived": true,
+            "archived_at": "2026-08-16"
         },
         {
             "id": "21UTR000R0",
@@ -3030,7 +2884,7 @@
                 },
                 "storage": {
                     "capacity": "512 GB",
-                    "type": "SSD Gen4 QLC"
+                    "type": "SSD Gen4"
                 },
                 "processor": {
                     "brand": "AMD",
@@ -3121,7 +2975,29 @@
             "price_mean": 60991,
             "price_median": 60991,
             "price_usual": 60991,
-            "has_history": true
+            "has_history": true,
+            "spec_origin": {
+                "network": "psref_platform",
+                "power": "psref_platform",
+                "battery": "psref_platform",
+                "ports": "psref_platform",
+                "camera": "psref_platform",
+                "keyboard": "psref_platform",
+                "dimensions": "psref_platform",
+                "build": "psref_platform",
+                "software": "psref_platform",
+                "audio": "psref_platform",
+                "memory_slots": "psref_platform",
+                "storage_slots": "psref_platform"
+            },
+            "psref_enrichment": {
+                "tier": "psref_platform",
+                "sku": "21UTR000R0",
+                "machine_type": "21UT",
+                "product_name": "ThinkBook 16 G9 AHP"
+            },
+            "archived": true,
+            "archived_at": "2026-08-16"
         },
         {
             "id": "83J7R002R0",
@@ -3152,26 +3028,18 @@
                 },
                 "storage": {
                     "capacity": "512 GB",
-                    "type": "SSD Gen4"
+                    "type": "SSD Gen4 TLC"
                 },
                 "processor": {
                     "brand": "Intel",
                     "model": "Core 5 210H",
                     "full_model": "Intel Core 5 210H",
-                    "series": "Core Series 2",
-                    "cores": 8,
-                    "threads": 12,
-                    "base_clock": "2.2 GHz",
-                    "boost_clock": "4.8 GHz",
-                    "igpu": "Intel Graphics",
-                    "igpu_series": "Intel UHD Graphics Series"
+                    "series": "Core Series 2"
                 },
                 "graphics": {
-                    "model": "Intel Graphics",
+                    "model": "Integrated Intel",
                     "vram": "Shared",
-                    "dedicated": false,
-                    "series": "Intel UHD Graphics Series",
-                    "boost_clock": "1.4 GHz"
+                    "dedicated": false
                 },
                 "network": {
                     "wifi": null,
@@ -3199,7 +3067,6 @@
             "price_median": 38591,
             "price_usual": 38591,
             "has_history": true,
-            "last_checked": "2026-08-16 21:15:34",
             "archived": true,
             "archived_at": "2026-08-16"
         },
@@ -3232,7 +3099,7 @@
                 },
                 "storage": {
                     "capacity": "512 GB",
-                    "type": "SSD Gen4 TLC"
+                    "type": "SSD Gen4"
                 },
                 "processor": {
                     "brand": "Intel",
@@ -3324,7 +3191,29 @@
             "price_mean": 49090,
             "price_median": 49090,
             "price_usual": 49090,
-            "has_history": true
+            "has_history": true,
+            "spec_origin": {
+                "network": "psref_platform",
+                "power": "psref_platform",
+                "battery": "psref_platform",
+                "ports": "psref_platform",
+                "camera": "psref_platform",
+                "keyboard": "psref_platform",
+                "dimensions": "psref_platform",
+                "build": "psref_platform",
+                "software": "psref_platform",
+                "audio": "psref_platform",
+                "memory_slots": "psref_platform",
+                "storage_slots": "psref_platform"
+            },
+            "psref_enrichment": {
+                "tier": "psref_platform",
+                "sku": "83A0R000R0",
+                "machine_type": "83A0",
+                "product_name": "Lenovo V14 G4 IRU"
+            },
+            "archived": true,
+            "archived_at": "2026-08-16"
         },
         {
             "id": "83A0R002R0",
@@ -3448,7 +3337,6 @@
             "price_median": 31591,
             "price_usual": 31591,
             "has_history": true,
-            "last_checked": "2026-08-16 21:15:34",
             "archived": true,
             "archived_at": "2026-08-16"
         },
@@ -3481,7 +3369,7 @@
                 },
                 "storage": {
                     "capacity": "512 GB",
-                    "type": "SSD Gen4 TLC"
+                    "type": "SSD Gen4"
                 },
                 "processor": {
                     "brand": "Intel",
@@ -3571,7 +3459,29 @@
             "price_mean": 63091,
             "price_median": 63091,
             "price_usual": 63091,
-            "has_history": true
+            "has_history": true,
+            "spec_origin": {
+                "network": "psref_platform",
+                "power": "psref_platform",
+                "battery": "psref_platform",
+                "ports": "psref_platform",
+                "camera": "psref_platform",
+                "keyboard": "psref_platform",
+                "dimensions": "psref_platform",
+                "build": "psref_platform",
+                "software": "psref_platform",
+                "audio": "psref_platform",
+                "memory_slots": "psref_platform",
+                "storage_slots": "psref_platform"
+            },
+            "psref_enrichment": {
+                "tier": "psref_platform",
+                "sku": "21JNR008R0",
+                "machine_type": "21JN",
+                "product_name": "ThinkPad E16 Gen 1 (Intel)"
+            },
+            "archived": true,
+            "archived_at": "2026-08-16"
         },
         {
             "id": "21M7R001R0",
@@ -3602,7 +3512,7 @@
                 },
                 "storage": {
                     "capacity": "512 GB",
-                    "type": "SSD Gen4 TLC"
+                    "type": "SSD Gen4"
                 },
                 "processor": {
                     "brand": "Intel",
@@ -3697,7 +3607,29 @@
             "price_mean": 73591,
             "price_median": 73591,
             "price_usual": 73591,
-            "has_history": true
+            "has_history": true,
+            "spec_origin": {
+                "network": "psref_platform",
+                "power": "psref_platform",
+                "battery": "psref_platform",
+                "ports": "psref_platform",
+                "camera": "psref_platform",
+                "keyboard": "psref_platform",
+                "dimensions": "psref_platform",
+                "build": "psref_platform",
+                "software": "psref_platform",
+                "audio": "psref_platform",
+                "memory_slots": "psref_platform",
+                "storage_slots": "psref_platform"
+            },
+            "psref_enrichment": {
+                "tier": "psref_platform",
+                "sku": "21M7R001R0",
+                "machine_type": "21M7",
+                "product_name": "ThinkPad E14 Gen 6 (Intel)"
+            },
+            "archived": true,
+            "archived_at": "2026-08-16"
         },
         {
             "id": "21SSR002R0",
@@ -3728,7 +3660,7 @@
                 },
                 "storage": {
                     "capacity": "512 GB",
-                    "type": "SSD Gen4 TLC"
+                    "type": "SSD Gen4"
                 },
                 "processor": {
                     "brand": "Intel",
@@ -3819,7 +3751,29 @@
             "price_mean": 80590,
             "price_median": 80590,
             "price_usual": 80590,
-            "has_history": true
+            "has_history": true,
+            "spec_origin": {
+                "network": "psref_platform",
+                "power": "psref_platform",
+                "battery": "psref_platform",
+                "ports": "psref_platform",
+                "camera": "psref_platform",
+                "keyboard": "psref_platform",
+                "dimensions": "psref_platform",
+                "build": "psref_platform",
+                "software": "psref_platform",
+                "audio": "psref_platform",
+                "memory_slots": "psref_platform",
+                "storage_slots": "psref_platform"
+            },
+            "psref_enrichment": {
+                "tier": "psref_platform",
+                "sku": "21SSR002R0",
+                "machine_type": "21SS",
+                "product_name": "ThinkPad E16 Gen 3 (Intel)"
+            },
+            "archived": true,
+            "archived_at": "2026-08-16"
         },
         {
             "id": "21T9R002R0",
@@ -3850,7 +3804,7 @@
                 },
                 "storage": {
                     "capacity": "512 GB",
-                    "type": "SSD Gen4 TLC"
+                    "type": "SSD Gen4"
                 },
                 "processor": {
                     "brand": "Intel",
@@ -3940,7 +3894,29 @@
             "price_mean": 80590,
             "price_median": 80590,
             "price_usual": 80590,
-            "has_history": true
+            "has_history": true,
+            "spec_origin": {
+                "network": "psref_platform",
+                "power": "psref_platform",
+                "battery": "psref_platform",
+                "ports": "psref_platform",
+                "camera": "psref_platform",
+                "keyboard": "psref_platform",
+                "dimensions": "psref_platform",
+                "build": "psref_platform",
+                "software": "psref_platform",
+                "audio": "psref_platform",
+                "memory_slots": "psref_platform",
+                "storage_slots": "psref_platform"
+            },
+            "psref_enrichment": {
+                "tier": "psref_platform",
+                "sku": "21T9R002R0",
+                "machine_type": "21T9",
+                "product_name": "ThinkPad E14 Gen 7 (Intel)"
+            },
+            "archived": true,
+            "archived_at": "2026-08-16"
         },
         {
             "id": "21SYR001R0",
@@ -3971,7 +3947,7 @@
                 },
                 "storage": {
                     "capacity": "512 GB",
-                    "type": "SSD Gen4 TLC"
+                    "type": "SSD Gen4"
                 },
                 "processor": {
                     "brand": "Intel",
@@ -4064,7 +4040,29 @@
             "price_mean": 85491,
             "price_median": 85491,
             "price_usual": 85491,
-            "has_history": true
+            "has_history": true,
+            "spec_origin": {
+                "network": "psref_platform",
+                "power": "psref_platform",
+                "battery": "psref_platform",
+                "ports": "psref_platform",
+                "camera": "psref_platform",
+                "keyboard": "psref_platform",
+                "dimensions": "psref_platform",
+                "build": "psref_platform",
+                "software": "psref_platform",
+                "audio": "psref_platform",
+                "memory_slots": "psref_platform",
+                "storage_slots": "psref_platform"
+            },
+            "psref_enrichment": {
+                "tier": "psref_platform",
+                "sku": "21SYR001R0",
+                "machine_type": "21SY",
+                "product_name": "ThinkPad E14 Gen 7 (Intel)"
+            },
+            "archived": true,
+            "archived_at": "2026-08-16"
         },
         {
             "id": "21MLR001R0",
@@ -4095,7 +4093,7 @@
                 },
                 "storage": {
                     "capacity": "1 TB",
-                    "type": "SSD Gen4 TLC"
+                    "type": "SSD Gen4"
                 },
                 "processor": {
                     "brand": "Intel",
@@ -4188,7 +4186,29 @@
             "price_mean": 126090,
             "price_median": 126090,
             "price_usual": 126090,
-            "has_history": true
+            "has_history": true,
+            "spec_origin": {
+                "network": "psref_platform",
+                "power": "psref_platform",
+                "battery": "psref_platform",
+                "ports": "psref_platform",
+                "camera": "psref_platform",
+                "keyboard": "psref_platform",
+                "dimensions": "psref_platform",
+                "build": "psref_platform",
+                "software": "psref_platform",
+                "audio": "psref_platform",
+                "memory_slots": "psref_platform",
+                "storage_slots": "psref_platform"
+            },
+            "psref_enrichment": {
+                "tier": "psref_platform",
+                "sku": "21MLR001R0",
+                "machine_type": "21ML",
+                "product_name": "ThinkPad T14 Gen 5 (Intel)"
+            },
+            "archived": true,
+            "archived_at": "2026-08-16"
         },
         {
             "id": "83JCR004R0",
@@ -4219,7 +4239,7 @@
                 },
                 "storage": {
                     "capacity": "512 GB",
-                    "type": "SSD Gen4 QLC"
+                    "type": "SSD Gen4"
                 },
                 "processor": {
                     "brand": "AMD",
@@ -4311,7 +4331,29 @@
             "price_mean": 50491,
             "price_median": 50491,
             "price_usual": 50491,
-            "has_history": true
+            "has_history": true,
+            "spec_origin": {
+                "network": "psref_platform",
+                "power": "psref_platform",
+                "battery": "psref_platform",
+                "ports": "psref_platform",
+                "camera": "psref_platform",
+                "keyboard": "psref_platform",
+                "dimensions": "psref_platform",
+                "build": "psref_platform",
+                "software": "psref_platform",
+                "audio": "psref_platform",
+                "memory_slots": "psref_platform",
+                "storage_slots": "psref_platform"
+            },
+            "psref_enrichment": {
+                "tier": "psref_platform",
+                "sku": "83JCR004R0",
+                "machine_type": "83JC",
+                "product_name": "LOQ 15ARP9"
+            },
+            "archived": true,
+            "archived_at": "2026-08-16"
         },
         {
             "id": "82XTR003R0",
@@ -4342,7 +4384,7 @@
                 },
                 "storage": {
                     "capacity": "512 GB",
-                    "type": "SSD Gen4 TLC"
+                    "type": "SSD Gen4"
                 },
                 "processor": {
                     "brand": "AMD",
@@ -4435,7 +4477,29 @@
             "price_mean": 56090,
             "price_median": 56090,
             "price_usual": 56090,
-            "has_history": true
+            "has_history": true,
+            "spec_origin": {
+                "network": "psref_platform",
+                "power": "psref_platform",
+                "battery": "psref_platform",
+                "ports": "psref_platform",
+                "camera": "psref_platform",
+                "keyboard": "psref_platform",
+                "dimensions": "psref_platform",
+                "build": "psref_platform",
+                "software": "psref_platform",
+                "audio": "psref_platform",
+                "memory_slots": "psref_platform",
+                "storage_slots": "psref_platform"
+            },
+            "psref_enrichment": {
+                "tier": "psref_platform",
+                "sku": "82XTR003R0",
+                "machine_type": "82XT",
+                "product_name": "LOQ 15APH8"
+            },
+            "archived": true,
+            "archived_at": "2026-08-16"
         },
         {
             "id": "83GSR000R0",
@@ -4466,7 +4530,7 @@
                 },
                 "storage": {
                     "capacity": "512 GB",
-                    "type": "SSD Gen4 QLC"
+                    "type": "SSD Gen4"
                 },
                 "processor": {
                     "brand": "Intel",
@@ -4557,7 +4621,29 @@
             "price_mean": 56090,
             "price_median": 56090,
             "price_usual": 56090,
-            "has_history": true
+            "has_history": true,
+            "spec_origin": {
+                "network": "psref_platform",
+                "power": "psref_platform",
+                "battery": "psref_platform",
+                "ports": "psref_platform",
+                "camera": "psref_platform",
+                "keyboard": "psref_platform",
+                "dimensions": "psref_platform",
+                "build": "psref_platform",
+                "software": "psref_platform",
+                "audio": "psref_platform",
+                "memory_slots": "psref_platform",
+                "storage_slots": "psref_platform"
+            },
+            "psref_enrichment": {
+                "tier": "psref_platform",
+                "sku": "83GSR000R0",
+                "machine_type": "83GS",
+                "product_name": "LOQ 15IAX9"
+            },
+            "archived": true,
+            "archived_at": "2026-08-16"
         },
         {
             "id": "83JCR006R0",
@@ -4588,7 +4674,7 @@
                 },
                 "storage": {
                     "capacity": "512 GB",
-                    "type": "SSD Gen4 QLC"
+                    "type": "SSD Gen4"
                 },
                 "processor": {
                     "brand": "AMD",
@@ -4680,7 +4766,29 @@
             "price_mean": 63091,
             "price_median": 63091,
             "price_usual": 63091,
-            "has_history": true
+            "has_history": true,
+            "spec_origin": {
+                "network": "psref_platform",
+                "power": "psref_platform",
+                "battery": "psref_platform",
+                "ports": "psref_platform",
+                "camera": "psref_platform",
+                "keyboard": "psref_platform",
+                "dimensions": "psref_platform",
+                "build": "psref_platform",
+                "software": "psref_platform",
+                "audio": "psref_platform",
+                "memory_slots": "psref_platform",
+                "storage_slots": "psref_platform"
+            },
+            "psref_enrichment": {
+                "tier": "psref_platform",
+                "sku": "83JCR006R0",
+                "machine_type": "83JC",
+                "product_name": "LOQ 15ARP9"
+            },
+            "archived": true,
+            "archived_at": "2026-08-16"
         },
         {
             "id": "83JCR008R0",
@@ -4711,7 +4819,7 @@
                 },
                 "storage": {
                     "capacity": "512 GB",
-                    "type": "SSD Gen4 QLC"
+                    "type": "SSD Gen4"
                 },
                 "processor": {
                     "brand": "AMD",
@@ -4803,7 +4911,29 @@
             "price_mean": 65190,
             "price_median": 65190,
             "price_usual": 65190,
-            "has_history": true
+            "has_history": true,
+            "spec_origin": {
+                "network": "psref_platform",
+                "power": "psref_platform",
+                "battery": "psref_platform",
+                "ports": "psref_platform",
+                "camera": "psref_platform",
+                "keyboard": "psref_platform",
+                "dimensions": "psref_platform",
+                "build": "psref_platform",
+                "software": "psref_platform",
+                "audio": "psref_platform",
+                "memory_slots": "psref_platform",
+                "storage_slots": "psref_platform"
+            },
+            "psref_enrichment": {
+                "tier": "psref_platform",
+                "sku": "83JCR008R0",
+                "machine_type": "83JC",
+                "product_name": "LOQ 15ARP9"
+            },
+            "archived": true,
+            "archived_at": "2026-08-16"
         },
         {
             "id": "83JCR00JR0",
@@ -4834,7 +4964,7 @@
                 },
                 "storage": {
                     "capacity": "512 GB",
-                    "type": "SSD Gen4 QLC"
+                    "type": "SSD Gen4"
                 },
                 "processor": {
                     "brand": "AMD",
@@ -4926,7 +5056,29 @@
             "price_mean": 81290,
             "price_median": 81290,
             "price_usual": 81290,
-            "has_history": true
+            "has_history": true,
+            "spec_origin": {
+                "network": "psref_platform",
+                "power": "psref_platform",
+                "battery": "psref_platform",
+                "ports": "psref_platform",
+                "camera": "psref_platform",
+                "keyboard": "psref_platform",
+                "dimensions": "psref_platform",
+                "build": "psref_platform",
+                "software": "psref_platform",
+                "audio": "psref_platform",
+                "memory_slots": "psref_platform",
+                "storage_slots": "psref_platform"
+            },
+            "psref_enrichment": {
+                "tier": "psref_platform",
+                "sku": "83JCR00JR0",
+                "machine_type": "83JC",
+                "product_name": "LOQ 15ARP9"
+            },
+            "archived": true,
+            "archived_at": "2026-08-16"
         },
         {
             "id": "83JER007R0",
@@ -4957,7 +5109,7 @@
                 },
                 "storage": {
                     "capacity": "1 TB",
-                    "type": "SSD Gen4 QLC"
+                    "type": "SSD Gen4"
                 },
                 "processor": {
                     "brand": "Intel",
@@ -5049,7 +5201,29 @@
             "price_mean": 126791,
             "price_median": 126791,
             "price_usual": 126791,
-            "has_history": true
+            "has_history": true,
+            "spec_origin": {
+                "network": "psref_platform",
+                "power": "psref_platform",
+                "battery": "psref_platform",
+                "ports": "psref_platform",
+                "camera": "psref_platform",
+                "keyboard": "psref_platform",
+                "dimensions": "psref_platform",
+                "build": "psref_platform",
+                "software": "psref_platform",
+                "audio": "psref_platform",
+                "memory_slots": "psref_platform",
+                "storage_slots": "psref_platform"
+            },
+            "psref_enrichment": {
+                "tier": "psref_platform",
+                "sku": "83JER007R0",
+                "machine_type": "83JE",
+                "product_name": "LOQ 15IRX10"
+            },
+            "archived": true,
+            "archived_at": "2026-08-16"
         },
         {
             "id": "83FQR001R0",
@@ -5169,7 +5343,6 @@
             "price_median": 52590,
             "price_usual": 52590,
             "has_history": true,
-            "last_checked": "2026-08-16 21:15:35",
             "archived": true,
             "archived_at": "2026-08-16"
         },
@@ -5294,7 +5467,6 @@
             "price_median": 63091,
             "price_usual": 63091,
             "has_history": true,
-            "last_checked": "2026-08-16 21:15:35",
             "archived": true,
             "archived_at": "2026-08-16"
         },
@@ -5327,7 +5499,7 @@
                 },
                 "storage": {
                     "capacity": "512 GB",
-                    "type": "SSD Gen4 TLC"
+                    "type": "SSD Gen4"
                 },
                 "processor": {
                     "brand": "Intel",
@@ -5421,7 +5593,29 @@
             "price_mean": 64491,
             "price_median": 64491,
             "price_usual": 64491,
-            "has_history": true
+            "has_history": true,
+            "spec_origin": {
+                "network": "psref_platform",
+                "power": "psref_platform",
+                "battery": "psref_platform",
+                "ports": "psref_platform",
+                "camera": "psref_platform",
+                "keyboard": "psref_platform",
+                "dimensions": "psref_platform",
+                "build": "psref_platform",
+                "software": "psref_platform",
+                "audio": "psref_platform",
+                "memory_slots": "psref_platform",
+                "storage_slots": "psref_platform"
+            },
+            "psref_enrichment": {
+                "tier": "psref_platform",
+                "sku": "83DJR005R0",
+                "machine_type": "83DJ",
+                "product_name": "Yoga 7 2-in-1 14IML9"
+            },
+            "archived": true,
+            "archived_at": "2026-08-16"
         },
         {
             "id": "83E0R001R0",
@@ -5452,7 +5646,7 @@
                 },
                 "storage": {
                     "capacity": "1 TB",
-                    "type": "SSD Gen4 TLC"
+                    "type": "SSD Gen4"
                 },
                 "processor": {
                     "brand": "Intel",
@@ -5540,7 +5734,29 @@
             "price_mean": 76391,
             "price_median": 76391,
             "price_usual": 76391,
-            "has_history": true
+            "has_history": true,
+            "spec_origin": {
+                "network": "psref_platform",
+                "power": "psref_platform",
+                "battery": "psref_platform",
+                "ports": "psref_platform",
+                "camera": "psref_platform",
+                "keyboard": "psref_platform",
+                "dimensions": "psref_platform",
+                "build": "psref_platform",
+                "software": "psref_platform",
+                "audio": "psref_platform",
+                "memory_slots": "psref_platform",
+                "storage_slots": "psref_platform"
+            },
+            "psref_enrichment": {
+                "tier": "psref_platform",
+                "sku": "83E0R001R0",
+                "machine_type": "83E0",
+                "product_name": "Yoga Slim 6 14IRH8"
+            },
+            "archived": true,
+            "archived_at": "2026-08-16"
         },
         {
             "id": "83CVR003R0",
@@ -5665,7 +5881,6 @@
             "price_median": 57390,
             "price_usual": 57390,
             "has_history": true,
-            "last_checked": "2026-08-16 21:15:35",
             "archived": true,
             "archived_at": "2026-08-16"
         },
@@ -5792,7 +6007,6 @@
             "price_median": 65890,
             "price_usual": 65890,
             "has_history": true,
-            "last_checked": "2026-08-16 21:15:35",
             "archived": true,
             "archived_at": "2026-08-16"
         },
@@ -5825,7 +6039,7 @@
                 },
                 "storage": {
                     "capacity": "512 GB",
-                    "type": "SSD Gen4 TLC"
+                    "type": "SSD Gen4"
                 },
                 "processor": {
                     "brand": "Intel",
@@ -5918,7 +6132,29 @@
             "price_mean": 87891,
             "price_median": 87891,
             "price_usual": 87891,
-            "has_history": true
+            "has_history": true,
+            "spec_origin": {
+                "network": "psref_platform",
+                "power": "psref_platform",
+                "battery": "psref_platform",
+                "ports": "psref_platform",
+                "camera": "psref_platform",
+                "keyboard": "psref_platform",
+                "dimensions": "psref_platform",
+                "build": "psref_platform",
+                "software": "psref_platform",
+                "audio": "psref_platform",
+                "memory_slots": "psref_platform",
+                "storage_slots": "psref_platform"
+            },
+            "psref_enrichment": {
+                "tier": "psref_platform",
+                "sku": "83JJR001R0",
+                "machine_type": "83JJ",
+                "product_name": "Legion 5 15IRX9"
+            },
+            "archived": true,
+            "archived_at": "2026-08-16"
         },
         {
             "id": "83NNR000R0",
@@ -5949,7 +6185,7 @@
                 },
                 "storage": {
                     "capacity": "1 TB",
-                    "type": "SSD Gen4 TLC"
+                    "type": "SSD Gen4"
                 },
                 "processor": {
                     "brand": "Intel",
@@ -6043,7 +6279,278 @@
             "price_mean": 171191,
             "price_median": 171191,
             "price_usual": 171191,
-            "has_history": true
+            "has_history": true,
+            "spec_origin": {
+                "network": "psref_platform",
+                "power": "psref_platform",
+                "battery": "psref_platform",
+                "ports": "psref_platform",
+                "camera": "psref_platform",
+                "keyboard": "psref_platform",
+                "dimensions": "psref_platform",
+                "build": "psref_platform",
+                "software": "psref_platform",
+                "audio": "psref_platform",
+                "memory_slots": "psref_platform",
+                "storage_slots": "psref_platform"
+            },
+            "psref_enrichment": {
+                "tier": "psref_platform",
+                "sku": "83NNR000R0",
+                "machine_type": "83NN",
+                "product_name": "Legion Pro 5 16IRX10"
+            },
+            "archived": true,
+            "archived_at": "2026-08-16"
+        },
+        {
+            "id": "83J2R000R0",
+            "model_name": "IdeaPad Slim 5 Gen 10 (13, AMD)",
+            "internal_model_code": "83J2R000R0",
+            "title": "IdeaPad Slim 5 Gen 10 (13, AMD)",
+            "description": "The Lenovo IdeaPad Slim 5 Gen 10 (13, AMD) is a sleek and lightweight laptop with AMD Ryzen™ processors for robust performance. It features an FHD infrared camera with Smart Login, extra-long battery life, and rapid charging, making it ideal for students on the go.",
+            "availability": "out of stock",
+            "price": "56090.00 INR",
+            "mrp": "77493.00 INR",
+            "image": "https://ap-img.static.pub/ss/img/2026/06/22/img.20260622055136319702.png",
+            "affiliate_link": "https://lenovo-in.zlvv.net/c/5890822/608695/9634?prodsku=83J2R000R0&u=https%3A%2F%2Fwww.lenovo.com%2Fin%2Foutletin%2Fen%2Fp%2Flaptops%2Fideapad%2Fideapad-s-series%2Flenovo-ideapad-slim-5-gen-10-13-inch-amd%2F83j2r000r0&intsrc=CATF_4639",
+            "store_link": "https://www.lenovo.com/in/outletin/en/p/laptops/ideapad/ideapad-s-series/lenovo-ideapad-slim-5-gen-10-13-inch-amd/83j2r000r0",
+            "listing_date": "2025-03-07",
+            "tech_specs": {
+                "display": {
+                    "size": "13.3\"",
+                    "res": "1920x1200",
+                    "refresh": "60Hz",
+                    "type": "IPS",
+                    "brightness": "400 nits",
+                    "color": "100% sRGB"
+                },
+                "memory": {
+                    "amount": "16 GB",
+                    "type": "DDR5",
+                    "speed": "6400 MHz"
+                },
+                "storage": {
+                    "capacity": "512 GB",
+                    "type": "SSD Gen4 TLC"
+                },
+                "processor": {
+                    "brand": "AMD",
+                    "model": "Ryzen 7 7735HS",
+                    "full_model": "AMD Ryzen 7 7735HS",
+                    "series": "Ryzen 7000 Series",
+                    "cores": 8,
+                    "threads": 16,
+                    "base_clock": "3.2 GHz",
+                    "boost_clock": "Up to 4.75 GHz",
+                    "igpu": "AMD Radeon 680M",
+                    "igpu_series": "Radeon 600M Series"
+                },
+                "graphics": {
+                    "model": "AMD Radeon 680M",
+                    "vram": "Shared",
+                    "dedicated": false,
+                    "series": "Radeon 600M Series",
+                    "boost_clock": "2200 MHz",
+                    "cus": 12
+                },
+                "network": {
+                    "wifi": "Wi-Fi 6E",
+                    "bluetooth": "5.3"
+                },
+                "power": {
+                    "adapter": "65W USB-C Slim (Wall-mount)",
+                    "watt": 65
+                },
+                "battery": {
+                    "capacity": "7Wh"
+                },
+                "ports": {
+                    "items": [
+                        "1x USB-A (USB 5Gbps / USB 3.2 Gen 1)",
+                        "1x USB-A (USB 5Gbps / USB 3.2 Gen 1), Always On",
+                        "2x USB-C (USB 10Gbps / USB 3.2 Gen 2), with USB PD 45-65W and DisplayPort 1.4",
+                        "1x HDMI 2.1, up to 4K/60Hz",
+                        "1x Headphone / microphone combo jack (3.5mm)",
+                        "1x microSD card reader"
+                    ]
+                },
+                "camera": {
+                    "model": "FHD 1080p + IR with Privacy Shutter, ToF Sensor"
+                },
+                "keyboard": {
+                    "type": "Backlit, Slovenian"
+                },
+                "dimensions": {
+                    "size": "295.58 x 206.95 x 14.3 mm (11.64 x 8.15 x 0.56 inches)",
+                    "weight": "Around 1.15 kg (2.54 lbs)"
+                },
+                "build": {
+                    "color": "Polar Blue",
+                    "material": "Aluminium (Top), Aluminium (Bottom)",
+                    "surface": "Aluminium Stamping (Anodized with Sandblasting)"
+                },
+                "software": {
+                    "os": "Windows 11 Home, Croatian / Slovenian / English",
+                    "bundled": "Office Trial"
+                },
+                "audio": {
+                    "chip": "High Definition (HD) Audio",
+                    "speakers": "Stereo speakers, 2W x2, optimized with Dolby Audio",
+                    "microphone": "2x, Array"
+                },
+                "memory_slots": {
+                    "raw": "Memory soldered to systemboard, no slots, dual-channel (16GB models)",
+                    "max_memory": "16GB soldered memory, not upgradable"
+                },
+                "storage_slots": {
+                    "raw": "One M.2 2280 PCIe 4.0 x4 slot",
+                    "max_storage": "One drive, up to 1TB M.2 2242 SSD"
+                }
+            },
+            "spec_source": "lenovo_outlet",
+            "vendor": "lenovo",
+            "brand": "Lenovo",
+            "series": "Ideapad",
+            "product_condition": "CERTIFIED REFURBISHED",
+            "product_metadata": {
+                "brand": "Lenovo",
+                "series": "Ideapad",
+                "part_number": "83J2R000R0",
+                "model_number": "83J2R000R0",
+                "manufacturer": "Lenovo",
+                "warranty": "1 Year Courier or Carry-in Warranty",
+                "condition": "Certified Refurbished"
+            },
+            "price_mean": 53150,
+            "price_median": 54590,
+            "price_usual": 55254,
+            "has_history": true,
+            "archived": true,
+            "archived_at": "2026-08-16"
+        },
+        {
+            "id": "83K1R002R0",
+            "model_name": "IdeaPad Slim 3i Gen 10 (15, Intel)",
+            "internal_model_code": "83K1R002R0",
+            "title": "IdeaPad Slim 3i Gen 10 (15, Intel)",
+            "description": "The Lenovo IdeaPad Slim 3i Gen 10 is a 15-inch everyday laptop designed for students and multitaskers. It features Intel Core processors, immersive audio, a privacy shutter, and rapid charging, making it ideal for both work and study.",
+            "availability": "out of stock",
+            "price": "58191.00 INR",
+            "mrp": "88939.00 INR",
+            "image": "https://ap-img.static.pub/ss/img/2026/06/22/img.20260622132804983130.png",
+            "affiliate_link": "https://lenovo-in.zlvv.net/c/5890822/608695/9634?prodsku=83K1R002R0&u=https%3A%2F%2Fwww.lenovo.com%2Fin%2Foutletin%2Fen%2Fp%2Flaptops%2Fideapad%2Fideapad-300%2Flenovo-ideapad-slim-3i-gen-10-15-inch-intel%2F83k1r002r0&intsrc=CATF_4639",
+            "store_link": "https://www.lenovo.com/in/outletin/en/p/laptops/ideapad/ideapad-300/lenovo-ideapad-slim-3i-gen-10-15-inch-intel/83k1r002r0",
+            "listing_date": "2024-11-21",
+            "tech_specs": {
+                "display": {
+                    "size": "15.3\"",
+                    "res": "1920x1200",
+                    "refresh": "60Hz",
+                    "type": "IPS",
+                    "brightness": "300 nits",
+                    "color": "45% NTSC"
+                },
+                "memory": {
+                    "amount": "16 GB",
+                    "type": "DDR5",
+                    "speed": "4800 MHz"
+                },
+                "storage": {
+                    "capacity": "512 GB",
+                    "type": "SSD Gen4 QLC"
+                },
+                "processor": {
+                    "brand": "Intel",
+                    "model": "Core i7-13620H",
+                    "full_model": "Intel Core i7-13620H",
+                    "series": "Core 13th Gen",
+                    "cores": 10,
+                    "threads": 16,
+                    "boost_clock": "4.90 GHz",
+                    "igpu": "Intel UHD Graphics for 13th Gen Intel Processors",
+                    "igpu_series": "Intel UHD Graphics Series"
+                },
+                "graphics": {
+                    "model": "Intel UHD Graphics for 13th Gen Intel Processors",
+                    "vram": "Shared",
+                    "dedicated": false,
+                    "series": "Intel UHD Graphics Series",
+                    "boost_clock": "1.50 GHz"
+                },
+                "network": {
+                    "wifi": "Wi-Fi 6",
+                    "bluetooth": "5.2"
+                },
+                "power": {
+                    "adapter": "No Power Adapter"
+                },
+                "battery": {
+                    "capacity": "50Wh"
+                },
+                "ports": {
+                    "items": [
+                        "2x USB-A (USB 5Gbps / USB 3.2 Gen 1)",
+                        "1x USB-C (USB 5Gbps / USB 3.2 Gen 1), with USB PD 45-65W and DisplayPort 1.2",
+                        "1x HDMI 1.4",
+                        "1x Headphone / microphone combo jack (3.5mm)",
+                        "1x SD card reader",
+                        "1x Round tip power connector"
+                    ]
+                },
+                "camera": {
+                    "model": "HD 720p with Privacy Shutter"
+                },
+                "keyboard": {
+                    "type": "Non-backlit, Italian"
+                },
+                "dimensions": {
+                    "size": "343.4 x 239.5 x 17.9-18.9 mm (13.52 x 9.43 x 0.70-0.74 inches)",
+                    "weight": "Starting at 1.59 kg (3.51 lbs)"
+                },
+                "build": {
+                    "color": "Luna Grey",
+                    "material": "PC-ABS (Top), PC-ABS (Bottom)",
+                    "surface": "IMR (Top), Texture (Bottom)"
+                },
+                "software": {
+                    "os": "Windows 11 Home, Italian / English",
+                    "bundled": "Office Trial"
+                },
+                "audio": {
+                    "chip": "High Definition (HD) Audio",
+                    "speakers": "Stereo speakers, 2W x2, optimized with Dolby Audio",
+                    "microphone": "2x, Array"
+                },
+                "memory_slots": {
+                    "raw": "One DDR5 SODIMM slot",
+                    "max_memory": "Up to 16GB DDR5-4800 offering"
+                },
+                "storage_slots": {
+                    "raw": "Two M.2 2242 PCIe 4.0 x4 slots",
+                    "max_storage": "Up to two drives, 2x M.2 SSD • M.2 2242 SSD up to 1TB"
+                }
+            },
+            "spec_source": "lenovo_outlet",
+            "vendor": "lenovo",
+            "brand": "Lenovo",
+            "series": "Ideapad",
+            "product_condition": "CERTIFIED REFURBISHED",
+            "product_metadata": {
+                "brand": "Lenovo",
+                "series": "Ideapad",
+                "part_number": "83K1R002R0",
+                "model_number": "83K1R002R0",
+                "manufacturer": "Lenovo",
+                "warranty": "1 Year Courier or Carry-in Warranty",
+                "condition": "Certified Refurbished"
+            },
+            "price_mean": 57210,
+            "price_median": 57491,
+            "price_usual": 57383,
+            "has_history": true,
+            "archived": true,
+            "archived_at": "2026-08-16"
         }
     ]
 }
