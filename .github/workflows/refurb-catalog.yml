@@ -138,7 +138,17 @@ jobs:
             echo "No changes to commit in local repository."
           else
             git commit -m "Auto-refresh Lenovo Refurb catalog and inventory [skip ci]"
-            git push origin HEAD || true
+            for attempt in {1..5}; do
+              git fetch origin HEAD
+              if git rebase FETCH_HEAD; then
+                if git push origin HEAD; then
+                  echo "Successfully pushed to local repository"
+                  break
+                fi
+              fi
+              echo "Local push failed; retrying in 3s (attempt ${attempt}/5)..."
+              sleep 3
+            done
           fi
 
           if [[ -n "${TARGET_REPO_PAT}" && -d "website-target/.git" ]]; then
@@ -150,6 +160,16 @@ jobs:
               echo "No changes to commit in target website repository."
             else
               git commit -m "Auto-refresh Lenovo Refurb catalog and inventory [skip ci]"
-              git push origin "${TARGET_REPO_BRANCH}" || true
+              for attempt in {1..5}; do
+                git fetch origin "${TARGET_REPO_BRANCH}"
+                if git rebase "origin/${TARGET_REPO_BRANCH}"; then
+                  if git push origin "${TARGET_REPO_BRANCH}"; then
+                    echo "Successfully pushed changes to target website repository"
+                    break
+                  fi
+                fi
+                echo "Target website push failed; retrying in 3s (attempt ${attempt}/5)..."
+                sleep 3
+              done
             fi
           fi

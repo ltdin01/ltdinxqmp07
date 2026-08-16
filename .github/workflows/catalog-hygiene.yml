@@ -249,8 +249,17 @@ jobs:
           git status
           if [[ -n "$(git status --porcelain)" ]]; then
             git commit -m "Catalog hygiene - $(date +'%Y-%m-%d %H:%M:%S IST')"
-            git push origin "${TARGET_REPO_BRANCH}"
-            echo "Successfully pushed changes to ${TARGET_REPO_OWNER}/${TARGET_REPO_NAME} branch ${TARGET_REPO_BRANCH}"
+            for attempt in {1..5}; do
+              git fetch origin "${TARGET_REPO_BRANCH}"
+              if git rebase "origin/${TARGET_REPO_BRANCH}"; then
+                if git push origin "${TARGET_REPO_BRANCH}"; then
+                  echo "Successfully pushed changes to ${TARGET_REPO_OWNER}/${TARGET_REPO_NAME} branch ${TARGET_REPO_BRANCH}"
+                  break
+                fi
+              fi
+              echo "Push failed or conflicted; retrying in 3s (attempt ${attempt}/5)..."
+              sleep 3
+            done
           else
             echo "No changes detected. Skipping push."
           fi

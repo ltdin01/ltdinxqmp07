@@ -79,7 +79,7 @@ class TestRefurb(unittest.TestCase):
                             "summary": "14 inch lightweight laptop",
                             "price": 30190,
                             "mrp": 52758,
-                            "availability": "out of stock",
+                            "availability": "in stock",
                             "store_link": "https://www.lenovo.com/in/outletin/en/p/laptops/ideapad/82x6r000r0",
                             "images": ["https://example.com/hero.jpg"],
                             "specs_by_code": {
@@ -109,7 +109,7 @@ class TestRefurb(unittest.TestCase):
             self.assertEqual(prod["id"], "82X6R000R0")
             self.assertEqual(prod["price"], "30190.00 INR")
             self.assertEqual(prod["mrp"], "52758.00 INR")
-            self.assertEqual(prod["availability"], "out of stock")
+            self.assertEqual(prod["availability"], "in stock")
             self.assertEqual(prod["product_condition"], "CERTIFIED REFURBISHED")
 
     def test_update_from_refurb(self):
@@ -193,7 +193,7 @@ class TestRefurb(unittest.TestCase):
             )
             self.assertEqual(res1["formatted"], 2)
 
-            # 2. Second format: Product B is dropped (stale). It must be retained in data-refurb.json as out of stock & recorded in archive.
+            # 2. Second format: Product B is dropped (stale). It moves to archive-refurb.json as out of stock, while data-refurb.json keeps only active in-stock models.
             raw_payload_2 = {
                 "groups": {
                     "Ideapad": [
@@ -217,11 +217,11 @@ class TestRefurb(unittest.TestCase):
                 history_dir=hist_dir,
                 existing_data=app_file,
             )
-            self.assertEqual(res2["formatted"], 2)
+            self.assertEqual(res2["formatted"], 1)
             data_after = json.loads(app_file.read_text())["Ideapad"]
-            b_prod = next(p for p in data_after if p["id"] == "82XQR002R0")
-            self.assertTrue(b_prod["archived"])
-            self.assertEqual(b_prod["availability"], "out of stock")
+            self.assertEqual(len(data_after), 1)
+            self.assertEqual(data_after[0]["id"], "82X6R000R0")
+            self.assertEqual(data_after[0]["availability"], "in stock")
 
             archived = json.loads(arch_file.read_text())["products"]
             self.assertEqual(len(archived), 1)

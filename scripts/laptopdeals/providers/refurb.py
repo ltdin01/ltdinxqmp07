@@ -447,7 +447,19 @@ def format_catalog(
     formatted: OrderedDict[str, list[dict[str, Any]]] = OrderedDict()
     count = 0
     psref_applied = 0
-    processed_skus: set[str] = set()
+    seen_live_skus: set[str] = set()
+    archive_path = output_path.parent / "archive-refurb.json" if output_path else paths.resolve("apps/web/archive-refurb.json")
+    now_date = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+    archived_map: dict[str, dict[str, Any]] = {}
+
+    # 1. Load existing archive-refurb.json
+    archive_data = read_json(archive_path, {"products": []})
+    for archived_prod in archive_data.get("products", []):
+        if not isinstance(archived_prod, dict):
+            continue
+        sku = normalize_id(archived_prod.get("id"))
+        if sku:
+            archived_map[sku] = archived_prod
 
     for _, rows in (groups or {}).items():
         if not isinstance(rows, list):
@@ -456,10 +468,10 @@ def format_catalog(
             if not isinstance(item, dict):
                 continue
             sku = normalize_id(item.get("id") or item.get("product_code"))
-            if not sku:
+            if not sku or sku in seen_live_skus:
                 continue
 
-            processed_skus.add(sku)
+            seen_live_skus.add(sku)
             specs = parse_spec_codes(item.get("specs_by_code") or {})
             category = category_from_product(item)
             store_link = item.get("store_link") or ""
@@ -489,13 +501,16 @@ def format_catalog(
             hist_stats = stats(hist)
             mrp_val = item.get("mrp")
 
+            avail_raw = str(item.get("availability") or "in stock").strip().lower()
+            is_oos = "out" in avail_raw
+
             row: dict[str, Any] = {
                 "id": sku,
                 "model_name": m_name,
                 "internal_model_code": sku,
                 "title": title,
                 "description": item.get("card_summary") or item.get("summary") or "",
-                "availability": item.get("availability", "unknown"),
+                "availability": "out of stock" if is_oos else "in stock",
                 "price": f"{current_price}.00 INR" if current_price else "0",
                 "mrp": f"{mrp_val}.00 INR" if mrp_val else "0",
                 "image": (item.get("images") or [""])[0],
@@ -550,48 +565,27 @@ def format_catalog(
             except Exception:
                 pass
 
-            formatted.setdefault(category, []).append(row)
-            count += 1
+            if is_oos:
+                row["archived"] = True
+                row["archived_at"] = now_date
+                archived_map[sku] = row
+            else:
+                archived_map.pop(sku, None)
+                formatted.setdefault(category, []).append(row)
+                count += 1
 
-    # Preserve all existing products from existing data and archive that weren't re-scraped
-    processed_ids = {normalize_id(row.get("id")) for rows in formatted.values() for row in rows}
-    now_date = datetime.now(timezone.utc).strftime("%Y-%m-%d")
-
-    # 1. Existing products in data-refurb.json that were not re-scraped
+    # Preserve all out-of-stock/archived models in archive-refurb.json
+    # Add dropped products from previous data-refurb.json that were not re-scraped
     for sku, existing_product in existing.items():
-        if sku in processed_ids:
+        if sku in seen_live_skus or sku in archived_map:
             continue
-        cat = existing_product.get("series") or category_from_product(existing_product) or "Other"
         row = dict(existing_product)
         row["archived"] = True
         row["archived_at"] = row.get("archived_at") or now_date
         row["availability"] = "out of stock"
-        formatted.setdefault(cat, []).append(row)
-        processed_ids.add(sku)
-        count += 1
+        archived_map[sku] = row
 
-    # 2. Existing products in archive-refurb.json to ensure any previously archived model is retained & displayed
-    archive_data = read_json(archive_path, {"products": []})
-    for archived_prod in archive_data.get("products", []):
-        if not isinstance(archived_prod, dict):
-            continue
-        sku = normalize_id(archived_prod.get("id"))
-        if not sku or sku in processed_ids:
-            continue
-        cat = archived_prod.get("series") or category_from_product(archived_prod) or "Other"
-        row = dict(archived_prod)
-        row["archived"] = True
-        row["archived_at"] = row.get("archived_at") or now_date
-        row["availability"] = "out of stock"
-        formatted.setdefault(cat, []).append(row)
-        processed_ids.add(sku)
-        count += 1
-
-    # Keep archive-refurb.json synchronized with all out-of-stock / archived listings
-    archived_list = [
-        row for rows in formatted.values() for row in rows
-        if row.get("archived") or row.get("archived_at") or row.get("availability") == "out of stock"
-    ]
+    archived_list = list(archived_map.values())
 
     if not dry_run:
         build_inventory_indices()
