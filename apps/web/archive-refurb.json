@@ -1836,7 +1836,7 @@
             },
             "price_mean": 48531,
             "price_median": 48791,
-            "price_usual": 50456,
+            "price_usual": 50543,
             "has_history": true,
             "spec_origin": {
                 "network": "psref_platform",
