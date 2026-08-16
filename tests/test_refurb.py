@@ -193,7 +193,7 @@ class TestRefurb(unittest.TestCase):
             )
             self.assertEqual(res1["formatted"], 2)
 
-            # 2. Second format: Product B is dropped (stale). It must be archived.
+            # 2. Second format: Product B is dropped (stale). It must be retained in data-refurb.json as out of stock & recorded in archive.
             raw_payload_2 = {
                 "groups": {
                     "Ideapad": [
@@ -217,14 +217,19 @@ class TestRefurb(unittest.TestCase):
                 history_dir=hist_dir,
                 existing_data=app_file,
             )
-            self.assertEqual(res2["formatted"], 1)
+            self.assertEqual(res2["formatted"], 2)
+            data_after = json.loads(app_file.read_text())["Ideapad"]
+            b_prod = next(p for p in data_after if p["id"] == "82XQR002R0")
+            self.assertTrue(b_prod["archived"])
+            self.assertEqual(b_prod["availability"], "out of stock")
+
             archived = json.loads(arch_file.read_text())["products"]
             self.assertEqual(len(archived), 1)
             self.assertEqual(archived[0]["id"], "82XQR002R0")
             self.assertTrue(archived[0]["archived"])
             self.assertEqual(archived[0]["availability"], "out of stock")
 
-            # 3. Third format: Product B returns back! It must be unarchived (removed from archive).
+            # 3. Third format: Product B returns back in stock! It must be updated to in stock.
             raw_file.write_text(json.dumps(raw_payload_1))
             res3 = refurb.format_catalog(
                 input_path=raw_file,
@@ -234,6 +239,9 @@ class TestRefurb(unittest.TestCase):
                 existing_data=app_file,
             )
             self.assertEqual(res3["formatted"], 2)
+            data_after3 = json.loads(app_file.read_text())["Ideapad"]
+            b_prod3 = next(p for p in data_after3 if p["id"] == "82XQR002R0")
+            self.assertEqual(b_prod3["availability"], "in stock")
             archived_after = json.loads(arch_file.read_text())["products"]
             self.assertEqual(len(archived_after), 0)
 

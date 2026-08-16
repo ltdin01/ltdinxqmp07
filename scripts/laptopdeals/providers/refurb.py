@@ -553,39 +553,56 @@ def format_catalog(
             formatted.setdefault(category, []).append(row)
             count += 1
 
-    # Preserve historical / out-of-stock items in archive & unarchive returned products
-    archive_data = read_json(archive_path, {"products": []})
-    existing_archive_prods = {
-        normalize_id(p.get("id")): p
-        for p in archive_data.get("products", [])
-        if isinstance(p, dict) and p.get("id")
-    }
-
-    # If any returning SKU was previously archived, remove it from archive (unarchive)
-    for sku in processed_skus:
-        if sku in existing_archive_prods:
-            existing_archive_prods.pop(sku, None)
-
-    # Any previously existing product not in the current DLP scrape moves to archive
+    # Preserve all existing products from existing data and archive that weren't re-scraped
+    processed_ids = {normalize_id(row.get("id")) for rows in formatted.values() for row in rows}
     now_date = datetime.now(timezone.utc).strftime("%Y-%m-%d")
-    for sku, old_prod in existing.items():
-        if sku not in processed_skus:
-            archived_row = dict(old_prod)
-            archived_row["archived"] = True
-            archived_row["archived_at"] = now_date
-            archived_row["availability"] = "out of stock"
-            existing_archive_prods[sku] = archived_row
+
+    # 1. Existing products in data-refurb.json that were not re-scraped
+    for sku, existing_product in existing.items():
+        if sku in processed_ids:
+            continue
+        cat = existing_product.get("series") or category_from_product(existing_product) or "Other"
+        row = dict(existing_product)
+        row["archived"] = True
+        row["archived_at"] = row.get("archived_at") or now_date
+        row["availability"] = "out of stock"
+        formatted.setdefault(cat, []).append(row)
+        processed_ids.add(sku)
+        count += 1
+
+    # 2. Existing products in archive-refurb.json to ensure any previously archived model is retained & displayed
+    archive_data = read_json(archive_path, {"products": []})
+    for archived_prod in archive_data.get("products", []):
+        if not isinstance(archived_prod, dict):
+            continue
+        sku = normalize_id(archived_prod.get("id"))
+        if not sku or sku in processed_ids:
+            continue
+        cat = archived_prod.get("series") or category_from_product(archived_prod) or "Other"
+        row = dict(archived_prod)
+        row["archived"] = True
+        row["archived_at"] = row.get("archived_at") or now_date
+        row["availability"] = "out of stock"
+        formatted.setdefault(cat, []).append(row)
+        processed_ids.add(sku)
+        count += 1
+
+    # Keep archive-refurb.json synchronized with all out-of-stock / archived listings
+    archived_list = [
+        row for rows in formatted.values() for row in rows
+        if row.get("archived") or row.get("archived_at") or row.get("availability") == "out of stock"
+    ]
 
     if not dry_run:
         build_inventory_indices()
         write_json(output_path, formatted, indent=4)
-        write_json(archive_path, {"products": list(existing_archive_prods.values())}, indent=4)
+        write_json(archive_path, {"products": archived_list}, indent=4)
 
     return {
         "formatted": count,
         "categories": len(formatted),
         "psref_applied": psref_applied,
-        "archived_count": len(existing_archive_prods),
+        "archived_count": len(archived_list),
     }
 
 
