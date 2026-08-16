@@ -553,7 +553,7 @@
             },
             "price_mean": 46291,
             "price_median": 46291,
-            "price_usual": 49643,
+            "price_usual": 49246,
             "has_history": true,
             "spec_origin": {
                 "network": "psref_platform",
@@ -697,7 +697,7 @@
             },
             "price_mean": 48023,
             "price_median": 48190,
-            "price_usual": 51326,
+            "price_usual": 51227,
             "has_history": true,
             "spec_origin": {
                 "network": "psref_platform",
@@ -838,7 +838,7 @@
             },
             "price_mean": 41840,
             "price_median": 41341,
-            "price_usual": 40756,
+            "price_usual": 40838,
             "has_history": true,
             "spec_origin": {
                 "network": "psref_platform",
@@ -983,7 +983,7 @@
             },
             "price_mean": 49841,
             "price_median": 49841,
-            "price_usual": 53502,
+            "price_usual": 53068,
             "has_history": true,
             "spec_origin": {
                 "network": "psref_platform",
@@ -6621,7 +6621,7 @@
                 },
                 "storage": {
                     "capacity": "512 GB",
-                    "type": "SSD Gen4 TLC"
+                    "type": "SSD Gen4"
                 },
                 "processor": {
                     "brand": "Intel",
@@ -6712,6 +6712,26 @@
             "price_median": 67990,
             "price_usual": 67990,
             "has_history": true,
+            "spec_origin": {
+                "network": "psref_platform",
+                "power": "psref_platform",
+                "battery": "psref_platform",
+                "ports": "psref_platform",
+                "camera": "psref_platform",
+                "keyboard": "psref_platform",
+                "dimensions": "psref_platform",
+                "build": "psref_platform",
+                "software": "psref_platform",
+                "audio": "psref_platform",
+                "memory_slots": "psref_platform",
+                "storage_slots": "psref_platform"
+            },
+            "psref_enrichment": {
+                "tier": "psref_platform",
+                "sku": "21JKR00AR0",
+                "machine_type": "21JK",
+                "product_name": "ThinkPad E14 Gen 5 (Intel)"
+            },
             "archived": true,
             "archived_at": "2026-08-16"
         }
