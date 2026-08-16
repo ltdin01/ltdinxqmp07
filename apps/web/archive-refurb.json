@@ -6332,7 +6332,7 @@
                 },
                 "storage": {
                     "capacity": "512 GB",
-                    "type": "SSD Gen4 TLC"
+                    "type": "SSD Gen4"
                 },
                 "processor": {
                     "brand": "AMD",
@@ -6426,6 +6426,26 @@
             "price_median": 54590,
             "price_usual": 55254,
             "has_history": true,
+            "spec_origin": {
+                "network": "psref_platform",
+                "power": "psref_platform",
+                "battery": "psref_platform",
+                "ports": "psref_platform",
+                "camera": "psref_platform",
+                "keyboard": "psref_platform",
+                "dimensions": "psref_platform",
+                "build": "psref_platform",
+                "software": "psref_platform",
+                "audio": "psref_platform",
+                "memory_slots": "psref_platform",
+                "storage_slots": "psref_platform"
+            },
+            "psref_enrichment": {
+                "tier": "psref_platform",
+                "sku": "83J2R000R0",
+                "machine_type": "83J2",
+                "product_name": "IdeaPad Slim 5 13ARP10"
+            },
             "archived": true,
             "archived_at": "2026-08-16"
         },
@@ -6458,7 +6478,7 @@
                 },
                 "storage": {
                     "capacity": "512 GB",
-                    "type": "SSD Gen4 QLC"
+                    "type": "SSD Gen4"
                 },
                 "processor": {
                     "brand": "Intel",
@@ -6549,6 +6569,26 @@
             "price_median": 57491,
             "price_usual": 57383,
             "has_history": true,
+            "spec_origin": {
+                "network": "psref_platform",
+                "power": "psref_platform",
+                "battery": "psref_platform",
+                "ports": "psref_platform",
+                "camera": "psref_platform",
+                "keyboard": "psref_platform",
+                "dimensions": "psref_platform",
+                "build": "psref_platform",
+                "software": "psref_platform",
+                "audio": "psref_platform",
+                "memory_slots": "psref_platform",
+                "storage_slots": "psref_platform"
+            },
+            "psref_enrichment": {
+                "tier": "psref_platform",
+                "sku": "83K1R002R0",
+                "machine_type": "83K1",
+                "product_name": "IdeaPad Slim 3 15IRH10"
+            },
             "archived": true,
             "archived_at": "2026-08-16"
         }
