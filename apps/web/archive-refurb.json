@@ -7261,128 +7261,253 @@
             "archived_at": "2026-08-17"
         },
         {
-            "id": "82JUR005R0",
-            "model_name": "Legion 5 Gen 6 (15, AMD)",
-            "internal_model_code": "82JUR005R0",
-            "title": "Legion 5 Gen 6 (15, AMD)",
-            "description": "Legion 5 15 - AMD Ryzen 7, 16 GB RAM, 1TB SSD",
+            "id": "83J2R001R0",
+            "model_name": "IdeaPad Slim 5 Gen 10 (13, AMD)",
+            "internal_model_code": "83J2R001R0",
+            "title": "IdeaPad Slim 5 Gen 10 (13, AMD)",
+            "description": "The Lenovo IdeaPad Slim 5 Gen 10 (13, AMD) is a sleek and lightweight laptop with AMD Ryzen™ processors for robust performance. It features an FHD infrared camera with Smart Login, extra-long battery life, and rapid charging, making it ideal for students on the go.",
             "availability": "out of stock",
-            "price": "116891.00 INR",
-            "mrp": "117386.00 INR",
-            "image": "https://p3-ofp.static.pub/fes/cms/2022/08/16/525c8gsr9dseq00lk68mh0d6vkwspz627619.png",
-            "affiliate_link": "https://lenovo-in.zlvv.net/c/5890822/608695/9634?prodsku=82JUR005R0&u=https%3A%2F%2Fwww.lenovo.com%2Fin%2Foutletin%2Fen%2Fp%2Flaptops%2Flegion-laptops%2Flegion-5-series%2Flegion-5-gen-6-15-inch-amd-gaming-laptop%2F82jur005r0&intsrc=CATF_4639",
-            "store_link": "https://www.lenovo.com/in/outletin/en/p/laptops/legion-laptops/legion-5-series/legion-5-gen-6-15-inch-amd-gaming-laptop/82jur005r0",
-            "listing_date": "2022-08-16",
+            "price": "56090.00 INR",
+            "mrp": "86805.00 INR",
+            "image": "https://ap-img.static.pub/ss/img/2026/06/22/img.20260622055136319702.png",
+            "affiliate_link": "https://lenovo-in.zlvv.net/c/5890822/608695/9634?prodsku=83J2R001R0&u=https%3A%2F%2Fwww.lenovo.com%2Fin%2Foutletin%2Fen%2Fp%2Flaptops%2Fideapad%2Fideapad-s-series%2Flenovo-ideapad-slim-5-gen-10-13-inch-amd%2F83j2r001r0&intsrc=CATF_4639",
+            "store_link": "https://www.lenovo.com/in/outletin/en/p/laptops/ideapad/ideapad-s-series/lenovo-ideapad-slim-5-gen-10-13-inch-amd/83j2r001r0",
+            "listing_date": "2025-03-07",
             "tech_specs": {
                 "display": {
-                    "size": "15.6\"",
-                    "res": "2560x1440",
-                    "refresh": "165Hz",
+                    "size": "13.3\"",
+                    "res": "1920x1200",
+                    "refresh": "60Hz",
+                    "type": "IPS",
+                    "brightness": "400 nits",
+                    "color": "100% sRGB"
+                },
+                "memory": {
+                    "amount": "16 GB",
+                    "type": "DDR5",
+                    "speed": "6400 MHz"
+                },
+                "storage": {
+                    "capacity": "512 GB",
+                    "type": "SSD Gen4"
+                },
+                "processor": {
+                    "brand": "AMD",
+                    "model": "Ryzen 7 7735HS",
+                    "full_model": "AMD Ryzen 7 7735HS",
+                    "series": "Ryzen 7000 Series",
+                    "cores": 8,
+                    "threads": 16,
+                    "base_clock": "3.2 GHz",
+                    "boost_clock": "Up to 4.75 GHz",
+                    "igpu": "AMD Radeon 680M",
+                    "igpu_series": "Radeon 600M Series"
+                },
+                "graphics": {
+                    "model": "AMD Radeon 680M",
+                    "vram": "Shared",
+                    "dedicated": false,
+                    "series": "Radeon 600M Series",
+                    "boost_clock": "2200 MHz",
+                    "cus": 12
+                },
+                "network": {
+                    "wifi": "Wi-Fi 6E",
+                    "bluetooth": "5.3"
+                },
+                "power": {
+                    "adapter": "65W USB-C Slim (Wall-mount)",
+                    "watt": 65
+                },
+                "battery": {
+                    "capacity": "7Wh"
+                },
+                "ports": {
+                    "items": [
+                        "1x USB-A (USB 5Gbps / USB 3.2 Gen 1)",
+                        "1x USB-A (USB 5Gbps / USB 3.2 Gen 1), Always On",
+                        "2x USB-C (USB 10Gbps / USB 3.2 Gen 2), with USB PD 45-65W and DisplayPort 1.4",
+                        "1x HDMI 2.1, up to 4K/60Hz",
+                        "1x Headphone / microphone combo jack (3.5mm)",
+                        "1x microSD card reader"
+                    ]
+                },
+                "camera": {
+                    "model": "FHD 1080p + IR with Privacy Shutter, ToF Sensor"
+                },
+                "keyboard": {
+                    "type": "Backlit, Slovenian"
+                },
+                "dimensions": {
+                    "size": "295.58 x 206.95 x 14.3 mm (11.64 x 8.15 x 0.56 inches)",
+                    "weight": "Around 1.15 kg (2.54 lbs)"
+                },
+                "build": {
+                    "color": "Polar Blue",
+                    "material": "Aluminium (Top), Aluminium (Bottom)",
+                    "surface": "Aluminium Stamping (Anodized with Sandblasting)"
+                },
+                "software": {
+                    "os": "Windows 11 Home, Croatian / Slovenian / English",
+                    "bundled": "Office Trial"
+                },
+                "audio": {
+                    "chip": "High Definition (HD) Audio",
+                    "speakers": "Stereo speakers, 2W x2, optimized with Dolby Audio",
+                    "microphone": "2x, Array"
+                },
+                "memory_slots": {
+                    "raw": "Memory soldered to systemboard, no slots, dual-channel (16GB models)",
+                    "max_memory": "16GB soldered memory, not upgradable"
+                },
+                "storage_slots": {
+                    "raw": "One M.2 2280 PCIe 4.0 x4 slot",
+                    "max_storage": "One drive, up to 1TB M.2 2242 SSD"
+                }
+            },
+            "spec_source": "lenovo_outlet",
+            "vendor": "lenovo",
+            "brand": "Lenovo",
+            "series": "Ideapad",
+            "product_condition": "CERTIFIED REFURBISHED",
+            "product_metadata": {
+                "brand": "Lenovo",
+                "series": "Ideapad",
+                "part_number": "83J2R001R0",
+                "model_number": "83J2R001R0",
+                "manufacturer": "Lenovo",
+                "warranty": "1 Year Courier or Carry-in Warranty",
+                "condition": "Certified Refurbished"
+            },
+            "price_mean": 53230,
+            "price_median": 54590,
+            "price_usual": 55390,
+            "has_history": true,
+            "archived": true,
+            "archived_at": "2026-08-17"
+        },
+        {
+            "id": "83J3R000R0",
+            "model_name": "IdeaPad Slim 5 Gen 10 (15, AMD)",
+            "internal_model_code": "83J3R000R0",
+            "title": "IdeaPad Slim 5 Gen 10 (15, AMD)",
+            "description": "The IdeaPad Slim 5 Gen 10 (15, AMD) is a sleek, lightweight laptop with powerful AMD Ryzen processors and AI capabilities. It features a stunning 2.5K OLED display, long battery life with Rapid Charge, and an IR camera for Smart Login, ideal for students.",
+            "availability": "out of stock",
+            "price": "56090.00 INR",
+            "mrp": "86805.00 INR",
+            "image": "https://p2-ofp.static.pub//fes/cms/2025/03/07/nio0mfb9o3j3xv4hxunsqvz66ei5pu068298.png",
+            "affiliate_link": "https://lenovo-in.zlvv.net/c/5890822/608695/9634?prodsku=83J3R000R0&u=https%3A%2F%2Fwww.lenovo.com%2Fin%2Foutletin%2Fen%2Fp%2Flaptops%2Fideapad%2Fideapad-s-series%2Flenovo-ideapad-slim-5-gen-10-15-inch-amd%2F83j3r000r0&intsrc=CATF_4639",
+            "store_link": "https://www.lenovo.com/in/outletin/en/p/laptops/ideapad/ideapad-s-series/lenovo-ideapad-slim-5-gen-10-15-inch-amd/83j3r000r0",
+            "listing_date": "2025-03-07",
+            "tech_specs": {
+                "display": {
+                    "size": "15.3\"",
+                    "res": "1920x1200",
+                    "refresh": "60Hz",
                     "type": "IPS",
                     "brightness": "300 nits",
                     "color": "100% sRGB"
                 },
                 "memory": {
                     "amount": "16 GB",
-                    "type": "DDR4",
-                    "speed": "3200 MHz"
+                    "type": "DDR5",
+                    "speed": "6400 MHz"
                 },
                 "storage": {
-                    "capacity": "1 TB",
-                    "type": "SSD Gen3 TLC"
+                    "capacity": "512 GB",
+                    "type": "SSD Gen4"
                 },
                 "processor": {
                     "brand": "AMD",
-                    "model": "Ryzen 7 5800H",
-                    "full_model": "AMD Ryzen 7 5800H",
-                    "series": "Ryzen 5000 Series",
+                    "model": "Ryzen 7 7735HS",
+                    "full_model": "AMD Ryzen 7 7735HS",
+                    "series": "Ryzen 7000 Series",
                     "cores": 8,
                     "threads": 16,
                     "base_clock": "3.2 GHz",
-                    "boost_clock": "Up to 4.4 GHz",
-                    "igpu": "AMD Radeon Graphics",
-                    "igpu_series": "Integrated Graphics"
+                    "boost_clock": "Up to 4.75 GHz",
+                    "igpu": "AMD Radeon 680M",
+                    "igpu_series": "Radeon 600M Series"
                 },
                 "graphics": {
-                    "model": "RTX 3060 6 GB GDDR6",
-                    "vram": "6 GB",
-                    "dedicated": true,
-                    "series": "RTX 30 Series",
-                    "cuda_cores": 3840
+                    "model": "AMD Radeon 680M",
+                    "vram": "Shared",
+                    "dedicated": false,
+                    "series": "Radeon 600M Series",
+                    "boost_clock": "2200 MHz",
+                    "cus": 12
                 },
                 "network": {
                     "wifi": "Wi-Fi 6",
-                    "bluetooth": "5.1"
+                    "bluetooth": "5.3"
                 },
                 "power": {
-                    "adapter": "230W Slim Tip (3-pin)",
-                    "watt": 230
+                    "adapter": "65W USB-C Slim (Wall-mount)",
+                    "watt": 65
                 },
                 "battery": {
-                    "capacity": "60Wh"
+                    "capacity": "70Wh"
                 },
                 "ports": {
                     "items": [
-                        "1x Ethernet (RJ-45)",
-                        "1x HDMI® 2.1",
+                        "1x USB-A (USB 5Gbps / USB 3.2 Gen 1)",
+                        "1x USB-A (USB 5Gbps / USB 3.2 Gen 1), Always On",
+                        "2x USB-C (USB 10Gbps / USB 3.2 Gen 2), with USB PD 45-65W and DisplayPort 1.4",
+                        "1x HDMI 2.1, up to 4K/60Hz",
                         "1x Headphone / microphone combo jack (3.5mm)",
-                        "1x Power connector",
-                        "1x USB 3.2 Gen 1 (Always On)",
-                        "1x USB-C® 3.2 Gen 2 (support data transfer and DisplayPort™ 1.4)",
-                        "1x USB-C® 3.2 Gen 2 (support data transfer, Power Delivery and DisplayPort™ 1.4)",
-                        "3x USB 3.2 Gen 1"
+                        "1x microSD card reader"
                     ]
                 },
                 "camera": {
-                    "model": "HD 720p with E-shutter"
+                    "model": "FHD 1080p + IR with Privacy Shutter, ToF Sensor"
                 },
                 "keyboard": {
-                    "type": "White Backlit, Spanish (LA)"
+                    "type": "Backlit, Slovenian"
                 },
                 "dimensions": {
-                    "size": "362.56 x 260.61 x 22.5-25.75 mm (14.27 x 10.26 x 0.89-1.01 inches)",
-                    "weight": "Around 2.4 kg (5.3 lbs)"
+                    "size": "339.33 x 236 x 15.6 mm (13.36 x 9.29 x 0.61 inches)",
+                    "weight": "Around 1.49 kg (3.28 lbs)"
                 },
                 "build": {
-                    "color": "Phantom Blue (Top), Shadow Black (Bottom)",
-                    "material": "PC-ABS (Top), PC-ABS (Bottom)",
-                    "surface": "Painting"
+                    "color": "Cloud Grey",
+                    "material": "Aluminium (Top), Aluminium (Bottom)",
+                    "surface": "Aluminium Stamping (Anodized with Sandblasting)"
                 },
                 "software": {
-                    "os": "Windows 11 Home Single Language, Spanish",
+                    "os": "Windows 11 Home, Croatian / Slovenian / English",
                     "bundled": "Office Trial"
                 },
                 "audio": {
-                    "microphone": "2x, Array",
-                    "chip": "High Definition (HD) Audio, Realtek® ALC3306 codec",
-                    "speakers": "Stereo speakers, 2W x2, Nahimic Audio"
+                    "chip": "High Definition (HD) Audio",
+                    "speakers": "Stereo speakers, 2W x2, optimized with Dolby Audio",
+                    "microphone": "2x, Array"
                 },
                 "memory_slots": {
-                    "raw": "Two DDR4 SO-DIMM slots, dual-channel capable",
-                    "max_memory": "Up to 32GB DDR4-3200 offering"
+                    "raw": "Memory soldered to systemboard, no slots, dual-channel",
+                    "max_memory": "16GB soldered memory, not upgradable"
                 },
                 "storage_slots": {
-                    "raw": "Two M.2 2280 PCIe® 3.0 x4 slots",
-                    "max_storage": "Up to two drives, 2x M.2 SSD • M.2 2242 SSD up to 512GB • M.2 2280 SSD up to 1TB"
+                    "raw": "Two M.2 2280 PCIe 4.0 x4 slots",
+                    "max_storage": "Up to two drives, 2x M.2 SSD • M.2 2242 SSD up to 1TB"
                 }
             },
             "spec_source": "lenovo_outlet",
             "vendor": "lenovo",
             "brand": "Lenovo",
-            "series": "Legion Laptops",
+            "series": "Ideapad",
             "product_condition": "CERTIFIED REFURBISHED",
             "product_metadata": {
                 "brand": "Lenovo",
-                "series": "Legion Laptops",
-                "part_number": "82JUR005R0",
-                "model_number": "82JUR005R0",
+                "series": "Ideapad",
+                "part_number": "83J3R000R0",
+                "model_number": "83J3R000R0",
                 "manufacturer": "Lenovo",
                 "warranty": "1 Year Courier or Carry-in Warranty",
                 "condition": "Certified Refurbished"
             },
-            "price_mean": 116891,
-            "price_median": 116891,
-            "price_usual": 116891,
+            "price_mean": 57823,
+            "price_median": 58490,
+            "price_usual": 58090,
             "has_history": true,
             "archived": true,
             "archived_at": "2026-08-17"
