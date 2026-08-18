@@ -7631,8 +7631,28 @@
             },
             "price_mean": 57823,
             "price_median": 58490,
-            "price_usual": 58090,
+            "price_usual": 58062,
             "has_history": true,
+            "spec_origin": {
+                "network": "psref_platform",
+                "power": "psref_platform",
+                "battery": "psref_platform",
+                "ports": "psref_platform",
+                "camera": "psref_platform",
+                "keyboard": "psref_platform",
+                "dimensions": "psref_platform",
+                "build": "psref_platform",
+                "software": "psref_platform",
+                "audio": "psref_platform",
+                "memory_slots": "psref_platform",
+                "storage_slots": "psref_platform"
+            },
+            "psref_enrichment": {
+                "tier": "psref_platform",
+                "sku": "83J3R000R0",
+                "machine_type": "83J3",
+                "product_name": "IdeaPad Slim 5 15ARP10"
+            },
             "archived": true,
             "archived_at": "2026-08-18"
         },
