@@ -7633,6 +7633,26 @@
             "price_median": 92491,
             "price_usual": 92491,
             "has_history": true,
+            "spec_origin": {
+                "network": "psref_platform",
+                "power": "psref_platform",
+                "battery": "psref_platform",
+                "ports": "psref_platform",
+                "camera": "psref_platform",
+                "keyboard": "psref_platform",
+                "dimensions": "psref_platform",
+                "build": "psref_platform",
+                "software": "psref_platform",
+                "audio": "psref_platform",
+                "memory_slots": "psref_platform",
+                "storage_slots": "psref_platform"
+            },
+            "psref_enrichment": {
+                "tier": "psref_platform",
+                "sku": "82JKR001R0",
+                "machine_type": "82JK",
+                "product_name": "Legion 5 15ITH6"
+            },
             "archived": true,
             "archived_at": "2026-08-18"
         }
