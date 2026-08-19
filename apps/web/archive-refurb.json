@@ -576,7 +576,7 @@
                 "product_name": "IdeaPad Slim 3 15AMN8"
             },
             "archived": true,
-            "archived_at": "2026-08-18"
+            "archived_at": "2026-08-19"
         },
         {
             "id": "83HRR000R0",
@@ -861,7 +861,7 @@
                 "product_name": "IdeaPad Slim 3 15IAH8"
             },
             "archived": true,
-            "archived_at": "2026-08-18"
+            "archived_at": "2026-08-19"
         },
         {
             "id": "83J1R000R0",
@@ -1429,7 +1429,7 @@
                 "product_name": "IdeaPad Slim 5 14IRL8"
             },
             "archived": true,
-            "archived_at": "2026-08-18"
+            "archived_at": "2026-08-19"
         },
         {
             "id": "83EMR005R0",
@@ -1573,7 +1573,7 @@
                 "product_name": "IdeaPad Slim 3 15IRH8"
             },
             "archived": true,
-            "archived_at": "2026-08-18"
+            "archived_at": "2026-08-19"
         },
         {
             "id": "82K2R00FR0",
@@ -1992,7 +1992,7 @@
                 "product_name": "IdeaPad Slim 5 14AKP10"
             },
             "archived": true,
-            "archived_at": "2026-08-18"
+            "archived_at": "2026-08-19"
         },
         {
             "id": "83K1R00BR0",
@@ -2135,7 +2135,7 @@
                 "product_name": "IdeaPad Slim 3 15IRH10"
             },
             "archived": true,
-            "archived_at": "2026-08-18"
+            "archived_at": "2026-08-19"
         },
         {
             "id": "82XFR008R0",
@@ -2278,7 +2278,7 @@
                 "product_name": "IdeaPad Slim 5 16IRL8"
             },
             "archived": true,
-            "archived_at": "2026-08-18"
+            "archived_at": "2026-08-19"
         },
         {
             "id": "82X6R000R0",
@@ -2997,7 +2997,7 @@
                 "product_name": "ThinkBook 16 G9 AHP"
             },
             "archived": true,
-            "archived_at": "2026-08-18"
+            "archived_at": "2026-08-19"
         },
         {
             "id": "83J7R002R0",
@@ -3481,7 +3481,7 @@
                 "product_name": "ThinkPad E16 Gen 1 (Intel)"
             },
             "archived": true,
-            "archived_at": "2026-08-18"
+            "archived_at": "2026-08-19"
         },
         {
             "id": "21M7R001R0",
@@ -3773,7 +3773,7 @@
                 "product_name": "ThinkPad E16 Gen 3 (Intel)"
             },
             "archived": true,
-            "archived_at": "2026-08-18"
+            "archived_at": "2026-08-19"
         },
         {
             "id": "21T9R002R0",
@@ -3916,7 +3916,7 @@
                 "product_name": "ThinkPad E14 Gen 7 (Intel)"
             },
             "archived": true,
-            "archived_at": "2026-08-18"
+            "archived_at": "2026-08-19"
         },
         {
             "id": "21SYR001R0",
@@ -4062,7 +4062,7 @@
                 "product_name": "ThinkPad E14 Gen 7 (Intel)"
             },
             "archived": true,
-            "archived_at": "2026-08-18"
+            "archived_at": "2026-08-19"
         },
         {
             "id": "21MLR001R0",
@@ -4353,7 +4353,7 @@
                 "product_name": "LOQ 15ARP9"
             },
             "archived": true,
-            "archived_at": "2026-08-18"
+            "archived_at": "2026-08-19"
         },
         {
             "id": "82XTR003R0",
@@ -4499,7 +4499,7 @@
                 "product_name": "LOQ 15APH8"
             },
             "archived": true,
-            "archived_at": "2026-08-18"
+            "archived_at": "2026-08-19"
         },
         {
             "id": "83GSR000R0",
@@ -4788,7 +4788,7 @@
                 "product_name": "LOQ 15ARP9"
             },
             "archived": true,
-            "archived_at": "2026-08-18"
+            "archived_at": "2026-08-19"
         },
         {
             "id": "83JCR008R0",
@@ -5615,7 +5615,7 @@
                 "product_name": "Yoga 7 2-in-1 14IML9"
             },
             "archived": true,
-            "archived_at": "2026-08-18"
+            "archived_at": "2026-08-19"
         },
         {
             "id": "83E0R001R0",
@@ -6154,7 +6154,7 @@
                 "product_name": "Legion 5 15IRX9"
             },
             "archived": true,
-            "archived_at": "2026-08-18"
+            "archived_at": "2026-08-19"
         },
         {
             "id": "83NNR000R0",
@@ -6301,7 +6301,7 @@
                 "product_name": "Legion Pro 5 16IRX10"
             },
             "archived": true,
-            "archived_at": "2026-08-18"
+            "archived_at": "2026-08-19"
         },
         {
             "id": "83J2R000R0",
@@ -6424,7 +6424,7 @@
             },
             "price_mean": 53150,
             "price_median": 54590,
-            "price_usual": 55276,
+            "price_usual": 55287,
             "has_history": true,
             "spec_origin": {
                 "network": "psref_platform",
@@ -6447,7 +6447,7 @@
                 "product_name": "IdeaPad Slim 5 13ARP10"
             },
             "archived": true,
-            "archived_at": "2026-08-18"
+            "archived_at": "2026-08-19"
         },
         {
             "id": "83K1R002R0",
@@ -6567,7 +6567,7 @@
             },
             "price_mean": 57210,
             "price_median": 57491,
-            "price_usual": 57405,
+            "price_usual": 57415,
             "has_history": true,
             "spec_origin": {
                 "network": "psref_platform",
@@ -6590,7 +6590,7 @@
                 "product_name": "IdeaPad Slim 3 15IRH10"
             },
             "archived": true,
-            "archived_at": "2026-08-18"
+            "archived_at": "2026-08-19"
         },
         {
             "id": "21JKR00AR0",
@@ -6870,7 +6870,7 @@
                 "product_name": "IdeaPad Slim 3 15Q8X10"
             },
             "archived": true,
-            "archived_at": "2026-08-18"
+            "archived_at": "2026-08-19"
         },
         {
             "id": "83BFR000R0",
@@ -7387,130 +7387,6 @@
             "archived_at": "2026-08-17"
         },
         {
-            "id": "21TFR000R0",
-            "model_name": "ThinkPad E16 Gen 3 (16, Intel)",
-            "internal_model_code": "21TFR000R0",
-            "title": "ThinkPad E16 Gen 3 (16, Intel)",
-            "description": "The ThinkPad E16 Gen 3 is a sleek and durable laptop designed for business professionals on the go. It features Intel Core processors, a 16-inch display, long battery life, and customizable options to meet diverse needs.",
-            "availability": "out of stock",
-            "price": "62390.00 INR",
-            "mrp": "175589.00 INR",
-            "image": "https://p4-ofp.static.pub//fes/cms/2025/04/07/52kiu4uukvy6dnj3ryrs2grmwt7716558555.png",
-            "affiliate_link": "https://lenovo-in.zlvv.net/c/5890822/608695/9634?prodsku=21TFR000R0&u=https%3A%2F%2Fwww.lenovo.com%2Fin%2Foutletin%2Fen%2Fp%2Flaptops%2Fthinkpad%2Fthinkpade%2Flenovo-thinkpad-e16-gen-3-16-inch-intel%2F21tfr000r0&intsrc=CATF_4639",
-            "store_link": "https://www.lenovo.com/in/outletin/en/p/laptops/thinkpad/thinkpade/lenovo-thinkpad-e16-gen-3-16-inch-intel/21tfr000r0",
-            "listing_date": "2025-04-07",
-            "tech_specs": {
-                "display": {
-                    "size": "16\"",
-                    "res": "1920x1200",
-                    "refresh": "60Hz",
-                    "type": "IPS",
-                    "brightness": "300 nits",
-                    "color": "45% NTSC"
-                },
-                "memory": {
-                    "amount": "16 GB",
-                    "type": "DDR5",
-                    "speed": "5600 MHz"
-                },
-                "storage": {
-                    "capacity": "512 GB",
-                    "type": "SSD Gen4"
-                },
-                "processor": {
-                    "brand": "Intel",
-                    "model": "Core 5 210H",
-                    "full_model": "Intel Core 5 210H",
-                    "series": "Core Series 2",
-                    "cores": 8,
-                    "threads": 12,
-                    "base_clock": "2.2 GHz",
-                    "boost_clock": "4.8 GHz",
-                    "igpu": "Intel Graphics",
-                    "igpu_series": "Intel UHD Graphics Series"
-                },
-                "graphics": {
-                    "model": "Intel Graphics",
-                    "vram": "Shared",
-                    "dedicated": false,
-                    "series": "Intel UHD Graphics Series",
-                    "boost_clock": "1.4 GHz"
-                },
-                "network": {
-                    "wifi": "Wi-Fi 6E",
-                    "bluetooth": "5.3"
-                },
-                "power": {
-                    "adapter": "65W USB-C (2-pin)",
-                    "watt": 65
-                },
-                "battery": {
-                    "capacity": "48.0Wh"
-                },
-                "ports": {
-                    "items": [
-                        "1x USB-A (USB 5Gbps / USB 3.2 Gen 1)",
-                        "1x USB-A (USB 10Gbps / USB 3.2 Gen 2), Always On",
-                        "1x USB-C (Thunderbolt 4 / USB4 40Gbps), with USB PD 15-65W and DisplayPort 2.1",
-                        "1x HDMI 2.1, up to 4K/60Hz",
-                        "1x Headphone / microphone combo jack (3.5mm)",
-                        "1x Ethernet (RJ-45)"
-                    ]
-                },
-                "camera": {
-                    "model": "5.0MP with Privacy Shutter"
-                },
-                "keyboard": {
-                    "type": "Backlit, Canadian French"
-                },
-                "dimensions": {
-                    "size": "356 x 249 x 10.1/17.05 (front/rear), 21.15 (maximum) mm; 14.01 x 9.80 x 0.40/0.67 (front/rear), 0.83 (maximum) inches",
-                    "weight": "Starting at 1.63 kg (3.59 lbs)"
-                },
-                "build": {
-                    "color": "Black",
-                    "material": "Aluminium (Top), Aluminium (Bottom)"
-                },
-                "software": {
-                    "os": "Windows 11 Pro, French / Canadian French / English"
-                },
-                "audio": {
-                    "chip": "High Definition (HD) Audio, Senary SN6147 codec",
-                    "speakers": "Stereo speakers, 2W x2, Dolby Atmos, audio by HARMAN",
-                    "microphone": "2x, Array"
-                },
-                "memory_slots": {
-                    "raw": "Raptor Lake, Meteor Lake and Arrow Lake: two DDR5 SODIMM slots, dual-channel capable",
-                    "max_memory": "Raptor Lake with H Series processors, Meteor Lake and Arrow Lake: up to 64GB DDR5-5600"
-                },
-                "storage_slots": {
-                    "raw": "Raptor Lake, Meteor Lake and Arrow Lake: two M.2 slots • One M.2 2242 PCIe 4.0 x4 slot • One M.2 2280 PCIe 4.0 x4 slot",
-                    "max_storage": "Raptor Lake, Meteor Lake and Arrow Lake: up to two drives, 2x M.2 SSD • M.2 2242 SSD up to 1TB • M.2 2280 SSD up to 1TB"
-                }
-            },
-            "spec_source": "lenovo_outlet",
-            "vendor": "lenovo",
-            "brand": "Lenovo",
-            "series": "ThinkPad",
-            "product_condition": "CERTIFIED REFURBISHED",
-            "product_metadata": {
-                "brand": "Lenovo",
-                "series": "ThinkPad",
-                "part_number": "21TFR000R0",
-                "model_number": "21TFR000R0",
-                "manufacturer": "Lenovo",
-                "warranty": "1 Year Courier or Carry-in Warranty",
-                "condition": "Certified Refurbished"
-            },
-            "price_mean": 62390,
-            "price_median": 62390,
-            "price_usual": 62390,
-            "has_history": true,
-            "last_checked": "2026-08-18 08:41:28",
-            "archived": true,
-            "archived_at": "2026-08-18"
-        },
-        {
             "id": "83J3R000R0",
             "model_name": "IdeaPad Slim 5 Gen 10 (15, AMD)",
             "internal_model_code": "83J3R000R0",
@@ -7876,7 +7752,7 @@
                 "product_name": "IdeaPad Slim 3 15AMN8"
             },
             "archived": true,
-            "archived_at": "2026-08-18"
+            "archived_at": "2026-08-19"
         },
         {
             "id": "21KSR000R0",
@@ -8024,7 +7900,7 @@
                 "product_name": "ThinkPad P16s Gen 3 (Intel)"
             },
             "archived": true,
-            "archived_at": "2026-08-18"
+            "archived_at": "2026-08-19"
         }
     ]
 }
