@@ -553,7 +553,7 @@
             },
             "price_mean": 46291,
             "price_median": 46291,
-            "price_usual": 48571,
+            "price_usual": 48281,
             "has_history": true,
             "spec_origin": {
                 "network": "psref_platform",
@@ -838,7 +838,7 @@
             },
             "price_mean": 41840,
             "price_median": 41341,
-            "price_usual": 40995,
+            "price_usual": 41069,
             "has_history": true,
             "spec_origin": {
                 "network": "psref_platform",
