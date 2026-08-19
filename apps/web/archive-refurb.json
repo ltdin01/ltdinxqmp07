@@ -8007,153 +8007,6 @@
             "archived_at": "2026-08-19"
         },
         {
-            "id": "82JUR005R0",
-            "model_name": "Legion 5 Gen 6 (15, AMD)",
-            "internal_model_code": "82JUR005R0",
-            "title": "Legion 5 Gen 6 (15, AMD)",
-            "description": "Legion 5 15 - AMD Ryzen 7, 16 GB RAM, 1TB SSD",
-            "availability": "out of stock",
-            "price": "116891.00 INR",
-            "mrp": "117386.00 INR",
-            "image": "https://p3-ofp.static.pub/fes/cms/2022/08/16/525c8gsr9dseq00lk68mh0d6vkwspz627619.png",
-            "affiliate_link": "https://lenovo-in.zlvv.net/c/5890822/608695/9634?prodsku=82JUR005R0&u=https%3A%2F%2Fwww.lenovo.com%2Fin%2Foutletin%2Fen%2Fp%2Flaptops%2Flegion-laptops%2Flegion-5-series%2Flegion-5-gen-6-15-inch-amd-gaming-laptop%2F82jur005r0&intsrc=CATF_4639",
-            "store_link": "https://www.lenovo.com/in/outletin/en/p/laptops/legion-laptops/legion-5-series/legion-5-gen-6-15-inch-amd-gaming-laptop/82jur005r0",
-            "listing_date": "2022-08-16",
-            "tech_specs": {
-                "display": {
-                    "size": "15.6\"",
-                    "res": "2560x1440",
-                    "refresh": "165Hz",
-                    "type": "IPS",
-                    "brightness": "300 nits",
-                    "color": "100% sRGB"
-                },
-                "memory": {
-                    "amount": "16 GB",
-                    "type": "DDR4",
-                    "speed": "3200 MHz"
-                },
-                "storage": {
-                    "capacity": "1 TB",
-                    "type": "SSD"
-                },
-                "processor": {
-                    "brand": "AMD",
-                    "model": "Ryzen 7 5800H",
-                    "full_model": "AMD Ryzen 7 5800H",
-                    "series": "Ryzen 5000 Series",
-                    "cores": 8,
-                    "threads": 16,
-                    "base_clock": "3.2 GHz",
-                    "boost_clock": "Up to 4.4 GHz",
-                    "igpu": "AMD Radeon Graphics",
-                    "igpu_series": "Integrated Graphics"
-                },
-                "graphics": {
-                    "model": "RTX 3060 6 GB GDDR6",
-                    "vram": "6 GB",
-                    "dedicated": true,
-                    "series": "RTX 30 Series",
-                    "cuda_cores": 3840
-                },
-                "network": {
-                    "wifi": "Wi-Fi 6",
-                    "bluetooth": "5.1"
-                },
-                "power": {
-                    "adapter": "230W Slim Tip (3-pin)",
-                    "watt": 230
-                },
-                "battery": {
-                    "capacity": "60Wh"
-                },
-                "ports": {
-                    "items": [
-                        "1x Ethernet (RJ-45)",
-                        "1x HDMI® 2.1",
-                        "1x Headphone / microphone combo jack (3.5mm)",
-                        "1x Power connector",
-                        "1x USB 3.2 Gen 1 (Always On)",
-                        "1x USB-C® 3.2 Gen 2 (support data transfer and DisplayPort™ 1.4)",
-                        "1x USB-C® 3.2 Gen 2 (support data transfer, Power Delivery and DisplayPort™ 1.4)",
-                        "3x USB 3.2 Gen 1"
-                    ]
-                },
-                "camera": {
-                    "model": "HD 720p with E-shutter"
-                },
-                "keyboard": {
-                    "type": "White Backlit, Spanish (LA)"
-                },
-                "dimensions": {
-                    "size": "362.56 x 260.61 x 22.5-25.75 mm (14.27 x 10.26 x 0.89-1.01 inches)",
-                    "weight": "Around 2.4 kg (5.3 lbs)"
-                },
-                "build": {
-                    "color": "Phantom Blue (Top), Shadow Black (Bottom)",
-                    "material": "PC-ABS (Top), PC-ABS (Bottom)",
-                    "surface": "Painting"
-                },
-                "software": {
-                    "os": "Windows 11 Home Single Language, Spanish",
-                    "bundled": "Office Trial"
-                },
-                "audio": {
-                    "microphone": "2x, Array",
-                    "chip": "High Definition (HD) Audio, Realtek® ALC3306 codec",
-                    "speakers": "Stereo speakers, 2W x2, Nahimic Audio"
-                },
-                "memory_slots": {
-                    "raw": "Two DDR4 SO-DIMM slots, dual-channel capable",
-                    "max_memory": "Up to 32GB DDR4-3200 offering"
-                },
-                "storage_slots": {
-                    "raw": "Two M.2 2280 PCIe® 3.0 x4 slots",
-                    "max_storage": "Up to two drives, 2x M.2 SSD • M.2 2242 SSD up to 512GB • M.2 2280 SSD up to 1TB"
-                }
-            },
-            "spec_source": "lenovo_outlet",
-            "vendor": "lenovo",
-            "brand": "Lenovo",
-            "series": "Legion Laptops",
-            "product_condition": "CERTIFIED REFURBISHED",
-            "product_metadata": {
-                "brand": "Lenovo",
-                "series": "Legion Laptops",
-                "part_number": "82JUR005R0",
-                "model_number": "82JUR005R0",
-                "manufacturer": "Lenovo",
-                "warranty": "1 Year Courier or Carry-in Warranty",
-                "condition": "Certified Refurbished"
-            },
-            "price_mean": 116891,
-            "price_median": 116891,
-            "price_usual": 116891,
-            "has_history": true,
-            "spec_origin": {
-                "network": "psref_platform",
-                "power": "psref_platform",
-                "battery": "psref_platform",
-                "ports": "psref_platform",
-                "camera": "psref_platform",
-                "keyboard": "psref_platform",
-                "dimensions": "psref_platform",
-                "build": "psref_platform",
-                "software": "psref_platform",
-                "audio": "psref_platform",
-                "memory_slots": "psref_platform",
-                "storage_slots": "psref_platform"
-            },
-            "psref_enrichment": {
-                "tier": "psref_platform",
-                "sku": "82JUR005R0",
-                "machine_type": "82JU",
-                "product_name": "Legion 5 15ACH6H"
-            },
-            "archived": true,
-            "archived_at": "2026-08-19"
-        },
-        {
             "id": "83K1R000R0",
             "model_name": "IdeaPad Slim 3i Gen 10 (15, Intel)",
             "internal_model_code": "83K1R000R0",
@@ -8814,6 +8667,87 @@
             "price_usual": 168791,
             "has_history": true,
             "last_checked": "2026-08-19 15:23:34",
+            "archived": true,
+            "archived_at": "2026-08-19"
+        },
+        {
+            "id": "83E2R000R0",
+            "model_name": "Yoga Pro 7i Gen 9 (14, Intel)",
+            "internal_model_code": "83E2R000R0",
+            "title": "Yoga Pro 7i Gen 9 (14, Intel)",
+            "description": "The Yoga Pro 7i Core Ultra is a sleek 14-inch laptop designed for creators seeking studio-grade performance. With AI-tuned optimization, a vibrant PureSight Pro display, and seamless integration with the Yoga Creator ecosystem, it empowers creative workflows.",
+            "availability": "out of stock",
+            "price": "105091.00 INR",
+            "mrp": "196803.00 INR",
+            "image": "https://p2-ofp.static.pub//fes/cms/2024/09/19/ynmc1o7arwoq5n1yi3tb2hl3smorlj440197.png",
+            "affiliate_link": "https://lenovo-in.zlvv.net/c/5890822/608695/9634?prodsku=83E2R000R0&u=https%3A%2F%2Fwww.lenovo.com%2Fin%2Foutletin%2Fen%2Fp%2Flaptops%2Fyoga%2Fyoga-pro-series%2Fyoga-pro-7i-gen-9-14-inch-intel%2F83e2r000r0&intsrc=CATF_4639",
+            "store_link": "https://www.lenovo.com/in/outletin/en/p/laptops/yoga/yoga-pro-series/yoga-pro-7i-gen-9-14-inch-intel/83e2r000r0",
+            "listing_date": "2024-09-19",
+            "tech_specs": {
+                "display": {
+                    "size": "14.5\"",
+                    "res": "2880x1800",
+                    "refresh": "120Hz",
+                    "type": "OLED",
+                    "brightness": "400 nits",
+                    "color": "100% DCI-P3"
+                },
+                "memory": {
+                    "amount": "16 GB",
+                    "type": "DDR5",
+                    "speed": "7467 MHz"
+                },
+                "storage": {
+                    "capacity": "1 TB",
+                    "type": "SSD Gen4"
+                },
+                "processor": {
+                    "brand": "Intel",
+                    "model": "Core Ultra 7 155H",
+                    "full_model": "Intel Core Ultra 7 155H",
+                    "series": "Core Ultra Series 1",
+                    "cores": 16,
+                    "threads": 22,
+                    "base_clock": "1.4 GHz",
+                    "boost_clock": "4.8 GHz",
+                    "igpu": "Intel Arc graphics",
+                    "igpu_series": "Intel Arc Graphics Series",
+                    "xe_cores": "8 Xe-Cores"
+                },
+                "graphics": {
+                    "model": "RTX 4050 6 GB GDDR6",
+                    "vram": "6 GB",
+                    "dedicated": true,
+                    "series": "RTX 40 Series",
+                    "cuda_cores": 2560
+                },
+                "network": {
+                    "wifi": null,
+                    "bluetooth": null
+                },
+                "power": {
+                    "adapter": "Unknown"
+                }
+            },
+            "spec_source": "lenovo_outlet",
+            "vendor": "lenovo",
+            "brand": "Lenovo",
+            "series": "Yoga",
+            "product_condition": "CERTIFIED REFURBISHED",
+            "product_metadata": {
+                "brand": "Lenovo",
+                "series": "Yoga",
+                "part_number": "83E2R000R0",
+                "model_number": "83E2R000R0",
+                "manufacturer": "Lenovo",
+                "warranty": "1 Year Courier or Carry-in Warranty",
+                "condition": "Certified Refurbished"
+            },
+            "price_mean": 105091,
+            "price_median": 105091,
+            "price_usual": 105091,
+            "has_history": true,
+            "last_checked": "2026-08-19 16:30:24",
             "archived": true,
             "archived_at": "2026-08-19"
         }
