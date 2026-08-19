@@ -8752,103 +8752,107 @@
             "archived_at": "2026-08-19"
         },
         {
-            "id": "21TAR001R0",
-            "model_name": "ThinkPad E14 Gen 7 (14, Intel)",
-            "internal_model_code": "21TAR001R0",
-            "title": "ThinkPad E14 Gen 7 (14, Intel)",
-            "description": "The ThinkPad E14 Gen 7 is a lightweight and portable business laptop with long-lasting battery life. Powered by Intel Core processors, it offers exceptional performance, seamless collaboration, and enterprise-grade security for professionals on the go.",
+            "id": "21QYR000R0",
+            "model_name": "ThinkPad T14s",
+            "internal_model_code": "21QYR000R0",
+            "title": "ThinkPad T14s - Ultra 7, 32 GB RAM, 512 SSD ThinkPad T14s - Ultra 7, 32 GB RAM, 512 SSD ThinkPad T14s Gen 6 14 Intel",
+            "description": "The ThinkPad T14s Gen 6 is an ultrathin, lightweight laptop designed for productivity and efficiency. Powered by AI and Intel® Core™ Ultra processors, it offers customizable features to adapt to your business needs.",
             "availability": "out of stock",
-            "price": "73591.00 INR",
-            "mrp": "117910.00 INR",
-            "image": "https://p1-ofp.static.pub//fes/cms/2025/04/07/ygx8zd48mt4w6fi6mcm5yye23eyms4589374.png",
-            "affiliate_link": "https://lenovo-in.zlvv.net/c/5890822/608695/9634?prodsku=21TAR001R0&u=https%3A%2F%2Fwww.lenovo.com%2Fin%2Foutletin%2Fen%2Fp%2Flaptops%2Fthinkpad%2Fthinkpade%2Flenovo-thinkpad-e14-gen-7-14-inch-intel%2F21tar001r0&intsrc=CATF_4639",
-            "store_link": "https://www.lenovo.com/in/outletin/en/p/laptops/thinkpad/thinkpade/lenovo-thinkpad-e14-gen-7-14-inch-intel/21tar001r0",
-            "listing_date": "2025-04-07",
+            "price": "150590.00 INR",
+            "mrp": "255539.00 INR",
+            "image": "https://p3-ofp.static.pub/ShareResource/optimized/pdp/thinkpad/thinkpad-t-series/len101t0113/lenovo-thinkpad-t14s-gen-6-intel-pdp-hero.png",
+            "affiliate_link": "https://lenovo-in.zlvv.net/c/5890822/608695/9634?prodsku=21QYR000R0&u=https%3A%2F%2Fwww.lenovo.com%2Fin%2Foutletin%2Fen%2Fp%2Flaptops%2Fthinkpad%2Fthinkpadt%2Fthinkpad-t14s-gen-6-14-inch-intel%2F21qyr000r0&intsrc=CATF_4639",
+            "store_link": "https://www.lenovo.com/in/outletin/en/p/laptops/thinkpad/thinkpadt/thinkpad-t14s-gen-6-14-inch-intel/21qyr000r0",
+            "listing_date": "",
             "tech_specs": {
                 "display": {
                     "size": "14\"",
                     "res": "1920x1200",
                     "refresh": "60Hz",
                     "type": "IPS",
-                    "brightness": "300 nits",
+                    "brightness": "400 nits",
                     "color": "45% NTSC"
                 },
                 "memory": {
-                    "amount": "16 GB",
+                    "amount": "32 GB",
                     "type": "DDR5",
-                    "speed": "5200 MHz"
+                    "speed": "8533 MHz"
                 },
                 "storage": {
                     "capacity": "512 GB",
-                    "type": "SSD Gen4"
+                    "type": "SSD Gen4 TLC"
                 },
                 "processor": {
                     "brand": "Intel",
-                    "model": "Core 5 220U",
-                    "full_model": "Intel Core 5 220U",
-                    "series": "Core Series 2",
-                    "cores": 10,
-                    "threads": 12,
-                    "base_clock": "1.4 GHz",
+                    "model": "Core Ultra 7 268V",
+                    "full_model": "Intel Core Ultra 7 268V",
+                    "series": "Core Ultra Series 2",
+                    "cores": 8,
+                    "threads": 8,
+                    "base_clock": "2.2 GHz",
                     "boost_clock": "5 GHz",
-                    "igpu": "Intel Graphics",
-                    "igpu_series": "Intel UHD Graphics Series"
+                    "igpu": "Intel Arc 140V GPU",
+                    "igpu_series": "Intel Arc V-Series",
+                    "xe_cores": "8 Xe-Cores"
                 },
                 "graphics": {
-                    "model": "Intel Graphics",
+                    "model": "Intel Arc 140V GPU",
                     "vram": "Shared",
                     "dedicated": false,
-                    "series": "Intel UHD Graphics Series",
-                    "boost_clock": "1.3 GHz"
+                    "xe_cores": "8",
+                    "series": "Intel Arc V-Series",
+                    "boost_clock": "2 GHz",
+                    "ai_tops": "66 TOPS"
                 },
                 "network": {
-                    "wifi": "Wi-Fi 6E",
-                    "bluetooth": "5.3"
+                    "wifi": "Wi-Fi 7",
+                    "bluetooth": "5.4"
                 },
                 "power": {
                     "adapter": "65W USB-C (2-pin)",
                     "watt": 65
                 },
                 "battery": {
-                    "capacity": "48Wh"
+                    "capacity": "58Wh"
                 },
                 "ports": {
                     "items": [
                         "1x USB-A (USB 5Gbps / USB 3.2 Gen 1)",
-                        "1x USB-A (USB 10Gbps / USB 3.2 Gen 2), Always On",
-                        "1x USB-C (Thunderbolt 4 / USB4 40Gbps), with USB PD 15-65W and DisplayPort 2.1",
+                        "1x USB-A (USB 5Gbps / USB 3.2 Gen 1), Always On",
+                        "2x USB-C (Thunderbolt 4 / USB4 40Gbps), with USB PD 15-65W and DisplayPort 2.1",
                         "1x HDMI 2.1, up to 4K/60Hz",
-                        "1x Headphone / microphone combo jack (3.5mm)",
-                        "1x Ethernet (RJ-45)"
+                        "1x Headphone / microphone combo jack (3.5mm)"
                     ]
                 },
                 "camera": {
-                    "model": "FHD 1080p + IR Hybrid with Privacy Shutter"
+                    "model": "5.0MP + IR Discrete with Privacy Shutter, Computer Vision on ISP"
                 },
                 "keyboard": {
-                    "type": "Non-backlit, Spanish (LA)"
+                    "type": "Backlit, Spanish (LA)"
                 },
                 "dimensions": {
-                    "size": "313 x 220.3 x 10.1/15.25 (front/rear), 20.5 (maximum) mm; 12.32 x 8.67 x 0.40/0.60 (front/rear), 0.81 (maximum) inches",
-                    "weight": "Starting at 1.34 kg (2.95 lbs)"
+                    "size": "313.6 x 219.4 x 11.43/16.4 (front/rear), 19.75 (maximum) mm 12.35 x 8.64 x 0.45/0.65 (front/rear), 0.78 (maximum) inches",
+                    "weight": "Starting at 1.28 kg (2.82 lbs)"
                 },
                 "build": {
                     "color": "Black",
-                    "material": "Aluminium (Top), PC-ABS (Bottom)"
+                    "material": "Carbon Fiber Hybrid (Top), Aluminium (Bottom)"
                 },
-                "software": {},
+                "software": {
+                    "os": "Windows 11 Pro, Spanish / Mexican Spanish / English"
+                },
                 "audio": {
-                    "chip": "High Definition (HD) Audio, Senary SN6147 codec",
-                    "speakers": "Stereo speakers, 2W x2, Dolby Atmos, audio by HARMAN",
-                    "microphone": "2x, Array"
+                    "chip": "High Definition (HD) Audio, Realtek ALC3287 codec",
+                    "speakers": "Stereo speakers, 2W x2, Dolby Atmos",
+                    "microphone": "2x, 360°"
                 },
                 "memory_slots": {
-                    "raw": "Raptor Lake, Meteor Lake and Arrow Lake: two DDR5 SODIMM slots, dual-channel capable",
-                    "max_memory": "Raptor Lake with U Series processors: up to 64GB DDR5-5200"
+                    "raw": "Memory soldered to systemboard, no slots, dual-channel",
+                    "max_memory": "32GB soldered memory, not upgradable"
                 },
                 "storage_slots": {
-                    "raw": "Raptor Lake, Meteor Lake and Arrow Lake: two M.2 slots • One M.2 2242 PCIe 4.0 x4 slot • One M.2 2280 PCIe 4.0 x4 slot",
-                    "max_storage": "Raptor Lake, Meteor Lake and Arrow Lake: up to two drives, 2x M.2 SSD • M.2 2242 SSD up to 1TB • M.2 2280 SSD up to 1TB"
+                    "raw": "Models with V or H series processor: one M.2 2280 PCIe 5.0 x4 slot",
+                    "max_storage": "One drive, up to 1TB M.2 2280 SSD"
                 }
             },
             "spec_source": "lenovo_outlet",
@@ -8859,15 +8863,15 @@
             "product_metadata": {
                 "brand": "Lenovo",
                 "series": "ThinkPad",
-                "part_number": "21TAR001R0",
-                "model_number": "21TAR001R0",
+                "part_number": "21QYR000R0",
+                "model_number": "21QYR000R0",
                 "manufacturer": "Lenovo",
                 "warranty": "1 Year Courier or Carry-in Warranty",
                 "condition": "Certified Refurbished"
             },
-            "price_mean": 73591,
-            "price_median": 73591,
-            "price_usual": 73591,
+            "price_mean": 150590,
+            "price_median": 150590,
+            "price_usual": 150590,
             "has_history": true,
             "archived": true,
             "archived_at": "2026-08-19"
