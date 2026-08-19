@@ -8130,6 +8130,26 @@
             "price_median": 116891,
             "price_usual": 116891,
             "has_history": true,
+            "spec_origin": {
+                "network": "psref_platform",
+                "power": "psref_platform",
+                "battery": "psref_platform",
+                "ports": "psref_platform",
+                "camera": "psref_platform",
+                "keyboard": "psref_platform",
+                "dimensions": "psref_platform",
+                "build": "psref_platform",
+                "software": "psref_platform",
+                "audio": "psref_platform",
+                "memory_slots": "psref_platform",
+                "storage_slots": "psref_platform"
+            },
+            "psref_enrichment": {
+                "tier": "psref_platform",
+                "sku": "82JUR005R0",
+                "machine_type": "82JU",
+                "product_name": "Legion 5 15ACH6H"
+            },
             "archived": true,
             "archived_at": "2026-08-19"
         },
@@ -8543,6 +8563,257 @@
                 "product_name": "IdeaPad 5 2-in-1 14IRH9"
             },
             "last_checked": "2026-08-19 13:29:54",
+            "archived": true,
+            "archived_at": "2026-08-19"
+        },
+        {
+            "id": "21KGR001R0",
+            "model_name": "ThinkBook 14 Gen 6 (14, Intel)",
+            "internal_model_code": "21KGR001R0",
+            "title": "ThinkBook 14 Gen 6 (14, Intel)",
+            "description": "The Lenovo ThinkBook 14 Gen 6 is a powerful 14-inch business laptop designed for productivity and efficiency. It features all-day battery life, military-grade durability, advanced security, and a redesigned ergonomic keyboard for seamless work.",
+            "availability": "out of stock",
+            "price": "44191.00 INR",
+            "mrp": "80753.00 INR",
+            "image": "https://p2-ofp.static.pub//fes/cms/2023/08/16/iutq4rio1br7mpt6uk1b8bfzhxyhph475181.png",
+            "affiliate_link": "https://lenovo-in.zlvv.net/c/5890822/608695/9634?prodsku=21KGR001R0&u=https%3A%2F%2Fwww.lenovo.com%2Fin%2Foutletin%2Fen%2Fp%2Flaptops%2Fthinkbook%2Fthinkbook-series%2Flenovo-thinkbook-14-gen-6-14-inch-intel%2F21kgr001r0&intsrc=CATF_4639",
+            "store_link": "https://www.lenovo.com/in/outletin/en/p/laptops/thinkbook/thinkbook-series/lenovo-thinkbook-14-gen-6-14-inch-intel/21kgr001r0",
+            "listing_date": "2023-08-16",
+            "tech_specs": {
+                "display": {
+                    "size": "14\"",
+                    "res": "1920x1200",
+                    "refresh": "60Hz",
+                    "type": "IPS",
+                    "brightness": "300 nits",
+                    "color": "45% NTSC"
+                },
+                "memory": {
+                    "amount": "8 GB",
+                    "type": "DDR5",
+                    "speed": "5200 MHz"
+                },
+                "storage": {
+                    "capacity": "512 GB",
+                    "type": "SSD Gen4"
+                },
+                "processor": {
+                    "brand": "Intel",
+                    "model": "Core i3-1315U",
+                    "full_model": "Intel Core i3-1315U",
+                    "series": "Core 13th Gen",
+                    "cores": 6,
+                    "threads": 8,
+                    "boost_clock": "4.5 GHz",
+                    "igpu": "Intel UHD Graphics for 13th Gen Intel Processors",
+                    "igpu_series": "Intel UHD Graphics Series"
+                },
+                "graphics": {
+                    "model": "Intel UHD Graphics for 13th Gen Intel Processors",
+                    "vram": "Shared",
+                    "dedicated": false,
+                    "series": "Intel UHD Graphics Series",
+                    "boost_clock": "1.25 GHz"
+                },
+                "network": {
+                    "wifi": "Wi-Fi 6",
+                    "bluetooth": "5.2"
+                },
+                "power": {
+                    "adapter": "65W USB-C (3-pin)",
+                    "watt": 65
+                },
+                "battery": {
+                    "capacity": "45Wh"
+                },
+                "ports": {
+                    "items": [
+                        "1x USB 3.2 Gen 1",
+                        "1x USB 3.2 Gen 1 (Always On)",
+                        "1x USB-C 3.2 Gen 2 (support data transfer, Power Delivery 3.0 and DisplayPort 1.4)",
+                        "1x Thunderbolt 4 / USB4 40Gbps (support data transfer, Power Delivery 3.0 and DisplayPort 1.4)",
+                        "1x HDMI 2.1, up to 4K/60Hz",
+                        "1x Headphone / microphone combo jack (3.5mm)",
+                        "1x Ethernet (RJ-45)",
+                        "1x SD card reader"
+                    ]
+                },
+                "camera": {
+                    "model": "HD 720p with Privacy Shutter"
+                },
+                "keyboard": {
+                    "type": "Backlit, English"
+                },
+                "dimensions": {
+                    "size": "313.5 x 224 x 16.9 mm (12.34 x 8.82 x 0.67 inches)",
+                    "weight": "Starting at 1.38 kg (3.04 lbs)"
+                },
+                "build": {
+                    "color": "Arctic Grey",
+                    "material": "Aluminium (Top), Aluminium (Bottom)",
+                    "surface": "Anodizing Sandblasting"
+                },
+                "software": {
+                    "os": "Windows 11 Pro, English",
+                    "bundled": "Office Home 2024"
+                },
+                "audio": {
+                    "chip": "High Definition (HD) Audio, Realtek ALC3287 codec",
+                    "speakers": "Stereo speakers, 2W x2, Dolby Audio",
+                    "microphone": "2x, Array"
+                },
+                "memory_slots": {
+                    "raw": "Two DDR5 SODIMM slots, dual-channel capable",
+                    "max_memory": "Up to 64GB DDR5-5200"
+                },
+                "storage_slots": {
+                    "raw": "Two M.2 2280 PCIe 4.0 x4 slots",
+                    "max_storage": "Up to two drives, 2x M.2 SSD • M.2 2242 SSD up to 1TB • M.2 2280 SSD up to 2TB"
+                }
+            },
+            "spec_source": "lenovo_outlet",
+            "vendor": "lenovo",
+            "brand": "Lenovo",
+            "series": "Thinkbook",
+            "product_condition": "CERTIFIED REFURBISHED",
+            "product_metadata": {
+                "brand": "Lenovo",
+                "series": "Thinkbook",
+                "part_number": "21KGR001R0",
+                "model_number": "21KGR001R0",
+                "manufacturer": "Lenovo",
+                "warranty": "1 Year Courier or Carry-in Warranty",
+                "condition": "Certified Refurbished"
+            },
+            "price_mean": 44191,
+            "price_median": 44191,
+            "price_usual": 44191,
+            "has_history": true,
+            "last_checked": "2026-08-19 15:23:34",
+            "archived": true,
+            "archived_at": "2026-08-19"
+        },
+        {
+            "id": "83FFR000R0",
+            "model_name": "Yoga Book 9i Gen 9 (13, Intel)",
+            "internal_model_code": "83FFR000R0",
+            "title": "Yoga Book 9i Gen 9 (13, Intel)",
+            "description": "The Lenovo Yoga Book 9i features a groundbreaking dual-display design with two stunning 13.3-inch OLED touchscreens. Powered by Intel Core Ultra processing and AI technology, it includes a detachable keyboard, stylus, mouse, and folio stand to fuel creativity and productivity for creators.",
+            "availability": "out of stock",
+            "price": "168791.00 INR",
+            "mrp": "305443.00 INR",
+            "image": "https://p2-ofp.static.pub//fes/cms/2024/08/07/ze88vi77la3zf1sr339b993tuia4xq199101.jpg",
+            "affiliate_link": "https://lenovo-in.zlvv.net/c/5890822/608695/9634?prodsku=83FFR000R0&u=https%3A%2F%2Fwww.lenovo.com%2Fin%2Foutletin%2Fen%2Fp%2Flaptops%2Fyoga%2Fyoga-2-in-1-series%2Flenovo-yoga-book-9i-gen-9-13-inch-intel%2F83ffr000r0&intsrc=CATF_4639",
+            "store_link": "https://www.lenovo.com/in/outletin/en/p/laptops/yoga/yoga-2-in-1-series/lenovo-yoga-book-9i-gen-9-13-inch-intel/83ffr000r0",
+            "listing_date": "2024-08-07",
+            "tech_specs": {
+                "display": {
+                    "size": "13.3\"",
+                    "res": "2880x1800",
+                    "refresh": "60Hz",
+                    "type": "OLED",
+                    "brightness": "400 nits",
+                    "color": "100% DCI-P3"
+                },
+                "memory": {
+                    "amount": "32 GB",
+                    "type": "DDR5",
+                    "speed": "7467 MHz"
+                },
+                "storage": {
+                    "capacity": "1 TB",
+                    "type": "SSD Gen4 TLC"
+                },
+                "processor": {
+                    "brand": "Intel",
+                    "model": "Core Ultra 7 155U",
+                    "full_model": "Intel Core Ultra 7 155U",
+                    "series": "Core Ultra Series 1",
+                    "cores": 12,
+                    "threads": 14,
+                    "base_clock": "1.7 GHz",
+                    "boost_clock": "4.8 GHz",
+                    "igpu": "Intel Graphics",
+                    "igpu_series": "Intel UHD Graphics Series",
+                    "xe_cores": "4 Xe-Cores"
+                },
+                "graphics": {
+                    "model": "Intel Graphics",
+                    "vram": "Shared",
+                    "dedicated": false,
+                    "xe_cores": "4",
+                    "series": "Intel UHD Graphics Series",
+                    "boost_clock": "1.95 GHz",
+                    "ai_tops": "8 TOPS"
+                },
+                "network": {
+                    "wifi": "Wi-Fi 6E",
+                    "bluetooth": "5.3"
+                },
+                "power": {
+                    "adapter": "65W USB-C Slim (Wall-mount)",
+                    "watt": 65
+                },
+                "battery": {
+                    "capacity": "80Wh"
+                },
+                "ports": {
+                    "items": [
+                        "3x USB-C (Thunderbolt 4 / USB4 40Gbps), with USB PD 3.0 and DisplayPort 2.1, Always On"
+                    ]
+                },
+                "camera": {
+                    "model": "5.0MP + IR with E-shutter"
+                },
+                "keyboard": {
+                    "type": "Non-backlit, English"
+                },
+                "dimensions": {
+                    "size": "299.1 x 203.9 x 15.95 mm (11.78 x 8.03 x 0.63 inches)",
+                    "weight": "Starting at 1.34 kg (2.95 lbs)"
+                },
+                "build": {
+                    "color": "Tidal Teal",
+                    "material": "Aluminium (Top), Aluminium (Bottom)",
+                    "surface": "Aluminium CNC (Anodized with Sandblasting)"
+                },
+                "software": {
+                    "os": "Windows 11 Pro, English",
+                    "bundled": "Office Trial"
+                },
+                "audio": {
+                    "chip": "High Definition (HD) Audio, Realtek ALC3306 codec",
+                    "speakers": "4 stereo speakers, 2W x2 (woofers), 2W x2 (user-facing tweeters), optimized with Dolby Atmos, Smart Amplifier (AMP), sound by Bowers & Wilkins",
+                    "microphone": "2x, Array"
+                },
+                "memory_slots": {
+                    "raw": "Memory soldered to systemboard, no slots, dual-channel",
+                    "max_memory": "16GB soldered memory, not upgradable"
+                },
+                "storage_slots": {
+                    "raw": "One M.2 2242 PCIe 4.0 x4 slot",
+                    "max_storage": "One drive, up to 1TB M.2 2242 SSD"
+                }
+            },
+            "spec_source": "lenovo_outlet",
+            "vendor": "lenovo",
+            "brand": "Lenovo",
+            "series": "Yoga",
+            "product_condition": "CERTIFIED REFURBISHED",
+            "product_metadata": {
+                "brand": "Lenovo",
+                "series": "Yoga",
+                "part_number": "83FFR000R0",
+                "model_number": "83FFR000R0",
+                "manufacturer": "Lenovo",
+                "warranty": "1 Year Courier or Carry-in Warranty",
+                "condition": "Certified Refurbished"
+            },
+            "price_mean": 168791,
+            "price_median": 168791,
+            "price_usual": 168791,
+            "has_history": true,
+            "last_checked": "2026-08-19 15:23:34",
             "archived": true,
             "archived_at": "2026-08-19"
         }
