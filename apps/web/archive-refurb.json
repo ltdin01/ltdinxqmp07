@@ -9542,6 +9542,153 @@
             "archived_at": "2026-08-21"
         },
         {
+            "id": "83JXR001R0",
+            "model_name": "Yoga Slim 7i Gen 10 (14, Intel)",
+            "internal_model_code": "83JXR001R0",
+            "title": "Yoga Slim 7i Gen 10 (14, Intel)",
+            "description": "The Yoga Slim 7i Aura Edition Gen 10 offers powerful Intel Core Ultra processors for seamless performance. Its AI-enabled features enhance productivity, while the vivid 14-inch PureSight Pro display is perfect for creators. Ideal for creative professionals.",
+            "availability": "out of stock",
+            "price": "109290.00 INR",
+            "mrp": "176433.00 INR",
+            "image": "https://p2-ofp.static.pub//fes/cms/2025/04/03/ocokuaha01uxuu174rylwkkngccgnv383641.jpg",
+            "affiliate_link": "https://lenovo-in.zlvv.net/c/5890822/608695/9634?prodsku=83JXR001R0&u=https%3A%2F%2Fwww.lenovo.com%2Fin%2Foutletin%2Fen%2Fp%2Flaptops%2Fyoga%2Fyoga-s-series%2Flenovo-yoga-slim-7i-aura-edition-gen-10-14-inch-intel%2F83jxr001r0&intsrc=CATF_4639",
+            "store_link": "https://www.lenovo.com/in/outletin/en/p/laptops/yoga/yoga-s-series/lenovo-yoga-slim-7i-aura-edition-gen-10-14-inch-intel/83jxr001r0",
+            "listing_date": "2025-04-02",
+            "tech_specs": {
+                "display": {
+                    "size": "14\"",
+                    "res": "1920x1200",
+                    "refresh": "60Hz",
+                    "type": "OLED",
+                    "brightness": "400 nits",
+                    "color": "100% DCI-P3"
+                },
+                "memory": {
+                    "amount": "32 GB",
+                    "type": "DDR5",
+                    "speed": "8533 MHz"
+                },
+                "storage": {
+                    "capacity": "1 TB",
+                    "type": "SSD Gen4"
+                },
+                "processor": {
+                    "brand": "Intel",
+                    "model": "Core Ultra 7 258V",
+                    "full_model": "Intel Core Ultra 7 258V",
+                    "series": "Core Ultra Series 2",
+                    "cores": 8,
+                    "threads": 8,
+                    "base_clock": "2.2 GHz",
+                    "boost_clock": "4.8 GHz",
+                    "igpu": "Intel Arc 140V GPU",
+                    "igpu_series": "Intel Arc V-Series",
+                    "xe_cores": "8 Xe-Cores"
+                },
+                "graphics": {
+                    "model": "Intel Arc 140V GPU",
+                    "vram": "Shared",
+                    "dedicated": false,
+                    "xe_cores": "8",
+                    "series": "Intel Arc V-Series",
+                    "boost_clock": "1.95 GHz",
+                    "ai_tops": "64 TOPS"
+                },
+                "network": {
+                    "wifi": "Wi-Fi 7",
+                    "bluetooth": "5.4"
+                },
+                "power": {
+                    "adapter": "65W USB-C Slim (2-pin, Wall-mount)",
+                    "watt": 65
+                },
+                "battery": {
+                    "capacity": "70Wh"
+                },
+                "ports": {
+                    "items": [
+                        "1x USB-A (USB 5Gbps), Always On",
+                        "2x Thunderbolt 4, with USB PD 45-65W and DisplayPort 2.1",
+                        "1x HDMI 2.1, up to 4K/60Hz",
+                        "1x Headphone / microphone combo jack (3.5mm)",
+                        "1x microSD card reader"
+                    ]
+                },
+                "camera": {
+                    "model": "5.0MP + IR with E-shutter"
+                },
+                "keyboard": {
+                    "type": "Backlit, Turkish"
+                },
+                "dimensions": {
+                    "size": "312 x 219.3 x 13.9 mm (12.28 x 8.63 x 0.55 inches)",
+                    "weight": "Starting at 1.19 kg (2.62 lbs)"
+                },
+                "build": {
+                    "color": "Seashell",
+                    "material": "Aluminium (Top), Aluminium (Bottom)",
+                    "surface": "Aluminium Stamping (Anodized with Sandblasting)"
+                },
+                "software": {
+                    "os": "Windows 11 Home Single Language, Turkish / English",
+                    "bundled": "Office Trial"
+                },
+                "audio": {
+                    "chip": "SoundWire, Cirrus Logic CS42L43 codec",
+                    "speakers": "4 stereo speakers, 2W x2 (woofers), 2W x2 (tweeters), optimized with Dolby Atmos, Smart Amplifier (AMP)",
+                    "microphone": "4x, Array"
+                },
+                "memory_slots": {
+                    "raw": "Memory soldered to systemboard, no slots, dual-channel",
+                    "max_memory": "16GB soldered memory, not upgradable"
+                },
+                "storage_slots": {
+                    "raw": "One M.2 2242 PCIe 4.0 x4 slot",
+                    "max_storage": "One drive, up to 1TB M.2 2242 SSD"
+                }
+            },
+            "spec_source": "lenovo_outlet",
+            "vendor": "lenovo",
+            "brand": "Lenovo",
+            "series": "Yoga",
+            "product_condition": "CERTIFIED REFURBISHED",
+            "product_metadata": {
+                "brand": "Lenovo",
+                "series": "Yoga",
+                "part_number": "83JXR001R0",
+                "model_number": "83JXR001R0",
+                "manufacturer": "Lenovo",
+                "warranty": "1 Year Courier or Carry-in Warranty",
+                "condition": "Certified Refurbished"
+            },
+            "price_mean": 109290,
+            "price_median": 109290,
+            "price_usual": 109290,
+            "has_history": true,
+            "spec_origin": {
+                "network": "psref_platform",
+                "power": "psref_platform",
+                "battery": "psref_platform",
+                "ports": "psref_platform",
+                "camera": "psref_platform",
+                "keyboard": "psref_platform",
+                "dimensions": "psref_platform",
+                "build": "psref_platform",
+                "software": "psref_platform",
+                "audio": "psref_platform",
+                "memory_slots": "psref_platform",
+                "storage_slots": "psref_platform"
+            },
+            "psref_enrichment": {
+                "tier": "psref_platform",
+                "sku": "83JXR001R0",
+                "machine_type": "83JX",
+                "product_name": "Yoga Slim 7 14ILL10"
+            },
+            "archived": true,
+            "archived_at": "2026-08-21"
+        },
+        {
             "id": "83F3R001R0",
             "model_name": "Legion Pro 5i Gen 10 (16, Intel)",
             "internal_model_code": "83F3R001R0",
