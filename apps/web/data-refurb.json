@@ -75,7 +75,7 @@
             "price_median": 42091,
             "price_usual": 42091,
             "has_history": true,
-            "last_checked": "2026-08-22 23:25:52"
+            "last_checked": "2026-08-23 00:43:41"
         },
         {
             "id": "83ERR008R0",
@@ -195,7 +195,7 @@
             "price_median": 53991,
             "price_usual": 54219,
             "has_history": true,
-            "last_checked": "2026-08-22 23:25:52"
+            "last_checked": "2026-08-23 00:43:41"
         },
         {
             "id": "83ERR003R0",
@@ -315,7 +315,7 @@
             "price_median": 51540,
             "price_usual": 50805,
             "has_history": true,
-            "last_checked": "2026-08-22 23:25:52"
+            "last_checked": "2026-08-23 00:43:41"
         },
         {
             "id": "83ERR002R0",
@@ -435,7 +435,7 @@
             "price_median": 52891,
             "price_usual": 51707,
             "has_history": true,
-            "last_checked": "2026-08-22 23:25:52"
+            "last_checked": "2026-08-23 00:43:41"
         },
         {
             "id": "83J2R001R0",
@@ -580,7 +580,7 @@
                 "machine_type": "83J2",
                 "product_name": "IdeaPad Slim 5 13ARP10"
             },
-            "last_checked": "2026-08-22 23:25:52"
+            "last_checked": "2026-08-23 00:43:41"
         },
         {
             "id": "83J2R000R0",
@@ -705,7 +705,7 @@
             "price_median": 54590,
             "price_usual": 55317,
             "has_history": true,
-            "last_checked": "2026-08-22 23:25:52"
+            "last_checked": "2026-08-23 00:43:41"
         },
         {
             "id": "82XMR006R0",
@@ -848,84 +848,7 @@
                 "machine_type": "82XM",
                 "product_name": "IdeaPad Slim 3 15ABR8"
             },
-            "last_checked": "2026-08-22 23:25:52"
-        },
-        {
-            "id": "83HSR000R0",
-            "model_name": "IdeaPad Slim 5i Gen 10 (16, Intel)",
-            "internal_model_code": "83HSR000R0",
-            "title": "IdeaPad Slim 5i Gen 10 (16, Intel)",
-            "description": "The Lenovo IdeaPad Slim 5i Gen 10 is a sleek, lightweight laptop designed for portability and durability. It features powerful Intel Core processors, an optional OLED display, Dolby Audio speakers, and versatile connectivity options, making it ideal for students and multitaskers.",
-            "availability": "in stock",
-            "price": "58191.00 INR",
-            "mrp": "104459.00 INR",
-            "image": "https://p4-ofp.static.pub//fes/cms/2024/11/18/dhii9p7kkd2unfjvyzpro0kxj8rlpo131621.png",
-            "affiliate_link": "https://lenovo-in.zlvv.net/c/5890822/608695/9634?prodsku=83HSR000R0&u=https%3A%2F%2Fwww.lenovo.com%2Fin%2Foutletin%2Fen%2Fp%2Flaptops%2Fideapad%2Fideapad-s-series%2Flenovo-ideapad-slim-5i-gen-10-16-inch-intel%2F83hsr000r0&intsrc=CATF_4639",
-            "store_link": "https://www.lenovo.com/in/outletin/en/p/laptops/ideapad/ideapad-s-series/lenovo-ideapad-slim-5i-gen-10-16-inch-intel/83hsr000r0",
-            "listing_date": "2024-11-18",
-            "tech_specs": {
-                "display": {
-                    "size": "16\"",
-                    "res": "2880x1800",
-                    "refresh": "120Hz",
-                    "type": "OLED",
-                    "brightness": "500 nits",
-                    "color": "100% DCI-P3"
-                },
-                "memory": {
-                    "amount": "16 GB",
-                    "type": "DDR5",
-                    "speed": "5600 MHz"
-                },
-                "storage": {
-                    "capacity": "1 TB",
-                    "type": "SSD Gen4"
-                },
-                "processor": {
-                    "brand": "Intel",
-                    "model": "Core i5-13420H",
-                    "full_model": "Intel Core i5-13420H",
-                    "series": "Core 13th Gen",
-                    "cores": 8,
-                    "threads": 12,
-                    "boost_clock": "4.60 GHz",
-                    "igpu": "Intel UHD Graphics for 13th Gen Intel Processors",
-                    "igpu_series": "Intel UHD Graphics Series"
-                },
-                "graphics": {
-                    "model": "Intel UHD Graphics for 13th Gen Intel Processors",
-                    "vram": "Shared",
-                    "dedicated": false,
-                    "series": "Intel UHD Graphics Series",
-                    "boost_clock": "1.40 GHz"
-                },
-                "network": {
-                    "wifi": null,
-                    "bluetooth": null
-                },
-                "power": {
-                    "adapter": "Unknown"
-                }
-            },
-            "spec_source": "lenovo_outlet",
-            "vendor": "lenovo",
-            "brand": "Lenovo",
-            "series": "Ideapad",
-            "product_condition": "CERTIFIED REFURBISHED",
-            "product_metadata": {
-                "brand": "Lenovo",
-                "series": "Ideapad",
-                "part_number": "83HSR000R0",
-                "model_number": "83HSR000R0",
-                "manufacturer": "Lenovo",
-                "warranty": "1 Year Courier or Carry-in Warranty",
-                "condition": "Certified Refurbished"
-            },
-            "price_mean": 58191,
-            "price_median": 58191,
-            "price_usual": 58191,
-            "has_history": true,
-            "last_checked": "2026-08-22 23:25:52"
+            "last_checked": "2026-08-23 00:43:41"
         },
         {
             "id": "82XMR001R0",
@@ -1048,7 +971,7 @@
             "price_median": 58890,
             "price_usual": 58890,
             "has_history": true,
-            "last_checked": "2026-08-22 23:25:52"
+            "last_checked": "2026-08-23 00:43:41"
         },
         {
             "id": "83HLR001R0",
@@ -1164,7 +1087,7 @@
             "price_median": 59590,
             "price_usual": 59545,
             "has_history": true,
-            "last_checked": "2026-08-22 23:25:52"
+            "last_checked": "2026-08-23 00:43:41"
         },
         {
             "id": "83BGR001R0",
@@ -1287,7 +1210,7 @@
             "price_median": 59990,
             "price_usual": 59990,
             "has_history": true,
-            "last_checked": "2026-08-22 23:25:52"
+            "last_checked": "2026-08-23 00:43:41"
         },
         {
             "id": "83HLR000R0",
@@ -1403,7 +1326,7 @@
             "price_median": 59540,
             "price_usual": 59143,
             "has_history": true,
-            "last_checked": "2026-08-22 23:25:52"
+            "last_checked": "2026-08-23 00:43:41"
         },
         {
             "id": "83BGR000R0",
@@ -1526,7 +1449,7 @@
             "price_median": 53491,
             "price_usual": 50221,
             "has_history": true,
-            "last_checked": "2026-08-22 23:25:52"
+            "last_checked": "2026-08-23 00:43:41"
         },
         {
             "id": "83BGR002R0",
@@ -1669,7 +1592,7 @@
                 "machine_type": "83BG",
                 "product_name": "IdeaPad Slim 5 16IAH8"
             },
-            "last_checked": "2026-08-22 23:25:52"
+            "last_checked": "2026-08-23 00:43:41"
         },
         {
             "id": "82XFR008R0",
@@ -1791,7 +1714,7 @@
             "price_median": 67990,
             "price_usual": 67990,
             "has_history": true,
-            "last_checked": "2026-08-22 23:25:52"
+            "last_checked": "2026-08-23 00:43:41"
         },
         {
             "id": "83DCR002R0",
@@ -1915,7 +1838,7 @@
             "price_median": 73591,
             "price_usual": 73591,
             "has_history": true,
-            "last_checked": "2026-08-22 23:25:52"
+            "last_checked": "2026-08-23 00:43:41"
         },
         {
             "id": "83DCR008R0",
@@ -2039,7 +1962,7 @@
             "price_median": 73591,
             "price_usual": 73591,
             "has_history": true,
-            "last_checked": "2026-08-22 23:25:52"
+            "last_checked": "2026-08-23 00:43:41"
         },
         {
             "id": "83D2R000R0",
@@ -2120,7 +2043,7 @@
             "price_median": 91090,
             "price_usual": 91090,
             "has_history": true,
-            "last_checked": "2026-08-22 23:25:52"
+            "last_checked": "2026-08-23 00:43:41"
         }
     ],
     "Thinkbook": [
@@ -2247,152 +2170,7 @@
             "price_median": 40691,
             "price_usual": 40691,
             "has_history": true,
-            "last_checked": "2026-08-22 23:25:52"
-        },
-        {
-            "id": "21KGR001R0",
-            "model_name": "ThinkBook 14 Gen 6 (14, Intel)",
-            "internal_model_code": "21KGR001R0",
-            "title": "ThinkBook 14 Gen 6 (14, Intel)",
-            "description": "The Lenovo ThinkBook 14 Gen 6 is a powerful 14-inch business laptop designed for productivity and efficiency. It features all-day battery life, military-grade durability, advanced security, and a redesigned ergonomic keyboard for seamless work.",
-            "availability": "in stock",
-            "price": "44191.00 INR",
-            "mrp": "80753.00 INR",
-            "image": "https://p2-ofp.static.pub//fes/cms/2023/08/16/iutq4rio1br7mpt6uk1b8bfzhxyhph475181.png",
-            "affiliate_link": "https://lenovo-in.zlvv.net/c/5890822/608695/9634?prodsku=21KGR001R0&u=https%3A%2F%2Fwww.lenovo.com%2Fin%2Foutletin%2Fen%2Fp%2Flaptops%2Fthinkbook%2Fthinkbook-series%2Flenovo-thinkbook-14-gen-6-14-inch-intel%2F21kgr001r0&intsrc=CATF_4639",
-            "store_link": "https://www.lenovo.com/in/outletin/en/p/laptops/thinkbook/thinkbook-series/lenovo-thinkbook-14-gen-6-14-inch-intel/21kgr001r0",
-            "listing_date": "2023-08-16",
-            "tech_specs": {
-                "display": {
-                    "size": "14\"",
-                    "res": "1920x1200",
-                    "refresh": "60Hz",
-                    "type": "IPS",
-                    "brightness": "300 nits",
-                    "color": "45% NTSC"
-                },
-                "memory": {
-                    "amount": "8 GB",
-                    "type": "DDR5",
-                    "speed": "5200 MHz"
-                },
-                "storage": {
-                    "capacity": "512 GB",
-                    "type": "SSD Gen4"
-                },
-                "processor": {
-                    "brand": "Intel",
-                    "model": "Core i3-1315U",
-                    "full_model": "Intel Core i3-1315U",
-                    "series": "Core 13th Gen",
-                    "cores": 6,
-                    "threads": 8,
-                    "boost_clock": "4.5 GHz",
-                    "igpu": "Intel UHD Graphics for 13th Gen Intel Processors",
-                    "igpu_series": "Intel UHD Graphics Series"
-                },
-                "graphics": {
-                    "model": "Intel UHD Graphics for 13th Gen Intel Processors",
-                    "vram": "Shared",
-                    "dedicated": false,
-                    "series": "Intel UHD Graphics Series",
-                    "boost_clock": "1.25 GHz"
-                },
-                "network": {
-                    "wifi": "Wi-Fi 6",
-                    "bluetooth": "5.2"
-                },
-                "power": {
-                    "adapter": "65W USB-C (3-pin)",
-                    "watt": 65
-                },
-                "battery": {
-                    "capacity": "45Wh"
-                },
-                "ports": {
-                    "items": [
-                        "1x USB 3.2 Gen 1",
-                        "1x USB 3.2 Gen 1 (Always On)",
-                        "1x USB-C 3.2 Gen 2 (support data transfer, Power Delivery 3.0 and DisplayPort 1.4)",
-                        "1x Thunderbolt 4 / USB4 40Gbps (support data transfer, Power Delivery 3.0 and DisplayPort 1.4)",
-                        "1x HDMI 2.1, up to 4K/60Hz",
-                        "1x Headphone / microphone combo jack (3.5mm)",
-                        "1x Ethernet (RJ-45)",
-                        "1x SD card reader"
-                    ]
-                },
-                "camera": {
-                    "model": "HD 720p with Privacy Shutter"
-                },
-                "keyboard": {
-                    "type": "Backlit, English"
-                },
-                "dimensions": {
-                    "size": "313.5 x 224 x 16.9 mm (12.34 x 8.82 x 0.67 inches)",
-                    "weight": "Starting at 1.38 kg (3.04 lbs)"
-                },
-                "build": {
-                    "color": "Arctic Grey",
-                    "material": "Aluminium (Top), Aluminium (Bottom)",
-                    "surface": "Anodizing Sandblasting"
-                },
-                "software": {
-                    "os": "Windows 11 Pro, English",
-                    "bundled": "Office Home 2024"
-                },
-                "audio": {
-                    "chip": "High Definition (HD) Audio, Realtek ALC3287 codec",
-                    "speakers": "Stereo speakers, 2W x2, Dolby Audio",
-                    "microphone": "2x, Array"
-                },
-                "memory_slots": {
-                    "raw": "Two DDR5 SODIMM slots, dual-channel capable",
-                    "max_memory": "Up to 64GB DDR5-5200"
-                },
-                "storage_slots": {
-                    "raw": "Two M.2 2280 PCIe 4.0 x4 slots",
-                    "max_storage": "Up to two drives, 2x M.2 SSD • M.2 2242 SSD up to 1TB • M.2 2280 SSD up to 2TB"
-                }
-            },
-            "spec_source": "lenovo_outlet",
-            "vendor": "lenovo",
-            "brand": "Lenovo",
-            "series": "Thinkbook",
-            "product_condition": "CERTIFIED REFURBISHED",
-            "product_metadata": {
-                "brand": "Lenovo",
-                "series": "Thinkbook",
-                "part_number": "21KGR001R0",
-                "model_number": "21KGR001R0",
-                "manufacturer": "Lenovo",
-                "warranty": "1 Year Courier or Carry-in Warranty",
-                "condition": "Certified Refurbished"
-            },
-            "price_mean": 44191,
-            "price_median": 44191,
-            "price_usual": 44191,
-            "has_history": true,
-            "spec_origin": {
-                "network": "psref_platform",
-                "power": "psref_platform",
-                "battery": "psref_platform",
-                "ports": "psref_platform",
-                "camera": "psref_platform",
-                "keyboard": "psref_platform",
-                "dimensions": "psref_platform",
-                "build": "psref_platform",
-                "software": "psref_platform",
-                "audio": "psref_platform",
-                "memory_slots": "psref_platform",
-                "storage_slots": "psref_platform"
-            },
-            "psref_enrichment": {
-                "tier": "psref_platform",
-                "sku": "21KGR001R0",
-                "machine_type": "21KG",
-                "product_name": "ThinkBook 14 G6 IRL"
-            },
-            "last_checked": "2026-08-22 23:25:52"
+            "last_checked": "2026-08-23 00:43:41"
         },
         {
             "id": "21KGR002R0",
@@ -2517,7 +2295,7 @@
             "price_median": 50491,
             "price_usual": 50491,
             "has_history": true,
-            "last_checked": "2026-08-22 23:25:52"
+            "last_checked": "2026-08-23 00:43:41"
         },
         {
             "id": "21KGR003R0",
@@ -2642,7 +2420,7 @@
             "price_median": 84090,
             "price_usual": 84090,
             "has_history": true,
-            "last_checked": "2026-08-22 23:25:52"
+            "last_checked": "2026-08-23 00:43:41"
         }
     ],
     "Lenovo V-series": [
@@ -2768,7 +2546,7 @@
             "price_median": 42790,
             "price_usual": 42790,
             "has_history": true,
-            "last_checked": "2026-08-22 23:25:52"
+            "last_checked": "2026-08-23 00:43:41"
         },
         {
             "id": "82TTR008R0",
@@ -2912,7 +2690,7 @@
                 "machine_type": "82TT",
                 "product_name": "Lenovo V15 G3 IAP"
             },
-            "last_checked": "2026-08-22 23:25:52"
+            "last_checked": "2026-08-23 00:43:41"
         },
         {
             "id": "82TTR000R0",
@@ -3036,7 +2814,7 @@
             "price_median": 49090,
             "price_usual": 49090,
             "has_history": true,
-            "last_checked": "2026-08-22 23:25:52"
+            "last_checked": "2026-08-23 00:43:41"
         },
         {
             "id": "83CQR001R0",
@@ -3161,7 +2939,7 @@
             "price_median": 52590,
             "price_usual": 52590,
             "has_history": true,
-            "last_checked": "2026-08-22 23:25:52"
+            "last_checked": "2026-08-23 00:43:41"
         }
     ],
     "ThinkPad": [
@@ -3285,7 +3063,7 @@
             "price_median": 44191,
             "price_usual": 44191,
             "has_history": true,
-            "last_checked": "2026-08-22 23:25:52"
+            "last_checked": "2026-08-23 00:43:41"
         },
         {
             "id": "21E6R001R0",
@@ -3406,7 +3184,7 @@
             "price_median": 50491,
             "price_usual": 50491,
             "has_history": true,
-            "last_checked": "2026-08-22 23:25:52"
+            "last_checked": "2026-08-23 00:43:41"
         },
         {
             "id": "21T9R004R0",
@@ -3548,7 +3326,7 @@
                 "machine_type": "21T9",
                 "product_name": "ThinkPad E14 Gen 7 (Intel)"
             },
-            "last_checked": "2026-08-22 23:25:52"
+            "last_checked": "2026-08-23 00:43:41"
         },
         {
             "id": "21JKR002R0",
@@ -3670,7 +3448,7 @@
             "price_median": 66290,
             "price_usual": 66290,
             "has_history": true,
-            "last_checked": "2026-08-22 23:25:52"
+            "last_checked": "2026-08-23 00:43:41"
         },
         {
             "id": "21JKR00ER0",
@@ -3792,7 +3570,7 @@
             "price_median": 66591,
             "price_usual": 66591,
             "has_history": true,
-            "last_checked": "2026-08-22 23:25:52"
+            "last_checked": "2026-08-23 00:43:41"
         },
         {
             "id": "21TAR001R0",
@@ -3912,7 +3690,7 @@
             "price_median": 73591,
             "price_usual": 73591,
             "has_history": true,
-            "last_checked": "2026-08-22 23:25:52"
+            "last_checked": "2026-08-23 00:43:41"
         },
         {
             "id": "21JKR00CR0",
@@ -4034,7 +3812,7 @@
             "price_median": 73591,
             "price_usual": 73591,
             "has_history": true,
-            "last_checked": "2026-08-22 23:25:52"
+            "last_checked": "2026-08-23 00:43:41"
         },
         {
             "id": "21JKR003R0",
@@ -4156,7 +3934,7 @@
             "price_median": 73591,
             "price_usual": 73591,
             "has_history": true,
-            "last_checked": "2026-08-22 23:25:52"
+            "last_checked": "2026-08-23 00:43:41"
         },
         {
             "id": "21JKR000R0",
@@ -4278,7 +4056,7 @@
             "price_median": 80590,
             "price_usual": 80590,
             "has_history": true,
-            "last_checked": "2026-08-22 23:25:52"
+            "last_checked": "2026-08-23 00:43:41"
         },
         {
             "id": "21JLR000R0",
@@ -4400,7 +4178,7 @@
             "price_median": 80590,
             "price_usual": 80590,
             "has_history": true,
-            "last_checked": "2026-08-22 23:25:52"
+            "last_checked": "2026-08-23 00:43:41"
         },
         {
             "id": "21QGR000R0",
@@ -4526,7 +4304,7 @@
             "price_median": 87091,
             "price_usual": 87091,
             "has_history": true,
-            "last_checked": "2026-08-22 23:25:52"
+            "last_checked": "2026-08-23 00:43:41"
         },
         {
             "id": "21QDR001R0",
@@ -4652,7 +4430,7 @@
             "price_median": 110691,
             "price_usual": 110691,
             "has_history": true,
-            "last_checked": "2026-08-22 23:25:52"
+            "last_checked": "2026-08-23 00:43:41"
         },
         {
             "id": "21AHR001R0",
@@ -4729,7 +4507,7 @@
             "price_median": 115590,
             "price_usual": 115590,
             "has_history": true,
-            "last_checked": "2026-08-22 23:25:52"
+            "last_checked": "2026-08-23 00:43:41"
         },
         {
             "id": "20Y0R00WR0",
@@ -4842,7 +4620,7 @@
             "price_median": 140091,
             "price_usual": 140091,
             "has_history": true,
-            "last_checked": "2026-08-22 23:25:52"
+            "last_checked": "2026-08-23 00:43:41"
         },
         {
             "id": "21MMR002R0",
@@ -4967,7 +4745,7 @@
             "price_median": 140091,
             "price_usual": 140091,
             "has_history": true,
-            "last_checked": "2026-08-22 23:25:52"
+            "last_checked": "2026-08-23 00:43:41"
         },
         {
             "id": "21M7R002R0",
@@ -5094,7 +4872,7 @@
             "price_median": 145185,
             "price_usual": 145185,
             "has_history": true,
-            "last_checked": "2026-08-22 23:25:52"
+            "last_checked": "2026-08-23 00:43:41"
         },
         {
             "id": "21QYR000R0",
@@ -5218,7 +4996,7 @@
             "price_median": 150590,
             "price_usual": 150590,
             "has_history": true,
-            "last_checked": "2026-08-22 23:25:52"
+            "last_checked": "2026-08-23 00:43:41"
         },
         {
             "id": "21HMR000R0",
@@ -5339,7 +5117,7 @@
             "price_median": 154090,
             "price_usual": 154090,
             "has_history": true,
-            "last_checked": "2026-08-22 23:25:52"
+            "last_checked": "2026-08-23 00:43:41"
         },
         {
             "id": "21FCR000R0",
@@ -5459,7 +5237,7 @@
             "price_median": 154090,
             "price_usual": 154090,
             "has_history": true,
-            "last_checked": "2026-08-22 23:25:52"
+            "last_checked": "2026-08-23 00:43:41"
         },
         {
             "id": "21QWR000R0",
@@ -5606,7 +5384,7 @@
                 "machine_type": "21QW",
                 "product_name": "ThinkPad P16s Gen 4 (Intel)"
             },
-            "last_checked": "2026-08-22 23:25:52"
+            "last_checked": "2026-08-23 00:43:41"
         },
         {
             "id": "21KSR002R0",
@@ -5751,7 +5529,7 @@
                 "machine_type": "21KS",
                 "product_name": "ThinkPad P16s Gen 3 (Intel)"
             },
-            "last_checked": "2026-08-22 23:25:52"
+            "last_checked": "2026-08-23 00:43:41"
         },
         {
             "id": "21NTR000R0",
@@ -5876,7 +5654,7 @@
             "price_median": 210091,
             "price_usual": 210091,
             "has_history": true,
-            "last_checked": "2026-08-22 23:25:52"
+            "last_checked": "2026-08-23 00:43:41"
         },
         {
             "id": "21FBR000R0",
@@ -5998,7 +5776,7 @@
             "price_median": 630091,
             "price_usual": 630091,
             "has_history": true,
-            "last_checked": "2026-08-22 23:25:52"
+            "last_checked": "2026-08-23 00:43:41"
         }
     ],
     "Lenovo LOQ Laptops": [
@@ -6123,7 +5901,7 @@
             "price_median": 142648,
             "price_usual": 142648,
             "has_history": true,
-            "last_checked": "2026-08-22 23:25:52"
+            "last_checked": "2026-08-23 00:43:41"
         }
     ],
     "Yoga": [
@@ -6203,7 +5981,7 @@
             "price_median": 53991,
             "price_usual": 53991,
             "has_history": true,
-            "last_checked": "2026-08-22 23:25:52"
+            "last_checked": "2026-08-23 00:43:41"
         },
         {
             "id": "83JXR002R0",
@@ -6329,7 +6107,7 @@
             "price_median": 77191,
             "price_usual": 77191,
             "has_history": true,
-            "last_checked": "2026-08-22 23:25:52"
+            "last_checked": "2026-08-23 00:43:41"
         },
         {
             "id": "82Y7R000R0",
@@ -6451,7 +6229,7 @@
             "price_median": 91090,
             "price_usual": 91090,
             "has_history": true,
-            "last_checked": "2026-08-22 23:25:52"
+            "last_checked": "2026-08-23 00:43:41"
         },
         {
             "id": "83JXR001R0",
@@ -6597,7 +6375,7 @@
                 "machine_type": "83JX",
                 "product_name": "Yoga Slim 7 14ILL10"
             },
-            "last_checked": "2026-08-22 23:25:52"
+            "last_checked": "2026-08-23 00:43:41"
         },
         {
             "id": "83JQR003R0",
@@ -6742,7 +6520,7 @@
                 "machine_type": "83JQ",
                 "product_name": "Yoga 7 2-in-1 14ILL10"
             },
-            "last_checked": "2026-08-22 23:25:52"
+            "last_checked": "2026-08-23 00:43:41"
         },
         {
             "id": "83HMR001R0",
@@ -6867,7 +6645,7 @@
             "price_median": 136591,
             "price_usual": 136591,
             "has_history": true,
-            "last_checked": "2026-08-22 23:25:52"
+            "last_checked": "2026-08-23 00:43:41"
         },
         {
             "id": "83EDR000R0",
@@ -6978,10 +6756,88 @@
             "price_median": 147091,
             "price_usual": 147091,
             "has_history": true,
-            "last_checked": "2026-08-22 23:25:52"
+            "last_checked": "2026-08-23 00:43:41"
         }
     ],
     "Legion Laptops": [
+        {
+            "id": "82B5R000R0",
+            "model_name": "Legion 5 (15, AMD)",
+            "internal_model_code": "82B5R000R0",
+            "title": "Legion 5 (15, AMD)",
+            "description": "Legion 5 15 - AMD Ryzen 5, 8 GB RAM, 256 SSD",
+            "availability": "in stock",
+            "price": "61690.00 INR",
+            "mrp": "88163.00 INR",
+            "image": "https://p2-ofp.static.pub/fes/cms/2022/08/16/h5hsy1zwz5tf4ehgw2lk5i1uk6dim8961348.png",
+            "affiliate_link": "https://lenovo-in.zlvv.net/c/5890822/608695/9634?prodsku=82B5R000R0&u=https%3A%2F%2Fwww.lenovo.com%2Fin%2Foutletin%2Fen%2Fp%2Flaptops%2Flegion-laptops%2Flegion-5-series%2Flegion-5-15-inch%2C-amd-gaming-laptop%2F82b5r000r0&intsrc=CATF_4639",
+            "store_link": "https://www.lenovo.com/in/outletin/en/p/laptops/legion-laptops/legion-5-series/legion-5-15-inch,-amd-gaming-laptop/82b5r000r0",
+            "listing_date": "2021-07-20",
+            "tech_specs": {
+                "display": {
+                    "size": "15.6\"",
+                    "res": "1920x1080",
+                    "refresh": "120Hz",
+                    "type": "IPS",
+                    "brightness": "250 nits",
+                    "color": "45% NTSC"
+                },
+                "memory": {
+                    "amount": "8 GB",
+                    "type": "DDR4",
+                    "speed": "3200 MHz"
+                },
+                "storage": {
+                    "capacity": "256 GB",
+                    "type": "SSD"
+                },
+                "processor": {
+                    "brand": "AMD",
+                    "model": "Ryzen 5 4600H",
+                    "full_model": "AMD Ryzen 5 4600H",
+                    "series": "Ryzen 4000 Series",
+                    "cores": 6,
+                    "threads": 12,
+                    "base_clock": "3 GHz",
+                    "boost_clock": "Up to 4 GHz",
+                    "igpu": "AMD Radeon Graphics",
+                    "igpu_series": "Integrated Graphics"
+                },
+                "graphics": {
+                    "model": "GTX 1650 4 GB GDDR6",
+                    "vram": "4 GB",
+                    "dedicated": true,
+                    "series": "GTX 16 Series",
+                    "cuda_cores": 1024
+                },
+                "network": {
+                    "wifi": null,
+                    "bluetooth": null
+                },
+                "power": {
+                    "adapter": "Unknown"
+                }
+            },
+            "spec_source": "lenovo_outlet",
+            "vendor": "lenovo",
+            "brand": "Lenovo",
+            "series": "Legion Laptops",
+            "product_condition": "CERTIFIED REFURBISHED",
+            "product_metadata": {
+                "brand": "Lenovo",
+                "series": "Legion Laptops",
+                "part_number": "82B5R000R0",
+                "model_number": "82B5R000R0",
+                "manufacturer": "Lenovo",
+                "warranty": "1 Year Courier or Carry-in Warranty",
+                "condition": "Certified Refurbished"
+            },
+            "price_mean": 61690,
+            "price_median": 61690,
+            "price_usual": 61690,
+            "has_history": true,
+            "last_checked": "2026-08-23 00:43:41"
+        },
         {
             "id": "82JKR001R0",
             "model_name": "Legion 5i Gen 6 (15, Intel)",
@@ -7105,7 +6961,7 @@
             "price_median": 92491,
             "price_usual": 92491,
             "has_history": true,
-            "last_checked": "2026-08-22 23:25:52"
+            "last_checked": "2026-08-23 00:43:41"
         },
         {
             "id": "82JUR005R0",
@@ -7231,7 +7087,7 @@
             "price_median": 116891,
             "price_usual": 116891,
             "has_history": true,
-            "last_checked": "2026-08-22 23:25:52"
+            "last_checked": "2026-08-23 00:43:41"
         },
         {
             "id": "83FDR001R0",
@@ -7358,7 +7214,7 @@
             "price_median": 161691,
             "price_usual": 161691,
             "has_history": true,
-            "last_checked": "2026-08-22 23:25:52"
+            "last_checked": "2026-08-23 00:43:41"
         },
         {
             "id": "82RGR000R0",
@@ -7436,7 +7292,7 @@
             "price_median": 182091,
             "price_usual": 182091,
             "has_history": true,
-            "last_checked": "2026-08-22 23:25:52"
+            "last_checked": "2026-08-23 00:43:41"
         }
     ]
 }
