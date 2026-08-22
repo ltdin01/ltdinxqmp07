@@ -10330,6 +10330,231 @@
             "archived_at": "2026-08-22"
         },
         {
+            "id": "83JQR003R0",
+            "model_name": "Yoga 7i 2-in-1 Gen 10 (14, Intel)",
+            "internal_model_code": "83JQR003R0",
+            "title": "Yoga 7i 2-in-1 Gen 10 (14, Intel)",
+            "description": "The Lenovo Yoga 7i 2-in-1 Gen 10 offers a versatile 360° design for seamless creativity on the go. Powered by Intel Core Ultra processors, it features a vibrant PureSight OLED display and optional vegan leather finish for a premium touch.",
+            "availability": "out of stock",
+            "price": "116290.00 INR",
+            "mrp": "183223.00 INR",
+            "image": "https://p3-ofp.static.pub//fes/cms/2025/08/21/pn8n101dzaa6w5a7ssn2a65p98duns802943.png",
+            "affiliate_link": "https://lenovo-in.zlvv.net/c/5890822/608695/9634?prodsku=83JQR003R0&u=https%3A%2F%2Fwww.lenovo.com%2Fin%2Foutletin%2Fen%2Fp%2Flaptops%2Fyoga%2Fyoga-2-in-1-series%2Flenovo-yoga-7i-2-in-1-gen-10-14-inch-intel%2F83jqr003r0&intsrc=CATF_4639",
+            "store_link": "https://www.lenovo.com/in/outletin/en/p/laptops/yoga/yoga-2-in-1-series/lenovo-yoga-7i-2-in-1-gen-10-14-inch-intel/83jqr003r0",
+            "listing_date": "2025-08-21",
+            "tech_specs": {
+                "display": {
+                    "size": "14\"",
+                    "res": "2880x1800",
+                    "refresh": "120Hz",
+                    "type": "OLED",
+                    "brightness": "1100 nits",
+                    "color": "100% DCI-P3"
+                },
+                "memory": {
+                    "amount": "32 GB",
+                    "type": "DDR5",
+                    "speed": "8533 MHz"
+                },
+                "storage": {
+                    "capacity": "1 TB",
+                    "type": "SSD Gen4"
+                },
+                "processor": {
+                    "brand": "Intel",
+                    "model": "Core Ultra 7 258V",
+                    "full_model": "Intel Core Ultra 7 258V",
+                    "series": "Core Ultra Series 2",
+                    "cores": 8,
+                    "threads": 8,
+                    "base_clock": "2.2 GHz",
+                    "boost_clock": "4.8 GHz",
+                    "igpu": "Intel Arc 140V GPU",
+                    "igpu_series": "Intel Arc V-Series",
+                    "xe_cores": "8 Xe-Cores"
+                },
+                "graphics": {
+                    "model": "Intel Arc 140V GPU",
+                    "vram": "Shared",
+                    "dedicated": false,
+                    "xe_cores": "8",
+                    "series": "Intel Arc V-Series",
+                    "boost_clock": "1.95 GHz",
+                    "ai_tops": "64 TOPS"
+                },
+                "network": {
+                    "wifi": "Wi-Fi 7",
+                    "bluetooth": "5.4"
+                },
+                "power": {
+                    "adapter": "No Power Adapter"
+                },
+                "battery": {
+                    "capacity": "70Wh"
+                },
+                "ports": {
+                    "items": [
+                        "1x USB-A (USB 5Gbps), Always On",
+                        "2x Thunderbolt 4, with USB PD 45-65W and DisplayPort 2.1",
+                        "1x HDMI 1.4b",
+                        "1x Headphone / microphone combo jack (3.5mm)",
+                        "1x microSD card reader"
+                    ]
+                },
+                "camera": {
+                    "model": "5.0MP + IR with Privacy Shutter"
+                },
+                "keyboard": {
+                    "type": "Backlit, Swiss"
+                },
+                "dimensions": {
+                    "size": "317 x 228 x 15.45 mm (12.48 x 8.98 x 0.61 inches)",
+                    "weight": "Starting at 1.38 kg (3.04 lbs)"
+                },
+                "build": {
+                    "color": "Luna Grey",
+                    "material": "Aluminium (Top), Aluminium (Bottom)",
+                    "surface": "Aluminium Stamping (Anodized with Sandblasting)"
+                },
+                "software": {
+                    "os": "Windows 11 Pro, Swiss (EN/FR/DE/IT)",
+                    "bundled": "Office Trial"
+                },
+                "audio": {
+                    "chip": "High Definition (HD) Audio, Realtek ALC3306 codec",
+                    "speakers": "4 stereo speakers, 2W x2 (woofers), 2W x2 (tweeters), optimized with Dolby Atmos, Smart Amplifier (AMP)",
+                    "microphone": "4x, Array"
+                },
+                "memory_slots": {
+                    "raw": "Memory soldered to systemboard, no slots, dual-channel",
+                    "max_memory": "16GB soldered memory, not upgradable"
+                },
+                "storage_slots": {
+                    "raw": "One M.2 2242 PCIe 4.0 x4 slot",
+                    "max_storage": "One drive, up to 1TB M.2 2242 SSD"
+                }
+            },
+            "spec_source": "lenovo_outlet",
+            "vendor": "lenovo",
+            "brand": "Lenovo",
+            "series": "Yoga",
+            "product_condition": "CERTIFIED REFURBISHED",
+            "product_metadata": {
+                "brand": "Lenovo",
+                "series": "Yoga",
+                "part_number": "83JQR003R0",
+                "model_number": "83JQR003R0",
+                "manufacturer": "Lenovo",
+                "warranty": "1 Year Courier or Carry-in Warranty",
+                "condition": "Certified Refurbished"
+            },
+            "price_mean": 116290,
+            "price_median": 116290,
+            "price_usual": 116290,
+            "has_history": true,
+            "spec_origin": {
+                "network": "psref_platform",
+                "power": "psref_platform",
+                "battery": "psref_platform",
+                "ports": "psref_platform",
+                "camera": "psref_platform",
+                "keyboard": "psref_platform",
+                "dimensions": "psref_platform",
+                "build": "psref_platform",
+                "software": "psref_platform",
+                "audio": "psref_platform",
+                "memory_slots": "psref_platform",
+                "storage_slots": "psref_platform"
+            },
+            "psref_enrichment": {
+                "tier": "psref_platform",
+                "sku": "83JQR003R0",
+                "machine_type": "83JQ",
+                "product_name": "Yoga 7 2-in-1 14ILL10"
+            },
+            "archived": true,
+            "archived_at": "2026-08-22"
+        },
+        {
+            "id": "82B5R000R0",
+            "model_name": "Legion 5 (15, AMD)",
+            "internal_model_code": "82B5R000R0",
+            "title": "Legion 5 (15, AMD)",
+            "description": "Legion 5 15 - AMD Ryzen 5, 8 GB RAM, 256 SSD",
+            "availability": "out of stock",
+            "price": "61690.00 INR",
+            "mrp": "88163.00 INR",
+            "image": "https://p2-ofp.static.pub/fes/cms/2022/08/16/h5hsy1zwz5tf4ehgw2lk5i1uk6dim8961348.png",
+            "affiliate_link": "https://lenovo-in.zlvv.net/c/5890822/608695/9634?prodsku=82B5R000R0&u=https%3A%2F%2Fwww.lenovo.com%2Fin%2Foutletin%2Fen%2Fp%2Flaptops%2Flegion-laptops%2Flegion-5-series%2Flegion-5-15-inch%2C-amd-gaming-laptop%2F82b5r000r0&intsrc=CATF_4639",
+            "store_link": "https://www.lenovo.com/in/outletin/en/p/laptops/legion-laptops/legion-5-series/legion-5-15-inch,-amd-gaming-laptop/82b5r000r0",
+            "listing_date": "2021-07-20",
+            "tech_specs": {
+                "display": {
+                    "size": "15.6\"",
+                    "res": "1920x1080",
+                    "refresh": "120Hz",
+                    "type": "IPS",
+                    "brightness": "250 nits",
+                    "color": "45% NTSC"
+                },
+                "memory": {
+                    "amount": "8 GB",
+                    "type": "DDR4",
+                    "speed": "3200 MHz"
+                },
+                "storage": {
+                    "capacity": "256 GB",
+                    "type": "SSD"
+                },
+                "processor": {
+                    "brand": "AMD",
+                    "model": "Ryzen 5 4600H",
+                    "full_model": "AMD Ryzen 5 4600H",
+                    "series": "Ryzen 4000 Series",
+                    "cores": 6,
+                    "threads": 12,
+                    "base_clock": "3 GHz",
+                    "boost_clock": "Up to 4 GHz",
+                    "igpu": "AMD Radeon Graphics",
+                    "igpu_series": "Integrated Graphics"
+                },
+                "graphics": {
+                    "model": "GTX 1650 4 GB GDDR6",
+                    "vram": "4 GB",
+                    "dedicated": true,
+                    "series": "GTX 16 Series",
+                    "cuda_cores": 1024
+                },
+                "network": {
+                    "wifi": null,
+                    "bluetooth": null
+                },
+                "power": {
+                    "adapter": "Unknown"
+                }
+            },
+            "spec_source": "lenovo_outlet",
+            "vendor": "lenovo",
+            "brand": "Lenovo",
+            "series": "Legion Laptops",
+            "product_condition": "CERTIFIED REFURBISHED",
+            "product_metadata": {
+                "brand": "Lenovo",
+                "series": "Legion Laptops",
+                "part_number": "82B5R000R0",
+                "model_number": "82B5R000R0",
+                "manufacturer": "Lenovo",
+                "warranty": "1 Year Courier or Carry-in Warranty",
+                "condition": "Certified Refurbished"
+            },
+            "price_mean": 61690,
+            "price_median": 61690,
+            "price_usual": 61690,
+            "has_history": true,
+            "archived": true,
+            "archived_at": "2026-08-22"
+        },
+        {
             "id": "83F3R001R0",
             "model_name": "Legion Pro 5i Gen 10 (16, Intel)",
             "internal_model_code": "83F3R001R0",
