@@ -8498,6 +8498,77 @@
             "archived_at": "2026-08-22"
         },
         {
+            "id": "81X8R000R0",
+            "model_name": "IdeaPad 3 15",
+            "internal_model_code": "81X8R000R0",
+            "title": "IdeaPad 3 15 - Intel i3, 8 GB RAM, 512 SSD IdeaPad 3 15 - Intel i3, 8 GB RAM, 512 SSD IdeaPad 3 Gen 5 15 Intel",
+            "description": "IdeaPad 3 15 - Intel i3, 8 GB RAM, 512 SSD",
+            "availability": "out of stock",
+            "price": "41491.00 INR",
+            "mrp": "42003.00 INR",
+            "image": "https://p3-ofp.static.pub/fes/cms/2022/08/08/tyvv5qcmfzpff7w96ntd5z2ei5jqqt807152.png",
+            "affiliate_link": "https://lenovo-in.zlvv.net/c/5890822/608695/9634?prodsku=81X8R000R0&u=https%3A%2F%2Fwww.lenovo.com%2Fin%2Foutletin%2Fen%2Fp%2Flaptops%2Fideapad%2Fideapad-s-series%2Fideapad-3-gen-5-15-inch-intel%2F81x8r000r0&intsrc=CATF_4639",
+            "store_link": "https://www.lenovo.com/in/outletin/en/p/laptops/ideapad/ideapad-s-series/ideapad-3-gen-5-15-inch-intel/81x8r000r0",
+            "listing_date": "2022-08-08",
+            "tech_specs": {
+                "display": {
+                    "size": "15.6\"",
+                    "res": "1920x1080",
+                    "refresh": "60Hz",
+                    "type": "TN",
+                    "brightness": "220 nits",
+                    "color": "45% NTSC"
+                },
+                "memory": {
+                    "amount": "8 GB",
+                    "type": "DDR4",
+                    "speed": "2667 MHz"
+                },
+                "storage": {
+                    "capacity": "512 GB",
+                    "type": "SSD"
+                },
+                "processor": {
+                    "brand": "Intel",
+                    "model": "Core i3-1115G4",
+                    "full_model": "Intel Core i3-1115G4",
+                    "series": "Intel Core Series"
+                },
+                "graphics": {
+                    "model": "Integrated Intel UHD for 11th Gen Intel Processors",
+                    "vram": "Shared",
+                    "dedicated": false
+                },
+                "network": {
+                    "wifi": null,
+                    "bluetooth": null
+                },
+                "power": {
+                    "adapter": "Unknown"
+                }
+            },
+            "spec_source": "lenovo_outlet",
+            "vendor": "lenovo",
+            "brand": "Lenovo",
+            "series": "Ideapad",
+            "product_condition": "CERTIFIED REFURBISHED",
+            "product_metadata": {
+                "brand": "Lenovo",
+                "series": "Ideapad",
+                "part_number": "81X8R000R0",
+                "model_number": "81X8R000R0",
+                "manufacturer": "Lenovo",
+                "warranty": "1 Year Courier or Carry-in Warranty",
+                "condition": "Certified Refurbished"
+            },
+            "price_mean": 41491,
+            "price_median": 41491,
+            "price_usual": 41491,
+            "has_history": true,
+            "archived": true,
+            "archived_at": "2026-08-22"
+        },
+        {
             "id": "82X7R002R0",
             "model_name": "IdeaPad Slim 3i Gen 8 (15, Intel)",
             "internal_model_code": "82X7R002R0",
@@ -9241,152 +9312,6 @@
                 "sku": "83K1R008R0",
                 "machine_type": "83K1",
                 "product_name": "IdeaPad Slim 3 15IRH10"
-            },
-            "archived": true,
-            "archived_at": "2026-08-22"
-        },
-        {
-            "id": "83J2R002R0",
-            "model_name": "IdeaPad Slim 5 Gen 10 (13, AMD)",
-            "internal_model_code": "83J2R002R0",
-            "title": "IdeaPad Slim 5 Gen 10 (13, AMD)",
-            "description": "The Lenovo IdeaPad Slim 5 Gen 10 (13, AMD) is a sleek and lightweight laptop with AMD Ryzen™ processors for robust performance. It features an FHD infrared camera with Smart Login, extra-long battery life, and rapid charging, making it ideal for students on the go.",
-            "availability": "out of stock",
-            "price": "54990.00 INR",
-            "mrp": "95535.00 INR",
-            "image": "https://ap-img.static.pub/ss/img/2026/06/22/img.20260622055136319702.png",
-            "affiliate_link": "https://lenovo-in.zlvv.net/c/5890822/608695/9634?prodsku=83J2R002R0&u=https%3A%2F%2Fwww.lenovo.com%2Fin%2Foutletin%2Fen%2Fp%2Flaptops%2Fideapad%2Fideapad-s-series%2Flenovo-ideapad-slim-5-gen-10-13-inch-amd%2F83j2r002r0&intsrc=CATF_4639",
-            "store_link": "https://www.lenovo.com/in/outletin/en/p/laptops/ideapad/ideapad-s-series/lenovo-ideapad-slim-5-gen-10-13-inch-amd/83j2r002r0",
-            "listing_date": "2025-03-07",
-            "tech_specs": {
-                "display": {
-                    "size": "13.3\"",
-                    "res": "1920x1200",
-                    "refresh": "60Hz",
-                    "type": "IPS",
-                    "brightness": "400 nits",
-                    "color": "100% sRGB"
-                },
-                "memory": {
-                    "amount": "16 GB",
-                    "type": "DDR5",
-                    "speed": "6400 MHz"
-                },
-                "storage": {
-                    "capacity": "512 GB",
-                    "type": "SSD Gen4"
-                },
-                "processor": {
-                    "brand": "AMD",
-                    "model": "Ryzen 5 7535HS",
-                    "full_model": "AMD Ryzen 5 7535HS",
-                    "series": "Ryzen 7000 Series",
-                    "cores": 6,
-                    "threads": 12,
-                    "base_clock": "3.3 GHz",
-                    "boost_clock": "Up to 4.55 GHz",
-                    "igpu": "AMD Radeon 660M",
-                    "igpu_series": "Radeon 600M Series"
-                },
-                "graphics": {
-                    "model": "AMD Radeon 660M",
-                    "vram": "Shared",
-                    "dedicated": false,
-                    "series": "Radeon 600M Series",
-                    "boost_clock": "1900 MHz",
-                    "cus": 6
-                },
-                "network": {
-                    "wifi": "Wi-Fi 6E",
-                    "bluetooth": "5.3"
-                },
-                "power": {
-                    "adapter": "65W USB-C Slim (Wall-mount)",
-                    "watt": 65
-                },
-                "battery": {
-                    "capacity": "7Wh"
-                },
-                "ports": {
-                    "items": [
-                        "1x USB-A (USB 5Gbps / USB 3.2 Gen 1)",
-                        "1x USB-A (USB 5Gbps / USB 3.2 Gen 1), Always On",
-                        "2x USB-C (USB 10Gbps / USB 3.2 Gen 2), with USB PD 45-65W and DisplayPort 1.4",
-                        "1x HDMI 2.1, up to 4K/60Hz",
-                        "1x Headphone / microphone combo jack (3.5mm)",
-                        "1x microSD card reader"
-                    ]
-                },
-                "camera": {
-                    "model": "FHD 1080p + IR with Privacy Shutter, ToF Sensor"
-                },
-                "keyboard": {
-                    "type": "Backlit, Slovenian"
-                },
-                "dimensions": {
-                    "size": "295.58 x 206.95 x 14.3 mm (11.64 x 8.15 x 0.56 inches)",
-                    "weight": "Around 1.15 kg (2.54 lbs)"
-                },
-                "build": {
-                    "color": "Polar Blue",
-                    "material": "Aluminium (Top), Aluminium (Bottom)",
-                    "surface": "Aluminium Stamping (Anodized with Sandblasting)"
-                },
-                "software": {
-                    "os": "Windows 11 Home, Croatian / Slovenian / English",
-                    "bundled": "Office Trial"
-                },
-                "audio": {
-                    "chip": "High Definition (HD) Audio",
-                    "speakers": "Stereo speakers, 2W x2, optimized with Dolby Audio",
-                    "microphone": "2x, Array"
-                },
-                "memory_slots": {
-                    "raw": "Memory soldered to systemboard, no slots, dual-channel (16GB models)",
-                    "max_memory": "16GB soldered memory, not upgradable"
-                },
-                "storage_slots": {
-                    "raw": "One M.2 2280 PCIe 4.0 x4 slot",
-                    "max_storage": "One drive, up to 1TB M.2 2242 SSD"
-                }
-            },
-            "spec_source": "lenovo_outlet",
-            "vendor": "lenovo",
-            "brand": "Lenovo",
-            "series": "Ideapad",
-            "product_condition": "CERTIFIED REFURBISHED",
-            "product_metadata": {
-                "brand": "Lenovo",
-                "series": "Ideapad",
-                "part_number": "83J2R002R0",
-                "model_number": "83J2R002R0",
-                "manufacturer": "Lenovo",
-                "warranty": "1 Year Courier or Carry-in Warranty",
-                "condition": "Certified Refurbished"
-            },
-            "price_mean": 54990,
-            "price_median": 54990,
-            "price_usual": 54990,
-            "has_history": true,
-            "spec_origin": {
-                "network": "psref_platform",
-                "power": "psref_platform",
-                "battery": "psref_platform",
-                "ports": "psref_platform",
-                "camera": "psref_platform",
-                "keyboard": "psref_platform",
-                "dimensions": "psref_platform",
-                "build": "psref_platform",
-                "software": "psref_platform",
-                "audio": "psref_platform",
-                "memory_slots": "psref_platform",
-                "storage_slots": "psref_platform"
-            },
-            "psref_enrichment": {
-                "tier": "psref_platform",
-                "sku": "83J2R002R0",
-                "machine_type": "83J2",
-                "product_name": "IdeaPad Slim 5 13ARP10"
             },
             "archived": true,
             "archived_at": "2026-08-22"
