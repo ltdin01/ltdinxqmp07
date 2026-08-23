@@ -10909,6 +10909,244 @@
             "archived_at": "2026-08-23"
         },
         {
+            "id": "83HMR001R0",
+            "model_name": "Yoga Slim 7i Gen 9 (15, Intel)",
+            "internal_model_code": "83HMR001R0",
+            "title": "Yoga Slim 7i Gen 9 (15, Intel)",
+            "description": "The Yoga Slim 7i Gen 9 Aura Edition is an ultrapremium laptop with Intel Core Ultra processors and a stunning 2.8K display. It offers seamless AI experiences, multiday battery life up to 18+ hours, and smart features like Smart Share, Smart Modes, and Smart Care.",
+            "availability": "out of stock",
+            "price": "136591.00 INR",
+            "mrp": "203593.00 INR",
+            "image": "https://p4-ofp.static.pub/ShareResource/optimized/pdp/yoga/yoga-slim-series/len101y0051/lenovo-yoga-slim-7i-gen-9-aura-edition-15-intel-hero.7bbf92f75c1ea637.png",
+            "affiliate_link": "https://lenovo-in.zlvv.net/c/5890822/608695/9634?prodsku=83HMR001R0&u=https%3A%2F%2Fwww.lenovo.com%2Fin%2Foutletin%2Fen%2Fp%2Flaptops%2Fyoga%2Fyoga-s-series%2Fyoga-slim-7i-gen-9-aura-edition-15-inch-intel%2F83hmr001r0&intsrc=CATF_4639",
+            "store_link": "https://www.lenovo.com/in/outletin/en/p/laptops/yoga/yoga-s-series/yoga-slim-7i-gen-9-aura-edition-15-inch-intel/83hmr001r0",
+            "listing_date": "2024-08-27",
+            "tech_specs": {
+                "display": {
+                    "size": "15.3\"",
+                    "res": "2880x1800",
+                    "refresh": "120Hz",
+                    "type": "IPS",
+                    "brightness": "500 nits",
+                    "color": "100% DCI-P3"
+                },
+                "memory": {
+                    "amount": "32 GB",
+                    "type": "DDR5",
+                    "speed": "8533 MHz"
+                },
+                "storage": {
+                    "capacity": "1 TB",
+                    "type": "SSD Gen4 TLC"
+                },
+                "processor": {
+                    "brand": "Intel",
+                    "model": "Core Ultra 7 258V",
+                    "full_model": "Intel Core Ultra 7 258V",
+                    "series": "Core Ultra Series 2",
+                    "cores": 8,
+                    "threads": 8,
+                    "base_clock": "2.2 GHz",
+                    "boost_clock": "4.8 GHz",
+                    "igpu": "Intel Arc 140V GPU",
+                    "igpu_series": "Intel Arc V-Series",
+                    "xe_cores": "8 Xe-Cores"
+                },
+                "graphics": {
+                    "model": "Intel Arc 140V GPU",
+                    "vram": "Shared",
+                    "dedicated": false,
+                    "xe_cores": "8",
+                    "series": "Intel Arc V-Series",
+                    "boost_clock": "1.95 GHz",
+                    "ai_tops": "64 TOPS"
+                },
+                "network": {
+                    "wifi": "Wi-Fi 7",
+                    "bluetooth": "5.4"
+                },
+                "power": {
+                    "adapter": "65W USB-C (3-pin)",
+                    "watt": 65
+                },
+                "battery": {
+                    "capacity": "70Wh"
+                },
+                "ports": {
+                    "items": [
+                        "1x USB-A (USB 5Gbps)",
+                        "2x Thunderbolt 4, with USB PD 45-65W and DisplayPort 2.1",
+                        "1x HDMI 2.1, up to 4K/60Hz",
+                        "1x Headphone / microphone combo jack (3.5mm)"
+                    ]
+                },
+                "camera": {
+                    "model": "FHD 1080p + IR with E-shutter, ToF Sensor"
+                },
+                "keyboard": {
+                    "type": "Backlit, Turkish"
+                },
+                "dimensions": {
+                    "size": "343.8 x 235.4 x 13.9 mm (13.54 x 9.27 x 0.55 inches)",
+                    "weight": "Starting at 1.53 kg (3.37 lbs)"
+                },
+                "build": {
+                    "color": "Luna Grey",
+                    "material": "Aluminium (Top), Aluminium (Bottom)",
+                    "surface": "Aluminium Stamping (Anodized with Sandblasting)"
+                },
+                "software": {
+                    "os": "Windows 11 Home Single Language, Turkish / English",
+                    "bundled": "Office Trial"
+                },
+                "audio": {
+                    "chip": "SoundWire, Cirrus Logic CS42L43 codec",
+                    "speakers": "4 stereo speakers, 2W x2 (woofers), 2W x2 (tweeters), optimised with Dolby Atmos, Smart Amplifier (AMP)",
+                    "microphone": "4x, Array"
+                },
+                "memory_slots": {
+                    "raw": "Memory soldered to systemboard, no slots, dual-channel",
+                    "max_memory": "16GB soldered memory, not upgradable"
+                },
+                "storage_slots": {
+                    "raw": "One M.2 2242 PCIe 4.0 x4 slot",
+                    "max_storage": "One drive, up to 1TB M.2 2242 SSD"
+                }
+            },
+            "spec_source": "lenovo_outlet",
+            "vendor": "lenovo",
+            "brand": "Lenovo",
+            "series": "Yoga",
+            "product_condition": "CERTIFIED REFURBISHED",
+            "product_metadata": {
+                "brand": "Lenovo",
+                "series": "Yoga",
+                "part_number": "83HMR001R0",
+                "model_number": "83HMR001R0",
+                "manufacturer": "Lenovo",
+                "warranty": "1 Year Courier or Carry-in Warranty",
+                "condition": "Certified Refurbished"
+            },
+            "price_mean": 136591,
+            "price_median": 136591,
+            "price_usual": 136591,
+            "has_history": true,
+            "archived": true,
+            "archived_at": "2026-08-23"
+        },
+        {
+            "id": "83EDR000R0",
+            "model_name": "Yoga Slim 7x Gen 9 (14, Snapdragon)",
+            "internal_model_code": "83EDR000R0",
+            "title": "Yoga Slim 7x Gen 9 (14, Snapdragon)",
+            "description": "The Yoga Slim 7x Gen 9 is an ultraslim laptop designed for creators seeking ultimate performance and style. Powered by the Snapdragon X Elite processor, it features a stunning 3K PureSight OLED display and offers AI enhancements for seamless creative workflows.",
+            "availability": "out of stock",
+            "price": "147091.00 INR",
+            "mrp": "203593.00 INR",
+            "image": "https://p3-ofp.static.pub//fes/cms/2024/09/12/aka32gvsun255jx89zezc7rr0gl2mq578003.jpg",
+            "affiliate_link": "https://lenovo-in.zlvv.net/c/5890822/608695/9634?prodsku=83EDR000R0&u=https%3A%2F%2Fwww.lenovo.com%2Fin%2Foutletin%2Fen%2Fp%2Flaptops%2Fyoga%2Fyoga-s-series%2Fyoga-slim-7x-gen-9-14-inch-snapdragon%2F83edr000r0&intsrc=CATF_4639",
+            "store_link": "https://www.lenovo.com/in/outletin/en/p/laptops/yoga/yoga-s-series/yoga-slim-7x-gen-9-14-inch-snapdragon/83edr000r0",
+            "listing_date": "2024-09-12",
+            "tech_specs": {
+                "display": {
+                    "size": "14.5\"",
+                    "res": "2944x1840",
+                    "refresh": "90Hz",
+                    "type": "OLED",
+                    "brightness": "1000 nits",
+                    "color": "100% DCI-P3"
+                },
+                "memory": {
+                    "amount": "32 GB",
+                    "type": "DDR5",
+                    "speed": "8448 MHz"
+                },
+                "storage": {
+                    "capacity": "1 TB",
+                    "type": "SSD Gen4 TLC"
+                },
+                "processor": {
+                    "brand": "Qualcomm",
+                    "model": "X Elite X1E-78-100",
+                    "full_model": "X Elite X1E-78-100",
+                    "series": "Other Mobile"
+                },
+                "graphics": {
+                    "model": "Integrated Qualcomm Adreno GPU",
+                    "vram": "Shared",
+                    "dedicated": false
+                },
+                "network": {
+                    "wifi": "Wi-Fi 7",
+                    "bluetooth": "5.4"
+                },
+                "power": {
+                    "adapter": "65W USB-C (3-pin)",
+                    "watt": 65
+                },
+                "battery": {
+                    "capacity": "70Wh"
+                },
+                "ports": {
+                    "items": [
+                        "3x USB-C (USB4 40Gbps), with USB PD 3.1 and DisplayPort 1.4"
+                    ]
+                },
+                "camera": {
+                    "model": "FHD 1080p (2.0MP) + IR with E-shutter"
+                },
+                "keyboard": {
+                    "type": "Backlit, Arabic"
+                },
+                "dimensions": {
+                    "size": "325 x 225.15 x 12.9 mm (12.79 x 8.86 x 0.51 inches)",
+                    "weight": "Starting at 1.28 kg (2.82 lbs)"
+                },
+                "build": {
+                    "color": "Cosmic Blue",
+                    "material": "Aluminium (Top), Aluminium (Bottom)",
+                    "surface": "Aluminium Stamping (Anodized with Sandblasting)"
+                },
+                "software": {
+                    "os": "Windows 11 Home (on ARM), Arabic / English",
+                    "bundled": "Office Trial"
+                },
+                "audio": {
+                    "chip": "SoundWire",
+                    "speakers": "4 stereo speakers, 2W x2 (woofers), 2W x2 (tweeters), optimized with Dolby Atmos, Smart Amplifier (AMP)",
+                    "microphone": "4x, Array"
+                },
+                "memory_slots": {
+                    "raw": "Memory soldered to systemboard, no slots, dual-channel",
+                    "max_memory": "32GB soldered memory, not upgradable"
+                },
+                "storage_slots": {
+                    "raw": "One M.2 2242 PCIe 4.0 x4 slot",
+                    "max_storage": "One drive, up to 1TB M.2 2242 SSD"
+                }
+            },
+            "spec_source": "lenovo_outlet",
+            "vendor": "lenovo",
+            "brand": "Lenovo",
+            "series": "Yoga",
+            "product_condition": "CERTIFIED REFURBISHED",
+            "product_metadata": {
+                "brand": "Lenovo",
+                "series": "Yoga",
+                "part_number": "83EDR000R0",
+                "model_number": "83EDR000R0",
+                "manufacturer": "Lenovo",
+                "warranty": "1 Year Courier or Carry-in Warranty",
+                "condition": "Certified Refurbished"
+            },
+            "price_mean": 147091,
+            "price_median": 147091,
+            "price_usual": 147091,
+            "has_history": true,
+            "archived": true,
+            "archived_at": "2026-08-23"
+        },
+        {
             "id": "83F3R001R0",
             "model_name": "Legion Pro 5i Gen 10 (16, Intel)",
             "internal_model_code": "83F3R001R0",
