@@ -9890,6 +9890,130 @@
             "archived_at": "2026-08-23"
         },
         {
+            "id": "83BGR000R0",
+            "model_name": "IdeaPad Slim 5i Gen 8 (16, Intel)",
+            "internal_model_code": "83BGR000R0",
+            "title": "IdeaPad Slim 5i Gen 8 (16, Intel)",
+            "description": "The IdeaPad Slim 5i 13th Gen is a smart, slim, and durable 16-inch laptop designed for mobility. Powered by 13th Gen Intel® Core™ processors, it offers stunning display options, Dolby Audio™, and enhanced security features for students and professionals.",
+            "availability": "out of stock",
+            "price": "60991.00 INR",
+            "mrp": "81373.00 INR",
+            "image": "https://p2-ofp.static.pub//fes/cms/2023/07/17/j1xofq5xwmxial9rou4v2dea9weo2r690202.png",
+            "affiliate_link": "https://lenovo-in.zlvv.net/c/5890822/608695/9634?prodsku=83BGR000R0&u=https%3A%2F%2Fwww.lenovo.com%2Fin%2Foutletin%2Fen%2Fp%2Flaptops%2Fideapad%2Fideapad-s-series%2Fideapad-slim-5i-gen-8-16-inch-intel%2F83bgr000r0&intsrc=CATF_4639",
+            "store_link": "https://www.lenovo.com/in/outletin/en/p/laptops/ideapad/ideapad-s-series/ideapad-slim-5i-gen-8-16-inch-intel/83bgr000r0",
+            "listing_date": "2023-07-17",
+            "tech_specs": {
+                "display": {
+                    "size": "16\"",
+                    "res": "1920x1200",
+                    "refresh": "60Hz",
+                    "type": "IPS",
+                    "brightness": "300 nits",
+                    "color": "45% NTSC"
+                },
+                "memory": {
+                    "amount": "16 GB",
+                    "type": "DDR5",
+                    "speed": "4800 MHz"
+                },
+                "storage": {
+                    "capacity": "512 GB",
+                    "type": "SSD Gen4 TLC"
+                },
+                "processor": {
+                    "brand": "Intel",
+                    "model": "Core i5-12450H",
+                    "full_model": "Intel Core i5-12450H",
+                    "series": "Core 12th Gen",
+                    "cores": 8,
+                    "threads": 12,
+                    "boost_clock": "4.40 GHz",
+                    "igpu": "Intel UHD Graphics for 12th Gen Intel Processors",
+                    "igpu_series": "Intel UHD Graphics Series"
+                },
+                "graphics": {
+                    "model": "Intel UHD Graphics for 12th Gen Intel Processors",
+                    "vram": "Shared",
+                    "dedicated": false,
+                    "series": "Intel UHD Graphics Series",
+                    "boost_clock": "1.20 GHz"
+                },
+                "network": {
+                    "wifi": "Wi-Fi 6E",
+                    "bluetooth": "5.2"
+                },
+                "power": {
+                    "adapter": "65W USB-C (3-pin)",
+                    "watt": 65
+                },
+                "battery": {
+                    "capacity": "56.6Wh"
+                },
+                "ports": {
+                    "items": [
+                        "1x USB 3.2 Gen 1",
+                        "1x USB 3.2 Gen 1 (Always On)",
+                        "2x USB-C 3.2 Gen 1 (support data transfer, Power Delivery 3.0 and DisplayPort 1.4)",
+                        "1x HDMI 1.4b",
+                        "1x Headphone / microphone combo jack (3.5mm)",
+                        "1x microSD card reader"
+                    ]
+                },
+                "camera": {
+                    "model": "FHD 1080p + IR with Privacy Shutter, ToF Sensor"
+                },
+                "keyboard": {
+                    "type": "Backlit, English (EU)"
+                },
+                "dimensions": {
+                    "size": "356 x 251 x 16.9 mm (14.02 x 9.88 x 0.67 inches)",
+                    "weight": "Starting at 1.89 kg (4.17 lbs)"
+                },
+                "build": {
+                    "color": "Cloud Grey",
+                    "material": "Aluminium (Top), Aluminium (Bottom)",
+                    "surface": "Aluminium Stamping (Anodized with Sandblasting)"
+                },
+                "software": {
+                    "os": "Windows 11 Home, English",
+                    "bundled": "Office Trial"
+                },
+                "audio": {
+                    "chip": "High Definition (HD) Audio",
+                    "speakers": "Stereo speakers, 2W x2, optimized with Dolby Audio",
+                    "microphone": "2x, Array"
+                },
+                "memory_slots": {
+                    "raw": "Memory soldered to systemboard, no slots, dual-channel (16GB models)",
+                    "max_memory": "16GB soldered memory, not upgradable"
+                },
+                "storage_slots": {
+                    "raw": "One M.2 2280 PCIe 4.0 x4 slot",
+                    "max_storage": "One drive, up to 1TB M.2 2242 SSD or 1TB M.2 2280 SSD"
+                }
+            },
+            "spec_source": "lenovo_outlet",
+            "vendor": "lenovo",
+            "brand": "Lenovo",
+            "series": "Ideapad",
+            "product_condition": "CERTIFIED REFURBISHED",
+            "product_metadata": {
+                "brand": "Lenovo",
+                "series": "Ideapad",
+                "part_number": "83BGR000R0",
+                "model_number": "83BGR000R0",
+                "manufacturer": "Lenovo",
+                "warranty": "1 Year Courier or Carry-in Warranty",
+                "condition": "Certified Refurbished"
+            },
+            "price_mean": 53491,
+            "price_median": 53491,
+            "price_usual": 50358,
+            "has_history": true,
+            "archived": true,
+            "archived_at": "2026-08-23"
+        },
+        {
             "id": "83K4R001R0",
             "model_name": "IdeaPad Slim 3i Gen 10 (15, Intel)",
             "internal_model_code": "83K4R001R0",
