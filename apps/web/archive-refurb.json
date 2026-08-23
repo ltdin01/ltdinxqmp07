@@ -9219,88 +9219,6 @@
             "archived_at": "2026-08-23"
         },
         {
-            "id": "83DAR001R0",
-            "model_name": "IdeaPad Slim 5i Gen 9 (14, Intel)",
-            "internal_model_code": "83DAR001R0",
-            "title": "IdeaPad Slim 5i Gen 9 (14, Intel)",
-            "description": "The IdeaPad Slim 5i Gen 9 is a sleek and lightweight 14-inch laptop designed for mobility and style. Powered by Intel Core Ultra processors, it offers smart AI features, rich visuals, and durability, making it ideal for students and professionals.",
-            "availability": "out of stock",
-            "price": "54691.00 INR",
-            "mrp": "99027.00 INR",
-            "image": "https://p1-ofp.static.pub//fes/cms/2025/02/17/gqqhsfks155sz2453m4nqpvq0s43nj237979.png",
-            "affiliate_link": "https://lenovo-in.zlvv.net/c/5890822/608695/9634?prodsku=83DAR001R0&u=https%3A%2F%2Fwww.lenovo.com%2Fin%2Foutletin%2Fen%2Fp%2Flaptops%2Fideapad%2Fideapad-s-series%2Fideapad-slim-5i-gen-9-14-inch-intel%2F83dar001r0&intsrc=CATF_4639",
-            "store_link": "https://www.lenovo.com/in/outletin/en/p/laptops/ideapad/ideapad-s-series/ideapad-slim-5i-gen-9-14-inch-intel/83dar001r0",
-            "listing_date": "2025-02-03",
-            "tech_specs": {
-                "display": {
-                    "size": "14\"",
-                    "res": "1920x1200",
-                    "refresh": "60Hz",
-                    "type": "OLED",
-                    "brightness": "400 nits",
-                    "color": "100% DCI-P3"
-                },
-                "memory": {
-                    "amount": "16 GB",
-                    "type": "DDR5",
-                    "speed": "7467 MHz"
-                },
-                "storage": {
-                    "capacity": "1 TB",
-                    "type": "SSD Gen4"
-                },
-                "processor": {
-                    "brand": "Intel",
-                    "model": "Core Ultra 5 125H",
-                    "full_model": "Intel Core Ultra 5 125H",
-                    "series": "Core Ultra Series 1",
-                    "cores": 14,
-                    "threads": 18,
-                    "base_clock": "1.2 GHz",
-                    "boost_clock": "4.5 GHz",
-                    "igpu": "Intel Arc graphics",
-                    "igpu_series": "Intel Arc Graphics Series",
-                    "xe_cores": "7 Xe-Cores"
-                },
-                "graphics": {
-                    "model": "Intel Arc Graphics",
-                    "vram": "Shared",
-                    "dedicated": false,
-                    "xe_cores": "7",
-                    "series": "Intel Arc Graphics Series",
-                    "boost_clock": "2.2 GHz",
-                    "ai_tops": "18 TOPS"
-                },
-                "network": {
-                    "wifi": null,
-                    "bluetooth": null
-                },
-                "power": {
-                    "adapter": "Unknown"
-                }
-            },
-            "spec_source": "lenovo_outlet",
-            "vendor": "lenovo",
-            "brand": "Lenovo",
-            "series": "Ideapad",
-            "product_condition": "CERTIFIED REFURBISHED",
-            "product_metadata": {
-                "brand": "Lenovo",
-                "series": "Ideapad",
-                "part_number": "83DAR001R0",
-                "model_number": "83DAR001R0",
-                "manufacturer": "Lenovo",
-                "warranty": "1 Year Courier or Carry-in Warranty",
-                "condition": "Certified Refurbished"
-            },
-            "price_mean": 54691,
-            "price_median": 54691,
-            "price_usual": 54691,
-            "has_history": true,
-            "archived": true,
-            "archived_at": "2026-08-23"
-        },
-        {
             "id": "83K1R008R0",
             "model_name": "IdeaPad Slim 3i Gen 10 (15, Intel)",
             "internal_model_code": "83K1R008R0",
@@ -9440,6 +9358,88 @@
                 "machine_type": "83K1",
                 "product_name": "IdeaPad Slim 3 15IRH10"
             },
+            "archived": true,
+            "archived_at": "2026-08-23"
+        },
+        {
+            "id": "83DAR001R0",
+            "model_name": "IdeaPad Slim 5i Gen 9 (14, Intel)",
+            "internal_model_code": "83DAR001R0",
+            "title": "IdeaPad Slim 5i Gen 9 (14, Intel)",
+            "description": "The IdeaPad Slim 5i Gen 9 is a sleek and lightweight 14-inch laptop designed for mobility and style. Powered by Intel Core Ultra processors, it offers smart AI features, rich visuals, and durability, making it ideal for students and professionals.",
+            "availability": "out of stock",
+            "price": "54691.00 INR",
+            "mrp": "99027.00 INR",
+            "image": "https://p1-ofp.static.pub//fes/cms/2025/02/17/gqqhsfks155sz2453m4nqpvq0s43nj237979.png",
+            "affiliate_link": "https://lenovo-in.zlvv.net/c/5890822/608695/9634?prodsku=83DAR001R0&u=https%3A%2F%2Fwww.lenovo.com%2Fin%2Foutletin%2Fen%2Fp%2Flaptops%2Fideapad%2Fideapad-s-series%2Fideapad-slim-5i-gen-9-14-inch-intel%2F83dar001r0&intsrc=CATF_4639",
+            "store_link": "https://www.lenovo.com/in/outletin/en/p/laptops/ideapad/ideapad-s-series/ideapad-slim-5i-gen-9-14-inch-intel/83dar001r0",
+            "listing_date": "2025-02-03",
+            "tech_specs": {
+                "display": {
+                    "size": "14\"",
+                    "res": "1920x1200",
+                    "refresh": "60Hz",
+                    "type": "OLED",
+                    "brightness": "400 nits",
+                    "color": "100% DCI-P3"
+                },
+                "memory": {
+                    "amount": "16 GB",
+                    "type": "DDR5",
+                    "speed": "7467 MHz"
+                },
+                "storage": {
+                    "capacity": "1 TB",
+                    "type": "SSD Gen4"
+                },
+                "processor": {
+                    "brand": "Intel",
+                    "model": "Core Ultra 5 125H",
+                    "full_model": "Intel Core Ultra 5 125H",
+                    "series": "Core Ultra Series 1",
+                    "cores": 14,
+                    "threads": 18,
+                    "base_clock": "1.2 GHz",
+                    "boost_clock": "4.5 GHz",
+                    "igpu": "Intel Arc graphics",
+                    "igpu_series": "Intel Arc Graphics Series",
+                    "xe_cores": "7 Xe-Cores"
+                },
+                "graphics": {
+                    "model": "Intel Arc Graphics",
+                    "vram": "Shared",
+                    "dedicated": false,
+                    "xe_cores": "7",
+                    "series": "Intel Arc Graphics Series",
+                    "boost_clock": "2.2 GHz",
+                    "ai_tops": "18 TOPS"
+                },
+                "network": {
+                    "wifi": null,
+                    "bluetooth": null
+                },
+                "power": {
+                    "adapter": "Unknown"
+                }
+            },
+            "spec_source": "lenovo_outlet",
+            "vendor": "lenovo",
+            "brand": "Lenovo",
+            "series": "Ideapad",
+            "product_condition": "CERTIFIED REFURBISHED",
+            "product_metadata": {
+                "brand": "Lenovo",
+                "series": "Ideapad",
+                "part_number": "83DAR001R0",
+                "model_number": "83DAR001R0",
+                "manufacturer": "Lenovo",
+                "warranty": "1 Year Courier or Carry-in Warranty",
+                "condition": "Certified Refurbished"
+            },
+            "price_mean": 54691,
+            "price_median": 54691,
+            "price_usual": 54691,
+            "has_history": true,
             "archived": true,
             "archived_at": "2026-08-23"
         },
@@ -11053,134 +11053,6 @@
                 "machine_type": "83F3",
                 "product_name": "Legion Pro 5 16IAX10"
             },
-            "archived": true,
-            "archived_at": "2026-08-23"
-        },
-        {
-            "id": "83FDR001R0",
-            "model_name": "Legion 7i Gen 9 (16, Intel)",
-            "internal_model_code": "83FDR001R0",
-            "title": "Legion 7i Gen 9 (16, Intel)",
-            "description": "The Legion 7i Gen 9 offers powerful gaming performance with Intel® Core™ processors and NVIDIA® GeForce RTX™ graphics. Stay cool with Legion ColdFront Hyper technology and enjoy precision control on the customizable TrueStrike keyboard with vibrant lighting.",
-            "availability": "out of stock",
-            "price": "161691.00 INR",
-            "mrp": "223284.00 INR",
-            "image": "https://p2-ofp.static.pub//fes/cms/2024/09/13/g4xtpizd3epy99ubdix3oaiy0xx2ii069099.png",
-            "affiliate_link": "https://lenovo-in.zlvv.net/c/5890822/608695/9634?prodsku=83FDR001R0&u=https%3A%2F%2Fwww.lenovo.com%2Fin%2Foutletin%2Fen%2Fp%2Flaptops%2Flegion-laptops%2Flegion-7-series%2Flegion-7i-gen-9-16-inch-intel%2F83fdr001r0&intsrc=CATF_4639",
-            "store_link": "https://www.lenovo.com/in/outletin/en/p/laptops/legion-laptops/legion-7-series/legion-7i-gen-9-16-inch-intel/83fdr001r0",
-            "listing_date": "2024-08-07",
-            "tech_specs": {
-                "display": {
-                    "size": "16\"",
-                    "res": "3200x2000",
-                    "refresh": "165Hz",
-                    "type": "IPS",
-                    "brightness": "430 nits",
-                    "color": "100% DCI-P3"
-                },
-                "memory": {
-                    "amount": "16 GB",
-                    "type": "DDR5",
-                    "speed": "5600 MHz"
-                },
-                "storage": {
-                    "capacity": "1 TB",
-                    "type": "SSD Gen4"
-                },
-                "processor": {
-                    "brand": "Intel",
-                    "model": "Core i9-14900HX",
-                    "full_model": "Intel Core i9-14900HX",
-                    "series": "Core 14th Gen",
-                    "cores": 24,
-                    "threads": 32,
-                    "base_clock": "2.2 GHz",
-                    "boost_clock": "5.8 GHz",
-                    "igpu": "Intel UHD Graphics for 14th Gen Intel Processors",
-                    "igpu_series": "Intel UHD Graphics Series"
-                },
-                "graphics": {
-                    "model": "RTX 4060 8 GB GDDR6",
-                    "vram": "8 GB",
-                    "dedicated": true,
-                    "series": "RTX 40 Series",
-                    "cuda_cores": 3072
-                },
-                "network": {
-                    "wifi": "Wi-Fi 6E",
-                    "bluetooth": "5.3"
-                },
-                "power": {
-                    "adapter": "230W Slim Tip (3-pin)",
-                    "watt": 230
-                },
-                "battery": {
-                    "capacity": "99.9Wh"
-                },
-                "ports": {
-                    "items": [
-                        "1x USB-A (USB 5Gbps / USB 3.2 Gen 1)",
-                        "1x USB-A (USB 5Gbps / USB 3.2 Gen 1), Always On",
-                        "1x USB-C (USB 5Gbps / USB 3.2 Gen 1)",
-                        "1x USB-C (USB 10Gbps / USB 3.2 Gen 2), with Lenovo PD 140W and DisplayPort 1.4",
-                        "1x USB-C (Thunderbolt 4 / USB4 40Gbps), with Lenovo PD 140W and DisplayPort 1.4",
-                        "1x HDMI 2.1, up to 8K/60Hz",
-                        "1x Headphone / microphone combo jack (3.5mm)",
-                        "1x Card reader",
-                        "1x Slim tip Power connector"
-                    ]
-                },
-                "camera": {
-                    "model": "FHD 1080p with E-shutter"
-                },
-                "keyboard": {
-                    "type": "White Backlit, English"
-                },
-                "dimensions": {
-                    "size": "357.7 x 262.5 x 17.6-19.8 mm (14.08 x 10.33 x 0.69-0.78 inches)",
-                    "weight": "Starting at 2.24 kg (4.94 lbs)"
-                },
-                "build": {
-                    "color": "Eclipse Black (with White Backlit Keyboard)",
-                    "material": "Aluminium (Top), Aluminium (Bottom)",
-                    "surface": "Anodizing"
-                },
-                "software": {
-                    "os": "Windows 11 Home Single Language, Simplified Chinese / English",
-                    "bundled": "Office Home 2024"
-                },
-                "audio": {
-                    "chip": "High Definition (HD) Audio, Realtek ALC3287 codec",
-                    "speakers": "Stereo speakers, 2W x2, audio by HARMAN, optimized with Nahimic Audio",
-                    "microphone": "2x, Array"
-                },
-                "memory_slots": {
-                    "raw": "Two DDR5 SODIMM slots, dual-channel capable",
-                    "max_memory": "Up to 32GB DDR5-5600 offering"
-                },
-                "storage_slots": {
-                    "raw": "Two M.2 2280 PCIe 4.0 x4 slots",
-                    "max_storage": "Up to two drives, 2x M.2 SSD • M.2 2280 SSD up to 1TB each"
-                }
-            },
-            "spec_source": "lenovo_outlet",
-            "vendor": "lenovo",
-            "brand": "Lenovo",
-            "series": "Legion Laptops",
-            "product_condition": "CERTIFIED REFURBISHED",
-            "product_metadata": {
-                "brand": "Lenovo",
-                "series": "Legion Laptops",
-                "part_number": "83FDR001R0",
-                "model_number": "83FDR001R0",
-                "manufacturer": "Lenovo",
-                "warranty": "1 Year Courier or Carry-in Warranty",
-                "condition": "Certified Refurbished"
-            },
-            "price_mean": 161691,
-            "price_median": 161691,
-            "price_usual": 161691,
-            "has_history": true,
             "archived": true,
             "archived_at": "2026-08-23"
         },
