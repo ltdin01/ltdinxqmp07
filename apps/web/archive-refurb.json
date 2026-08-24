@@ -553,7 +553,7 @@
             },
             "price_mean": 46291,
             "price_median": 46291,
-            "price_usual": 47355,
+            "price_usual": 47167,
             "has_history": true,
             "spec_origin": {
                 "network": "psref_platform",
@@ -838,7 +838,7 @@
             },
             "price_mean": 41840,
             "price_median": 41341,
-            "price_usual": 41345,
+            "price_usual": 41409,
             "has_history": true,
             "spec_origin": {
                 "network": "psref_platform",
@@ -1825,7 +1825,7 @@
             },
             "price_mean": 72030,
             "price_median": 62991,
-            "price_usual": 77137,
+            "price_usual": 76915,
             "has_history": true,
             "spec_origin": {
                 "network": "psref_platform",
@@ -9365,6 +9365,88 @@
             "archived_at": "2026-08-24"
         },
         {
+            "id": "83DAR001R0",
+            "model_name": "IdeaPad Slim 5i Gen 9 (14, Intel)",
+            "internal_model_code": "83DAR001R0",
+            "title": "IdeaPad Slim 5i Gen 9 (14, Intel)",
+            "description": "The IdeaPad Slim 5i Gen 9 is a sleek and lightweight 14-inch laptop designed for mobility and style. Powered by Intel Core Ultra processors, it offers smart AI features, rich visuals, and durability, making it ideal for students and professionals.",
+            "availability": "out of stock",
+            "price": "54691.00 INR",
+            "mrp": "99027.00 INR",
+            "image": "https://p1-ofp.static.pub//fes/cms/2025/02/17/gqqhsfks155sz2453m4nqpvq0s43nj237979.png",
+            "affiliate_link": "https://lenovo-in.zlvv.net/c/5890822/608695/9634?prodsku=83DAR001R0&u=https%3A%2F%2Fwww.lenovo.com%2Fin%2Foutletin%2Fen%2Fp%2Flaptops%2Fideapad%2Fideapad-s-series%2Fideapad-slim-5i-gen-9-14-inch-intel%2F83dar001r0&intsrc=CATF_4639",
+            "store_link": "https://www.lenovo.com/in/outletin/en/p/laptops/ideapad/ideapad-s-series/ideapad-slim-5i-gen-9-14-inch-intel/83dar001r0",
+            "listing_date": "2025-02-03",
+            "tech_specs": {
+                "display": {
+                    "size": "14\"",
+                    "res": "1920x1200",
+                    "refresh": "60Hz",
+                    "type": "OLED",
+                    "brightness": "400 nits",
+                    "color": "100% DCI-P3"
+                },
+                "memory": {
+                    "amount": "16 GB",
+                    "type": "DDR5",
+                    "speed": "7467 MHz"
+                },
+                "storage": {
+                    "capacity": "1 TB",
+                    "type": "SSD Gen4"
+                },
+                "processor": {
+                    "brand": "Intel",
+                    "model": "Core Ultra 5 125H",
+                    "full_model": "Intel Core Ultra 5 125H",
+                    "series": "Core Ultra Series 1",
+                    "cores": 14,
+                    "threads": 18,
+                    "base_clock": "1.2 GHz",
+                    "boost_clock": "4.5 GHz",
+                    "igpu": "Intel Arc graphics",
+                    "igpu_series": "Intel Arc Graphics Series",
+                    "xe_cores": "7 Xe-Cores"
+                },
+                "graphics": {
+                    "model": "Intel Arc Graphics",
+                    "vram": "Shared",
+                    "dedicated": false,
+                    "xe_cores": "7",
+                    "series": "Intel Arc Graphics Series",
+                    "boost_clock": "2.2 GHz",
+                    "ai_tops": "18 TOPS"
+                },
+                "network": {
+                    "wifi": null,
+                    "bluetooth": null
+                },
+                "power": {
+                    "adapter": "Unknown"
+                }
+            },
+            "spec_source": "lenovo_outlet",
+            "vendor": "lenovo",
+            "brand": "Lenovo",
+            "series": "Ideapad",
+            "product_condition": "CERTIFIED REFURBISHED",
+            "product_metadata": {
+                "brand": "Lenovo",
+                "series": "Ideapad",
+                "part_number": "83DAR001R0",
+                "model_number": "83DAR001R0",
+                "manufacturer": "Lenovo",
+                "warranty": "1 Year Courier or Carry-in Warranty",
+                "condition": "Certified Refurbished"
+            },
+            "price_mean": 54691,
+            "price_median": 54691,
+            "price_usual": 54691,
+            "has_history": true,
+            "archived": true,
+            "archived_at": "2026-08-24"
+        },
+        {
             "id": "83K1R008R0",
             "model_name": "IdeaPad Slim 3i Gen 10 (15, Intel)",
             "internal_model_code": "83K1R008R0",
@@ -9504,88 +9586,6 @@
                 "machine_type": "83K1",
                 "product_name": "IdeaPad Slim 3 15IRH10"
             },
-            "archived": true,
-            "archived_at": "2026-08-24"
-        },
-        {
-            "id": "83DAR001R0",
-            "model_name": "IdeaPad Slim 5i Gen 9 (14, Intel)",
-            "internal_model_code": "83DAR001R0",
-            "title": "IdeaPad Slim 5i Gen 9 (14, Intel)",
-            "description": "The IdeaPad Slim 5i Gen 9 is a sleek and lightweight 14-inch laptop designed for mobility and style. Powered by Intel Core Ultra processors, it offers smart AI features, rich visuals, and durability, making it ideal for students and professionals.",
-            "availability": "out of stock",
-            "price": "54691.00 INR",
-            "mrp": "99027.00 INR",
-            "image": "https://p1-ofp.static.pub//fes/cms/2025/02/17/gqqhsfks155sz2453m4nqpvq0s43nj237979.png",
-            "affiliate_link": "https://lenovo-in.zlvv.net/c/5890822/608695/9634?prodsku=83DAR001R0&u=https%3A%2F%2Fwww.lenovo.com%2Fin%2Foutletin%2Fen%2Fp%2Flaptops%2Fideapad%2Fideapad-s-series%2Fideapad-slim-5i-gen-9-14-inch-intel%2F83dar001r0&intsrc=CATF_4639",
-            "store_link": "https://www.lenovo.com/in/outletin/en/p/laptops/ideapad/ideapad-s-series/ideapad-slim-5i-gen-9-14-inch-intel/83dar001r0",
-            "listing_date": "2025-02-03",
-            "tech_specs": {
-                "display": {
-                    "size": "14\"",
-                    "res": "1920x1200",
-                    "refresh": "60Hz",
-                    "type": "OLED",
-                    "brightness": "400 nits",
-                    "color": "100% DCI-P3"
-                },
-                "memory": {
-                    "amount": "16 GB",
-                    "type": "DDR5",
-                    "speed": "7467 MHz"
-                },
-                "storage": {
-                    "capacity": "1 TB",
-                    "type": "SSD Gen4"
-                },
-                "processor": {
-                    "brand": "Intel",
-                    "model": "Core Ultra 5 125H",
-                    "full_model": "Intel Core Ultra 5 125H",
-                    "series": "Core Ultra Series 1",
-                    "cores": 14,
-                    "threads": 18,
-                    "base_clock": "1.2 GHz",
-                    "boost_clock": "4.5 GHz",
-                    "igpu": "Intel Arc graphics",
-                    "igpu_series": "Intel Arc Graphics Series",
-                    "xe_cores": "7 Xe-Cores"
-                },
-                "graphics": {
-                    "model": "Intel Arc Graphics",
-                    "vram": "Shared",
-                    "dedicated": false,
-                    "xe_cores": "7",
-                    "series": "Intel Arc Graphics Series",
-                    "boost_clock": "2.2 GHz",
-                    "ai_tops": "18 TOPS"
-                },
-                "network": {
-                    "wifi": null,
-                    "bluetooth": null
-                },
-                "power": {
-                    "adapter": "Unknown"
-                }
-            },
-            "spec_source": "lenovo_outlet",
-            "vendor": "lenovo",
-            "brand": "Lenovo",
-            "series": "Ideapad",
-            "product_condition": "CERTIFIED REFURBISHED",
-            "product_metadata": {
-                "brand": "Lenovo",
-                "series": "Ideapad",
-                "part_number": "83DAR001R0",
-                "model_number": "83DAR001R0",
-                "manufacturer": "Lenovo",
-                "warranty": "1 Year Courier or Carry-in Warranty",
-                "condition": "Certified Refurbished"
-            },
-            "price_mean": 54691,
-            "price_median": 54691,
-            "price_usual": 54691,
-            "has_history": true,
             "archived": true,
             "archived_at": "2026-08-24"
         },
@@ -10110,6 +10110,129 @@
             "price_mean": 61690,
             "price_median": 61690,
             "price_usual": 61690,
+            "has_history": true,
+            "archived": true,
+            "archived_at": "2026-08-24"
+        },
+        {
+            "id": "82XFR008R0",
+            "model_name": "IdeaPad Slim 5i Gen 8 (16, Intel)",
+            "internal_model_code": "82XFR008R0",
+            "title": "IdeaPad Slim 5i Gen 8 (16, Intel)",
+            "description": "The IdeaPad Slim 5i 13th Gen is a smart, slim, and durable 16-inch laptop designed for mobility. Powered by 13th Gen Intel® Core™ processors, it offers stunning display options, Dolby Audio™, and enhanced security features for students and professionals.",
+            "availability": "out of stock",
+            "price": "67990.00 INR",
+            "mrp": "104459.00 INR",
+            "image": "https://p2-ofp.static.pub//fes/cms/2023/07/17/j1xofq5xwmxial9rou4v2dea9weo2r690202.png",
+            "affiliate_link": "https://lenovo-in.zlvv.net/c/5890822/608695/9634?prodsku=82XFR008R0&u=https%3A%2F%2Fwww.lenovo.com%2Fin%2Foutletin%2Fen%2Fp%2Flaptops%2Fideapad%2Fideapad-s-series%2Fideapad-slim-5i-gen-8-16-inch-intel%2F82xfr008r0&intsrc=CATF_4639",
+            "store_link": "https://www.lenovo.com/in/outletin/en/p/laptops/ideapad/ideapad-s-series/ideapad-slim-5i-gen-8-16-inch-intel/82xfr008r0",
+            "listing_date": "2023-07-17",
+            "tech_specs": {
+                "display": {
+                    "size": "16\"",
+                    "res": "2560x1600",
+                    "refresh": "60Hz",
+                    "type": "IPS",
+                    "brightness": "350 nits",
+                    "color": "100% sRGB"
+                },
+                "memory": {
+                    "amount": "16 GB",
+                    "type": "DDR5",
+                    "speed": "5200 MHz"
+                },
+                "storage": {
+                    "capacity": "1 TB",
+                    "type": "SSD Gen4"
+                },
+                "processor": {
+                    "brand": "Intel",
+                    "model": "Core i5-13500H",
+                    "full_model": "Intel Core i5-13500H",
+                    "series": "Core 13th Gen",
+                    "cores": 12,
+                    "threads": 16,
+                    "boost_clock": "4.7 GHz",
+                    "igpu": "Intel Iris Xe Graphics eligible",
+                    "igpu_series": "Intel Iris Xe Series"
+                },
+                "graphics": {
+                    "model": "Intel Iris Xe Graphics eligible",
+                    "vram": "Shared",
+                    "dedicated": false,
+                    "series": "Intel Iris Xe Series",
+                    "boost_clock": "1.45 GHz"
+                },
+                "network": {
+                    "wifi": "Wi-Fi 6E",
+                    "bluetooth": "5.2"
+                },
+                "power": {
+                    "adapter": "65W USB-C Slim (Wall-mount)",
+                    "watt": 65
+                },
+                "battery": {
+                    "capacity": "75.4Wh"
+                },
+                "ports": {
+                    "items": [
+                        "1x USB 3.2 Gen 1",
+                        "1x USB 3.2 Gen 1 (Always On)",
+                        "2x USB-C 3.2 Gen 1 (support data transfer, Power Delivery 3.0 and DisplayPort 1.4)",
+                        "1x HDMI 1.4b",
+                        "1x Headphone / microphone combo jack (3.5mm)",
+                        "1x microSD card reader"
+                    ]
+                },
+                "camera": {
+                    "model": "FHD 1080p + IR with Privacy Shutter, ToF Sensor"
+                },
+                "keyboard": {
+                    "type": "Backlit, German"
+                },
+                "dimensions": {
+                    "size": "356 x 251 x 16.9 mm (14.02 x 9.88 x 0.67 inches)",
+                    "weight": "Starting at 1.89 kg (4.17 lbs)"
+                },
+                "build": {
+                    "color": "Abyss Blue",
+                    "material": "Aluminium (Top), Aluminium (Bottom)",
+                    "surface": "Aluminium Stamping (Anodized with Sandblasting)"
+                },
+                "software": {
+                    "os": "Windows 11 Home, German",
+                    "bundled": "Office Trial"
+                },
+                "audio": {
+                    "chip": "High Definition (HD) Audio",
+                    "speakers": "Stereo speakers, 2W x2, optimized with Dolby Audio",
+                    "microphone": "2x, Array"
+                },
+                "memory_slots": {
+                    "raw": "Memory soldered to systemboard, no slots, single-channel (8GB models)",
+                    "max_memory": "8GB soldered memory, not upgradable"
+                },
+                "storage_slots": {
+                    "raw": "One M.2 2280 PCIe 4.0 x4 slot"
+                }
+            },
+            "spec_source": "lenovo_outlet",
+            "vendor": "lenovo",
+            "brand": "Lenovo",
+            "series": "Ideapad",
+            "product_condition": "CERTIFIED REFURBISHED",
+            "product_metadata": {
+                "brand": "Lenovo",
+                "series": "Ideapad",
+                "part_number": "82XFR008R0",
+                "model_number": "82XFR008R0",
+                "manufacturer": "Lenovo",
+                "warranty": "1 Year Courier or Carry-in Warranty",
+                "condition": "Certified Refurbished"
+            },
+            "price_mean": 67990,
+            "price_median": 67990,
+            "price_usual": 67990,
             "has_history": true,
             "archived": true,
             "archived_at": "2026-08-24"
