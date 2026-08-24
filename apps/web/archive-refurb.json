@@ -576,7 +576,7 @@
                 "product_name": "IdeaPad Slim 3 15AMN8"
             },
             "archived": true,
-            "archived_at": "2026-08-23"
+            "archived_at": "2026-08-24"
         },
         {
             "id": "83HRR000R0",
@@ -861,7 +861,7 @@
                 "product_name": "IdeaPad Slim 3 15IAH8"
             },
             "archived": true,
-            "archived_at": "2026-08-23"
+            "archived_at": "2026-08-24"
         },
         {
             "id": "83J1R000R0",
@@ -1429,7 +1429,7 @@
                 "product_name": "IdeaPad Slim 5 14IRL8"
             },
             "archived": true,
-            "archived_at": "2026-08-23"
+            "archived_at": "2026-08-24"
         },
         {
             "id": "83EMR005R0",
@@ -1573,7 +1573,7 @@
                 "product_name": "IdeaPad Slim 3 15IRH8"
             },
             "archived": true,
-            "archived_at": "2026-08-23"
+            "archived_at": "2026-08-24"
         },
         {
             "id": "82K2R00FR0",
@@ -1848,7 +1848,7 @@
                 "product_name": "IdeaPad Slim 5 14AKP10"
             },
             "archived": true,
-            "archived_at": "2026-08-23"
+            "archived_at": "2026-08-24"
         },
         {
             "id": "83K1R00BR0",
@@ -1991,7 +1991,7 @@
                 "product_name": "IdeaPad Slim 3 15IRH10"
             },
             "archived": true,
-            "archived_at": "2026-08-23"
+            "archived_at": "2026-08-24"
         },
         {
             "id": "82X6R000R0",
@@ -2710,7 +2710,7 @@
                 "product_name": "ThinkBook 16 G9 AHP"
             },
             "archived": true,
-            "archived_at": "2026-08-23"
+            "archived_at": "2026-08-24"
         },
         {
             "id": "83J7R002R0",
@@ -3486,7 +3486,7 @@
                 "product_name": "ThinkPad E16 Gen 3 (Intel)"
             },
             "archived": true,
-            "archived_at": "2026-08-23"
+            "archived_at": "2026-08-24"
         },
         {
             "id": "21T9R002R0",
@@ -3629,7 +3629,7 @@
                 "product_name": "ThinkPad E14 Gen 7 (Intel)"
             },
             "archived": true,
-            "archived_at": "2026-08-23"
+            "archived_at": "2026-08-24"
         },
         {
             "id": "21SYR001R0",
@@ -3775,7 +3775,7 @@
                 "product_name": "ThinkPad E14 Gen 7 (Intel)"
             },
             "archived": true,
-            "archived_at": "2026-08-23"
+            "archived_at": "2026-08-24"
         },
         {
             "id": "21MLR001R0",
@@ -4066,7 +4066,7 @@
                 "product_name": "LOQ 15ARP9"
             },
             "archived": true,
-            "archived_at": "2026-08-23"
+            "archived_at": "2026-08-24"
         },
         {
             "id": "82XTR003R0",
@@ -4212,7 +4212,7 @@
                 "product_name": "LOQ 15APH8"
             },
             "archived": true,
-            "archived_at": "2026-08-23"
+            "archived_at": "2026-08-24"
         },
         {
             "id": "83GSR000R0",
@@ -4501,7 +4501,7 @@
                 "product_name": "LOQ 15ARP9"
             },
             "archived": true,
-            "archived_at": "2026-08-23"
+            "archived_at": "2026-08-24"
         },
         {
             "id": "83JCR008R0",
@@ -4646,7 +4646,7 @@
                 "product_name": "LOQ 15ARP9"
             },
             "archived": true,
-            "archived_at": "2026-08-23"
+            "archived_at": "2026-08-24"
         },
         {
             "id": "83JCR00JR0",
@@ -5867,7 +5867,7 @@
                 "product_name": "Legion 5 15IRX9"
             },
             "archived": true,
-            "archived_at": "2026-08-23"
+            "archived_at": "2026-08-24"
         },
         {
             "id": "83NNR000R0",
@@ -6014,7 +6014,7 @@
                 "product_name": "Legion Pro 5 16IRX10"
             },
             "archived": true,
-            "archived_at": "2026-08-23"
+            "archived_at": "2026-08-24"
         },
         {
             "id": "83K1R002R0",
@@ -6157,7 +6157,7 @@
                 "product_name": "IdeaPad Slim 3 15IRH10"
             },
             "archived": true,
-            "archived_at": "2026-08-23"
+            "archived_at": "2026-08-24"
         },
         {
             "id": "21JKR00AR0",
@@ -6437,7 +6437,7 @@
                 "product_name": "IdeaPad Slim 3 15Q8X10"
             },
             "archived": true,
-            "archived_at": "2026-08-23"
+            "archived_at": "2026-08-24"
         },
         {
             "id": "83BFR000R0",
@@ -7069,7 +7069,7 @@
                 "product_name": "IdeaPad Slim 3 15AMN8"
             },
             "archived": true,
-            "archived_at": "2026-08-23"
+            "archived_at": "2026-08-24"
         },
         {
             "id": "21KSR000R0",
@@ -8150,133 +8150,6 @@
             "archived_at": "2026-08-19"
         },
         {
-            "id": "21KGR001R0",
-            "model_name": "ThinkBook 14 Gen 6 (14, Intel)",
-            "internal_model_code": "21KGR001R0",
-            "title": "ThinkBook 14 Gen 6 (14, Intel)",
-            "description": "The Lenovo ThinkBook 14 Gen 6 is a powerful 14-inch business laptop designed for productivity and efficiency. It features all-day battery life, military-grade durability, advanced security, and a redesigned ergonomic keyboard for seamless work.",
-            "availability": "out of stock",
-            "price": "44191.00 INR",
-            "mrp": "80753.00 INR",
-            "image": "https://p2-ofp.static.pub//fes/cms/2023/08/16/iutq4rio1br7mpt6uk1b8bfzhxyhph475181.png",
-            "affiliate_link": "https://lenovo-in.zlvv.net/c/5890822/608695/9634?prodsku=21KGR001R0&u=https%3A%2F%2Fwww.lenovo.com%2Fin%2Foutletin%2Fen%2Fp%2Flaptops%2Fthinkbook%2Fthinkbook-series%2Flenovo-thinkbook-14-gen-6-14-inch-intel%2F21kgr001r0&intsrc=CATF_4639",
-            "store_link": "https://www.lenovo.com/in/outletin/en/p/laptops/thinkbook/thinkbook-series/lenovo-thinkbook-14-gen-6-14-inch-intel/21kgr001r0",
-            "listing_date": "2023-08-16",
-            "tech_specs": {
-                "display": {
-                    "size": "14\"",
-                    "res": "1920x1200",
-                    "refresh": "60Hz",
-                    "type": "IPS",
-                    "brightness": "300 nits",
-                    "color": "45% NTSC"
-                },
-                "memory": {
-                    "amount": "8 GB",
-                    "type": "DDR5",
-                    "speed": "5200 MHz"
-                },
-                "storage": {
-                    "capacity": "512 GB",
-                    "type": "SSD Gen4"
-                },
-                "processor": {
-                    "brand": "Intel",
-                    "model": "Core i3-1315U",
-                    "full_model": "Intel Core i3-1315U",
-                    "series": "Core 13th Gen",
-                    "cores": 6,
-                    "threads": 8,
-                    "boost_clock": "4.5 GHz",
-                    "igpu": "Intel UHD Graphics for 13th Gen Intel Processors",
-                    "igpu_series": "Intel UHD Graphics Series"
-                },
-                "graphics": {
-                    "model": "Intel UHD Graphics for 13th Gen Intel Processors",
-                    "vram": "Shared",
-                    "dedicated": false,
-                    "series": "Intel UHD Graphics Series",
-                    "boost_clock": "1.25 GHz"
-                },
-                "network": {
-                    "wifi": "Wi-Fi 6",
-                    "bluetooth": "5.2"
-                },
-                "power": {
-                    "adapter": "65W USB-C (3-pin)",
-                    "watt": 65
-                },
-                "battery": {
-                    "capacity": "45Wh"
-                },
-                "ports": {
-                    "items": [
-                        "1x USB 3.2 Gen 1",
-                        "1x USB 3.2 Gen 1 (Always On)",
-                        "1x USB-C 3.2 Gen 2 (support data transfer, Power Delivery 3.0 and DisplayPort 1.4)",
-                        "1x Thunderbolt 4 / USB4 40Gbps (support data transfer, Power Delivery 3.0 and DisplayPort 1.4)",
-                        "1x HDMI 2.1, up to 4K/60Hz",
-                        "1x Headphone / microphone combo jack (3.5mm)",
-                        "1x Ethernet (RJ-45)",
-                        "1x SD card reader"
-                    ]
-                },
-                "camera": {
-                    "model": "HD 720p with Privacy Shutter"
-                },
-                "keyboard": {
-                    "type": "Backlit, English"
-                },
-                "dimensions": {
-                    "size": "313.5 x 224 x 16.9 mm (12.34 x 8.82 x 0.67 inches)",
-                    "weight": "Starting at 1.38 kg (3.04 lbs)"
-                },
-                "build": {
-                    "color": "Arctic Grey",
-                    "material": "Aluminium (Top), Aluminium (Bottom)",
-                    "surface": "Anodizing Sandblasting"
-                },
-                "software": {
-                    "os": "Windows 11 Pro, English",
-                    "bundled": "Office Home 2024"
-                },
-                "audio": {
-                    "chip": "High Definition (HD) Audio, Realtek ALC3287 codec",
-                    "speakers": "Stereo speakers, 2W x2, Dolby Audio",
-                    "microphone": "2x, Array"
-                },
-                "memory_slots": {
-                    "raw": "Two DDR5 SODIMM slots, dual-channel capable",
-                    "max_memory": "Up to 64GB DDR5-5200"
-                },
-                "storage_slots": {
-                    "raw": "Two M.2 2280 PCIe 4.0 x4 slots",
-                    "max_storage": "Up to two drives, 2x M.2 SSD • M.2 2242 SSD up to 1TB • M.2 2280 SSD up to 2TB"
-                }
-            },
-            "spec_source": "lenovo_outlet",
-            "vendor": "lenovo",
-            "brand": "Lenovo",
-            "series": "Thinkbook",
-            "product_condition": "CERTIFIED REFURBISHED",
-            "product_metadata": {
-                "brand": "Lenovo",
-                "series": "Thinkbook",
-                "part_number": "21KGR001R0",
-                "model_number": "21KGR001R0",
-                "manufacturer": "Lenovo",
-                "warranty": "1 Year Courier or Carry-in Warranty",
-                "condition": "Certified Refurbished"
-            },
-            "price_mean": 44191,
-            "price_median": 44191,
-            "price_usual": 44191,
-            "has_history": true,
-            "last_checked": "2026-08-19 15:23:34",
-            "archived": true,
-            "archived_at": "2026-08-19"
-        },
-        {
             "id": "83FFR000R0",
             "model_name": "Yoga Book 9i Gen 9 (13, Intel)",
             "internal_model_code": "83FFR000R0",
@@ -8622,7 +8495,7 @@
                 "product_name": "IdeaPad Slim 3 15AMN8"
             },
             "archived": true,
-            "archived_at": "2026-08-23"
+            "archived_at": "2026-08-24"
         },
         {
             "id": "81X8R000R0",
@@ -8693,7 +8566,7 @@
             "price_usual": 41491,
             "has_history": true,
             "archived": true,
-            "archived_at": "2026-08-23"
+            "archived_at": "2026-08-24"
         },
         {
             "id": "82X7R002R0",
@@ -8837,7 +8710,7 @@
                 "product_name": "IdeaPad Slim 3 15IRU8"
             },
             "archived": true,
-            "archived_at": "2026-08-23"
+            "archived_at": "2026-08-24"
         },
         {
             "id": "83K1R00AR0",
@@ -8980,7 +8853,7 @@
                 "product_name": "IdeaPad Slim 3 15IRH10"
             },
             "archived": true,
-            "archived_at": "2026-08-23"
+            "archived_at": "2026-08-24"
         },
         {
             "id": "83ELR000R0",
@@ -9058,7 +8931,7 @@
             "price_usual": 51191,
             "has_history": true,
             "archived": true,
-            "archived_at": "2026-08-23"
+            "archived_at": "2026-08-24"
         },
         {
             "id": "82XER000R0",
@@ -9137,7 +9010,7 @@
             "price_usual": 51490,
             "has_history": true,
             "archived": true,
-            "archived_at": "2026-08-23"
+            "archived_at": "2026-08-24"
         },
         {
             "id": "83E6R002R0",
@@ -9216,7 +9089,7 @@
             "price_usual": 53991,
             "has_history": true,
             "archived": true,
-            "archived_at": "2026-08-23"
+            "archived_at": "2026-08-24"
         },
         {
             "id": "83K1R008R0",
@@ -9359,7 +9232,7 @@
                 "product_name": "IdeaPad Slim 3 15IRH10"
             },
             "archived": true,
-            "archived_at": "2026-08-23"
+            "archived_at": "2026-08-24"
         },
         {
             "id": "83DAR001R0",
@@ -9441,7 +9314,7 @@
             "price_usual": 54691,
             "has_history": true,
             "archived": true,
-            "archived_at": "2026-08-23"
+            "archived_at": "2026-08-24"
         },
         {
             "id": "83J2R002R0",
@@ -9587,7 +9460,7 @@
                 "product_name": "IdeaPad Slim 5 13ARP10"
             },
             "archived": true,
-            "archived_at": "2026-08-23"
+            "archived_at": "2026-08-24"
         },
         {
             "id": "83HRR002R0",
@@ -9731,7 +9604,7 @@
                 "product_name": "IdeaPad Slim 5 14IRH10"
             },
             "archived": true,
-            "archived_at": "2026-08-23"
+            "archived_at": "2026-08-24"
         },
         {
             "id": "83HSR000R0",
@@ -9809,7 +9682,7 @@
             "price_usual": 58191,
             "has_history": true,
             "archived": true,
-            "archived_at": "2026-08-23"
+            "archived_at": "2026-08-24"
         },
         {
             "id": "82S9R002R0",
@@ -9887,7 +9760,7 @@
             "price_usual": 58890,
             "has_history": true,
             "archived": true,
-            "archived_at": "2026-08-23"
+            "archived_at": "2026-08-24"
         },
         {
             "id": "83K4R001R0",
@@ -9966,7 +9839,7 @@
             "price_usual": 61690,
             "has_history": true,
             "archived": true,
-            "archived_at": "2026-08-23"
+            "archived_at": "2026-08-24"
         },
         {
             "id": "83D2R001R0",
@@ -10048,7 +9921,7 @@
             "price_usual": 75691,
             "has_history": true,
             "archived": true,
-            "archived_at": "2026-08-23"
+            "archived_at": "2026-08-24"
         },
         {
             "id": "83D2R000R0",
@@ -10130,7 +10003,7 @@
             "price_usual": 91090,
             "has_history": true,
             "archived": true,
-            "archived_at": "2026-08-23"
+            "archived_at": "2026-08-24"
         },
         {
             "id": "21M3R009R0",
@@ -10275,7 +10148,7 @@
                 "product_name": "ThinkPad E14 Gen 6 (AMD)"
             },
             "archived": true,
-            "archived_at": "2026-08-23"
+            "archived_at": "2026-08-24"
         },
         {
             "id": "21M8R000R0",
@@ -10402,7 +10275,7 @@
             "price_usual": 132105,
             "has_history": true,
             "archived": true,
-            "archived_at": "2026-08-23"
+            "archived_at": "2026-08-24"
         },
         {
             "id": "83LKR007R0",
@@ -10480,7 +10353,7 @@
             "price_usual": 70091,
             "has_history": true,
             "archived": true,
-            "archived_at": "2026-08-23"
+            "archived_at": "2026-08-24"
         },
         {
             "id": "83DVR003R0",
@@ -10624,7 +10497,7 @@
                 "product_name": "LOQ 15IRX9"
             },
             "archived": true,
-            "archived_at": "2026-08-23"
+            "archived_at": "2026-08-24"
         },
         {
             "id": "83JRR001R0",
@@ -10760,7 +10633,7 @@
                 "product_name": "Yoga 7 2-in-1 14AKP10"
             },
             "archived": true,
-            "archived_at": "2026-08-23"
+            "archived_at": "2026-08-24"
         },
         {
             "id": "83JQR003R0",
@@ -10906,7 +10779,7 @@
                 "product_name": "Yoga 7 2-in-1 14ILL10"
             },
             "archived": true,
-            "archived_at": "2026-08-23"
+            "archived_at": "2026-08-24"
         },
         {
             "id": "83F3R001R0",
@@ -11054,7 +10927,7 @@
                 "product_name": "Legion Pro 5 16IAX10"
             },
             "archived": true,
-            "archived_at": "2026-08-23"
+            "archived_at": "2026-08-24"
         },
         {
             "id": "83ERR001R0",
@@ -11176,129 +11049,7 @@
             "has_history": true,
             "last_checked": "2026-08-20 05:19:19",
             "archived": true,
-            "archived_at": "2026-08-23"
-        },
-        {
-            "id": "83ERR005R0",
-            "model_name": "IdeaPad Slim 3i Gen 8 (15, Intel)",
-            "internal_model_code": "83ERR005R0",
-            "title": "IdeaPad Slim 3i Gen 8 (15, Intel)",
-            "description": "The IdeaPad Slim 3i 13th Gen (15, Intel) is a lightweight laptop designed for mobility and performance. It features a low blue-light display, rapid charging, Dolby Audio, and a privacy shutter webcam, making it ideal for students and professionals.",
-            "availability": "out of stock",
-            "price": "51191.00 INR",
-            "mrp": "74389.00 INR",
-            "image": "https://p2-ofp.static.pub//fes/cms/2023/07/17/cb33s6cv4scvgl4k2mxwpjhnmqfjgg628756.png",
-            "affiliate_link": "https://lenovo-in.zlvv.net/c/5890822/608695/9634?prodsku=83ERR005R0&u=https%3A%2F%2Fwww.lenovo.com%2Fin%2Foutletin%2Fen%2Fp%2Flaptops%2Fideapad%2Fideapad-s-series%2Fideapad-slim-3i-gen-8-15-inch-intel%2F83err005r0&intsrc=CATF_4639",
-            "store_link": "https://www.lenovo.com/in/outletin/en/p/laptops/ideapad/ideapad-s-series/ideapad-slim-3i-gen-8-15-inch-intel/83err005r0",
-            "listing_date": "2023-07-17",
-            "tech_specs": {
-                "display": {
-                    "size": "15.6\"",
-                    "res": "1920x1080",
-                    "refresh": "60Hz",
-                    "type": "TN",
-                    "brightness": "250 nits",
-                    "color": "45% NTSC"
-                },
-                "memory": {
-                    "amount": "16 GB",
-                    "type": "DDR5",
-                    "speed": "4800 MHz"
-                },
-                "storage": {
-                    "capacity": "512 GB",
-                    "type": "SSD Gen4"
-                },
-                "processor": {
-                    "brand": "Intel",
-                    "model": "Core i5-12450H",
-                    "full_model": "Intel Core i5-12450H",
-                    "series": "Core 12th Gen",
-                    "cores": 8,
-                    "threads": 12,
-                    "boost_clock": "4.40 GHz",
-                    "igpu": "Intel UHD Graphics for 12th Gen Intel Processors",
-                    "igpu_series": "Intel UHD Graphics Series"
-                },
-                "graphics": {
-                    "model": "Intel UHD Graphics for 12th Gen Intel Processors",
-                    "vram": "Shared",
-                    "dedicated": false,
-                    "series": "Intel UHD Graphics Series",
-                    "boost_clock": "1.20 GHz"
-                },
-                "network": {
-                    "wifi": "Wi-Fi 6",
-                    "bluetooth": "5.2"
-                },
-                "power": {
-                    "adapter": "65W Round Tip (3-pin)",
-                    "watt": 65
-                },
-                "battery": {
-                    "capacity": "47Wh"
-                },
-                "ports": {
-                    "items": [
-                        "2x USB 3.2 Gen 1",
-                        "1x USB-C 3.2 Gen 1 (support data transfer, Power Delivery and DisplayPort 1.2)",
-                        "1x HDMI 1.4",
-                        "1x Headphone / microphone combo jack (3.5mm)",
-                        "1x Card reader",
-                        "1x Round tip power connector"
-                    ]
-                },
-                "camera": {
-                    "model": "FHD 1080p with Privacy Shutter"
-                },
-                "keyboard": {
-                    "type": "Non-backlit, Spanish (LA)"
-                },
-                "dimensions": {
-                    "size": "359.3 x 235 x 17.9 mm (14.15 x 9.25 x 0.70 inches)",
-                    "weight": "Starting at 1.62 kg (3.57 lbs)"
-                },
-                "build": {
-                    "color": "Frost Blue",
-                    "material": "PC-ABS (Top), PC-ABS (Bottom)",
-                    "surface": "IMR (In-Mold Decoration by Roller)"
-                },
-                "software": {},
-                "audio": {
-                    "chip": "High Definition (HD) Audio",
-                    "speakers": "User-facing stereo speakers, 1.5W x2, optimized with Dolby Audio",
-                    "microphone": "2x, Array"
-                },
-                "memory_slots": {
-                    "raw": "Memory soldered to systemboard, no slots, dual-channel (16GB models)",
-                    "max_memory": "16GB soldered memory, not upgradable"
-                },
-                "storage_slots": {
-                    "raw": "One M.2 PCIe 4.0 x4 slot",
-                    "max_storage": "One drive, up to 1TB M.2 2242 SSD"
-                }
-            },
-            "spec_source": "lenovo_outlet",
-            "vendor": "lenovo",
-            "brand": "Lenovo",
-            "series": "Ideapad",
-            "product_condition": "CERTIFIED REFURBISHED",
-            "product_metadata": {
-                "brand": "Lenovo",
-                "series": "Ideapad",
-                "part_number": "83ERR005R0",
-                "model_number": "83ERR005R0",
-                "manufacturer": "Lenovo",
-                "warranty": "1 Year Courier or Carry-in Warranty",
-                "condition": "Certified Refurbished"
-            },
-            "price_mean": 51191,
-            "price_median": 51191,
-            "price_usual": 51191,
-            "has_history": true,
-            "last_checked": "2026-08-20 05:19:19",
-            "archived": true,
-            "archived_at": "2026-08-23"
+            "archived_at": "2026-08-24"
         },
         {
             "id": "83K1R003R0",
@@ -11422,7 +11173,7 @@
             "has_history": true,
             "last_checked": "2026-08-20 05:19:19",
             "archived": true,
-            "archived_at": "2026-08-23"
+            "archived_at": "2026-08-24"
         },
         {
             "id": "83DCR006R0",
@@ -11548,47 +11299,47 @@
             "has_history": true,
             "last_checked": "2026-08-20 05:19:19",
             "archived": true,
-            "archived_at": "2026-08-23"
+            "archived_at": "2026-08-24"
         },
         {
-            "id": "82TTR000R0",
-            "model_name": "Lenovo V15 Gen 3 (15, Intel)",
-            "internal_model_code": "82TTR000R0",
-            "title": "Lenovo V15 Gen 3 (15, Intel)",
-            "description": "The Lenovo V15 Gen 3 (15, Intel) offers premium performance with 12th Gen Intel® Core™ processors and ample memory and storage. This lightweight 15-inch laptop features an FHD anti-glare display, Dolby Audio speakers, and a privacy shutter, making it ideal for small businesses and students. Customizable to suit your needs.",
+            "id": "21KGR003R0",
+            "model_name": "ThinkBook 14 Gen 6 (14, Intel)",
+            "internal_model_code": "21KGR003R0",
+            "title": "ThinkBook 14 Gen 6 (14, Intel)",
+            "description": "The Lenovo ThinkBook 14 Gen 6 is a powerful 14-inch business laptop designed for productivity and efficiency. It features all-day battery life, military-grade durability, advanced security, and a redesigned ergonomic keyboard for seamless work.",
             "availability": "out of stock",
-            "price": "49090.00 INR",
-            "mrp": "79540.00 INR",
-            "image": "https://p2-ofp.static.pub/fes/cms/2022/09/26/i6zlcap44kafmcywlh54d9rd1wieh1215035.png",
-            "affiliate_link": "https://lenovo-in.zlvv.net/c/5890822/608695/9634?prodsku=82TTR000R0&u=https%3A%2F%2Fwww.lenovo.com%2Fin%2Foutletin%2Fen%2Fp%2Flaptops%2Flenovo-laptops%2Fv-series%2Flenovo-v15-gen-3-15-inch-intel%2F82ttr000r0&intsrc=CATF_4639",
-            "store_link": "https://www.lenovo.com/in/outletin/en/p/laptops/lenovo-laptops/v-series/lenovo-v15-gen-3-15-inch-intel/82ttr000r0",
-            "listing_date": "2022-09-26",
+            "price": "84090.00 INR",
+            "mrp": "138798.00 INR",
+            "image": "https://p2-ofp.static.pub//fes/cms/2023/08/16/iutq4rio1br7mpt6uk1b8bfzhxyhph475181.png",
+            "affiliate_link": "https://lenovo-in.zlvv.net/c/5890822/608695/9634?prodsku=21KGR003R0&u=https%3A%2F%2Fwww.lenovo.com%2Fin%2Foutletin%2Fen%2Fp%2Flaptops%2Fthinkbook%2Fthinkbook-series%2Flenovo-thinkbook-14-gen-6-14-inch-intel%2F21kgr003r0&intsrc=CATF_4639",
+            "store_link": "https://www.lenovo.com/in/outletin/en/p/laptops/thinkbook/thinkbook-series/lenovo-thinkbook-14-gen-6-14-inch-intel/21kgr003r0",
+            "listing_date": "2023-08-16",
             "tech_specs": {
                 "display": {
-                    "size": "15.6\"",
-                    "res": "1920x1080",
+                    "size": "14\"",
+                    "res": "1920x1200",
                     "refresh": "60Hz",
-                    "type": "TN",
-                    "brightness": "250 nits",
+                    "type": "IPS",
+                    "brightness": "300 nits",
                     "color": "45% NTSC"
                 },
                 "memory": {
-                    "amount": "8 GB",
-                    "type": "DDR4",
-                    "speed": "3200 MHz"
+                    "amount": "16 GB",
+                    "type": "DDR5",
+                    "speed": "5200 MHz"
                 },
                 "storage": {
                     "capacity": "512 GB",
-                    "type": "SSD Gen4"
+                    "type": "SSD Gen4 TLC"
                 },
                 "processor": {
                     "brand": "Intel",
-                    "model": "Core i5-1235U",
-                    "full_model": "Intel Core i5-1235U",
-                    "series": "Core 12th Gen",
+                    "model": "Core i7-1355U",
+                    "full_model": "Intel Core i7-1355U",
+                    "series": "Core 13th Gen",
                     "cores": 10,
                     "threads": 12,
-                    "boost_clock": "4.40 GHz",
+                    "boost_clock": "5 GHz",
                     "igpu": "Intel Iris Xe Graphics eligible",
                     "igpu_series": "Intel Iris Xe Series"
                 },
@@ -11597,84 +11348,85 @@
                     "vram": "Shared",
                     "dedicated": false,
                     "series": "Intel Iris Xe Series",
-                    "boost_clock": "1.20 GHz"
+                    "boost_clock": "1.3 GHz"
                 },
                 "network": {
                     "wifi": "Wi-Fi 6",
-                    "bluetooth": "5.1"
+                    "bluetooth": "5.2"
                 },
                 "power": {
                     "adapter": "65W USB-C (3-pin)",
                     "watt": 65
                 },
                 "battery": {
-                    "capacity": "38Wh"
+                    "capacity": "45Wh"
                 },
                 "ports": {
                     "items": [
-                        "1x USB 2.0",
                         "1x USB 3.2 Gen 1",
-                        "1x USB-C 3.2 Gen 1 (support data transfer, Power Delivery (20V only) and DisplayPort 1.2)",
-                        "1x HDMI 1.4b",
+                        "1x USB 3.2 Gen 1 (Always On)",
+                        "1x USB-C 3.2 Gen 2 (support data transfer, Power Delivery 3.0 and DisplayPort 1.4)",
+                        "1x Thunderbolt 4 / USB4 40Gbps (support data transfer, Power Delivery 3.0 and DisplayPort 1.4)",
+                        "1x HDMI 2.1, up to 4K/60Hz",
                         "1x Headphone / microphone combo jack (3.5mm)",
                         "1x Ethernet (RJ-45)",
-                        "1x Power connector"
+                        "1x SD card reader"
                     ]
                 },
                 "camera": {
                     "model": "HD 720p with Privacy Shutter"
                 },
                 "keyboard": {
-                    "type": "Non-backlit, English (IN)"
+                    "type": "Backlit, English"
                 },
                 "dimensions": {
-                    "size": "359 x 236 x 19.9 mm (14.13 x 9.29 x 0.78 inches)",
-                    "weight": "Starting at 1.7 kg (3.75 lbs)"
+                    "size": "313.5 x 224 x 16.9 mm (12.34 x 8.82 x 0.67 inches)",
+                    "weight": "Starting at 1.38 kg (3.04 lbs)"
                 },
                 "build": {
-                    "color": "Iron Grey",
-                    "material": "PC-ABS (Top), PC-ABS (Bottom)",
-                    "surface": "IMR (In-Mold Decoration by Roller)"
+                    "color": "Arctic Grey",
+                    "material": "Aluminium (Top), Aluminium (Bottom)",
+                    "surface": "Anodizing Sandblasting"
                 },
                 "software": {
-                    "os": "Windows 11 Home Single Language, English",
+                    "os": "Windows 11 Pro, English",
                     "bundled": "Office Home 2024"
                 },
                 "audio": {
                     "chip": "High Definition (HD) Audio, Realtek ALC3287 codec",
-                    "speakers": "Stereo speakers, 1.5W x2, Dolby Audio",
+                    "speakers": "Stereo speakers, 2W x2, Dolby Audio",
                     "microphone": "2x, Array"
                 },
                 "memory_slots": {
-                    "raw": "One memory soldered to systemboard, one DDR4 SO-DIMM slot, dual-channel capable",
-                    "max_memory": "Up to 16GB (8GB soldered + 8GB SO-DIMM) DDR4-3200 offering"
+                    "raw": "Two DDR5 SODIMM slots, dual-channel capable",
+                    "max_memory": "Up to 64GB DDR5-5200"
                 },
                 "storage_slots": {
-                    "raw": "Models with 38Wh battery: one 2.5\" drive slot + one M.2 slot • One 2.5\" SATA HDD slot • One M.2 2280 PCIe 4.0 x4 slot",
-                    "max_storage": "Models with 38Wh battery: up to two drives, 1x 2.5\" HDD + 1x M.2 SSD • 2.5\" HDD up to 1TB • M.2 2242 SSD up to 1TB"
+                    "raw": "Two M.2 2280 PCIe 4.0 x4 slots",
+                    "max_storage": "Up to two drives, 2x M.2 SSD • M.2 2242 SSD up to 1TB • M.2 2280 SSD up to 2TB"
                 }
             },
             "spec_source": "lenovo_outlet",
             "vendor": "lenovo",
             "brand": "Lenovo",
-            "series": "Lenovo V-series",
+            "series": "Thinkbook",
             "product_condition": "CERTIFIED REFURBISHED",
             "product_metadata": {
                 "brand": "Lenovo",
-                "series": "Lenovo V-series",
-                "part_number": "82TTR000R0",
-                "model_number": "82TTR000R0",
+                "series": "Thinkbook",
+                "part_number": "21KGR003R0",
+                "model_number": "21KGR003R0",
                 "manufacturer": "Lenovo",
                 "warranty": "1 Year Courier or Carry-in Warranty",
                 "condition": "Certified Refurbished"
             },
-            "price_mean": 49090,
-            "price_median": 49090,
-            "price_usual": 49090,
+            "price_mean": 84090,
+            "price_median": 84090,
+            "price_usual": 84090,
             "has_history": true,
             "last_checked": "2026-08-20 05:19:19",
             "archived": true,
-            "archived_at": "2026-08-23"
+            "archived_at": "2026-08-24"
         }
     ]
 }
