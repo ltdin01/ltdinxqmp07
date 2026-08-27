@@ -182,6 +182,15 @@ def archive_unavailable(
             if r_pid:
                 raw_index[r_pid] = raw_prod
 
+    missing_candidates = [p for p in candidates if normalize_id(p.get("id")) not in raw_index]
+    batch_prices: dict[str, tuple[int | None, int | None]] = {}
+    if missing_candidates and not html_dir:
+        missing_pids = [normalize_id(p.get("id")) for p in missing_candidates if normalize_id(p.get("id"))]
+        try:
+            batch_prices = lenovo.fetch_batch_prices(missing_pids, chunk_size=50)
+        except Exception:
+            batch_prices = {}
+
     decisions = []
     for product in candidates:
         pid = normalize_id(product.get("id"))
@@ -199,6 +208,20 @@ def archive_unavailable(
                     "archive": False,
                     "reasons": [],
                     "evidence": {"source": "raw_catalog", "availability": raw_avail or "in stock"},
+                }
+        elif not html_dir and pid in batch_prices:
+            price_val, _ = batch_prices[pid]
+            if price_val:
+                decision = {
+                    "archive": False,
+                    "reasons": [],
+                    "evidence": {"source": "batch_price", "price": price_val},
+                }
+            else:
+                decision = {
+                    "archive": True,
+                    "reasons": ["no_price"],
+                    "evidence": {"source": "batch_price", "status": "no_price"},
                 }
         else:
             try:
