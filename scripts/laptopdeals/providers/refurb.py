@@ -100,6 +100,7 @@ def title_from_url_slug(url: str) -> str:
         if re.match(r"^\d+[a-z0-9]+$", slug, re.I) and not re.search(r"(?:ideapad|thinkpad|thinkbook|loq|legion|yoga|v\d+)", slug, re.I):
             return ""
         clean_slug = re.sub(r"\([^\)]*\)", "", slug)
+        clean_slug = re.sub(r"[^a-zA-Z0-9\-]+", "-", clean_slug)
         tokens = [t for t in clean_slug.split("-") if t and t.lower() not in ("inch", "mobile", "workstation", "laptop", "laptops", "pdp", "hero")]
         gen = ""
         filtered_tokens = []
@@ -118,6 +119,9 @@ def title_from_url_slug(url: str) -> str:
                 i += 1
                 continue
             elif low_tok == "lenovo" and i + 1 < len(tokens) and tokens[i + 1].lower() in ("thinkpad", "ideapad", "thinkbook", "legion", "yoga", "loq", "v14", "v15"):
+                i += 1
+                continue
+            elif low_tok == "gaming" and any(t.lower() in ("legion", "loq") for t in filtered_tokens):
                 i += 1
                 continue
             elif low_tok == "2" and i + 2 < len(tokens) and tokens[i + 1].lower() in ("in", "in1") and tokens[i + 2] == "1":
