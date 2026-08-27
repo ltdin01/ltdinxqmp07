@@ -100,7 +100,9 @@ class PsrefSessionManager:
                 payload_b64 = self._jwt.split(".")[1]
                 payload_b64 += "=" * ((4 - len(payload_b64) % 4) % 4)
                 payload_json = json.loads(base64.urlsafe_b64decode(payload_b64).decode("utf-8"))
-                self._sig_secret = payload_json["ss"]
+                self._sig_secret = payload_json.get("rk") or payload_json.get("ss") or ""
+                if not self._sig_secret:
+                    raise KeyError("Could not find secret key ('rk' or 'ss') in PSREF JWT payload")
                 self._exp = float(payload_json.get("exp", now + 1800))
 
                 try:
@@ -114,9 +116,9 @@ class PsrefSessionManager:
             except Exception as err:
                 if attempt == retries - 1:
                     raise
-                time.sleep(3.0 * (attempt + 1))
+                time.sleep(2.0 * (attempt + 1))
 
-    def request_bytes(self, url: str, accept: str | None = None, retries: int = 3, timeout: int = 120) -> bytes:
+    def request_bytes(self, url: str, accept: str | None = None, retries: int = 3, timeout: int = 30) -> bytes:
         with self._lock:
             now = time.time()
             if self._session is None or self._jwt is None or now >= self._exp - 60:
@@ -973,10 +975,34 @@ def build(
     missing: list[dict[str, Any]] = []
     datasheet_meta: dict[str, Any] = {}
 
-    # Parallelize fetching and creation of MTM datasheets
-    valid_prefixes = [(prefix, mt_map[prefix]) for prefix in sorted(grouped.keys()) if prefix in mt_map]
-    datasheets: dict[str, dict[str, Any]] = {}
+    # Identify prefixes present in mt_map vs missing
+    valid_prefixes = []
+    missing_prefixes = []
+    for prefix in sorted(grouped.keys()):
+        if prefix in mt_map:
+            valid_prefixes.append((prefix, mt_map[prefix]))
+        else:
+            missing_prefixes.append(prefix)
 
+    # Attempt on-demand search resolution for unlisted Machine Types
+    if missing_prefixes:
+        if verbose:
+            print(f"[psref] Searching on-demand for {len(missing_prefixes)} unlisted Machine Types: {missing_prefixes}")
+        for prefix in missing_prefixes:
+            try:
+                suggested = resolve_mt_via_suggest(prefix)
+                if suggested and suggested.get("product_key"):
+                    mt_map[prefix] = suggested
+                    merged_mt_map[prefix] = suggested
+                    valid_prefixes.append((prefix, suggested))
+                    if verbose:
+                        print(f"[psref] Discovered unlisted Machine Type {prefix} -> {suggested.get('product_name')}")
+            except Exception as exc:
+                if verbose:
+                    print(f"[psref] Search failed for {prefix}: {exc}")
+        write_json(mt_cache, merged_mt_map)
+
+    datasheets: dict[str, dict[str, Any]] = {}
     if verbose:
         print(f"[psref] Fetching MTM datasheets for {len(valid_prefixes)} Machine Types in parallel (workers=8)...")
 
@@ -991,7 +1017,7 @@ def build(
 
     for prefix, prefix_products in sorted(grouped.items()):
         mt_entry = mt_map.get(prefix)
-        if not mt_entry:
+        if not mt_entry or prefix not in datasheets:
             for product in prefix_products:
                 sku = clean_text(product.get("id") or product.get("product_code")).upper()
                 entry = {"id": sku, "status": "missing", "match_type": "missing_machine_type", "machine_type": prefix, "tech_specs": {}}
