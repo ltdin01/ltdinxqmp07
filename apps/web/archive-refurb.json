@@ -470,21 +470,12 @@
                     "brand": "AMD",
                     "model": "Ryzen 5 7520U",
                     "full_model": "AMD Ryzen 5 7520U",
-                    "series": "Ryzen 7000 Series",
-                    "cores": 4,
-                    "threads": 8,
-                    "base_clock": "2.8 GHz",
-                    "boost_clock": "Up to 4.3 GHz",
-                    "igpu": "AMD Radeon 610M",
-                    "igpu_series": "Radeon 600M Series"
+                    "series": "Ryzen 7000 Series"
                 },
                 "graphics": {
-                    "model": "AMD Radeon 610M",
+                    "model": "Integrated AMD Radeon 610M",
                     "vram": "Shared",
-                    "dedicated": false,
-                    "series": "Radeon 600M Series",
-                    "boost_clock": "1900 MHz",
-                    "cus": 2
+                    "dedicated": false
                 },
                 "network": {
                     "wifi": "Wi-Fi 6",
@@ -511,7 +502,7 @@
                     "model": "HD 720p with Privacy Shutter"
                 },
                 "keyboard": {
-                    "type": "Non-backlit, Spanish (LA)"
+                    "type": "Non-backlit, English"
                 },
                 "dimensions": {
                     "size": "359.3 x 235 x 17.9 mm (14.15 x 9.25 x 0.70 inches)",
@@ -522,7 +513,10 @@
                     "material": "PC-ABS (Top), PC-ABS (Bottom)",
                     "surface": "IMR (In-Mold Decoration by Roller)"
                 },
-                "software": {},
+                "software": {
+                    "os": "Windows 11 Home Single Language, English",
+                    "bundled": "Office Home 2024"
+                },
                 "audio": {
                     "chip": "High Definition (HD) Audio",
                     "speakers": "User-facing stereo speakers, 1.5W x2, optimized with Dolby Audio",
@@ -757,19 +751,12 @@
                     "brand": "Intel",
                     "model": "Core i5-12450H",
                     "full_model": "Intel Core i5-12450H",
-                    "series": "Core 12th Gen",
-                    "cores": 8,
-                    "threads": 12,
-                    "boost_clock": "4.40 GHz",
-                    "igpu": "Intel UHD Graphics for 12th Gen Intel Processors",
-                    "igpu_series": "Intel UHD Graphics Series"
+                    "series": "Core 12th Gen"
                 },
                 "graphics": {
-                    "model": "Intel UHD Graphics for 12th Gen Intel Processors",
+                    "model": "Integrated Intel UHD for 12th Gen Intel Processors",
                     "vram": "Shared",
-                    "dedicated": false,
-                    "series": "Intel UHD Graphics Series",
-                    "boost_clock": "1.20 GHz"
+                    "dedicated": false
                 },
                 "network": {
                     "wifi": "Wi-Fi 6",
@@ -1323,19 +1310,12 @@
                     "brand": "Intel",
                     "model": "Core i5-13420H",
                     "full_model": "Intel Core i5-13420H",
-                    "series": "Core 13th Gen",
-                    "cores": 8,
-                    "threads": 12,
-                    "boost_clock": "4.60 GHz",
-                    "igpu": "Intel UHD Graphics for 13th Gen Intel Processors",
-                    "igpu_series": "Intel UHD Graphics Series"
+                    "series": "Core 13th Gen"
                 },
                 "graphics": {
-                    "model": "Intel UHD Graphics for 13th Gen Intel Processors",
+                    "model": "Integrated Intel UHD",
                     "vram": "Shared",
-                    "dedicated": false,
-                    "series": "Intel UHD Graphics Series",
-                    "boost_clock": "1.40 GHz"
+                    "dedicated": false
                 },
                 "network": {
                     "wifi": "Wi-Fi 6",
@@ -1742,26 +1722,20 @@
                     "brand": "Intel",
                     "model": "Core i5-13420H",
                     "full_model": "Intel Core i5-13420H",
-                    "series": "Core 13th Gen",
-                    "cores": 8,
-                    "threads": 12,
-                    "boost_clock": "4.60 GHz",
-                    "igpu": "Intel UHD Graphics for 13th Gen Intel Processors",
-                    "igpu_series": "Intel UHD Graphics Series"
+                    "series": "Core 13th Gen"
                 },
                 "graphics": {
-                    "model": "Intel UHD Graphics for 13th Gen Intel Processors",
+                    "model": "Integrated Intel UHD",
                     "vram": "Shared",
-                    "dedicated": false,
-                    "series": "Intel UHD Graphics Series",
-                    "boost_clock": "1.40 GHz"
+                    "dedicated": false
                 },
                 "network": {
                     "wifi": "Wi-Fi 6",
                     "bluetooth": "5.2"
                 },
                 "power": {
-                    "adapter": "No Power Adapter"
+                    "adapter": "65W Round Tip (3-pin)",
+                    "watt": 65
                 },
                 "battery": {
                     "capacity": "50Wh"
@@ -1780,21 +1754,18 @@
                     "model": "HD 720p with Privacy Shutter"
                 },
                 "keyboard": {
-                    "type": "Non-backlit, Italian"
+                    "type": "Non-backlit, Arabic"
                 },
                 "dimensions": {
-                    "size": "343.4 x 239.5 x 17.9-18.9 mm (13.52 x 9.43 x 0.70-0.74 inches)",
+                    "size": "343.4 x 239.5 x 16.9-17.9 mm (13.52 x 9.51 x 0.67-0.70 inches)",
                     "weight": "Starting at 1.59 kg (3.51 lbs)"
                 },
                 "build": {
                     "color": "Luna Grey",
-                    "material": "PC-ABS (Top), PC-ABS (Bottom)",
-                    "surface": "IMR (Top), Texture (Bottom)"
+                    "material": "Aluminium (Top), PC-ABS (Bottom)",
+                    "surface": "Aluminium Stamping Anodized (Top), Texture (Bottom)"
                 },
-                "software": {
-                    "os": "Windows 11 Home, Italian / English",
-                    "bundled": "Office Trial"
-                },
+                "software": {},
                 "audio": {
                     "chip": "High Definition (HD) Audio",
                     "speakers": "Stereo speakers, 2W x2, optimized with Dolby Audio",
@@ -2152,27 +2123,20 @@
                     "brand": "AMD",
                     "model": "Ryzen 5 7530U",
                     "full_model": "AMD Ryzen 5 7530U",
-                    "series": "Ryzen 7000 Series",
-                    "cores": 6,
-                    "threads": 12,
-                    "base_clock": "2 GHz",
-                    "boost_clock": "Up to 4.5 GHz",
-                    "igpu": "AMD Radeon Graphics",
-                    "igpu_series": "Integrated Graphics"
+                    "series": "Ryzen 7000 Series"
                 },
                 "graphics": {
-                    "model": "AMD Radeon Graphics",
+                    "model": "Integrated AMD Radeon",
                     "vram": "Shared",
-                    "dedicated": false,
-                    "series": "Integrated Graphics",
-                    "boost_clock": "2000 MHz"
+                    "dedicated": false
                 },
                 "network": {
                     "wifi": "Wi-Fi 6",
                     "bluetooth": "5.3"
                 },
                 "power": {
-                    "adapter": "No Power Adapter"
+                    "adapter": "No Power Adapter",
+                    "watt": 65
                 },
                 "battery": {
                     "capacity": "52.5Wh"
@@ -3007,30 +2971,19 @@
                     "brand": "Intel",
                     "model": "Core Ultra 7 255H",
                     "full_model": "Intel Core Ultra 7 255H",
-                    "series": "Core Ultra Series 2",
-                    "cores": 16,
-                    "threads": 16,
-                    "base_clock": "2 GHz",
-                    "boost_clock": "5.1 GHz",
-                    "igpu": "Intel Arc 140T GPU",
-                    "igpu_series": "Intel Arc Graphics Series",
-                    "xe_cores": "8 Xe-Cores"
+                    "series": "Core Ultra Series 2"
                 },
                 "graphics": {
-                    "model": "Intel Arc 140T GPU",
+                    "model": "Integrated Intel Arc 140T GPU",
                     "vram": "Shared",
-                    "dedicated": false,
-                    "xe_cores": "8",
-                    "series": "Intel Arc Graphics Series",
-                    "boost_clock": "2.25 GHz",
-                    "ai_tops": "74 TOPS"
+                    "dedicated": false
                 },
                 "network": {
                     "wifi": "Wi-Fi 6E",
                     "bluetooth": "5.3"
                 },
                 "power": {
-                    "adapter": "65W USB-C (3-pin)",
+                    "adapter": "65W USB-C (2-pin)",
                     "watt": 65
                 },
                 "battery": {
@@ -3047,10 +3000,10 @@
                     ]
                 },
                 "camera": {
-                    "model": "FHD 1080p + IR Hybrid with Privacy Shutter"
+                    "model": "5.0MP with Privacy Shutter"
                 },
                 "keyboard": {
-                    "type": "Backlit, Ukrainian"
+                    "type": "Non-backlit, Spanish (LA)"
                 },
                 "dimensions": {
                     "size": "356 x 249 x 10.1/17.05 (front/rear), 21.95 (maximum) mm; 14.01 x 9.8 x 0.40/0.67 (front/rear), 0.86 (maximum) inches",
@@ -3060,7 +3013,9 @@
                     "color": "Black",
                     "material": "Aluminium (Top), PC-ABS (Bottom)"
                 },
-                "software": {},
+                "software": {
+                    "os": "Windows 11 Pro, Spanish / Mexican Spanish / English"
+                },
                 "audio": {
                     "chip": "High Definition (HD) Audio, Senary SN6147 codec",
                     "speakers": "Stereo speakers, 2W x2, Dolby Atmos, audio by HARMAN",
@@ -3294,23 +3249,12 @@
                     "brand": "Intel",
                     "model": "Core Ultra 7 255H",
                     "full_model": "Intel Core Ultra 7 255H",
-                    "series": "Core Ultra Series 2",
-                    "cores": 16,
-                    "threads": 16,
-                    "base_clock": "2 GHz",
-                    "boost_clock": "5.1 GHz",
-                    "igpu": "Intel Arc 140T GPU",
-                    "igpu_series": "Intel Arc Graphics Series",
-                    "xe_cores": "8 Xe-Cores"
+                    "series": "Core Ultra Series 2"
                 },
                 "graphics": {
-                    "model": "Intel Arc 140T GPU",
+                    "model": "Integrated Intel Arc 140T GPU",
                     "vram": "Shared",
-                    "dedicated": false,
-                    "xe_cores": "8",
-                    "series": "Intel Arc Graphics Series",
-                    "boost_clock": "2.25 GHz",
-                    "ai_tops": "74 TOPS"
+                    "dedicated": false
                 },
                 "network": {
                     "wifi": "Wi-Fi 6E",
@@ -3553,9 +3497,9 @@
         },
         {
             "id": "83JCR004R0",
-            "model_name": "Lenovo LOQ Gen 9 (15, AMD)",
+            "model_name": "LOQ 15arp9 (15, AMD)",
             "internal_model_code": "83JCR004R0",
-            "title": "Lenovo LOQ Gen 9 (15, AMD)",
+            "title": "LOQ 15arp9 (15, AMD)",
             "description": "The Lenovo LOQ 15ARP9 is designed for gamers entering the PC gaming world with AMD Ryzen processors and NVIDIA GeForce RTX GPUs. Enjoy sharp graphics, efficient cooling for uninterrupted sessions, and expandable storage for future upgrades.",
             "availability": "out of stock",
             "price": "50491.00 INR",
@@ -3586,20 +3530,13 @@
                     "brand": "AMD",
                     "model": "Ryzen 5 7235HS",
                     "full_model": "AMD Ryzen 5 7235HS",
-                    "series": "Ryzen 7000 Series",
-                    "cores": 4,
-                    "threads": 8,
-                    "base_clock": "3.2 GHz",
-                    "boost_clock": "Up to 4.2 GHz",
-                    "igpu": "Discrete Graphics Card Required",
-                    "igpu_series": "Discrete Graphics Card Required Series"
+                    "series": "Ryzen 7000 Series"
                 },
                 "graphics": {
                     "model": "RTX 3050 6 GB GDDR6",
                     "vram": "6 GB",
                     "dedicated": true,
-                    "series": "RTX 30 Series",
-                    "cuda_cores": 2048
+                    "series": "RTX 30 Series"
                 },
                 "network": {
                     "wifi": "Wi-Fi 6",
@@ -3698,9 +3635,9 @@
         },
         {
             "id": "82XTR003R0",
-            "model_name": "Lenovo LOQ Gen 8 (15, AMD)",
+            "model_name": "LOQ 15aph8 (15, AMD)",
             "internal_model_code": "82XTR003R0",
-            "title": "Lenovo LOQ Gen 8 (15, AMD)",
+            "title": "LOQ 15aph8 (15, AMD)",
             "description": "The Lenovo LOQ Gen 8 (15, AMD) is designed for gamers seeking high performance and immersive visuals. Powered by AMD Ryzen™ processors and NVIDIA® GPUs, it features a 15.6\" FHD display, advanced cooling, and customizable options for ultimate gaming.",
             "availability": "out of stock",
             "price": "56090.00 INR",
@@ -3731,20 +3668,13 @@
                     "brand": "AMD",
                     "model": "Ryzen 5 7640HS",
                     "full_model": "AMD Ryzen 5 7640HS",
-                    "series": "Ryzen 7000 Series",
-                    "cores": 6,
-                    "threads": 12,
-                    "base_clock": "4.3 GHz",
-                    "boost_clock": "Up to 5 GHz",
-                    "igpu": "AMD Radeon 760M",
-                    "igpu_series": "Radeon 700M Series"
+                    "series": "Ryzen 7000 Series"
                 },
                 "graphics": {
                     "model": "RTX 3050 6 GB GDDR6",
                     "vram": "6 GB",
                     "dedicated": true,
-                    "series": "RTX 30 Series",
-                    "cuda_cores": 2048
+                    "series": "RTX 30 Series"
                 },
                 "network": {
                     "wifi": "Wi-Fi 6",
@@ -3988,9 +3918,9 @@
         },
         {
             "id": "83JCR006R0",
-            "model_name": "Lenovo LOQ Gen 9 (15, AMD)",
+            "model_name": "LOQ 15arp9 (15, AMD)",
             "internal_model_code": "83JCR006R0",
-            "title": "Lenovo LOQ Gen 9 (15, AMD)",
+            "title": "LOQ 15arp9 (15, AMD)",
             "description": "The Lenovo LOQ 15ARP9 is designed for gamers entering the PC gaming world with AMD Ryzen processors and NVIDIA GeForce RTX GPUs. Enjoy sharp graphics, efficient cooling for uninterrupted sessions, and expandable storage for future upgrades.",
             "availability": "out of stock",
             "price": "63091.00 INR",
@@ -4021,20 +3951,13 @@
                     "brand": "AMD",
                     "model": "Ryzen 5 7235HS",
                     "full_model": "AMD Ryzen 5 7235HS",
-                    "series": "Ryzen 7000 Series",
-                    "cores": 4,
-                    "threads": 8,
-                    "base_clock": "3.2 GHz",
-                    "boost_clock": "Up to 4.2 GHz",
-                    "igpu": "Discrete Graphics Card Required",
-                    "igpu_series": "Discrete Graphics Card Required Series"
+                    "series": "Ryzen 7000 Series"
                 },
                 "graphics": {
                     "model": "RTX 3050 A 4 GB GDDR6",
                     "vram": "4 GB",
                     "dedicated": true,
-                    "series": "RTX 30 Series",
-                    "cuda_cores": 2048
+                    "series": "RTX 30 Series"
                 },
                 "network": {
                     "wifi": "Wi-Fi 6",
@@ -5262,19 +5185,13 @@
                     "brand": "Intel",
                     "model": "Core i7-13650HX",
                     "full_model": "Intel Core i7-13650HX",
-                    "series": "Core 13th Gen",
-                    "cores": 14,
-                    "threads": 20,
-                    "boost_clock": "4.90 GHz",
-                    "igpu": "Intel UHD Graphics for 13th Gen Intel Processors",
-                    "igpu_series": "Intel UHD Graphics Series"
+                    "series": "Core 13th Gen"
                 },
                 "graphics": {
                     "model": "RTX 4060 8 GB GDDR6",
                     "vram": "8 GB",
                     "dedicated": true,
-                    "series": "RTX 40 Series",
-                    "cuda_cores": 3072
+                    "series": "RTX 40 Series"
                 },
                 "network": {
                     "wifi": "Wi-Fi 6",
@@ -5555,26 +5472,20 @@
                     "brand": "Intel",
                     "model": "Core i7-13620H",
                     "full_model": "Intel Core i7-13620H",
-                    "series": "Core 13th Gen",
-                    "cores": 10,
-                    "threads": 16,
-                    "boost_clock": "4.90 GHz",
-                    "igpu": "Intel UHD Graphics for 13th Gen Intel Processors",
-                    "igpu_series": "Intel UHD Graphics Series"
+                    "series": "Core 13th Gen"
                 },
                 "graphics": {
-                    "model": "Intel UHD Graphics for 13th Gen Intel Processors",
+                    "model": "Integrated Intel UHD",
                     "vram": "Shared",
-                    "dedicated": false,
-                    "series": "Intel UHD Graphics Series",
-                    "boost_clock": "1.50 GHz"
+                    "dedicated": false
                 },
                 "network": {
                     "wifi": "Wi-Fi 6",
                     "bluetooth": "5.2"
                 },
                 "power": {
-                    "adapter": "No Power Adapter"
+                    "adapter": "65W Round Tip (3-pin)",
+                    "watt": 65
                 },
                 "battery": {
                     "capacity": "50Wh"
@@ -5593,21 +5504,18 @@
                     "model": "HD 720p with Privacy Shutter"
                 },
                 "keyboard": {
-                    "type": "Non-backlit, Italian"
+                    "type": "Non-backlit, Arabic"
                 },
                 "dimensions": {
-                    "size": "343.4 x 239.5 x 17.9-18.9 mm (13.52 x 9.43 x 0.70-0.74 inches)",
+                    "size": "343.4 x 239.5 x 16.9-17.9 mm (13.52 x 9.51 x 0.67-0.70 inches)",
                     "weight": "Starting at 1.59 kg (3.51 lbs)"
                 },
                 "build": {
                     "color": "Luna Grey",
-                    "material": "PC-ABS (Top), PC-ABS (Bottom)",
-                    "surface": "IMR (Top), Texture (Bottom)"
+                    "material": "Aluminium (Top), PC-ABS (Bottom)",
+                    "surface": "Aluminium Stamping Anodized (Top), Texture (Bottom)"
                 },
-                "software": {
-                    "os": "Windows 11 Home, Italian / English",
-                    "bundled": "Office Trial"
-                },
+                "software": {},
                 "audio": {
                     "chip": "High Definition (HD) Audio",
                     "speakers": "Stereo speakers, 2W x2, optimized with Dolby Audio",
@@ -5853,11 +5761,11 @@
                     "bluetooth": "5.3"
                 },
                 "power": {
-                    "adapter": "65W Round Tip (3-pin)",
+                    "adapter": "No Power Adapter",
                     "watt": 65
                 },
                 "battery": {
-                    "capacity": "50Wh"
+                    "capacity": "60Wh"
                 },
                 "ports": {
                     "items": [
@@ -5873,7 +5781,7 @@
                     "model": "5.0MP with Privacy Shutter"
                 },
                 "keyboard": {
-                    "type": "Non-backlit, Spanish (LA)"
+                    "type": "Backlit, English (EU)"
                 },
                 "dimensions": {
                     "size": "343.4 x 239.5 x 16.9-17.9 mm (13.52 x 9.51 x 0.67-0.70 inches)",
@@ -5885,17 +5793,17 @@
                     "surface": "Aluminium Stamping Anodized (Top), Texture (Bottom)"
                 },
                 "software": {
-                    "os": "Windows 11 Home Single Language (on ARM), Spanish",
+                    "os": "Windows 11 Home (on ARM), Benelux (EN/FR/DE/NL)",
                     "bundled": "Office Trial"
                 },
                 "audio": {
-                    "chip": "High Definition (HD) Audio",
+                    "chip": "SoundWire",
                     "speakers": "Stereo speakers, 2W x2, optimized with Dolby Audio",
                     "microphone": "2x, Array"
                 },
                 "memory_slots": {
                     "raw": "Memory soldered to systemboard, no slots, dual-channel",
-                    "max_memory": "8GB soldered memory, not upgradable"
+                    "max_memory": "16GB soldered memory, not upgradable"
                 },
                 "storage_slots": {
                     "raw": "Two M.2 2242 PCIe 4.0 x4 slots",
@@ -8203,7 +8111,7 @@
                     "model": "FHD 1080p with Privacy Shutter"
                 },
                 "keyboard": {
-                    "type": "Non-backlit, Spanish (LA)"
+                    "type": "Backlit, English"
                 },
                 "dimensions": {
                     "size": "359.3 x 235 x 17.9 mm (14.15 x 9.25 x 0.70 inches)",
@@ -8215,8 +8123,8 @@
                     "surface": "IMR (In-Mold Decoration by Roller)"
                 },
                 "software": {
-                    "os": "Windows 11 Home Single Language, Spanish",
-                    "bundled": "Office Trial"
+                    "os": "Windows 11 Home Single Language, English",
+                    "bundled": "Microsoft 365 Basic + Office Home 2024"
                 },
                 "audio": {
                     "chip": "High Definition (HD) Audio",
@@ -8275,9 +8183,9 @@
         },
         {
             "id": "82RJR002R0",
-            "model_name": "IdeaPad 3 14",
+            "model_name": "IdeaPad 3i Gen 7 (14, Intel)",
             "internal_model_code": "82RJR002R0",
-            "title": "IdeaPad 3 14 - Intel i3, 8 GB RAM, 512 SSD IdeaPad 3 14 - Intel i3, 8 GB RAM, 512 SSD IdeaPad 3i Gen 7 14 Intel",
+            "title": "IdeaPad 3i Gen 7 (14, Intel)",
             "description": "The IdeaPad Slim 3i 12th Gen (14, Intel) is a sleek, portable laptop designed for work, study, and entertainment on the go. It features 12th Gen Intel® Core™ processors, AI-based WiFi reconnection, an FHD display, Dolby Audio™, and ample storage options.",
             "availability": "out of stock",
             "price": "42091.00 INR",
@@ -8331,7 +8239,7 @@
                     "watt": 65
                 },
                 "battery": {
-                    "capacity": "45.0Wh"
+                    "capacity": "45Wh"
                 },
                 "ports": {
                     "items": [
@@ -8453,21 +8361,12 @@
                     "brand": "AMD",
                     "model": "Ryzen 5 7535HS",
                     "full_model": "AMD Ryzen 5 7535HS",
-                    "series": "Ryzen 7000 Series",
-                    "cores": 6,
-                    "threads": 12,
-                    "base_clock": "3.3 GHz",
-                    "boost_clock": "Up to 4.55 GHz",
-                    "igpu": "AMD Radeon 660M",
-                    "igpu_series": "Radeon 600M Series"
+                    "series": "Ryzen 7000 Series"
                 },
                 "graphics": {
-                    "model": "AMD Radeon 660M",
+                    "model": "Integrated AMD Radeon 660M",
                     "vram": "Shared",
-                    "dedicated": false,
-                    "series": "Radeon 600M Series",
-                    "boost_clock": "1900 MHz",
-                    "cus": 6
+                    "dedicated": false
                 },
                 "network": {
                     "wifi": "Wi-Fi 6E",
@@ -8478,7 +8377,7 @@
                     "watt": 65
                 },
                 "battery": {
-                    "capacity": "7Wh"
+                    "capacity": "54.7Wh"
                 },
                 "ports": {
                     "items": [
@@ -8599,21 +8498,12 @@
                     "brand": "AMD",
                     "model": "Ryzen 7 7735HS",
                     "full_model": "AMD Ryzen 7 7735HS",
-                    "series": "Ryzen 7000 Series",
-                    "cores": 8,
-                    "threads": 16,
-                    "base_clock": "3.2 GHz",
-                    "boost_clock": "Up to 4.75 GHz",
-                    "igpu": "AMD Radeon 680M",
-                    "igpu_series": "Radeon 600M Series"
+                    "series": "Ryzen 7000 Series"
                 },
                 "graphics": {
-                    "model": "AMD Radeon 680M",
+                    "model": "Integrated AMD Radeon 680M",
                     "vram": "Shared",
-                    "dedicated": false,
-                    "series": "Radeon 600M Series",
-                    "boost_clock": "2200 MHz",
-                    "cus": 12
+                    "dedicated": false
                 },
                 "network": {
                     "wifi": "Wi-Fi 6E",
@@ -8624,7 +8514,7 @@
                     "watt": 65
                 },
                 "battery": {
-                    "capacity": "7Wh"
+                    "capacity": "54.7Wh"
                 },
                 "ports": {
                     "items": [
@@ -8687,6 +8577,26 @@
             "price_median": 54590,
             "price_usual": 55363,
             "has_history": true,
+            "spec_origin": {
+                "network": "psref_platform",
+                "power": "psref_platform",
+                "battery": "psref_platform",
+                "ports": "psref_platform",
+                "camera": "psref_platform",
+                "keyboard": "psref_platform",
+                "dimensions": "psref_platform",
+                "build": "psref_platform",
+                "software": "psref_platform",
+                "audio": "psref_platform",
+                "memory_slots": "psref_platform",
+                "storage_slots": "psref_platform"
+            },
+            "psref_enrichment": {
+                "tier": "psref_platform",
+                "sku": "83J2R000R0",
+                "machine_type": "83J2",
+                "product_name": "IdeaPad Slim 5 13ARP10"
+            },
             "archived": true,
             "archived_at": "2026-08-27"
         },
@@ -8725,30 +8635,23 @@
                     "brand": "Intel",
                     "model": "Core i5-13420H",
                     "full_model": "Intel Core i5-13420H",
-                    "series": "Core 13th Gen",
-                    "cores": 8,
-                    "threads": 12,
-                    "boost_clock": "4.60 GHz",
-                    "igpu": "Intel UHD Graphics for 13th Gen Intel Processors",
-                    "igpu_series": "Intel UHD Graphics Series"
+                    "series": "Core 13th Gen"
                 },
                 "graphics": {
-                    "model": "Intel UHD Graphics for 13th Gen Intel Processors",
+                    "model": "Integrated Intel UHD for 13th Gen Intel Processors",
                     "vram": "Shared",
-                    "dedicated": false,
-                    "series": "Intel UHD Graphics Series",
-                    "boost_clock": "1.40 GHz"
+                    "dedicated": false
                 },
                 "network": {
                     "wifi": "Wi-Fi 6",
                     "bluetooth": "5.2"
                 },
                 "power": {
-                    "adapter": "65W USB-C (3-pin)",
+                    "adapter": "65W USB-C Slim (Wall-mount)",
                     "watt": 65
                 },
                 "battery": {
-                    "capacity": "50Wh"
+                    "capacity": "60Wh"
                 },
                 "ports": {
                     "items": [
@@ -8764,11 +8667,11 @@
                     "model": "FHD 1080p + IR with Privacy Shutter, ToF Sensor"
                 },
                 "keyboard": {
-                    "type": "Backlit, Russian"
+                    "type": "Backlit, English"
                 },
                 "dimensions": {
                     "size": "313.4 x 222 x 16.9 mm (12.34 x 8.74 x 0.67 inches)",
-                    "weight": "Around 1.45 kg (3.20 lbs)"
+                    "weight": "Around 1.39 kg (3.06 lbs)"
                 },
                 "build": {
                     "color": "Luna Grey",
@@ -8776,8 +8679,8 @@
                     "surface": "Anodizing Sandblasting"
                 },
                 "software": {
-                    "os": "Windows 11 Home Single Language, Russian",
-                    "bundled": "Office Trial"
+                    "os": "Windows 11 Home Single Language, English",
+                    "bundled": "Microsoft 365 Basic + Office Home 2024"
                 },
                 "audio": {
                     "chip": "High Definition (HD) Audio",
@@ -8836,9 +8739,9 @@
         },
         {
             "id": "82S9R002R0",
-            "model_name": "IdeaPad Gaming 3 Gen 7 (15, Intel)",
+            "model_name": "IdeaPad Gaming 3i Gen 7 (15, Intel)",
             "internal_model_code": "82S9R002R0",
-            "title": "IdeaPad Gaming 3 Gen 7 (15, Intel)",
+            "title": "IdeaPad Gaming 3i Gen 7 (15, Intel)",
             "description": "The IdeaPad Gaming 3i Gen 7 (15, Intel) is designed for gamers seeking performance and reliability. Equipped with 12th Gen Intel® Core processors, NVIDIA® GeForce RTX™ GPUs, and advanced cooling, it ensures smooth gameplay and long sessions.",
             "availability": "out of stock",
             "price": "58890.00 INR",
@@ -8869,19 +8772,13 @@
                     "brand": "Intel",
                     "model": "Core i5-12450H",
                     "full_model": "Intel Core i5-12450H",
-                    "series": "Core 12th Gen",
-                    "cores": 8,
-                    "threads": 12,
-                    "boost_clock": "4.40 GHz",
-                    "igpu": "Intel UHD Graphics for 12th Gen Intel Processors",
-                    "igpu_series": "Intel UHD Graphics Series"
+                    "series": "Core 12th Gen"
                 },
                 "graphics": {
                     "model": "RTX 3050 4 GB GDDR6",
                     "vram": "4 GB",
                     "dedicated": true,
-                    "series": "RTX 30 Series",
-                    "cuda_cores": 2048
+                    "series": "RTX 30 Series"
                 },
                 "network": {
                     "wifi": "Wi-Fi 6",
@@ -8892,7 +8789,7 @@
                     "watt": 170
                 },
                 "battery": {
-                    "capacity": "45.0Wh"
+                    "capacity": "45Wh"
                 },
                 "ports": {
                     "items": [
@@ -9012,20 +8909,12 @@
                     "brand": "Intel",
                     "model": "Core 5 210H",
                     "full_model": "Intel Core 5 210H",
-                    "series": "Core Series 2",
-                    "cores": 8,
-                    "threads": 12,
-                    "base_clock": "2.2 GHz",
-                    "boost_clock": "4.8 GHz",
-                    "igpu": "Intel Graphics",
-                    "igpu_series": "Intel UHD Graphics Series"
+                    "series": "Core Series 2"
                 },
                 "graphics": {
-                    "model": "Intel Graphics",
+                    "model": "Integrated Intel",
                     "vram": "Shared",
-                    "dedicated": false,
-                    "series": "Intel UHD Graphics Series",
-                    "boost_clock": "1.4 GHz"
+                    "dedicated": false
                 },
                 "network": {
                     "wifi": "Wi-Fi 7",
@@ -9036,7 +8925,7 @@
                     "watt": 65
                 },
                 "battery": {
-                    "capacity": "60.0Wh"
+                    "capacity": "60Wh"
                 },
                 "ports": {
                     "items": [
@@ -9157,19 +9046,12 @@
                     "brand": "Intel",
                     "model": "Core i5-13500H",
                     "full_model": "Intel Core i5-13500H",
-                    "series": "Core 13th Gen",
-                    "cores": 12,
-                    "threads": 16,
-                    "boost_clock": "4.7 GHz",
-                    "igpu": "Intel Iris Xe Graphics eligible",
-                    "igpu_series": "Intel Iris Xe Series"
+                    "series": "Core 13th Gen"
                 },
                 "graphics": {
-                    "model": "Intel Iris Xe Graphics eligible",
+                    "model": "Integrated Intel Iris Xe",
                     "vram": "Shared",
-                    "dedicated": false,
-                    "series": "Intel Iris Xe Series",
-                    "boost_clock": "1.45 GHz"
+                    "dedicated": false
                 },
                 "network": {
                     "wifi": "Wi-Fi 6E",
@@ -9221,7 +9103,8 @@
                     "max_memory": "8GB soldered memory, not upgradable"
                 },
                 "storage_slots": {
-                    "raw": "One M.2 2280 PCIe 4.0 x4 slot"
+                    "raw": "One M.2 2280 PCIe 4.0 x4 slot",
+                    "max_storage": "One drive, up to 1TB M.2 2242 SSD or 1TB M.2 2280 SSD"
                 }
             },
             "spec_source": "lenovo_outlet",
@@ -9242,14 +9125,34 @@
             "price_median": 67990,
             "price_usual": 67990,
             "has_history": true,
+            "spec_origin": {
+                "network": "psref_platform",
+                "power": "psref_platform",
+                "battery": "psref_platform",
+                "ports": "psref_platform",
+                "camera": "psref_platform",
+                "keyboard": "psref_platform",
+                "dimensions": "psref_platform",
+                "build": "psref_platform",
+                "software": "psref_platform",
+                "audio": "psref_platform",
+                "memory_slots": "psref_platform",
+                "storage_slots": "psref_platform"
+            },
+            "psref_enrichment": {
+                "tier": "psref_platform",
+                "sku": "82XFR008R0",
+                "machine_type": "82XF",
+                "product_name": "IdeaPad Slim 5 16IRL8"
+            },
             "archived": true,
             "archived_at": "2026-08-27"
         },
         {
             "id": "83D2R001R0",
-            "model_name": "IdeaPad Pro 5 14",
+            "model_name": "IdeaPad Pro 5i Gen 9 (14, Intel)",
             "internal_model_code": "83D2R001R0",
-            "title": "IdeaPad Pro 5 14 - Ultra 9, 32 GB RAM, 1 TB SSD IdeaPad Pro 5 14 - Ultra 9, 32 GB RAM, 1 TB SSD Lenovo IdeaPad Pro 5i Gen 9 14 Intel",
+            "title": "IdeaPad Pro 5i Gen 9 (14, Intel)",
             "description": "The Lenovo IdeaPad Pro 5i Gen 9 is a high-performance laptop ideal for professional tasks and multitasking needs. It features fast charging, vibrant 14-inch OLED display, expandable storage, and AI optimization for enhanced productivity and battery life.",
             "availability": "out of stock",
             "price": "75691.00 INR",
@@ -9280,23 +9183,12 @@
                     "brand": "Intel",
                     "model": "Core Ultra 9 185H",
                     "full_model": "Intel Core Ultra 9 185H",
-                    "series": "Core Ultra Series 1",
-                    "cores": 16,
-                    "threads": 22,
-                    "base_clock": "2.3 GHz",
-                    "boost_clock": "5.1 GHz",
-                    "igpu": "Intel Arc graphics",
-                    "igpu_series": "Intel Arc Graphics Series",
-                    "xe_cores": "8 Xe-Cores"
+                    "series": "Core Ultra Series 1"
                 },
                 "graphics": {
-                    "model": "Intel Arc Graphics",
+                    "model": "Integrated Intel Arc",
                     "vram": "Shared",
-                    "dedicated": false,
-                    "xe_cores": "8",
-                    "series": "Intel Arc Graphics Series",
-                    "boost_clock": "2.35 GHz",
-                    "ai_tops": "19 TOPS"
+                    "dedicated": false
                 },
                 "network": {
                     "wifi": "Wi-Fi 6E",
@@ -9307,7 +9199,7 @@
                     "watt": 100
                 },
                 "battery": {
-                    "capacity": "84.0Wh"
+                    "capacity": "84Wh"
                 },
                 "ports": {
                     "items": [
@@ -9393,9 +9285,9 @@
         },
         {
             "id": "83D2R000R0",
-            "model_name": "IdeaPad Pro 5 14",
+            "model_name": "IdeaPad Pro 5i Gen 9 (14, Intel)",
             "internal_model_code": "83D2R000R0",
-            "title": "IdeaPad Pro 5 14 - Ultra 9, 32 GB RAM, 1TB SSD IdeaPad Pro 5 14 - Ultra 9, 32 GB RAM, 1TB SSD Lenovo IdeaPad Pro 5i Gen 9 14 Intel",
+            "title": "IdeaPad Pro 5i Gen 9 (14, Intel)",
             "description": "The Lenovo IdeaPad Pro 5i Gen 9 is a high-performance laptop ideal for professional tasks and multitasking needs. It features fast charging, vibrant 14-inch OLED display, expandable storage, and AI optimization for enhanced productivity and battery life.",
             "availability": "out of stock",
             "price": "91090.00 INR",
@@ -9426,23 +9318,12 @@
                     "brand": "Intel",
                     "model": "Core Ultra 9 185H",
                     "full_model": "Intel Core Ultra 9 185H",
-                    "series": "Core Ultra Series 1",
-                    "cores": 16,
-                    "threads": 22,
-                    "base_clock": "2.3 GHz",
-                    "boost_clock": "5.1 GHz",
-                    "igpu": "Intel Arc graphics",
-                    "igpu_series": "Intel Arc Graphics Series",
-                    "xe_cores": "8 Xe-Cores"
+                    "series": "Core Ultra Series 1"
                 },
                 "graphics": {
-                    "model": "Intel Arc Graphics",
+                    "model": "Integrated Intel Arc",
                     "vram": "Shared",
-                    "dedicated": false,
-                    "xe_cores": "8",
-                    "series": "Intel Arc Graphics Series",
-                    "boost_clock": "2.35 GHz",
-                    "ai_tops": "19 TOPS"
+                    "dedicated": false
                 },
                 "network": {
                     "wifi": "Wi-Fi 6E",
@@ -9453,7 +9334,7 @@
                     "watt": 100
                 },
                 "battery": {
-                    "capacity": "84.0Wh"
+                    "capacity": "84Wh"
                 },
                 "ports": {
                     "items": [
@@ -9572,24 +9453,15 @@
                     "brand": "AMD",
                     "model": "Ryzen 5 7535HS",
                     "full_model": "AMD Ryzen 5 7535HS",
-                    "series": "Ryzen 7000 Series",
-                    "cores": 6,
-                    "threads": 12,
-                    "base_clock": "3.3 GHz",
-                    "boost_clock": "Up to 4.55 GHz",
-                    "igpu": "AMD Radeon 660M",
-                    "igpu_series": "Radeon 600M Series"
+                    "series": "Ryzen 7000 Series"
                 },
                 "graphics": {
-                    "model": "AMD Radeon 660M",
+                    "model": "Integrated AMD Radeon 660M",
                     "vram": "Shared",
-                    "dedicated": false,
-                    "series": "Radeon 600M Series",
-                    "boost_clock": "1900 MHz",
-                    "cus": 6
+                    "dedicated": false
                 },
                 "network": {
-                    "wifi": "Wi-Fi 6E",
+                    "wifi": "Wi-Fi 6",
                     "bluetooth": "5.3"
                 },
                 "power": {
@@ -9597,7 +9469,7 @@
                     "watt": 65
                 },
                 "battery": {
-                    "capacity": "57Wh"
+                    "capacity": "47Wh"
                 },
                 "ports": {
                     "items": [
@@ -9611,10 +9483,10 @@
                     ]
                 },
                 "camera": {
-                    "model": "FHD 1080p with Privacy Shutter"
+                    "model": "HD 720p with Privacy Shutter"
                 },
                 "keyboard": {
-                    "type": "Backlit, English"
+                    "type": "Backlit, Arabic"
                 },
                 "dimensions": {
                     "size": "313 x 219.3 x 18.59 mm (12.32 x 8.63 x 0.73 inches)",
@@ -9625,7 +9497,7 @@
                     "material": "Aluminium (Top), PC-ABS (Bottom)"
                 },
                 "software": {
-                    "os": "Windows 11 Home, English"
+                    "os": "Windows 11 Pro, Arabic / English"
                 },
                 "audio": {
                     "chip": "High Definition (HD) Audio, Senary SN6141 codec",
@@ -9711,29 +9583,18 @@
                 },
                 "storage": {
                     "capacity": "512 GB",
-                    "type": "SSD Gen4 TLC"
+                    "type": "SSD Gen4"
                 },
                 "processor": {
                     "brand": "Intel",
                     "model": "Core Ultra 7 155H",
                     "full_model": "Intel Core Ultra 7 155H",
-                    "series": "Core Ultra Series 1",
-                    "cores": 16,
-                    "threads": 22,
-                    "base_clock": "1.4 GHz",
-                    "boost_clock": "4.8 GHz",
-                    "igpu": "Intel Arc graphics",
-                    "igpu_series": "Intel Arc Graphics Series",
-                    "xe_cores": "8 Xe-Cores"
+                    "series": "Core Ultra Series 1"
                 },
                 "graphics": {
-                    "model": "Intel Arc Graphics",
+                    "model": "Integrated Intel Arc",
                     "vram": "Shared",
-                    "dedicated": false,
-                    "xe_cores": "8",
-                    "series": "Intel Arc Graphics Series",
-                    "boost_clock": "2.25 GHz",
-                    "ai_tops": "18 TOPS"
+                    "dedicated": false
                 },
                 "network": {
                     "wifi": "Wi-Fi 6",
@@ -9806,14 +9667,34 @@
             "price_median": 132105,
             "price_usual": 132105,
             "has_history": true,
+            "spec_origin": {
+                "network": "psref_platform",
+                "power": "psref_platform",
+                "battery": "psref_platform",
+                "ports": "psref_platform",
+                "camera": "psref_platform",
+                "keyboard": "psref_platform",
+                "dimensions": "psref_platform",
+                "build": "psref_platform",
+                "software": "psref_platform",
+                "audio": "psref_platform",
+                "memory_slots": "psref_platform",
+                "storage_slots": "psref_platform"
+            },
+            "psref_enrichment": {
+                "tier": "psref_platform",
+                "sku": "21M8R000R0",
+                "machine_type": "21M8",
+                "product_name": "ThinkPad E14 Gen 6 (Intel)"
+            },
             "archived": true,
             "archived_at": "2026-08-27"
         },
         {
             "id": "83GSR007R0",
-            "model_name": "Lenovo LOQ Gen 9 (15, Intel)",
+            "model_name": "LOQ 15iax9 (15, Intel)",
             "internal_model_code": "83GSR007R0",
-            "title": "Lenovo LOQ Gen 9 (15, Intel)",
+            "title": "LOQ 15iax9 (15, Intel)",
             "description": "The Lenovo LOQ 15IAX9 is a powerful gaming laptop with Intel® Core™ HX processors and NVIDIA® GeForce RTX™ GPUs. Its advanced thermal design ensures cool and quiet gaming, while its durable build meets military-grade standards for lasting performance.",
             "availability": "out of stock",
             "price": "46591.00 INR",
@@ -9844,19 +9725,13 @@
                     "brand": "Intel",
                     "model": "Core i5-12450HX",
                     "full_model": "Intel Core i5-12450HX",
-                    "series": "Core 12th Gen",
-                    "cores": 8,
-                    "threads": 12,
-                    "boost_clock": "4.40 GHz",
-                    "igpu": "Intel UHD Graphics for 12th Gen Intel Processors",
-                    "igpu_series": "Intel UHD Graphics Series"
+                    "series": "Core 12th Gen"
                 },
                 "graphics": {
                     "model": "RTX 2050 4 GB GDDR6",
                     "vram": "4 GB",
                     "dedicated": true,
-                    "series": "RTX 20 Series",
-                    "cuda_cores": 2048
+                    "series": "RTX 20 Series"
                 },
                 "network": {
                     "wifi": "Wi-Fi 6",
@@ -9955,9 +9830,9 @@
         },
         {
             "id": "83JCR00BR0",
-            "model_name": "Lenovo LOQ Gen 9 (15, AMD)",
+            "model_name": "LOQ 15arp9 (15, AMD)",
             "internal_model_code": "83JCR00BR0",
-            "title": "Lenovo LOQ Gen 9 (15, AMD)",
+            "title": "LOQ 15arp9 (15, AMD)",
             "description": "The Lenovo LOQ 15ARP9 is designed for gamers entering the PC gaming world with AMD Ryzen processors and NVIDIA GeForce RTX GPUs. Enjoy sharp graphics, efficient cooling for uninterrupted sessions, and expandable storage for future upgrades.",
             "availability": "out of stock",
             "price": "52590.00 INR",
@@ -9988,20 +9863,13 @@
                     "brand": "AMD",
                     "model": "Ryzen 5 7235HS",
                     "full_model": "AMD Ryzen 5 7235HS",
-                    "series": "Ryzen 7000 Series",
-                    "cores": 4,
-                    "threads": 8,
-                    "base_clock": "3.2 GHz",
-                    "boost_clock": "Up to 4.2 GHz",
-                    "igpu": "Discrete Graphics Card Required",
-                    "igpu_series": "Discrete Graphics Card Required Series"
+                    "series": "Ryzen 7000 Series"
                 },
                 "graphics": {
                     "model": "RTX 3050 A 4 GB GDDR6",
                     "vram": "4 GB",
                     "dedicated": true,
-                    "series": "RTX 30 Series",
-                    "cuda_cores": 2048
+                    "series": "RTX 30 Series"
                 },
                 "network": {
                     "wifi": "Wi-Fi 6",
@@ -10100,9 +9968,9 @@
         },
         {
             "id": "83LKR007R0",
-            "model_name": "Lenovo LOQ Gen 9 (15, Intel)",
+            "model_name": "LOQ Essential Gen 9 (15, Intel)",
             "internal_model_code": "83LKR007R0",
-            "title": "Lenovo LOQ Gen 9 (15, Intel)",
+            "title": "LOQ Essential Gen 9 (15, Intel)",
             "description": "The Lenovo LOQ Essential Gen 9 (15, Intel) is perfect for gamers seeking performance on a budget. With 12th Gen Intel Core processors, NVIDIA GeForce RTX graphics, and a 144Hz FHD display, it delivers smooth visuals and portability.",
             "availability": "out of stock",
             "price": "70091.00 INR",
@@ -10133,19 +10001,13 @@
                     "brand": "Intel",
                     "model": "Core i7-12650HX",
                     "full_model": "Intel Core i7-12650HX",
-                    "series": "Core 12th Gen",
-                    "cores": 14,
-                    "threads": 20,
-                    "boost_clock": "4.70 GHz",
-                    "igpu": "Intel UHD Graphics for 12th Gen Intel Processors",
-                    "igpu_series": "Intel UHD Graphics Series"
+                    "series": "Core 12th Gen"
                 },
                 "graphics": {
                     "model": "RTX 4050 6 GB GDDR6",
                     "vram": "6 GB",
                     "dedicated": true,
-                    "series": "RTX 40 Series",
-                    "cuda_cores": 2560
+                    "series": "RTX 40 Series"
                 },
                 "network": {
                     "wifi": "Wi-Fi 6",
@@ -10156,7 +10018,7 @@
                     "watt": 135
                 },
                 "battery": {
-                    "capacity": "57.0Wh"
+                    "capacity": "57Wh"
                 },
                 "ports": {
                     "items": [
@@ -10245,9 +10107,9 @@
         },
         {
             "id": "83DVR003R0",
-            "model_name": "Lenovo LOQ Gen 9 (15, Intel)",
+            "model_name": "LOQ 15irx9 (15, Intel)",
             "internal_model_code": "83DVR003R0",
-            "title": "Lenovo LOQ Gen 9 (15, Intel)",
+            "title": "LOQ 15irx9 (15, Intel)",
             "description": "The Lenovo LOQ 15IRX9 is a powerful gaming laptop with Intel® Core™ HX processors and NVIDIA® GeForce RTX™ GPUs. Its advanced thermal design ensures cool and quiet gaming, while AI-enhanced performance and a high-resolution display elevate your experience.",
             "availability": "out of stock",
             "price": "70891.00 INR",
@@ -10278,27 +10140,21 @@
                     "brand": "Intel",
                     "model": "Core i5-13450HX",
                     "full_model": "Intel Core i5-13450HX",
-                    "series": "Core 13th Gen",
-                    "cores": 10,
-                    "threads": 16,
-                    "boost_clock": "4.60 GHz",
-                    "igpu": "Intel UHD Graphics for 13th Gen Intel Processors",
-                    "igpu_series": "Intel UHD Graphics Series"
+                    "series": "Core 13th Gen"
                 },
                 "graphics": {
                     "model": "RTX 4050 6 GB GDDR6",
                     "vram": "6 GB",
                     "dedicated": true,
-                    "series": "RTX 40 Series",
-                    "cuda_cores": 2560
+                    "series": "RTX 40 Series"
                 },
                 "network": {
                     "wifi": "Wi-Fi 6",
                     "bluetooth": "5.2"
                 },
                 "power": {
-                    "adapter": "230W Slim Tip (3-pin)",
-                    "watt": 230
+                    "adapter": "170W Slim Tip (3-pin)",
+                    "watt": 170
                 },
                 "battery": {
                     "capacity": "60Wh"
@@ -10317,7 +10173,7 @@
                     "model": "HD 720p with E-shutter"
                 },
                 "keyboard": {
-                    "type": "White Backlit, Turkish"
+                    "type": "White Backlit, Spanish (LA)"
                 },
                 "dimensions": {
                     "size": "359.86 x 258.7 x 21.9-23.9 mm (14.17 x 10.19 x 0.86-0.94 inches)",
@@ -10328,10 +10184,7 @@
                     "material": "PC-ABS (Top), PC-ABS (Bottom)",
                     "surface": "Painting"
                 },
-                "software": {
-                    "os": "Windows 11 Home Single Language, Turkish / English",
-                    "bundled": "Office Trial"
-                },
+                "software": {},
                 "audio": {
                     "chip": "High Definition (HD) Audio, Realtek ALC3287 codec",
                     "speakers": "Stereo speakers, 2W x2, optimized with Nahimic Audio",
@@ -10339,7 +10192,7 @@
                 },
                 "memory_slots": {
                     "raw": "Two DDR5 SODIMM slots, dual-channel capable",
-                    "max_memory": "Up to 32GB DDR5-5600"
+                    "max_memory": "Up to 32GB DDR5-4800"
                 },
                 "storage_slots": {
                     "raw": "Two M.2 2280 PCIe 4.0 x4 slots",
@@ -10389,9 +10242,9 @@
         },
         {
             "id": "83GSR00BR0",
-            "model_name": "Lenovo LOQ Gen 9 (15, Intel)",
+            "model_name": "LOQ 15iax9 (15, Intel)",
             "internal_model_code": "83GSR00BR0",
-            "title": "Lenovo LOQ Gen 9 (15, Intel)",
+            "title": "LOQ 15iax9 (15, Intel)",
             "description": "The Lenovo LOQ 15IAX9 is a powerful gaming laptop with Intel® Core™ HX processors and NVIDIA® GeForce RTX™ GPUs. Its advanced thermal design ensures cool and quiet gaming, while its durable build meets military-grade standards for lasting performance.",
             "availability": "out of stock",
             "price": "73591.00 INR",
@@ -10422,19 +10275,13 @@
                     "brand": "Intel",
                     "model": "Core i5-12450HX",
                     "full_model": "Intel Core i5-12450HX",
-                    "series": "Core 12th Gen",
-                    "cores": 8,
-                    "threads": 12,
-                    "boost_clock": "4.40 GHz",
-                    "igpu": "Intel UHD Graphics for 12th Gen Intel Processors",
-                    "igpu_series": "Intel UHD Graphics Series"
+                    "series": "Core 12th Gen"
                 },
                 "graphics": {
                     "model": "RTX 3050 6 GB GDDR6",
                     "vram": "6 GB",
                     "dedicated": true,
-                    "series": "RTX 30 Series",
-                    "cuda_cores": 2048
+                    "series": "RTX 30 Series"
                 },
                 "network": {
                     "wifi": "Wi-Fi 6",
@@ -10533,9 +10380,9 @@
         },
         {
             "id": "83JER005R0",
-            "model_name": "Lenovo LOQ Gen 10 (15, Intel)",
+            "model_name": "LOQ 15irx10 (15, Intel)",
             "internal_model_code": "83JER005R0",
-            "title": "Lenovo LOQ Gen 10 (15, Intel)",
+            "title": "LOQ 15irx10 (15, Intel)",
             "description": "The Lenovo LOQ 15IRX10 is designed for students and gamers, offering smooth visuals on a 15.6-inch display. Powered by Intel Core HX processors and NVIDIA GeForce RTX graphics, it features Hyperchamber cooling for quiet, efficient performance.",
             "availability": "out of stock",
             "price": "91391.00 INR",
@@ -10566,30 +10413,24 @@
                     "brand": "Intel",
                     "model": "Core i7-13700HX",
                     "full_model": "Intel Core i7-13700HX",
-                    "series": "Core 13th Gen",
-                    "cores": 16,
-                    "threads": 24,
-                    "boost_clock": "5.00 GHz",
-                    "igpu": "Intel UHD Graphics for 13th Gen Intel Processors",
-                    "igpu_series": "Intel UHD Graphics Series"
+                    "series": "Core 13th Gen"
                 },
                 "graphics": {
                     "model": "RTX 5050 8 GB GDDR7",
                     "vram": "8 GB",
                     "dedicated": true,
-                    "series": "RTX 50 Series",
-                    "cuda_cores": 2560
+                    "series": "RTX 50 Series"
                 },
                 "network": {
                     "wifi": "Wi-Fi 6",
                     "bluetooth": "5.2"
                 },
                 "power": {
-                    "adapter": "245W Slim Tip (3-pin)",
-                    "watt": 245
+                    "adapter": "170W Slim Tip (3-pin)",
+                    "watt": 170
                 },
                 "battery": {
-                    "capacity": "80Wh"
+                    "capacity": "60Wh"
                 },
                 "ports": {
                     "items": [
@@ -10605,7 +10446,7 @@
                     "model": "5.0MP with E-shutter"
                 },
                 "keyboard": {
-                    "type": "24-Zone RGB Backlit, English"
+                    "type": "White Backlit, Arabic"
                 },
                 "dimensions": {
                     "size": "359.86 x 258.7 x 21.9-23.9 mm (14.17 x 10.19 x 0.86-0.94 inches)",
@@ -10616,10 +10457,7 @@
                     "material": "PC-ABS (Top), PC-ABS (Bottom)",
                     "surface": "Painting"
                 },
-                "software": {
-                    "os": "Windows 11 Home Single Language, English",
-                    "bundled": "Microsoft 365 Basic + Office Home 2024 + Lenovo AI Now"
-                },
+                "software": {},
                 "audio": {
                     "chip": "High Definition (HD) Audio, Realtek ALC3287 codec",
                     "speakers": "Stereo speakers, 2W x2, optimized with Nahimic Audio",
@@ -10710,23 +10548,12 @@
                     "brand": "Intel",
                     "model": "Core Ultra 7 155H",
                     "full_model": "Intel Core Ultra 7 155H",
-                    "series": "Core Ultra Series 1",
-                    "cores": 16,
-                    "threads": 22,
-                    "base_clock": "1.4 GHz",
-                    "boost_clock": "4.8 GHz",
-                    "igpu": "Intel Arc graphics",
-                    "igpu_series": "Intel Arc Graphics Series",
-                    "xe_cores": "8 Xe-Cores"
+                    "series": "Core Ultra Series 1"
                 },
                 "graphics": {
-                    "model": "Intel Arc Graphics",
+                    "model": "Integrated Intel Arc",
                     "vram": "Shared",
-                    "dedicated": false,
-                    "xe_cores": "8",
-                    "series": "Intel Arc Graphics Series",
-                    "boost_clock": "2.25 GHz",
-                    "ai_tops": "18 TOPS"
+                    "dedicated": false
                 },
                 "network": {
                     "wifi": "Wi-Fi 6E",
@@ -10856,23 +10683,12 @@
                     "brand": "Intel",
                     "model": "Core Ultra 5 125H",
                     "full_model": "Intel Core Ultra 5 125H",
-                    "series": "Core Ultra Series 1",
-                    "cores": 14,
-                    "threads": 18,
-                    "base_clock": "1.2 GHz",
-                    "boost_clock": "4.5 GHz",
-                    "igpu": "Intel Arc graphics",
-                    "igpu_series": "Intel Arc Graphics Series",
-                    "xe_cores": "7 Xe-Cores"
+                    "series": "Core Ultra Series 1"
                 },
                 "graphics": {
-                    "model": "Intel Arc Graphics",
+                    "model": "Integrated Intel Arc",
                     "vram": "Shared",
-                    "dedicated": false,
-                    "xe_cores": "7",
-                    "series": "Intel Arc Graphics Series",
-                    "boost_clock": "2.2 GHz",
-                    "ai_tops": "18 TOPS"
+                    "dedicated": false
                 },
                 "network": {
                     "wifi": "Wi-Fi 6E",
@@ -11002,23 +10818,12 @@
                     "brand": "Intel",
                     "model": "Core Ultra 7 155H",
                     "full_model": "Intel Core Ultra 7 155H",
-                    "series": "Core Ultra Series 1",
-                    "cores": 16,
-                    "threads": 22,
-                    "base_clock": "1.4 GHz",
-                    "boost_clock": "4.8 GHz",
-                    "igpu": "Intel Arc graphics",
-                    "igpu_series": "Intel Arc Graphics Series",
-                    "xe_cores": "8 Xe-Cores"
+                    "series": "Core Ultra Series 1"
                 },
                 "graphics": {
-                    "model": "Intel Arc Graphics",
+                    "model": "Integrated Intel Arc",
                     "vram": "Shared",
-                    "dedicated": false,
-                    "xe_cores": "8",
-                    "series": "Intel Arc Graphics Series",
-                    "boost_clock": "2.25 GHz",
-                    "ai_tops": "18 TOPS"
+                    "dedicated": false
                 },
                 "network": {
                     "wifi": "Wi-Fi 6E",
@@ -11148,21 +10953,13 @@
                     "brand": "Intel",
                     "model": "Core Ultra 7 255HX",
                     "full_model": "Intel Core Ultra 7 255HX",
-                    "series": "Core Ultra Series 2",
-                    "cores": 16,
-                    "threads": 16,
-                    "base_clock": "2 GHz",
-                    "boost_clock": "5.1 GHz",
-                    "igpu": "Intel Arc 140T GPU",
-                    "igpu_series": "Intel Arc Graphics Series",
-                    "xe_cores": "8 Xe-Cores"
+                    "series": "Core Ultra Series 2"
                 },
                 "graphics": {
                     "model": "RTX 5060 8 GB GDDR7",
                     "vram": "8 GB",
                     "dedicated": true,
-                    "series": "RTX 50 Series",
-                    "cuda_cores": 3328
+                    "series": "RTX 50 Series"
                 },
                 "network": {
                     "wifi": "Wi-Fi 7",
@@ -11203,8 +11000,8 @@
                     "surface": "Anodizing Sandblasting"
                 },
                 "software": {
-                    "os": "Windows 11 Home, Traditional Chinese / Simplified Chinese / English",
-                    "bundled": "Office Trial + Lenovo AI Now"
+                    "os": "Windows 11 Pro, English",
+                    "bundled": "Office Trial"
                 },
                 "audio": {
                     "chip": "High Definition (HD) Audio, Realtek ALC3306 codec",
@@ -11624,6 +11421,287 @@
             "price_usual": 59055,
             "has_history": true,
             "last_checked": "2026-08-20 05:19:19",
+            "archived": true,
+            "archived_at": "2026-08-27"
+        },
+        {
+            "id": "83JXR002R0",
+            "model_name": "Yoga Slim 7i Aura Edition Gen 10 (14, Intel)",
+            "internal_model_code": "83JXR002R0",
+            "title": "Yoga Slim 7i Aura Edition Gen 10 (14, Intel)",
+            "description": "The Yoga Slim 7i Aura Edition Gen 10 offers powerful Intel Core Ultra processors for seamless performance. Its AI-enabled features enhance productivity, while the vivid 14-inch PureSight Pro display is perfect for creators. Ideal for creative professionals.",
+            "availability": "out of stock",
+            "price": "77191.00 INR",
+            "mrp": "135693.00 INR",
+            "image": "https://p2-ofp.static.pub//fes/cms/2025/04/03/ocokuaha01uxuu174rylwkkngccgnv383641.jpg",
+            "affiliate_link": "https://lenovo-in.zlvv.net/c/5890822/608695/9634?prodsku=83JXR002R0&u=https%3A%2F%2Fwww.lenovo.com%2Fin%2Foutletin%2Fen%2Fp%2Flaptops%2Fyoga%2Fyoga-s-series%2Flenovo-yoga-slim-7i-aura-edition-gen-10-14-inch-intel%2F83jxr002r0&intsrc=CATF_4639",
+            "store_link": "https://www.lenovo.com/in/outletin/en/p/laptops/yoga/yoga-s-series/lenovo-yoga-slim-7i-aura-edition-gen-10-14-inch-intel/83jxr002r0",
+            "listing_date": "2025-04-02",
+            "tech_specs": {
+                "display": {
+                    "size": "14\"",
+                    "res": "1920x1200",
+                    "refresh": "60Hz",
+                    "type": "OLED",
+                    "brightness": "400 nits",
+                    "color": "100% DCI-P3"
+                },
+                "memory": {
+                    "amount": "16 GB",
+                    "type": "DDR5",
+                    "speed": "8533 MHz"
+                },
+                "storage": {
+                    "capacity": "1 TB",
+                    "type": "SSD Gen4"
+                },
+                "processor": {
+                    "brand": "Intel",
+                    "model": "Core Ultra 5 226V",
+                    "full_model": "Intel Core Ultra 5 226V",
+                    "series": "Core Ultra Series 2"
+                },
+                "graphics": {
+                    "model": "Integrated Intel Arc 130V GPU",
+                    "vram": "Shared",
+                    "dedicated": false
+                },
+                "network": {
+                    "wifi": "Wi-Fi 7",
+                    "bluetooth": "5.4"
+                },
+                "power": {
+                    "adapter": "65W USB-C Slim (2-pin, Wall-mount)",
+                    "watt": 65
+                },
+                "battery": {
+                    "capacity": "70Wh"
+                },
+                "ports": {
+                    "items": [
+                        "1x USB-A (USB 5Gbps), Always On",
+                        "2x Thunderbolt 4, with USB PD 45-65W and DisplayPort 2.1",
+                        "1x HDMI 2.1, up to 4K/60Hz",
+                        "1x Headphone / microphone combo jack (3.5mm)",
+                        "1x microSD card reader"
+                    ]
+                },
+                "camera": {
+                    "model": "5.0MP + IR with E-shutter"
+                },
+                "keyboard": {
+                    "type": "Backlit, English"
+                },
+                "dimensions": {
+                    "size": "312 x 219.3 x 13.9 mm (12.28 x 8.63 x 0.55 inches)",
+                    "weight": "Starting at 1.28 kg (2.82 lbs)"
+                },
+                "build": {
+                    "color": "Luna Grey",
+                    "material": "Aluminium (Top), Aluminium (Bottom)",
+                    "surface": "Aluminium Stamping (Anodized with Sandblasting)"
+                },
+                "software": {
+                    "os": "Windows 11 Home, English",
+                    "bundled": "Microsoft 365 Basic + Office Home 2024 + Lenovo AI Now"
+                },
+                "audio": {
+                    "chip": "SoundWire, Cirrus Logic CS42L43 codec",
+                    "speakers": "4 stereo speakers, 2W x2 (woofers), 2W x2 (tweeters), optimised with Dolby Atmos, Smart Amplifier (AMP)",
+                    "microphone": "4x, Array"
+                },
+                "memory_slots": {
+                    "raw": "Memory soldered to systemboard, no slots, dual-channel",
+                    "max_memory": "32GB soldered memory, not upgradable"
+                },
+                "storage_slots": {
+                    "raw": "One M.2 2242 PCIe 4.0 x4 slot",
+                    "max_storage": "One drive, up to 1TB M.2 2242 SSD"
+                }
+            },
+            "spec_source": "lenovo_outlet",
+            "vendor": "lenovo",
+            "brand": "Lenovo",
+            "series": "Yoga",
+            "product_condition": "CERTIFIED REFURBISHED",
+            "product_metadata": {
+                "brand": "Lenovo",
+                "series": "Yoga",
+                "part_number": "83JXR002R0",
+                "model_number": "83JXR002R0",
+                "manufacturer": "Lenovo",
+                "warranty": "1 Year Courier or Carry-in Warranty",
+                "condition": "Certified Refurbished"
+            },
+            "price_mean": 77191,
+            "price_median": 77191,
+            "price_usual": 77191,
+            "has_history": true,
+            "spec_origin": {
+                "network": "psref_platform",
+                "power": "psref_platform",
+                "battery": "psref_platform",
+                "ports": "psref_platform",
+                "camera": "psref_platform",
+                "keyboard": "psref_platform",
+                "dimensions": "psref_platform",
+                "build": "psref_platform",
+                "software": "psref_platform",
+                "audio": "psref_platform",
+                "memory_slots": "psref_platform",
+                "storage_slots": "psref_platform"
+            },
+            "psref_enrichment": {
+                "tier": "psref_platform",
+                "sku": "83JXR002R0",
+                "machine_type": "83JX",
+                "product_name": "Yoga Slim 7 14ILL10"
+            },
+            "archived": true,
+            "archived_at": "2026-08-27"
+        },
+        {
+            "id": "83GSR008R0",
+            "model_name": "Lenovo LOQ Gen 9 (15, Intel)",
+            "internal_model_code": "83GSR008R0",
+            "title": "Lenovo LOQ Gen 9 (15, Intel)",
+            "description": "The Lenovo LOQ 15IAX9 is a powerful gaming laptop with Intel® Core™ HX processors and NVIDIA® GeForce RTX™ GPUs. Its advanced thermal design ensures cool and quiet gaming, while its durable build meets military-grade standards for lasting performance.",
+            "availability": "out of stock",
+            "price": "63091.00 INR",
+            "mrp": "98057.00 INR",
+            "image": "https://p4-ofp.static.pub//fes/cms/2024/05/20/d6onrgwtki5a57q687ztkqftuog5mf017643.png",
+            "affiliate_link": "https://lenovo-in.zlvv.net/c/5890822/608695/9634?prodsku=83GSR008R0&u=https%3A%2F%2Fwww.lenovo.com%2Fin%2Foutletin%2Fen%2Fp%2Flaptops%2Floq-laptops%2Flenovo-loq-15iax9%2F83gsr008r0&intsrc=CATF_4639",
+            "store_link": "https://www.lenovo.com/in/outletin/en/p/laptops/loq-laptops/lenovo-loq-15iax9/83gsr008r0",
+            "listing_date": "2024-05-20",
+            "tech_specs": {
+                "display": {
+                    "size": "15.6\"",
+                    "res": "1920x1080",
+                    "refresh": "144Hz",
+                    "type": "IPS",
+                    "brightness": "300 nits",
+                    "color": "100% sRGB"
+                },
+                "memory": {
+                    "amount": "16 GB",
+                    "type": "DDR5",
+                    "speed": "4800 MHz"
+                },
+                "storage": {
+                    "capacity": "512 GB",
+                    "type": "SSD Gen4"
+                },
+                "processor": {
+                    "brand": "Intel",
+                    "model": "Core i5-12450HX",
+                    "full_model": "Intel Core i5-12450HX",
+                    "series": "Core 12th Gen",
+                    "cores": 8,
+                    "threads": 12,
+                    "boost_clock": "4.40 GHz",
+                    "igpu": "Intel UHD Graphics for 12th Gen Intel Processors",
+                    "igpu_series": "Intel UHD Graphics Series"
+                },
+                "graphics": {
+                    "model": "RTX 3050 6 GB GDDR6",
+                    "vram": "6 GB",
+                    "dedicated": true,
+                    "series": "RTX 30 Series",
+                    "cuda_cores": 2048
+                },
+                "network": {
+                    "wifi": "Wi-Fi 6",
+                    "bluetooth": "5.2"
+                },
+                "power": {
+                    "adapter": "170W Slim Tip (3-pin)",
+                    "watt": 170
+                },
+                "battery": {
+                    "capacity": "60Wh"
+                },
+                "ports": {
+                    "items": [
+                        "3x USB-A (USB 5Gbps / USB 3.2 Gen 1)",
+                        "1x USB-C (USB 10Gbps / USB 3.2 Gen 2), with Lenovo PD 140W and DisplayPort 1.4",
+                        "1x HDMI 2.1, up to 8K/60Hz",
+                        "1x Headphone / microphone combo jack (3.5mm)",
+                        "1x Ethernet (RJ-45)",
+                        "1x Slim tip Power connector"
+                    ]
+                },
+                "camera": {
+                    "model": "HD 720p with E-shutter"
+                },
+                "keyboard": {
+                    "type": "White Backlit, Spanish (LA)"
+                },
+                "dimensions": {
+                    "size": "359.86 x 258.7 x 21.9-23.9 mm (14.17 x 10.19 x 0.86-0.94 inches)",
+                    "weight": "Starting at 2.38 kg (5.25 lbs)"
+                },
+                "build": {
+                    "color": "Luna Grey",
+                    "material": "PC-ABS (Top), PC-ABS (Bottom)",
+                    "surface": "Painting"
+                },
+                "software": {
+                    "os": "Windows 11 Home Single Language, Spanish",
+                    "bundled": "Office Trial"
+                },
+                "audio": {
+                    "chip": "High Definition (HD) Audio, Realtek ALC3287 codec",
+                    "speakers": "Stereo speakers, 2W x2, optimized with Nahimic Audio",
+                    "microphone": "2x, Array"
+                },
+                "memory_slots": {
+                    "raw": "Two DDR5 SODIMM slots, dual-channel capable",
+                    "max_memory": "Up to 32GB DDR5-4800"
+                },
+                "storage_slots": {
+                    "raw": "Two M.2 2280 PCIe 4.0 x4 slots",
+                    "max_storage": "Up to two drives, 2x M.2 SSD • M.2 2242 SSD up to 1TB each"
+                }
+            },
+            "spec_source": "lenovo_outlet",
+            "vendor": "lenovo",
+            "brand": "Lenovo",
+            "series": "Lenovo LOQ Laptops",
+            "product_condition": "CERTIFIED REFURBISHED",
+            "product_metadata": {
+                "brand": "Lenovo",
+                "series": "Lenovo LOQ Laptops",
+                "part_number": "83GSR008R0",
+                "model_number": "83GSR008R0",
+                "manufacturer": "Lenovo",
+                "warranty": "1 Year Courier or Carry-in Warranty",
+                "condition": "Certified Refurbished"
+            },
+            "price_mean": 63091,
+            "price_median": 63091,
+            "price_usual": 63091,
+            "has_history": true,
+            "spec_origin": {
+                "network": "psref_platform",
+                "power": "psref_platform",
+                "battery": "psref_platform",
+                "ports": "psref_platform",
+                "camera": "psref_platform",
+                "keyboard": "psref_platform",
+                "dimensions": "psref_platform",
+                "build": "psref_platform",
+                "software": "psref_platform",
+                "audio": "psref_platform",
+                "memory_slots": "psref_platform",
+                "storage_slots": "psref_platform"
+            },
+            "psref_enrichment": {
+                "tier": "psref_platform",
+                "sku": "83GSR008R0",
+                "machine_type": "83GS",
+                "product_name": "LOQ 15IAX9"
+            },
+            "last_checked": "2026-08-27 20:30:36",
             "archived": true,
             "archived_at": "2026-08-27"
         }

@@ -50,50 +50,87 @@ def category_from_product(product: dict[str, Any]) -> str:
     return "Other"
 
 
+KNOWN_CASING = {
+    "thinkpad": "ThinkPad",
+    "ideapad": "IdeaPad",
+    "thinkbook": "ThinkBook",
+    "loq": "LOQ",
+    "legion": "Legion",
+    "yoga": "Yoga",
+    "motobook": "Motobook",
+    "intel": "Intel",
+    "amd": "AMD",
+    "snapdragon": "Snapdragon",
+    "qualcomm": "Qualcomm",
+    "vpro": "vPro",
+    "gen": "Gen",
+    "aura": "Aura",
+    "edition": "Edition",
+    "carbon": "Carbon",
+    "pro": "Pro",
+    "slim": "Slim",
+    "flex": "Flex",
+    "book": "Book",
+    "extreme": "Extreme",
+    "lenovo": "Lenovo",
+    "gaming": "Gaming",
+}
+
+
+def format_word(w: str) -> str:
+    low = w.lower()
+    if low in KNOWN_CASING:
+        return KNOWN_CASING[low]
+    if re.match(r"^\d+[ix]$", low):
+        return low
+    m = re.match(r"^([a-z])(\d+)([a-z]*)$", low)
+    if m:
+        return f"{m.group(1).upper()}{m.group(2)}{m.group(3).lower()}"
+    if re.match(r"^\d+[a-z]+$", low):
+        return low.upper()
+    return w.capitalize()
+
+
 def title_from_url_slug(url: str) -> str:
     if not url:
         return ""
     parts = [p for p in url.strip("/").split("/") if p]
     if len(parts) >= 2:
         slug = parts[-2]
-        # Ignore raw part codes like 88ips502083
         if re.match(r"^\d+[a-z0-9]+$", slug, re.I) and not re.search(r"(?:ideapad|thinkpad|thinkbook|loq|legion|yoga|v\d+)", slug, re.I):
             return ""
-        words = slug.split("-")
-        cleaned_words: list[str] = []
-        for w in words:
-            low = w.lower()
-            if low == "ideapad":
-                cleaned_words.append("IdeaPad")
-            elif low == "thinkpad":
-                cleaned_words.append("ThinkPad")
-            elif low == "thinkbook":
-                cleaned_words.append("ThinkBook")
-            elif low == "loq":
-                cleaned_words.append("LOQ")
-            elif low == "legion":
-                cleaned_words.append("Legion")
-            elif low == "yoga":
-                cleaned_words.append("Yoga")
-            elif low == "intel":
-                cleaned_words.append("Intel")
-            elif low == "amd":
-                cleaned_words.append("AMD")
-            elif low == "snapdragon":
-                cleaned_words.append("Snapdragon")
-            elif low == "gen":
-                cleaned_words.append("Gen")
-            elif low == "inch":
+        clean_slug = re.sub(r"\([^\)]*\)", "", slug)
+        tokens = [t for t in clean_slug.split("-") if t and t.lower() not in ("inch", "mobile", "workstation", "laptop", "laptops", "pdp", "hero")]
+        gen = ""
+        filtered_tokens = []
+        i = 0
+        while i < len(tokens):
+            tok = tokens[i]
+            low_tok = tok.lower()
+            if low_tok == "gen" and i + 1 < len(tokens) and tokens[i + 1].isdigit():
+                gen = f"Gen {tokens[i + 1]}"
+                i += 2
                 continue
-            elif re.match(r"^\d+i$", w, re.I):
-                cleaned_words.append(w.capitalize())
-            elif re.match(r"^\d+$", w):
-                cleaned_words.append(w)
-            elif low in ("14", "15", "16", "13"):
-                cleaned_words.append(w)
-            else:
-                cleaned_words.append(w.capitalize())
-        return " ".join(cleaned_words)
+            elif low_tok in ("intel", "amd", "snapdragon"):
+                i += 1
+                continue
+            elif low_tok in ("13", "14", "15", "16", "17") and not (i > 0 and tokens[i - 1].lower() in ("thinkbook", "gaming", "motobook", "loq", "legion", "v", "slim", "pro", "flex", "book", "plus")):
+                i += 1
+                continue
+            elif low_tok == "lenovo" and i + 1 < len(tokens) and tokens[i + 1].lower() in ("thinkpad", "ideapad", "thinkbook", "legion", "yoga", "loq", "v14", "v15"):
+                i += 1
+                continue
+            elif low_tok == "2" and i + 2 < len(tokens) and tokens[i + 1].lower() in ("in", "in1") and tokens[i + 2] == "1":
+                filtered_tokens.append("2-in-1")
+                i += 3
+                continue
+            filtered_tokens.append(format_word(tok))
+            i += 1
+
+        main_title = " ".join(filtered_tokens)
+        if gen:
+            main_title = f"{main_title} {gen}"
+        return main_title
     return ""
 
 
@@ -105,144 +142,44 @@ def format_refurb_title(
     datasheet: dict[str, Any] | None,
     specs: dict[str, Any],
 ) -> str:
-    psref_mkt = datasheet.get("marketing_name") if datasheet else None
-    psref_prod = datasheet.get("product_name") if datasheet else None
+    psref_mkt = datasheet.get("marketing_name") if datasheet else ""
+    psref_prod = datasheet.get("product_name") if datasheet else ""
     slug_title = title_from_url_slug(store_link)
-
-    source = f"{store_link} {raw_title} {psref_mkt or ''} {psref_prod or ''} {slug_title}"
 
     # 1. Platform (AMD / Intel / Snapdragon)
     platform = ""
-    proc_brand = ((specs.get("processor") or {}).get("brand") or "").upper()
-    if "AMD" in proc_brand or re.search(r"\b(?:amd|ryzen)\b", source, re.I):
+    proc_val = specs.get("processor") or {}
+    proc_str = proc_val if isinstance(proc_val, str) else proc_val.get("brand", "")
+    source_text = f"{store_link} {raw_title} {psref_mkt} {psref_prod} {slug_title} {proc_str}".lower()
+    if "amd" in source_text or re.search(r"\b(?:amd|ryzen)\b", source_text):
         platform = "AMD"
-    elif "INTEL" in proc_brand or re.search(r"\b(?:intel|core|ultra)\b", source, re.I):
+    elif "intel" in source_text or re.search(r"\b(?:intel|core|ultra)\b", source_text):
         platform = "Intel"
-    elif "QUALCOMM" in proc_brand or "SNAPDRAGON" in proc_brand or re.search(r"\b(?:snapdragon|qualcomm|x\s*elite|x\s*plus)\b", source, re.I):
+    elif "snapdragon" in source_text or re.search(r"\b(?:snapdragon|qualcomm|x\s*elite|x\s*plus)\b", source_text):
         platform = "Snapdragon"
 
     # 2. Screen size
     screen = ""
-    dpy_size = str((specs.get("display") or {}).get("size") or "")
-    m_screen_spec = re.search(r"(\d+(?:\.\d+)?)", dpy_size)
-    if m_screen_spec:
-        s_val = float(m_screen_spec.group(1))
+    dpy_val = specs.get("display") or {}
+    dpy_size = dpy_val if isinstance(dpy_val, str) else dpy_val.get("size", "")
+    m_screen = re.search(r"(\d+(?:\.\d+)?)", str(dpy_size)) or re.search(r"\b(13(?:\.3|\.5)?|14(?:\.5)?|15(?:\.6)?|16|17(?:\.3)?)\b", source_text)
+    if m_screen:
+        s_val = float(m_screen.group(1))
         screen = "14" if 13.8 <= s_val <= 14.5 else ("15" if 15.0 <= s_val <= 15.8 else ("16" if 15.9 <= s_val <= 16.5 else ("13" if s_val < 13.8 else str(int(s_val)))))
-    else:
-        m_screen = re.search(r"\b(13(?:\.3|\.5)?|14(?:\.5)?|15(?:\.6)?|16|17(?:\.3)?)\b", source)
-        if m_screen:
-            s_val = float(m_screen.group(1))
-            screen = "14" if 13.8 <= s_val <= 14.5 else ("15" if 15.0 <= s_val <= 15.8 else ("16" if 15.9 <= s_val <= 16.5 else ("13" if s_val < 13.8 else str(int(s_val)))))
 
-    # 3. Generation
-    gen = ""
-    quote_match = re.search(r"\((\d+)\"\s*,\s*(\d+)\)", psref_mkt or "") or re.search(r"\((\d+)\"\s*,\s*(\d+)\)", raw_title)
-    if quote_match:
-        gen = f"Gen {quote_match.group(2)}"
-        if not screen:
-            screen = quote_match.group(1)
-    else:
-        m_gen = re.search(r"\bgen\s*(\d+)\b", source, re.I)
-        if m_gen:
-            gen = f"Gen {m_gen.group(1)}"
-        else:
-            m_g = re.search(r"\bG(\d+)\b", source, re.I)
-            if m_g:
-                gen = f"Gen {m_g.group(1)}"
-            else:
-                m_end_gen = re.search(r"\b(?:14|15|16)[A-Z]{3}(\d{1,2})\b", source, re.I)
-                if m_end_gen:
-                    gen = f"Gen {m_end_gen.group(1)}"
-
-    # 4. Prefix / Model series
-    prefix = ""
-    if re.search(r"\bloq\b", source, re.I):
-        prefix = "Lenovo LOQ"
-    elif re.search(r"\blegion\s*pro\s*5\b", source, re.I):
-        prefix = "Legion Pro 5i" if platform == "Intel" else "Legion Pro 5"
-    elif re.search(r"\blegion\s*pro\s*7\b", source, re.I):
-        prefix = "Legion Pro 7i" if platform == "Intel" else "Legion Pro 7"
-    elif re.search(r"\blegion\s*7\b", source, re.I):
-        prefix = "Legion 7i" if platform == "Intel" else "Legion 7"
-    elif re.search(r"\blegion\s*5\b", source, re.I):
-        prefix = "Legion 5i" if platform == "Intel" else "Legion 5"
-    elif re.search(r"\b(?:gaming\s*3|ideapad\s*gaming\s*3)\b", source, re.I):
-        prefix = "IdeaPad Gaming 3"
-    elif re.search(r"\bideapad\s*slim\s*5x\b", source, re.I):
-        prefix = "IdeaPad Slim 5x"
-    elif re.search(r"\bideapad\s*slim\s*5i\b", source, re.I):
-        prefix = "IdeaPad Slim 5i"
-    elif re.search(r"\bideapad\s*slim\s*5\b", source, re.I):
-        prefix = "IdeaPad Slim 5i" if platform == "Intel" else "IdeaPad Slim 5"
-    elif re.search(r"\bideapad\s*slim\s*3x\b", source, re.I):
-        prefix = "IdeaPad Slim 3x"
-    elif re.search(r"\bideapad\s*slim\s*3i\b", source, re.I):
-        prefix = "IdeaPad Slim 3i"
-    elif re.search(r"\bideapad\s*slim\s*3\b", source, re.I):
-        prefix = "IdeaPad Slim 3i" if platform == "Intel" else "IdeaPad Slim 3"
-    elif re.search(r"\bideapad\s*flex\s*5\b", source, re.I):
-        prefix = "IdeaPad Flex 5"
-    elif re.search(r"\bideapad\s*1\b", source, re.I):
-        prefix = "IdeaPad 1"
-    elif re.search(r"\byoga\s*book\s*9i\b", source, re.I) or re.search(r"\byoga\s*book\s*9\b", source, re.I):
-        prefix = "Yoga Book 9i"
-    elif re.search(r"\byoga\s*pro\s*7i\b", source, re.I):
-        prefix = "Yoga Pro 7i"
-    elif re.search(r"\byoga\s*pro\s*7\b", source, re.I):
-        prefix = "Yoga Pro 7i" if platform == "Intel" else "Yoga Pro 7"
-    elif re.search(r"\byoga\s*slim\s*7x\b", source, re.I):
-        prefix = "Yoga Slim 7x"
-    elif re.search(r"\byoga\s*slim\s*7i\b", source, re.I):
-        prefix = "Yoga Slim 7i"
-    elif re.search(r"\byoga\s*slim\s*7\b", source, re.I):
-        prefix = "Yoga Slim 7i" if platform == "Intel" else "Yoga Slim 7"
-    elif re.search(r"\byoga\s*slim\s*6i\b", source, re.I) or re.search(r"\byoga\s*slim\s*6\b", source, re.I):
-        prefix = "Yoga Slim 6i"
-    elif re.search(r"\byoga\s*7i\s*2\s*in\s*1\b", source, re.I) or re.search(r"\byoga\s*7\s*2-in-1\b", source, re.I):
-        prefix = "Yoga 7i 2-in-1" if platform == "Intel" else "Yoga 7 2-in-1"
-    elif re.search(r"\byoga\s*7i\b", source, re.I) or re.search(r"\byoga\s*7\b", source, re.I):
-        prefix = "Yoga 7i" if platform == "Intel" else "Yoga 7"
-    elif re.search(r"\bthinkpad\s*x1\s*carbon\b", source, re.I):
-        prefix = "ThinkPad X1 Carbon"
-    elif re.search(r"\bthinkpad\s*x1\s*yoga\b", source, re.I):
-        prefix = "ThinkPad X1 Yoga"
-    elif re.search(r"\bthinkpad\s*t14\b", source, re.I):
-        prefix = "ThinkPad T14"
-    elif re.search(r"\bthinkpad\s*p16s\b", source, re.I):
-        prefix = "ThinkPad P16s"
-    elif re.search(r"\bthinkpad\s*p16v\b", source, re.I):
-        prefix = "ThinkPad P16v"
-    elif re.search(r"\bthinkpad\s*p16\b", source, re.I):
-        prefix = "ThinkPad P16"
-    elif re.search(r"\bthinkpad\s*e14\b", source, re.I):
-        prefix = "ThinkPad E14"
-    elif re.search(r"\bthinkpad\s*e15\b", source, re.I):
-        prefix = "ThinkPad E15"
-    elif re.search(r"\bthinkpad\s*e16\b", source, re.I):
-        prefix = "ThinkPad E16"
-    elif re.search(r"\bmotobook\s*60\b", source, re.I) or re.search(r"\bmotobook\b", source, re.I):
-        prefix = "Motobook 60"
-    elif re.search(r"\bthinkbook\s*14\b", source, re.I) or re.search(r"\bthinkbook\b", source, re.I):
-        prefix = "ThinkBook 14"
-    elif re.search(r"\blenovo\s*v14\b", source, re.I) or re.search(r"\bv14\b", source, re.I):
-        prefix = "Lenovo V14"
-    elif re.search(r"\blenovo\s*v15\b", source, re.I) or re.search(r"\bv15\b", source, re.I):
-        prefix = "Lenovo V15"
-
-    if prefix:
-        parts = [prefix]
-        if gen:
-            parts.append(gen)
+    if slug_title:
         details = []
         if screen:
             details.append(screen)
         if platform:
             details.append(platform)
         if details:
-            parts.append(f"({', '.join(details)})")
-        return " ".join(parts)
+            return f"{slug_title} ({', '.join(details)})"
+        return slug_title
 
-    return clean_refurb_title(raw_title, sku) or slug_title or sku
+    if psref_mkt:
+        return psref_mkt
+    return clean_refurb_title(raw_title, sku) or sku
 
 
 def clean_refurb_title(title: str, sku: str) -> str:
@@ -481,7 +418,7 @@ def format_catalog(
             datasheet = psref_index.datasheet_for(sku[:4])
             title = format_refurb_title(
                 sku=sku,
-                raw_title=" ".join(filter(None, [str(item.get("summary") or ""), str(item.get("product_name") or ""), str(item.get("title") or "")])),
+                raw_title=str(item.get("product_name") or item.get("summary") or item.get("title") or ""),
                 store_link=store_link,
                 datasheet=datasheet,
                 specs=specs,

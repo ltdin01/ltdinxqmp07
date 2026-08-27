@@ -2,9 +2,9 @@
     "Ideapad": [
         {
             "id": "82RKR002R0",
-            "model_name": "IdeaPad 3 15",
+            "model_name": "IdeaPad 3i Gen 7 (15, Intel)",
             "internal_model_code": "82RKR002R0",
-            "title": "IdeaPad 3 15 - Intel i3, 8 GB RAM, 512 SSD IdeaPad 3 15 - Intel i3, 8 GB RAM, 512 SSD IdeaPad 3i Gen 7 15 Intel",
+            "title": "IdeaPad 3i Gen 7 (15, Intel)",
             "description": "The IdeaPad Slim 3i 12th Gen (15, Intel) offers powerful performance with its 12th Gen Intel Core processors. Perfect for students and professionals, it features an FHD display, Dolby Audio, and Lenovo AI Engine for seamless multitasking and on-the-go productivity.",
             "availability": "in stock",
             "price": "31591.00 INR",
@@ -58,7 +58,7 @@
                     "watt": 65
                 },
                 "battery": {
-                    "capacity": "38.0Wh"
+                    "capacity": "38Wh"
                 },
                 "ports": {
                     "items": [
@@ -141,8 +141,7 @@
                 "sku": "82RKR002R0",
                 "machine_type": "82RK",
                 "product_name": "IdeaPad 3 15IAU7"
-            },
-            "last_checked": "2026-08-27 20:30:36"
+            }
         },
         {
             "id": "82X7R003R0",
@@ -218,7 +217,7 @@
                     "model": "FHD 1080p with Privacy Shutter"
                 },
                 "keyboard": {
-                    "type": "Non-backlit, Spanish (LA)"
+                    "type": "Backlit, English"
                 },
                 "dimensions": {
                     "size": "359.3 x 235 x 17.9 mm (14.15 x 9.25 x 0.70 inches)",
@@ -230,8 +229,8 @@
                     "surface": "IMR (In-Mold Decoration by Roller)"
                 },
                 "software": {
-                    "os": "Windows 11 Home Single Language, Spanish",
-                    "bundled": "Office Trial"
+                    "os": "Windows 11 Home Single Language, English",
+                    "bundled": "Microsoft 365 Basic + Office Home 2024"
                 },
                 "audio": {
                     "chip": "High Definition (HD) Audio",
@@ -284,8 +283,7 @@
                 "sku": "82X7R003R0",
                 "machine_type": "82X7",
                 "product_name": "IdeaPad Slim 3 15IRU8"
-            },
-            "last_checked": "2026-08-27 20:30:36"
+            }
         },
         {
             "id": "82XQR001R0",
@@ -322,21 +320,12 @@
                     "brand": "AMD",
                     "model": "Ryzen 5 7520U",
                     "full_model": "AMD Ryzen 5 7520U",
-                    "series": "Ryzen 7000 Series",
-                    "cores": 4,
-                    "threads": 8,
-                    "base_clock": "2.8 GHz",
-                    "boost_clock": "Up to 4.3 GHz",
-                    "igpu": "AMD Radeon 610M",
-                    "igpu_series": "Radeon 600M Series"
+                    "series": "Ryzen 7000 Series"
                 },
                 "graphics": {
-                    "model": "AMD Radeon 610M",
+                    "model": "Integrated AMD Radeon 610M",
                     "vram": "Shared",
-                    "dedicated": false,
-                    "series": "Radeon 600M Series",
-                    "boost_clock": "1900 MHz",
-                    "cus": 2
+                    "dedicated": false
                 },
                 "network": {
                     "wifi": "Wi-Fi 6",
@@ -363,7 +352,7 @@
                     "model": "HD 720p with Privacy Shutter"
                 },
                 "keyboard": {
-                    "type": "Non-backlit, Spanish (LA)"
+                    "type": "Non-backlit, English"
                 },
                 "dimensions": {
                     "size": "359.3 x 235 x 17.9 mm (14.15 x 9.25 x 0.70 inches)",
@@ -374,7 +363,10 @@
                     "material": "PC-ABS (Top), PC-ABS (Bottom)",
                     "surface": "IMR (In-Mold Decoration by Roller)"
                 },
-                "software": {},
+                "software": {
+                    "os": "Windows 11 Home Single Language, English",
+                    "bundled": "Office Home 2024"
+                },
                 "audio": {
                     "chip": "High Definition (HD) Audio",
                     "speakers": "User-facing stereo speakers, 1.5W x2, optimized with Dolby Audio",
@@ -426,14 +418,13 @@
                 "sku": "82XQR001R0",
                 "machine_type": "82XQ",
                 "product_name": "IdeaPad Slim 3 15AMN8"
-            },
-            "last_checked": "2026-08-27 20:30:36"
+            }
         },
         {
             "id": "83KXR000R0",
-            "model_name": "IdeaPad 5 (2-in-1) 14",
+            "model_name": "IdeaPad 5i 2-in-1 Gen 9 (14, Intel)",
             "internal_model_code": "83KXR000R0",
-            "title": "IdeaPad 5 (2-in-1) 14 - Intel i5, 16 GB RAM, 512 SSD IdeaPad 5 (2-in-1) 14 - Intel i5, 16 GB RAM, 512 SSD Lenovo IdeaPad 5i 2 In 1 Gen 9 14 Intel",
+            "title": "IdeaPad 5i 2-in-1 Gen 9 (14, Intel)",
             "description": "The Lenovo IdeaPad 5i 2-in-1 Gen 9 offers versatility with its 360° hinge for multiple modes. Powered by Intel® Core™ processors, it features Dolby Audio™ speakers, a digital pen, and long battery life for productivity and entertainment.",
             "availability": "in stock",
             "price": "49890.00 INR",
@@ -464,19 +455,12 @@
                     "brand": "Intel",
                     "model": "Core i5-13420H",
                     "full_model": "Intel Core i5-13420H",
-                    "series": "Core 13th Gen",
-                    "cores": 8,
-                    "threads": 12,
-                    "boost_clock": "4.60 GHz",
-                    "igpu": "Intel UHD Graphics for 13th Gen Intel Processors",
-                    "igpu_series": "Intel UHD Graphics Series"
+                    "series": "Core 13th Gen"
                 },
                 "graphics": {
-                    "model": "Intel UHD Graphics for 13th Gen Intel Processors",
+                    "model": "Integrated Intel UHD",
                     "vram": "Shared",
-                    "dedicated": false,
-                    "series": "Intel UHD Graphics Series",
-                    "boost_clock": "1.40 GHz"
+                    "dedicated": false
                 },
                 "network": {
                     "wifi": "Wi-Fi 6",
@@ -503,11 +487,11 @@
                     "model": "FHD 1080p with Privacy Shutter"
                 },
                 "keyboard": {
-                    "type": "Backlit, Turkish"
+                    "type": "Backlit, English"
                 },
                 "dimensions": {
                     "size": "313 x 227 x 17.5 mm (12.32 x 8.94 x 0.69 inches)",
-                    "weight": "Starting at 1.6 kg (3.53 lbs)"
+                    "weight": "Starting at 1.5 kg (3.31 lbs)"
                 },
                 "build": {
                     "color": "Luna Grey",
@@ -515,8 +499,8 @@
                     "surface": "Aluminium Stamping (Anodized with Sandblasting)"
                 },
                 "software": {
-                    "os": "Windows 11 Home Single Language, Turkish / English",
-                    "bundled": "Office Trial"
+                    "os": "Windows 11 Home Single Language, English",
+                    "bundled": "Microsoft 365 Basic + Office Home 2024"
                 },
                 "audio": {
                     "chip": "High Definition (HD) Audio, Realtek ALC3287 codec",
@@ -525,7 +509,7 @@
                 },
                 "memory_slots": {
                     "raw": "Memory soldered to systemboard, no slots, dual-channel",
-                    "max_memory": "8GB soldered memory, not upgradable"
+                    "max_memory": "16GB soldered memory, not upgradable"
                 },
                 "storage_slots": {
                     "raw": "One M.2 2242 PCIe 4.0 x4 slot",
@@ -569,8 +553,7 @@
                 "sku": "83KXR000R0",
                 "machine_type": "83KX",
                 "product_name": "IdeaPad 5 2-in-1 14IRH9"
-            },
-            "last_checked": "2026-08-27 20:30:36"
+            }
         },
         {
             "id": "82XQR00HR0",
@@ -607,21 +590,12 @@
                     "brand": "AMD",
                     "model": "Ryzen 5 7520U",
                     "full_model": "AMD Ryzen 5 7520U",
-                    "series": "Ryzen 7000 Series",
-                    "cores": 4,
-                    "threads": 8,
-                    "base_clock": "2.8 GHz",
-                    "boost_clock": "Up to 4.3 GHz",
-                    "igpu": "AMD Radeon 610M",
-                    "igpu_series": "Radeon 600M Series"
+                    "series": "Ryzen 7000 Series"
                 },
                 "graphics": {
-                    "model": "AMD Radeon 610M",
+                    "model": "Integrated AMD Radeon 610M",
                     "vram": "Shared",
-                    "dedicated": false,
-                    "series": "Radeon 600M Series",
-                    "boost_clock": "1900 MHz",
-                    "cus": 2
+                    "dedicated": false
                 },
                 "network": {
                     "wifi": "Wi-Fi 6",
@@ -648,7 +622,7 @@
                     "model": "HD 720p with Privacy Shutter"
                 },
                 "keyboard": {
-                    "type": "Non-backlit, Spanish (LA)"
+                    "type": "Non-backlit, English"
                 },
                 "dimensions": {
                     "size": "359.3 x 235 x 17.9 mm (14.15 x 9.25 x 0.70 inches)",
@@ -659,7 +633,10 @@
                     "material": "PC-ABS (Top), PC-ABS (Bottom)",
                     "surface": "IMR (In-Mold Decoration by Roller)"
                 },
-                "software": {},
+                "software": {
+                    "os": "Windows 11 Home Single Language, English",
+                    "bundled": "Office Home 2024"
+                },
                 "audio": {
                     "chip": "High Definition (HD) Audio",
                     "speakers": "User-facing stereo speakers, 1.5W x2, optimized with Dolby Audio",
@@ -711,8 +688,7 @@
                 "sku": "82XQR00HR0",
                 "machine_type": "82XQ",
                 "product_name": "IdeaPad Slim 3 15AMN8"
-            },
-            "last_checked": "2026-08-27 20:30:36"
+            }
         },
         {
             "id": "83ERR005R0",
@@ -749,19 +725,12 @@
                     "brand": "Intel",
                     "model": "Core i5-12450H",
                     "full_model": "Intel Core i5-12450H",
-                    "series": "Core 12th Gen",
-                    "cores": 8,
-                    "threads": 12,
-                    "boost_clock": "4.40 GHz",
-                    "igpu": "Intel UHD Graphics for 12th Gen Intel Processors",
-                    "igpu_series": "Intel UHD Graphics Series"
+                    "series": "Core 12th Gen"
                 },
                 "graphics": {
-                    "model": "Intel UHD Graphics for 12th Gen Intel Processors",
+                    "model": "Integrated Intel UHD for 12th Gen Intel Processors",
                     "vram": "Shared",
-                    "dedicated": false,
-                    "series": "Intel UHD Graphics Series",
-                    "boost_clock": "1.20 GHz"
+                    "dedicated": false
                 },
                 "network": {
                     "wifi": "Wi-Fi 6",
@@ -832,7 +801,26 @@
             "price_median": 51191,
             "price_usual": 51191,
             "has_history": true,
-            "last_checked": "2026-08-27 20:30:36"
+            "spec_origin": {
+                "network": "psref_platform",
+                "power": "psref_platform",
+                "battery": "psref_platform",
+                "ports": "psref_platform",
+                "camera": "psref_platform",
+                "keyboard": "psref_platform",
+                "dimensions": "psref_platform",
+                "build": "psref_platform",
+                "software": "psref_platform",
+                "audio": "psref_platform",
+                "memory_slots": "psref_platform",
+                "storage_slots": "psref_platform"
+            },
+            "psref_enrichment": {
+                "tier": "psref_platform",
+                "sku": "83ERR005R0",
+                "machine_type": "83ER",
+                "product_name": "IdeaPad Slim 3 15IAH8"
+            }
         },
         {
             "id": "83K1R003R0",
@@ -869,26 +857,20 @@
                     "brand": "Intel",
                     "model": "Core i5-13420H",
                     "full_model": "Intel Core i5-13420H",
-                    "series": "Core 13th Gen",
-                    "cores": 8,
-                    "threads": 12,
-                    "boost_clock": "4.60 GHz",
-                    "igpu": "Intel UHD Graphics for 13th Gen Intel Processors",
-                    "igpu_series": "Intel UHD Graphics Series"
+                    "series": "Core 13th Gen"
                 },
                 "graphics": {
-                    "model": "Intel UHD Graphics for 13th Gen Intel Processors",
+                    "model": "Integrated Intel UHD",
                     "vram": "Shared",
-                    "dedicated": false,
-                    "series": "Intel UHD Graphics Series",
-                    "boost_clock": "1.40 GHz"
+                    "dedicated": false
                 },
                 "network": {
                     "wifi": "Wi-Fi 6",
                     "bluetooth": "5.2"
                 },
                 "power": {
-                    "adapter": "No Power Adapter"
+                    "adapter": "65W Round Tip (3-pin)",
+                    "watt": 65
                 },
                 "battery": {
                     "capacity": "50Wh"
@@ -907,21 +889,18 @@
                     "model": "HD 720p with Privacy Shutter"
                 },
                 "keyboard": {
-                    "type": "Non-backlit, Italian"
+                    "type": "Non-backlit, Arabic"
                 },
                 "dimensions": {
-                    "size": "343.4 x 239.5 x 17.9-18.9 mm (13.52 x 9.43 x 0.70-0.74 inches)",
+                    "size": "343.4 x 239.5 x 16.9-17.9 mm (13.52 x 9.51 x 0.67-0.70 inches)",
                     "weight": "Starting at 1.59 kg (3.51 lbs)"
                 },
                 "build": {
                     "color": "Luna Grey",
-                    "material": "PC-ABS (Top), PC-ABS (Bottom)",
-                    "surface": "IMR (Top), Texture (Bottom)"
+                    "material": "Aluminium (Top), PC-ABS (Bottom)",
+                    "surface": "Aluminium Stamping Anodized (Top), Texture (Bottom)"
                 },
-                "software": {
-                    "os": "Windows 11 Home, Italian / English",
-                    "bundled": "Office Trial"
-                },
+                "software": {},
                 "audio": {
                     "chip": "High Definition (HD) Audio",
                     "speakers": "Stereo speakers, 2W x2, optimized with Dolby Audio",
@@ -954,7 +933,26 @@
             "price_median": 51191,
             "price_usual": 51191,
             "has_history": true,
-            "last_checked": "2026-08-27 20:30:36"
+            "spec_origin": {
+                "network": "psref_platform",
+                "power": "psref_platform",
+                "battery": "psref_platform",
+                "ports": "psref_platform",
+                "camera": "psref_platform",
+                "keyboard": "psref_platform",
+                "dimensions": "psref_platform",
+                "build": "psref_platform",
+                "software": "psref_platform",
+                "audio": "psref_platform",
+                "memory_slots": "psref_platform",
+                "storage_slots": "psref_platform"
+            },
+            "psref_enrichment": {
+                "tier": "psref_platform",
+                "sku": "83K1R003R0",
+                "machine_type": "83K1",
+                "product_name": "IdeaPad Slim 3 15IRH10"
+            }
         },
         {
             "id": "83ERR008R0",
@@ -985,25 +983,18 @@
                 },
                 "storage": {
                     "capacity": "512 GB",
-                    "type": "SSD Gen4 QLC"
+                    "type": "SSD Gen4"
                 },
                 "processor": {
                     "brand": "Intel",
                     "model": "Core i5-12450H",
                     "full_model": "Intel Core i5-12450H",
-                    "series": "Core 12th Gen",
-                    "cores": 8,
-                    "threads": 12,
-                    "boost_clock": "4.40 GHz",
-                    "igpu": "Intel UHD Graphics for 12th Gen Intel Processors",
-                    "igpu_series": "Intel UHD Graphics Series"
+                    "series": "Core 12th Gen"
                 },
                 "graphics": {
-                    "model": "Intel UHD Graphics for 12th Gen Intel Processors",
+                    "model": "Integrated Intel UHD for 12th Gen Intel Processors",
                     "vram": "Shared",
-                    "dedicated": false,
-                    "series": "Intel UHD Graphics Series",
-                    "boost_clock": "1.20 GHz"
+                    "dedicated": false
                 },
                 "network": {
                     "wifi": "Wi-Fi 6",
@@ -1074,130 +1065,6 @@
             "price_median": 53991,
             "price_usual": 53953,
             "has_history": true,
-            "last_checked": "2026-08-27 20:30:36"
-        },
-        {
-            "id": "83DCR000R0",
-            "model_name": "IdeaPad Slim 5i Gen 9 (16, Intel)",
-            "internal_model_code": "83DCR000R0",
-            "title": "IdeaPad Slim 5i Gen 9 (16, Intel)",
-            "description": "The IdeaPad Slim 5i Gen 9 is a sleek, lightweight laptop designed for mobility and style. Powered by Intel Core Ultra processors, it features a stunning OLED display, long battery life, and AI-enabled tools for enhanced productivity.",
-            "availability": "in stock",
-            "price": "53991.00 INR",
-            "mrp": "104459.00 INR",
-            "image": "https://p3-ofp.static.pub//fes/cms/2025/02/17/yovxljs98ez7pts0ctesd41l3xf3jm424645.png",
-            "affiliate_link": "https://lenovo-in.zlvv.net/c/5890822/608695/9634?prodsku=83DCR000R0&u=https%3A%2F%2Fwww.lenovo.com%2Fin%2Foutletin%2Fen%2Fp%2Flaptops%2Fideapad%2Fideapad-s-series%2Fideapad-slim-5i-gen-9-16-inch-intel%2F83dcr000r0&intsrc=CATF_4639",
-            "store_link": "https://www.lenovo.com/in/outletin/en/p/laptops/ideapad/ideapad-s-series/ideapad-slim-5i-gen-9-16-inch-intel/83dcr000r0",
-            "listing_date": "2025-02-03",
-            "tech_specs": {
-                "display": {
-                    "size": "16\"",
-                    "res": "1920x1200",
-                    "refresh": "60Hz",
-                    "type": "IPS",
-                    "brightness": "300 nits",
-                    "color": "100% sRGB"
-                },
-                "memory": {
-                    "amount": "16 GB",
-                    "type": "DDR5",
-                    "speed": "7467 MHz"
-                },
-                "storage": {
-                    "capacity": "1 TB",
-                    "type": "SSD Gen4"
-                },
-                "processor": {
-                    "brand": "Intel",
-                    "model": "Core Ultra 5 125H",
-                    "full_model": "Intel Core Ultra 5 125H",
-                    "series": "Core Ultra Series 1",
-                    "cores": 14,
-                    "threads": 18,
-                    "base_clock": "1.2 GHz",
-                    "boost_clock": "4.5 GHz",
-                    "igpu": "Intel Arc graphics",
-                    "igpu_series": "Intel Arc Graphics Series",
-                    "xe_cores": "7 Xe-Cores"
-                },
-                "graphics": {
-                    "model": "Intel Arc Graphics",
-                    "vram": "Shared",
-                    "dedicated": false,
-                    "xe_cores": "7",
-                    "series": "Intel Arc Graphics Series",
-                    "boost_clock": "2.2 GHz",
-                    "ai_tops": "18 TOPS"
-                },
-                "network": {
-                    "wifi": "Wi-Fi 6",
-                    "bluetooth": "5.2"
-                },
-                "power": {
-                    "adapter": "65W USB-C Slim (Wall-mount)",
-                    "watt": 65
-                },
-                "battery": {
-                    "capacity": "57Wh"
-                },
-                "ports": {
-                    "items": [
-                        "1x USB-A (USB 5Gbps / USB 3.2 Gen 1)",
-                        "1x USB-A (USB 5Gbps / USB 3.2 Gen 1), Always On",
-                        "2x USB-C (USB 5Gbps / USB 3.2 Gen 1), with USB PD 3.0 and DisplayPort 1.4",
-                        "1x HDMI 1.4b",
-                        "1x Headphone / microphone combo jack (3.5mm)",
-                        "1x microSD card reader"
-                    ]
-                },
-                "camera": {
-                    "model": "FHD 1080p with Privacy Shutter"
-                },
-                "keyboard": {
-                    "type": "Non-backlit, English"
-                },
-                "dimensions": {
-                    "size": "356 x 251 x 16.9 mm (14.02 x 9.88 x 0.67 inches)",
-                    "weight": "Starting at 1.82 kg (4.01 lbs)"
-                },
-                "build": {
-                    "color": "Cloud Grey",
-                    "material": "Aluminium (Top), Aluminium (Bottom)",
-                    "surface": "Aluminium Stamping (Anodized with Sandblasting)"
-                },
-                "software": {},
-                "audio": {
-                    "chip": "High Definition (HD) Audio",
-                    "speakers": "Stereo speakers, 2W x2, optimized with Dolby Audio",
-                    "microphone": "2x, Array"
-                },
-                "memory_slots": {
-                    "raw": "Memory soldered to systemboard, no slots, dual-channel",
-                    "max_memory": "16GB soldered memory, not upgradable"
-                },
-                "storage_slots": {
-                    "raw": "Two M.2 slots • One M.2 2242 PCIe 4.0 x4 slot • One M.2 2280 PCIe 4.0 x4 slot",
-                    "max_storage": "Up to two drives, 2x M.2 SSD • M.2 2242 SSD up to 1TB"
-                }
-            },
-            "spec_source": "lenovo_outlet",
-            "vendor": "lenovo",
-            "brand": "Lenovo",
-            "series": "Ideapad",
-            "product_condition": "CERTIFIED REFURBISHED",
-            "product_metadata": {
-                "brand": "Lenovo",
-                "series": "Ideapad",
-                "part_number": "83DCR000R0",
-                "model_number": "83DCR000R0",
-                "manufacturer": "Lenovo",
-                "warranty": "1 Year Courier or Carry-in Warranty",
-                "condition": "Certified Refurbished"
-            },
-            "price_mean": 53991,
-            "price_median": 53991,
-            "price_usual": 53991,
-            "has_history": true,
             "spec_origin": {
                 "network": "psref_platform",
                 "power": "psref_platform",
@@ -1214,11 +1081,10 @@
             },
             "psref_enrichment": {
                 "tier": "psref_platform",
-                "sku": "83DCR000R0",
-                "machine_type": "83DC",
-                "product_name": "IdeaPad Slim 5 16IMH9"
-            },
-            "last_checked": "2026-08-27 20:30:36"
+                "sku": "83ERR008R0",
+                "machine_type": "83ER",
+                "product_name": "IdeaPad Slim 3 15IAH8"
+            }
         },
         {
             "id": "83ERR003R0",
@@ -1255,19 +1121,12 @@
                     "brand": "Intel",
                     "model": "Core i5-12450H",
                     "full_model": "Intel Core i5-12450H",
-                    "series": "Core 12th Gen",
-                    "cores": 8,
-                    "threads": 12,
-                    "boost_clock": "4.40 GHz",
-                    "igpu": "Intel UHD Graphics for 12th Gen Intel Processors",
-                    "igpu_series": "Intel UHD Graphics Series"
+                    "series": "Core 12th Gen"
                 },
                 "graphics": {
-                    "model": "Intel UHD Graphics for 12th Gen Intel Processors",
+                    "model": "Integrated Intel UHD for 12th Gen Intel Processors",
                     "vram": "Shared",
-                    "dedicated": false,
-                    "series": "Intel UHD Graphics Series",
-                    "boost_clock": "1.20 GHz"
+                    "dedicated": false
                 },
                 "network": {
                     "wifi": "Wi-Fi 6",
@@ -1338,7 +1197,26 @@
             "price_median": 51540,
             "price_usual": 50992,
             "has_history": true,
-            "last_checked": "2026-08-27 20:30:36"
+            "spec_origin": {
+                "network": "psref_platform",
+                "power": "psref_platform",
+                "battery": "psref_platform",
+                "ports": "psref_platform",
+                "camera": "psref_platform",
+                "keyboard": "psref_platform",
+                "dimensions": "psref_platform",
+                "build": "psref_platform",
+                "software": "psref_platform",
+                "audio": "psref_platform",
+                "memory_slots": "psref_platform",
+                "storage_slots": "psref_platform"
+            },
+            "psref_enrichment": {
+                "tier": "psref_platform",
+                "sku": "83ERR003R0",
+                "machine_type": "83ER",
+                "product_name": "IdeaPad Slim 3 15IAH8"
+            }
         },
         {
             "id": "83ERR002R0",
@@ -1369,25 +1247,18 @@
                 },
                 "storage": {
                     "capacity": "512 GB",
-                    "type": "SSD Gen4 QLC"
+                    "type": "SSD Gen4"
                 },
                 "processor": {
                     "brand": "Intel",
                     "model": "Core i5-12450H",
                     "full_model": "Intel Core i5-12450H",
-                    "series": "Core 12th Gen",
-                    "cores": 8,
-                    "threads": 12,
-                    "boost_clock": "4.40 GHz",
-                    "igpu": "Intel UHD Graphics for 12th Gen Intel Processors",
-                    "igpu_series": "Intel UHD Graphics Series"
+                    "series": "Core 12th Gen"
                 },
                 "graphics": {
-                    "model": "Intel UHD Graphics for 12th Gen Intel Processors",
+                    "model": "Integrated Intel UHD for 12th Gen Intel Processors",
                     "vram": "Shared",
-                    "dedicated": false,
-                    "series": "Intel UHD Graphics Series",
-                    "boost_clock": "1.20 GHz"
+                    "dedicated": false
                 },
                 "network": {
                     "wifi": "Wi-Fi 6",
@@ -1458,131 +1329,6 @@
             "price_median": 52891,
             "price_usual": 51843,
             "has_history": true,
-            "last_checked": "2026-08-27 20:30:36"
-        },
-        {
-            "id": "83J2R001R0",
-            "model_name": "IdeaPad Slim 5 Gen 10 (13, AMD)",
-            "internal_model_code": "83J2R001R0",
-            "title": "IdeaPad Slim 5 Gen 10 (13, AMD)",
-            "description": "The Lenovo IdeaPad Slim 5 Gen 10 (13, AMD) is a sleek and lightweight laptop with AMD Ryzen™ processors for robust performance. It features an FHD infrared camera with Smart Login, extra-long battery life, and rapid charging, making it ideal for students on the go.",
-            "availability": "in stock",
-            "price": "56090.00 INR",
-            "mrp": "86805.00 INR",
-            "image": "https://ap-img.static.pub/ss/img/2026/06/22/img.20260622055136319702.png",
-            "affiliate_link": "https://lenovo-in.zlvv.net/c/5890822/608695/9634?prodsku=83J2R001R0&u=https%3A%2F%2Fwww.lenovo.com%2Fin%2Foutletin%2Fen%2Fp%2Flaptops%2Fideapad%2Fideapad-s-series%2Flenovo-ideapad-slim-5-gen-10-13-inch-amd%2F83j2r001r0&intsrc=CATF_4639",
-            "store_link": "https://www.lenovo.com/in/outletin/en/p/laptops/ideapad/ideapad-s-series/lenovo-ideapad-slim-5-gen-10-13-inch-amd/83j2r001r0",
-            "listing_date": "2025-03-07",
-            "tech_specs": {
-                "display": {
-                    "size": "13.3\"",
-                    "res": "1920x1200",
-                    "refresh": "60Hz",
-                    "type": "IPS",
-                    "brightness": "400 nits",
-                    "color": "100% sRGB"
-                },
-                "memory": {
-                    "amount": "16 GB",
-                    "type": "DDR5",
-                    "speed": "6400 MHz"
-                },
-                "storage": {
-                    "capacity": "512 GB",
-                    "type": "SSD Gen4"
-                },
-                "processor": {
-                    "brand": "AMD",
-                    "model": "Ryzen 7 7735HS",
-                    "full_model": "AMD Ryzen 7 7735HS",
-                    "series": "Ryzen 7000 Series",
-                    "cores": 8,
-                    "threads": 16,
-                    "base_clock": "3.2 GHz",
-                    "boost_clock": "Up to 4.75 GHz",
-                    "igpu": "AMD Radeon 680M",
-                    "igpu_series": "Radeon 600M Series"
-                },
-                "graphics": {
-                    "model": "AMD Radeon 680M",
-                    "vram": "Shared",
-                    "dedicated": false,
-                    "series": "Radeon 600M Series",
-                    "boost_clock": "2200 MHz",
-                    "cus": 12
-                },
-                "network": {
-                    "wifi": "Wi-Fi 6E",
-                    "bluetooth": "5.3"
-                },
-                "power": {
-                    "adapter": "65W USB-C Slim (Wall-mount)",
-                    "watt": 65
-                },
-                "battery": {
-                    "capacity": "7Wh"
-                },
-                "ports": {
-                    "items": [
-                        "1x USB-A (USB 5Gbps / USB 3.2 Gen 1)",
-                        "1x USB-A (USB 5Gbps / USB 3.2 Gen 1), Always On",
-                        "2x USB-C (USB 10Gbps / USB 3.2 Gen 2), with USB PD 45-65W and DisplayPort 1.4",
-                        "1x HDMI 2.1, up to 4K/60Hz",
-                        "1x Headphone / microphone combo jack (3.5mm)",
-                        "1x microSD card reader"
-                    ]
-                },
-                "camera": {
-                    "model": "FHD 1080p + IR with Privacy Shutter, ToF Sensor"
-                },
-                "keyboard": {
-                    "type": "Backlit, Slovenian"
-                },
-                "dimensions": {
-                    "size": "295.58 x 206.95 x 14.3 mm (11.64 x 8.15 x 0.56 inches)",
-                    "weight": "Around 1.15 kg (2.54 lbs)"
-                },
-                "build": {
-                    "color": "Polar Blue",
-                    "material": "Aluminium (Top), Aluminium (Bottom)",
-                    "surface": "Aluminium Stamping (Anodized with Sandblasting)"
-                },
-                "software": {
-                    "os": "Windows 11 Home, Croatian / Slovenian / English",
-                    "bundled": "Office Trial"
-                },
-                "audio": {
-                    "chip": "High Definition (HD) Audio",
-                    "speakers": "Stereo speakers, 2W x2, optimized with Dolby Audio",
-                    "microphone": "2x, Array"
-                },
-                "memory_slots": {
-                    "raw": "Memory soldered to systemboard, no slots, dual-channel (16GB models)",
-                    "max_memory": "16GB soldered memory, not upgradable"
-                },
-                "storage_slots": {
-                    "raw": "One M.2 2280 PCIe 4.0 x4 slot",
-                    "max_storage": "One drive, up to 1TB M.2 2242 SSD"
-                }
-            },
-            "spec_source": "lenovo_outlet",
-            "vendor": "lenovo",
-            "brand": "Lenovo",
-            "series": "Ideapad",
-            "product_condition": "CERTIFIED REFURBISHED",
-            "product_metadata": {
-                "brand": "Lenovo",
-                "series": "Ideapad",
-                "part_number": "83J2R001R0",
-                "model_number": "83J2R001R0",
-                "manufacturer": "Lenovo",
-                "warranty": "1 Year Courier or Carry-in Warranty",
-                "condition": "Certified Refurbished"
-            },
-            "price_mean": 53230,
-            "price_median": 54590,
-            "price_usual": 55473,
-            "has_history": true,
             "spec_origin": {
                 "network": "psref_platform",
                 "power": "psref_platform",
@@ -1599,11 +1345,10 @@
             },
             "psref_enrichment": {
                 "tier": "psref_platform",
-                "sku": "83J2R001R0",
-                "machine_type": "83J2",
-                "product_name": "IdeaPad Slim 5 13ARP10"
-            },
-            "last_checked": "2026-08-27 20:30:36"
+                "sku": "83ERR002R0",
+                "machine_type": "83ER",
+                "product_name": "IdeaPad Slim 3 15IAH8"
+            }
         },
         {
             "id": "82XMR006R0",
@@ -1640,27 +1385,20 @@
                     "brand": "AMD",
                     "model": "Ryzen 7 5825U",
                     "full_model": "AMD Ryzen 7 5825U",
-                    "series": "Ryzen 5000 Series",
-                    "cores": 8,
-                    "threads": 16,
-                    "base_clock": "2 GHz",
-                    "boost_clock": "Up to 4.5 GHz",
-                    "igpu": "AMD Radeon Graphics",
-                    "igpu_series": "Integrated Graphics"
+                    "series": "Ryzen 5000 Series"
                 },
                 "graphics": {
-                    "model": "AMD Radeon Graphics",
+                    "model": "Integrated AMD Radeon",
                     "vram": "Shared",
-                    "dedicated": false,
-                    "series": "Integrated Graphics",
-                    "boost_clock": "2000 MHz"
+                    "dedicated": false
                 },
                 "network": {
                     "wifi": "Wi-Fi 6",
                     "bluetooth": "5.2"
                 },
                 "power": {
-                    "adapter": "No Power Adapter"
+                    "adapter": "No Power Adapter",
+                    "watt": 65
                 },
                 "battery": {
                     "capacity": "47Wh"
@@ -1676,10 +1414,10 @@
                     ]
                 },
                 "camera": {
-                    "model": "FHD 1080p with Privacy Shutter"
+                    "model": "HD 720p with Privacy Shutter"
                 },
                 "keyboard": {
-                    "type": "Backlit, Belgian"
+                    "type": "Non-backlit, Swiss"
                 },
                 "dimensions": {
                     "size": "359.3 x 235 x 17.9 mm (14.15 x 9.25 x 0.70 inches)",
@@ -1691,7 +1429,7 @@
                     "surface": "IMR (In-Mold Decoration by Roller)"
                 },
                 "software": {
-                    "os": "Windows 11 Home, Benelux (EN/FR/DE/NL)",
+                    "os": "Windows 11 Home, Swiss (EN/FR/DE/IT)",
                     "bundled": "Office Trial"
                 },
                 "audio": {
@@ -1700,8 +1438,8 @@
                     "microphone": "2x, Array"
                 },
                 "memory_slots": {
-                    "raw": "Memory soldered to systemboard, no slots, dual-channel (12GB or 16GB models)",
-                    "max_memory": "16GB soldered memory, not upgradable"
+                    "raw": "Memory soldered to systemboard, no slots, single-channel (8GB models)",
+                    "max_memory": "8GB soldered memory, not upgradable"
                 },
                 "storage_slots": {
                     "raw": "One M.2 PCIe 3.0 x4 slot",
@@ -1745,14 +1483,13 @@
                 "sku": "82XMR006R0",
                 "machine_type": "82XM",
                 "product_name": "IdeaPad Slim 3 15ABR8"
-            },
-            "last_checked": "2026-08-27 20:30:36"
+            }
         },
         {
             "id": "82KUR000R0",
-            "model_name": "IdeaPad 3 15",
+            "model_name": "IdeaPad 3 15alc6 (15, AMD)",
             "internal_model_code": "82KUR000R0",
-            "title": "IdeaPad 3 15 - AMD Ryzen 7, 16 GB RAM, 512 SSD IdeaPad 3 15 - AMD Ryzen 7, 16 GB RAM, 512 SSD IdeaPad 3 15alc6",
+            "title": "IdeaPad 3 15alc6 (15, AMD)",
             "description": "The IdeaPad Slim 3 Gen 6 (15, AMD) offers powerful AMD Ryzen™ 5000 H-Series processors for smooth performance. Its 15.6-inch FHD display with thin bezels enhances visuals, while privacy features like the webcam shutter ensure security. Ideal for students.",
             "availability": "in stock",
             "price": "56791.00 INR",
@@ -1783,20 +1520,12 @@
                     "brand": "AMD",
                     "model": "Ryzen 7 5700U",
                     "full_model": "AMD Ryzen 7 5700U",
-                    "series": "Ryzen 5000 Series",
-                    "cores": 8,
-                    "threads": 16,
-                    "base_clock": "1.8 GHz",
-                    "boost_clock": "Up to 4.3 GHz",
-                    "igpu": "AMD Radeon Graphics",
-                    "igpu_series": "Integrated Graphics"
+                    "series": "Ryzen 5000 Series"
                 },
                 "graphics": {
-                    "model": "AMD Radeon Graphics",
+                    "model": "Integrated AMD Radeon",
                     "vram": "Shared",
-                    "dedicated": false,
-                    "series": "Integrated Graphics",
-                    "boost_clock": "1900 MHz"
+                    "dedicated": false
                 },
                 "network": {
                     "wifi": "Wi-Fi 6",
@@ -1807,7 +1536,7 @@
                     "watt": 65
                 },
                 "battery": {
-                    "capacity": "45.0Wh"
+                    "capacity": "45Wh"
                 },
                 "ports": {
                     "items": [
@@ -1890,8 +1619,7 @@
                 "sku": "82KUR000R0",
                 "machine_type": "82KU",
                 "product_name": "IdeaPad 3 15ALC6"
-            },
-            "last_checked": "2026-08-27 20:30:36"
+            }
         },
         {
             "id": "82XMR001R0",
@@ -1928,27 +1656,20 @@
                     "brand": "AMD",
                     "model": "Ryzen 7 5825U",
                     "full_model": "AMD Ryzen 7 5825U",
-                    "series": "Ryzen 5000 Series",
-                    "cores": 8,
-                    "threads": 16,
-                    "base_clock": "2 GHz",
-                    "boost_clock": "Up to 4.5 GHz",
-                    "igpu": "AMD Radeon Graphics",
-                    "igpu_series": "Integrated Graphics"
+                    "series": "Ryzen 5000 Series"
                 },
                 "graphics": {
-                    "model": "AMD Radeon Graphics",
+                    "model": "Integrated AMD Radeon",
                     "vram": "Shared",
-                    "dedicated": false,
-                    "series": "Integrated Graphics",
-                    "boost_clock": "2000 MHz"
+                    "dedicated": false
                 },
                 "network": {
                     "wifi": "Wi-Fi 6",
                     "bluetooth": "5.2"
                 },
                 "power": {
-                    "adapter": "No Power Adapter"
+                    "adapter": "No Power Adapter",
+                    "watt": 65
                 },
                 "battery": {
                     "capacity": "47Wh"
@@ -1964,10 +1685,10 @@
                     ]
                 },
                 "camera": {
-                    "model": "FHD 1080p with Privacy Shutter"
+                    "model": "HD 720p with Privacy Shutter"
                 },
                 "keyboard": {
-                    "type": "Backlit, Belgian"
+                    "type": "Non-backlit, Swiss"
                 },
                 "dimensions": {
                     "size": "359.3 x 235 x 17.9 mm (14.15 x 9.25 x 0.70 inches)",
@@ -1979,7 +1700,7 @@
                     "surface": "IMR (In-Mold Decoration by Roller)"
                 },
                 "software": {
-                    "os": "Windows 11 Home, Benelux (EN/FR/DE/NL)",
+                    "os": "Windows 11 Home, Swiss (EN/FR/DE/IT)",
                     "bundled": "Office Trial"
                 },
                 "audio": {
@@ -1988,8 +1709,8 @@
                     "microphone": "2x, Array"
                 },
                 "memory_slots": {
-                    "raw": "Memory soldered to systemboard, no slots, dual-channel (12GB or 16GB models)",
-                    "max_memory": "16GB soldered memory, not upgradable"
+                    "raw": "Memory soldered to systemboard, no slots, single-channel (8GB models)",
+                    "max_memory": "8GB soldered memory, not upgradable"
                 },
                 "storage_slots": {
                     "raw": "One M.2 PCIe 3.0 x4 slot",
@@ -2014,7 +1735,26 @@
             "price_median": 58890,
             "price_usual": 58890,
             "has_history": true,
-            "last_checked": "2026-08-27 20:30:36"
+            "spec_origin": {
+                "network": "psref_platform",
+                "power": "psref_platform",
+                "battery": "psref_platform",
+                "ports": "psref_platform",
+                "camera": "psref_platform",
+                "keyboard": "psref_platform",
+                "dimensions": "psref_platform",
+                "build": "psref_platform",
+                "software": "psref_platform",
+                "audio": "psref_platform",
+                "memory_slots": "psref_platform",
+                "storage_slots": "psref_platform"
+            },
+            "psref_enrichment": {
+                "tier": "psref_platform",
+                "sku": "82XMR001R0",
+                "machine_type": "82XM",
+                "product_name": "IdeaPad Slim 3 15ABR8"
+            }
         },
         {
             "id": "83HLR001R0",
@@ -2045,13 +1785,13 @@
                 },
                 "storage": {
                     "capacity": "1 TB",
-                    "type": "SSD Gen4 TLC"
+                    "type": "SSD Gen4"
                 },
                 "processor": {
                     "brand": "Qualcomm",
                     "model": "X Plus X1P-42-100",
-                    "full_model": "X Plus X1P-42-100",
-                    "series": "Other Mobile"
+                    "full_model": "Qualcomm X Plus X1P-42-100",
+                    "series": "Snapdragon X Series"
                 },
                 "graphics": {
                     "model": "Integrated Qualcomm Adreno GPU",
@@ -2099,7 +1839,7 @@
                     "bundled": "Office Trial"
                 },
                 "audio": {
-                    "chip": "High Definition (HD) Audio",
+                    "chip": "SoundWire",
                     "speakers": "Stereo speakers, 2W x2, optimized with Dolby Audio",
                     "microphone": "2x, Array"
                 },
@@ -2130,7 +1870,26 @@
             "price_median": 59590,
             "price_usual": 59549,
             "has_history": true,
-            "last_checked": "2026-08-27 20:30:36"
+            "spec_origin": {
+                "network": "psref_platform",
+                "power": "psref_platform",
+                "battery": "psref_platform",
+                "ports": "psref_platform",
+                "camera": "psref_platform",
+                "keyboard": "psref_platform",
+                "dimensions": "psref_platform",
+                "build": "psref_platform",
+                "software": "psref_platform",
+                "audio": "psref_platform",
+                "memory_slots": "psref_platform",
+                "storage_slots": "psref_platform"
+            },
+            "psref_enrichment": {
+                "tier": "psref_platform",
+                "sku": "83HLR001R0",
+                "machine_type": "83HL",
+                "product_name": "IdeaPad Slim 5 14Q8X9"
+            }
         },
         {
             "id": "83BGR001R0",
@@ -2161,25 +1920,18 @@
                 },
                 "storage": {
                     "capacity": "512 GB",
-                    "type": "SSD Gen4 TLC"
+                    "type": "SSD Gen4"
                 },
                 "processor": {
                     "brand": "Intel",
                     "model": "Core i5-12450H",
                     "full_model": "Intel Core i5-12450H",
-                    "series": "Core 12th Gen",
-                    "cores": 8,
-                    "threads": 12,
-                    "boost_clock": "4.40 GHz",
-                    "igpu": "Intel UHD Graphics for 12th Gen Intel Processors",
-                    "igpu_series": "Intel UHD Graphics Series"
+                    "series": "Core 12th Gen"
                 },
                 "graphics": {
-                    "model": "Intel UHD Graphics for 12th Gen Intel Processors",
+                    "model": "Integrated Intel UHD for 12th Gen Intel Processors",
                     "vram": "Shared",
-                    "dedicated": false,
-                    "series": "Intel UHD Graphics Series",
-                    "boost_clock": "1.20 GHz"
+                    "dedicated": false
                 },
                 "network": {
                     "wifi": "Wi-Fi 6E",
@@ -2253,7 +2005,26 @@
             "price_median": 59990,
             "price_usual": 59990,
             "has_history": true,
-            "last_checked": "2026-08-27 20:30:36"
+            "spec_origin": {
+                "network": "psref_platform",
+                "power": "psref_platform",
+                "battery": "psref_platform",
+                "ports": "psref_platform",
+                "camera": "psref_platform",
+                "keyboard": "psref_platform",
+                "dimensions": "psref_platform",
+                "build": "psref_platform",
+                "software": "psref_platform",
+                "audio": "psref_platform",
+                "memory_slots": "psref_platform",
+                "storage_slots": "psref_platform"
+            },
+            "psref_enrichment": {
+                "tier": "psref_platform",
+                "sku": "83BGR001R0",
+                "machine_type": "83BG",
+                "product_name": "IdeaPad Slim 5 16IAH8"
+            }
         },
         {
             "id": "83BGR000R0",
@@ -2284,25 +2055,18 @@
                 },
                 "storage": {
                     "capacity": "512 GB",
-                    "type": "SSD Gen4 TLC"
+                    "type": "SSD Gen4"
                 },
                 "processor": {
                     "brand": "Intel",
                     "model": "Core i5-12450H",
                     "full_model": "Intel Core i5-12450H",
-                    "series": "Core 12th Gen",
-                    "cores": 8,
-                    "threads": 12,
-                    "boost_clock": "4.40 GHz",
-                    "igpu": "Intel UHD Graphics for 12th Gen Intel Processors",
-                    "igpu_series": "Intel UHD Graphics Series"
+                    "series": "Core 12th Gen"
                 },
                 "graphics": {
-                    "model": "Intel UHD Graphics for 12th Gen Intel Processors",
+                    "model": "Integrated Intel UHD for 12th Gen Intel Processors",
                     "vram": "Shared",
-                    "dedicated": false,
-                    "series": "Intel UHD Graphics Series",
-                    "boost_clock": "1.20 GHz"
+                    "dedicated": false
                 },
                 "network": {
                     "wifi": "Wi-Fi 6E",
@@ -2376,7 +2140,26 @@
             "price_median": 53491,
             "price_usual": 50870,
             "has_history": true,
-            "last_checked": "2026-08-27 20:30:36"
+            "spec_origin": {
+                "network": "psref_platform",
+                "power": "psref_platform",
+                "battery": "psref_platform",
+                "ports": "psref_platform",
+                "camera": "psref_platform",
+                "keyboard": "psref_platform",
+                "dimensions": "psref_platform",
+                "build": "psref_platform",
+                "software": "psref_platform",
+                "audio": "psref_platform",
+                "memory_slots": "psref_platform",
+                "storage_slots": "psref_platform"
+            },
+            "psref_enrichment": {
+                "tier": "psref_platform",
+                "sku": "83BGR000R0",
+                "machine_type": "83BG",
+                "product_name": "IdeaPad Slim 5 16IAH8"
+            }
         },
         {
             "id": "83BGR002R0",
@@ -2413,19 +2196,12 @@
                     "brand": "Intel",
                     "model": "Core i5-12450H",
                     "full_model": "Intel Core i5-12450H",
-                    "series": "Core 12th Gen",
-                    "cores": 8,
-                    "threads": 12,
-                    "boost_clock": "4.40 GHz",
-                    "igpu": "Intel UHD Graphics for 12th Gen Intel Processors",
-                    "igpu_series": "Intel UHD Graphics Series"
+                    "series": "Core 12th Gen"
                 },
                 "graphics": {
-                    "model": "Intel UHD Graphics for 12th Gen Intel Processors",
+                    "model": "Integrated Intel UHD for 12th Gen Intel Processors",
                     "vram": "Shared",
-                    "dedicated": false,
-                    "series": "Intel UHD Graphics Series",
-                    "boost_clock": "1.20 GHz"
+                    "dedicated": false
                 },
                 "network": {
                     "wifi": "Wi-Fi 6E",
@@ -2518,8 +2294,142 @@
                 "sku": "83BGR002R0",
                 "machine_type": "83BG",
                 "product_name": "IdeaPad Slim 5 16IAH8"
+            }
+        },
+        {
+            "id": "83J2R001R0",
+            "model_name": "IdeaPad Slim 5 Gen 10 (13, AMD)",
+            "internal_model_code": "83J2R001R0",
+            "title": "IdeaPad Slim 5 Gen 10 (13, AMD)",
+            "description": "The Lenovo IdeaPad Slim 5 Gen 10 (13, AMD) is a sleek and lightweight laptop with AMD Ryzen™ processors for robust performance. It features an FHD infrared camera with Smart Login, extra-long battery life, and rapid charging, making it ideal for students on the go.",
+            "availability": "in stock",
+            "price": "56090.00 INR",
+            "mrp": "86805.00 INR",
+            "image": "https://ap-img.static.pub/ss/img/2026/06/22/img.20260622055136319702.png",
+            "affiliate_link": "https://lenovo-in.zlvv.net/c/5890822/608695/9634?prodsku=83J2R001R0&u=https%3A%2F%2Fwww.lenovo.com%2Fin%2Foutletin%2Fen%2Fp%2Flaptops%2Fideapad%2Fideapad-s-series%2Flenovo-ideapad-slim-5-gen-10-13-inch-amd%2F83j2r001r0&intsrc=CATF_4639",
+            "store_link": "https://www.lenovo.com/in/outletin/en/p/laptops/ideapad/ideapad-s-series/lenovo-ideapad-slim-5-gen-10-13-inch-amd/83j2r001r0",
+            "listing_date": "2025-03-07",
+            "tech_specs": {
+                "display": {
+                    "size": "13.3\"",
+                    "res": "1920x1200",
+                    "refresh": "60Hz",
+                    "type": "IPS",
+                    "brightness": "400 nits",
+                    "color": "100% sRGB"
+                },
+                "memory": {
+                    "amount": "16 GB",
+                    "type": "DDR5",
+                    "speed": "6400 MHz"
+                },
+                "storage": {
+                    "capacity": "512 GB",
+                    "type": "SSD Gen4"
+                },
+                "processor": {
+                    "brand": "AMD",
+                    "model": "Ryzen 7 7735HS",
+                    "full_model": "AMD Ryzen 7 7735HS",
+                    "series": "Ryzen 7000 Series"
+                },
+                "graphics": {
+                    "model": "Integrated AMD Radeon 680M",
+                    "vram": "Shared",
+                    "dedicated": false
+                },
+                "network": {
+                    "wifi": "Wi-Fi 6E",
+                    "bluetooth": "5.3"
+                },
+                "power": {
+                    "adapter": "65W USB-C Slim (Wall-mount)",
+                    "watt": 65
+                },
+                "battery": {
+                    "capacity": "54.7Wh"
+                },
+                "ports": {
+                    "items": [
+                        "1x USB-A (USB 5Gbps / USB 3.2 Gen 1)",
+                        "1x USB-A (USB 5Gbps / USB 3.2 Gen 1), Always On",
+                        "2x USB-C (USB 10Gbps / USB 3.2 Gen 2), with USB PD 45-65W and DisplayPort 1.4",
+                        "1x HDMI 2.1, up to 4K/60Hz",
+                        "1x Headphone / microphone combo jack (3.5mm)",
+                        "1x microSD card reader"
+                    ]
+                },
+                "camera": {
+                    "model": "FHD 1080p + IR with Privacy Shutter, ToF Sensor"
+                },
+                "keyboard": {
+                    "type": "Backlit, Slovenian"
+                },
+                "dimensions": {
+                    "size": "295.58 x 206.95 x 14.3 mm (11.64 x 8.15 x 0.56 inches)",
+                    "weight": "Around 1.15 kg (2.54 lbs)"
+                },
+                "build": {
+                    "color": "Polar Blue",
+                    "material": "Aluminium (Top), Aluminium (Bottom)",
+                    "surface": "Aluminium Stamping (Anodized with Sandblasting)"
+                },
+                "software": {
+                    "os": "Windows 11 Home, Croatian / Slovenian / English",
+                    "bundled": "Office Trial"
+                },
+                "audio": {
+                    "chip": "High Definition (HD) Audio",
+                    "speakers": "Stereo speakers, 2W x2, optimized with Dolby Audio",
+                    "microphone": "2x, Array"
+                },
+                "memory_slots": {
+                    "raw": "Memory soldered to systemboard, no slots, dual-channel (16GB models)",
+                    "max_memory": "16GB soldered memory, not upgradable"
+                },
+                "storage_slots": {
+                    "raw": "One M.2 2280 PCIe 4.0 x4 slot",
+                    "max_storage": "One drive, up to 1TB M.2 2242 SSD"
+                }
             },
-            "last_checked": "2026-08-27 20:30:36"
+            "spec_source": "lenovo_outlet",
+            "vendor": "lenovo",
+            "brand": "Lenovo",
+            "series": "Ideapad",
+            "product_condition": "CERTIFIED REFURBISHED",
+            "product_metadata": {
+                "brand": "Lenovo",
+                "series": "Ideapad",
+                "part_number": "83J2R001R0",
+                "model_number": "83J2R001R0",
+                "manufacturer": "Lenovo",
+                "warranty": "1 Year Courier or Carry-in Warranty",
+                "condition": "Certified Refurbished"
+            },
+            "price_mean": 53230,
+            "price_median": 54590,
+            "price_usual": 55473,
+            "has_history": true,
+            "spec_origin": {
+                "network": "psref_platform",
+                "power": "psref_platform",
+                "battery": "psref_platform",
+                "ports": "psref_platform",
+                "camera": "psref_platform",
+                "keyboard": "psref_platform",
+                "dimensions": "psref_platform",
+                "build": "psref_platform",
+                "software": "psref_platform",
+                "audio": "psref_platform",
+                "memory_slots": "psref_platform",
+                "storage_slots": "psref_platform"
+            },
+            "psref_enrichment": {
+                "tier": "psref_platform",
+                "sku": "83J2R001R0",
+                "machine_type": "83J2",
+                "product_name": "IdeaPad Slim 5 13ARP10"
+            }
         },
         {
             "id": "83KAR001R0",
@@ -2556,21 +2466,12 @@
                     "brand": "AMD",
                     "model": "Ryzen 7 8840HS",
                     "full_model": "AMD Ryzen 7 8840HS",
-                    "series": "Ryzen 8000 Series",
-                    "cores": 8,
-                    "threads": 16,
-                    "base_clock": "3.3 GHz",
-                    "boost_clock": "Up to 5.1 GHz",
-                    "igpu": "AMD Radeon 780M",
-                    "igpu_series": "Radeon 700M Series"
+                    "series": "Ryzen 8000 Series"
                 },
                 "graphics": {
-                    "model": "AMD Radeon 780M",
+                    "model": "Integrated AMD Radeon 780M",
                     "vram": "Shared",
-                    "dedicated": false,
-                    "series": "Radeon 700M Series",
-                    "boost_clock": "2700 MHz",
-                    "cus": 12
+                    "dedicated": false
                 },
                 "network": {
                     "wifi": "Wi-Fi 6",
@@ -2581,7 +2482,7 @@
                     "watt": 65
                 },
                 "battery": {
-                    "capacity": "50.0Wh"
+                    "capacity": "50Wh"
                 },
                 "ports": {
                     "items": [
@@ -2663,8 +2564,139 @@
                 "sku": "83KAR001R0",
                 "machine_type": "83KA",
                 "product_name": "IdeaPad Slim 3 15AHP10"
+            }
+        },
+        {
+            "id": "83DCR000R0",
+            "model_name": "IdeaPad Slim 5i Gen 9 (16, Intel)",
+            "internal_model_code": "83DCR000R0",
+            "title": "IdeaPad Slim 5i Gen 9 (16, Intel)",
+            "description": "The IdeaPad Slim 5i Gen 9 is a sleek, lightweight laptop designed for mobility and style. Powered by Intel Core Ultra processors, it features a stunning OLED display, long battery life, and AI-enabled tools for enhanced productivity.",
+            "availability": "in stock",
+            "price": "53991.00 INR",
+            "mrp": "104459.00 INR",
+            "image": "https://p3-ofp.static.pub//fes/cms/2025/02/17/yovxljs98ez7pts0ctesd41l3xf3jm424645.png",
+            "affiliate_link": "https://lenovo-in.zlvv.net/c/5890822/608695/9634?prodsku=83DCR000R0&u=https%3A%2F%2Fwww.lenovo.com%2Fin%2Foutletin%2Fen%2Fp%2Flaptops%2Fideapad%2Fideapad-s-series%2Fideapad-slim-5i-gen-9-16-inch-intel%2F83dcr000r0&intsrc=CATF_4639",
+            "store_link": "https://www.lenovo.com/in/outletin/en/p/laptops/ideapad/ideapad-s-series/ideapad-slim-5i-gen-9-16-inch-intel/83dcr000r0",
+            "listing_date": "2025-02-03",
+            "tech_specs": {
+                "display": {
+                    "size": "16\"",
+                    "res": "1920x1200",
+                    "refresh": "60Hz",
+                    "type": "IPS",
+                    "brightness": "300 nits",
+                    "color": "100% sRGB"
+                },
+                "memory": {
+                    "amount": "16 GB",
+                    "type": "DDR5",
+                    "speed": "7467 MHz"
+                },
+                "storage": {
+                    "capacity": "1 TB",
+                    "type": "SSD Gen4"
+                },
+                "processor": {
+                    "brand": "Intel",
+                    "model": "Core Ultra 5 125H",
+                    "full_model": "Intel Core Ultra 5 125H",
+                    "series": "Core Ultra Series 1"
+                },
+                "graphics": {
+                    "model": "Integrated Intel Arc",
+                    "vram": "Shared",
+                    "dedicated": false
+                },
+                "network": {
+                    "wifi": "Wi-Fi 6",
+                    "bluetooth": "5.2"
+                },
+                "power": {
+                    "adapter": "65W USB-C Slim (Wall-mount)",
+                    "watt": 65
+                },
+                "battery": {
+                    "capacity": "57Wh"
+                },
+                "ports": {
+                    "items": [
+                        "1x USB-A (USB 5Gbps / USB 3.2 Gen 1)",
+                        "1x USB-A (USB 5Gbps / USB 3.2 Gen 1), Always On",
+                        "2x USB-C (USB 5Gbps / USB 3.2 Gen 1), with USB PD 3.0 and DisplayPort 1.4",
+                        "1x HDMI 1.4b",
+                        "1x Headphone / microphone combo jack (3.5mm)",
+                        "1x microSD card reader"
+                    ]
+                },
+                "camera": {
+                    "model": "FHD 1080p with Privacy Shutter"
+                },
+                "keyboard": {
+                    "type": "Non-backlit, English"
+                },
+                "dimensions": {
+                    "size": "356 x 251 x 16.9 mm (14.02 x 9.88 x 0.67 inches)",
+                    "weight": "Starting at 1.82 kg (4.01 lbs)"
+                },
+                "build": {
+                    "color": "Cloud Grey",
+                    "material": "Aluminium (Top), Aluminium (Bottom)",
+                    "surface": "Aluminium Stamping (Anodized with Sandblasting)"
+                },
+                "software": {},
+                "audio": {
+                    "chip": "High Definition (HD) Audio",
+                    "speakers": "Stereo speakers, 2W x2, optimized with Dolby Audio",
+                    "microphone": "2x, Array"
+                },
+                "memory_slots": {
+                    "raw": "Memory soldered to systemboard, no slots, dual-channel",
+                    "max_memory": "16GB soldered memory, not upgradable"
+                },
+                "storage_slots": {
+                    "raw": "Two M.2 slots • One M.2 2242 PCIe 4.0 x4 slot • One M.2 2280 PCIe 4.0 x4 slot",
+                    "max_storage": "Up to two drives, 2x M.2 SSD • M.2 2242 SSD up to 1TB"
+                }
             },
-            "last_checked": "2026-08-27 20:30:36"
+            "spec_source": "lenovo_outlet",
+            "vendor": "lenovo",
+            "brand": "Lenovo",
+            "series": "Ideapad",
+            "product_condition": "CERTIFIED REFURBISHED",
+            "product_metadata": {
+                "brand": "Lenovo",
+                "series": "Ideapad",
+                "part_number": "83DCR000R0",
+                "model_number": "83DCR000R0",
+                "manufacturer": "Lenovo",
+                "warranty": "1 Year Courier or Carry-in Warranty",
+                "condition": "Certified Refurbished"
+            },
+            "price_mean": 53991,
+            "price_median": 53991,
+            "price_usual": 53991,
+            "has_history": true,
+            "spec_origin": {
+                "network": "psref_platform",
+                "power": "psref_platform",
+                "battery": "psref_platform",
+                "ports": "psref_platform",
+                "camera": "psref_platform",
+                "keyboard": "psref_platform",
+                "dimensions": "psref_platform",
+                "build": "psref_platform",
+                "software": "psref_platform",
+                "audio": "psref_platform",
+                "memory_slots": "psref_platform",
+                "storage_slots": "psref_platform"
+            },
+            "psref_enrichment": {
+                "tier": "psref_platform",
+                "sku": "83DCR000R0",
+                "machine_type": "83DC",
+                "product_name": "IdeaPad Slim 5 16IMH9"
+            }
         },
         {
             "id": "83DCR008R0",
@@ -2695,29 +2727,18 @@
                 },
                 "storage": {
                     "capacity": "1 TB",
-                    "type": "SSD Gen4 TLC"
+                    "type": "SSD Gen4"
                 },
                 "processor": {
                     "brand": "Intel",
                     "model": "Core Ultra 5 125H",
                     "full_model": "Intel Core Ultra 5 125H",
-                    "series": "Core Ultra Series 1",
-                    "cores": 14,
-                    "threads": 18,
-                    "base_clock": "1.2 GHz",
-                    "boost_clock": "4.5 GHz",
-                    "igpu": "Intel Arc graphics",
-                    "igpu_series": "Intel Arc Graphics Series",
-                    "xe_cores": "7 Xe-Cores"
+                    "series": "Core Ultra Series 1"
                 },
                 "graphics": {
-                    "model": "Intel Arc Graphics",
+                    "model": "Integrated Intel Arc",
                     "vram": "Shared",
-                    "dedicated": false,
-                    "xe_cores": "7",
-                    "series": "Intel Arc Graphics Series",
-                    "boost_clock": "2.2 GHz",
-                    "ai_tops": "18 TOPS"
+                    "dedicated": false
                 },
                 "network": {
                     "wifi": "Wi-Fi 6",
@@ -2788,7 +2809,26 @@
             "price_median": 73591,
             "price_usual": 73591,
             "has_history": true,
-            "last_checked": "2026-08-27 20:30:36"
+            "spec_origin": {
+                "network": "psref_platform",
+                "power": "psref_platform",
+                "battery": "psref_platform",
+                "ports": "psref_platform",
+                "camera": "psref_platform",
+                "keyboard": "psref_platform",
+                "dimensions": "psref_platform",
+                "build": "psref_platform",
+                "software": "psref_platform",
+                "audio": "psref_platform",
+                "memory_slots": "psref_platform",
+                "storage_slots": "psref_platform"
+            },
+            "psref_enrichment": {
+                "tier": "psref_platform",
+                "sku": "83DCR008R0",
+                "machine_type": "83DC",
+                "product_name": "IdeaPad Slim 5 16IMH9"
+            }
         },
         {
             "id": "83DCR002R0",
@@ -2819,29 +2859,18 @@
                 },
                 "storage": {
                     "capacity": "1 TB",
-                    "type": "SSD Gen4 TLC"
+                    "type": "SSD Gen4"
                 },
                 "processor": {
                     "brand": "Intel",
                     "model": "Core Ultra 5 125H",
                     "full_model": "Intel Core Ultra 5 125H",
-                    "series": "Core Ultra Series 1",
-                    "cores": 14,
-                    "threads": 18,
-                    "base_clock": "1.2 GHz",
-                    "boost_clock": "4.5 GHz",
-                    "igpu": "Intel Arc graphics",
-                    "igpu_series": "Intel Arc Graphics Series",
-                    "xe_cores": "7 Xe-Cores"
+                    "series": "Core Ultra Series 1"
                 },
                 "graphics": {
-                    "model": "Intel Arc Graphics",
+                    "model": "Integrated Intel Arc",
                     "vram": "Shared",
-                    "dedicated": false,
-                    "xe_cores": "7",
-                    "series": "Intel Arc Graphics Series",
-                    "boost_clock": "2.2 GHz",
-                    "ai_tops": "18 TOPS"
+                    "dedicated": false
                 },
                 "network": {
                     "wifi": "Wi-Fi 6",
@@ -2912,7 +2941,26 @@
             "price_median": 73591,
             "price_usual": 73591,
             "has_history": true,
-            "last_checked": "2026-08-27 20:30:36"
+            "spec_origin": {
+                "network": "psref_platform",
+                "power": "psref_platform",
+                "battery": "psref_platform",
+                "ports": "psref_platform",
+                "camera": "psref_platform",
+                "keyboard": "psref_platform",
+                "dimensions": "psref_platform",
+                "build": "psref_platform",
+                "software": "psref_platform",
+                "audio": "psref_platform",
+                "memory_slots": "psref_platform",
+                "storage_slots": "psref_platform"
+            },
+            "psref_enrichment": {
+                "tier": "psref_platform",
+                "sku": "83DCR002R0",
+                "machine_type": "83DC",
+                "product_name": "IdeaPad Slim 5 16IMH9"
+            }
         }
     ],
     "Thinkbook": [
@@ -2945,7 +2993,7 @@
                 },
                 "storage": {
                     "capacity": "512 GB",
-                    "type": "SSD Gen4 TLC"
+                    "type": "SSD Gen4"
                 },
                 "processor": {
                     "brand": "Intel",
@@ -3039,7 +3087,26 @@
             "price_median": 40691,
             "price_usual": 40691,
             "has_history": true,
-            "last_checked": "2026-08-27 20:30:36"
+            "spec_origin": {
+                "network": "psref_platform",
+                "power": "psref_platform",
+                "battery": "psref_platform",
+                "ports": "psref_platform",
+                "camera": "psref_platform",
+                "keyboard": "psref_platform",
+                "dimensions": "psref_platform",
+                "build": "psref_platform",
+                "software": "psref_platform",
+                "audio": "psref_platform",
+                "memory_slots": "psref_platform",
+                "storage_slots": "psref_platform"
+            },
+            "psref_enrichment": {
+                "tier": "psref_platform",
+                "sku": "21KGR000R0",
+                "machine_type": "21KG",
+                "product_name": "ThinkBook 14 G6 IRL"
+            }
         },
         {
             "id": "21KGR002R0",
@@ -3070,25 +3137,18 @@
                 },
                 "storage": {
                     "capacity": "512 GB",
-                    "type": "SSD Gen4 TLC"
+                    "type": "SSD Gen4"
                 },
                 "processor": {
                     "brand": "Intel",
                     "model": "Core i5-1335U",
                     "full_model": "Intel Core i5-1335U",
-                    "series": "Core 13th Gen",
-                    "cores": 10,
-                    "threads": 12,
-                    "boost_clock": "4.6 GHz",
-                    "igpu": "Intel Iris Xe Graphics eligible",
-                    "igpu_series": "Intel Iris Xe Series"
+                    "series": "Core 13th Gen"
                 },
                 "graphics": {
-                    "model": "Intel Iris Xe Graphics eligible",
+                    "model": null,
                     "vram": "Shared",
-                    "dedicated": false,
-                    "series": "Intel Iris Xe Series",
-                    "boost_clock": "1.25 GHz"
+                    "dedicated": false
                 },
                 "network": {
                     "wifi": "Wi-Fi 6",
@@ -3164,7 +3224,26 @@
             "price_median": 50491,
             "price_usual": 50491,
             "has_history": true,
-            "last_checked": "2026-08-27 20:30:36"
+            "spec_origin": {
+                "network": "psref_platform",
+                "power": "psref_platform",
+                "battery": "psref_platform",
+                "ports": "psref_platform",
+                "camera": "psref_platform",
+                "keyboard": "psref_platform",
+                "dimensions": "psref_platform",
+                "build": "psref_platform",
+                "software": "psref_platform",
+                "audio": "psref_platform",
+                "memory_slots": "psref_platform",
+                "storage_slots": "psref_platform"
+            },
+            "psref_enrichment": {
+                "tier": "psref_platform",
+                "sku": "21KGR002R0",
+                "machine_type": "21KG",
+                "product_name": "ThinkBook 14 G6 IRL"
+            }
         },
         {
             "id": "21KGR003R0",
@@ -3195,25 +3274,18 @@
                 },
                 "storage": {
                     "capacity": "512 GB",
-                    "type": "SSD Gen4 TLC"
+                    "type": "SSD Gen4"
                 },
                 "processor": {
                     "brand": "Intel",
                     "model": "Core i7-1355U",
                     "full_model": "Intel Core i7-1355U",
-                    "series": "Core 13th Gen",
-                    "cores": 10,
-                    "threads": 12,
-                    "boost_clock": "5 GHz",
-                    "igpu": "Intel Iris Xe Graphics eligible",
-                    "igpu_series": "Intel Iris Xe Series"
+                    "series": "Core 13th Gen"
                 },
                 "graphics": {
-                    "model": "Intel Iris Xe Graphics eligible",
+                    "model": null,
                     "vram": "Shared",
-                    "dedicated": false,
-                    "series": "Intel Iris Xe Series",
-                    "boost_clock": "1.3 GHz"
+                    "dedicated": false
                 },
                 "network": {
                     "wifi": "Wi-Fi 6",
@@ -3289,15 +3361,34 @@
             "price_median": 84090,
             "price_usual": 84090,
             "has_history": true,
-            "last_checked": "2026-08-27 20:30:36"
+            "spec_origin": {
+                "network": "psref_platform",
+                "power": "psref_platform",
+                "battery": "psref_platform",
+                "ports": "psref_platform",
+                "camera": "psref_platform",
+                "keyboard": "psref_platform",
+                "dimensions": "psref_platform",
+                "build": "psref_platform",
+                "software": "psref_platform",
+                "audio": "psref_platform",
+                "memory_slots": "psref_platform",
+                "storage_slots": "psref_platform"
+            },
+            "psref_enrichment": {
+                "tier": "psref_platform",
+                "sku": "21KGR003R0",
+                "machine_type": "21KG",
+                "product_name": "ThinkBook 14 G6 IRL"
+            }
         }
     ],
     "Lenovo V-series": [
         {
             "id": "82TTR002R0",
-            "model_name": "Lenovo V15 Gen 3 (15, Intel)",
+            "model_name": "V15 Gen 3 (15, Intel)",
             "internal_model_code": "82TTR002R0",
-            "title": "Lenovo V15 Gen 3 (15, Intel)",
+            "title": "V15 Gen 3 (15, Intel)",
             "description": "The Lenovo V15 Gen 3 (15, Intel) offers premium performance with 12th Gen Intel® Core™ processors and ample memory and storage. This lightweight 15-inch laptop features an FHD anti-glare display, Dolby Audio speakers, and a privacy shutter, making it ideal for small businesses and students. Customizable to suit your needs.",
             "availability": "in stock",
             "price": "42790.00 INR",
@@ -3322,7 +3413,7 @@
                 },
                 "storage": {
                     "capacity": "512 GB",
-                    "type": "SSD Gen4 TLC"
+                    "type": "SSD Gen4"
                 },
                 "processor": {
                     "brand": "Intel",
@@ -3415,13 +3506,32 @@
             "price_median": 42790,
             "price_usual": 42790,
             "has_history": true,
-            "last_checked": "2026-08-27 20:30:36"
+            "spec_origin": {
+                "network": "psref_platform",
+                "power": "psref_platform",
+                "battery": "psref_platform",
+                "ports": "psref_platform",
+                "camera": "psref_platform",
+                "keyboard": "psref_platform",
+                "dimensions": "psref_platform",
+                "build": "psref_platform",
+                "software": "psref_platform",
+                "audio": "psref_platform",
+                "memory_slots": "psref_platform",
+                "storage_slots": "psref_platform"
+            },
+            "psref_enrichment": {
+                "tier": "psref_platform",
+                "sku": "82TTR002R0",
+                "machine_type": "82TT",
+                "product_name": "Lenovo V15 G3 IAP"
+            }
         },
         {
             "id": "82TTR000R0",
-            "model_name": "Lenovo V15 Gen 3 (15, Intel)",
+            "model_name": "V15 Gen 3 (15, Intel)",
             "internal_model_code": "82TTR000R0",
-            "title": "Lenovo V15 Gen 3 (15, Intel)",
+            "title": "V15 Gen 3 (15, Intel)",
             "description": "The Lenovo V15 Gen 3 (15, Intel) offers premium performance with 12th Gen Intel® Core™ processors and ample memory and storage. This lightweight 15-inch laptop features an FHD anti-glare display, Dolby Audio speakers, and a privacy shutter, making it ideal for small businesses and students. Customizable to suit your needs.",
             "availability": "in stock",
             "price": "49090.00 INR",
@@ -3452,19 +3562,12 @@
                     "brand": "Intel",
                     "model": "Core i5-1235U",
                     "full_model": "Intel Core i5-1235U",
-                    "series": "Core 12th Gen",
-                    "cores": 10,
-                    "threads": 12,
-                    "boost_clock": "4.40 GHz",
-                    "igpu": "Intel Iris Xe Graphics eligible",
-                    "igpu_series": "Intel Iris Xe Series"
+                    "series": "Core 12th Gen"
                 },
                 "graphics": {
-                    "model": "Intel Iris Xe Graphics eligible",
+                    "model": "Integrated Intel Iris Xe",
                     "vram": "Shared",
-                    "dedicated": false,
-                    "series": "Intel Iris Xe Series",
-                    "boost_clock": "1.20 GHz"
+                    "dedicated": false
                 },
                 "network": {
                     "wifi": "Wi-Fi 6",
@@ -3539,13 +3642,32 @@
             "price_median": 49090,
             "price_usual": 49090,
             "has_history": true,
-            "last_checked": "2026-08-27 20:30:36"
+            "spec_origin": {
+                "network": "psref_platform",
+                "power": "psref_platform",
+                "battery": "psref_platform",
+                "ports": "psref_platform",
+                "camera": "psref_platform",
+                "keyboard": "psref_platform",
+                "dimensions": "psref_platform",
+                "build": "psref_platform",
+                "software": "psref_platform",
+                "audio": "psref_platform",
+                "memory_slots": "psref_platform",
+                "storage_slots": "psref_platform"
+            },
+            "psref_enrichment": {
+                "tier": "psref_platform",
+                "sku": "82TTR000R0",
+                "machine_type": "82TT",
+                "product_name": "Lenovo V15 G3 IAP"
+            }
         },
         {
             "id": "82TTR008R0",
-            "model_name": "Lenovo V15 Gen 3 (15, Intel)",
+            "model_name": "V15 Gen 3 (15, Intel)",
             "internal_model_code": "82TTR008R0",
-            "title": "Lenovo V15 Gen 3 (15, Intel)",
+            "title": "V15 Gen 3 (15, Intel)",
             "description": "The Lenovo V15 Gen 3 (15, Intel) offers premium performance with 12th Gen Intel® Core™ processors and ample memory and storage. This lightweight 15-inch laptop features an FHD anti-glare display, Dolby Audio speakers, and a privacy shutter, making it ideal for small businesses and students. Customizable to suit your needs.",
             "availability": "in stock",
             "price": "49090.00 INR",
@@ -3576,19 +3698,12 @@
                     "brand": "Intel",
                     "model": "Core i5-1235U",
                     "full_model": "Intel Core i5-1235U",
-                    "series": "Core 12th Gen",
-                    "cores": 10,
-                    "threads": 12,
-                    "boost_clock": "4.40 GHz",
-                    "igpu": "Intel Iris Xe Graphics eligible",
-                    "igpu_series": "Intel Iris Xe Series"
+                    "series": "Core 12th Gen"
                 },
                 "graphics": {
-                    "model": "Intel Iris Xe Graphics eligible",
+                    "model": "Integrated Intel Iris Xe",
                     "vram": "Shared",
-                    "dedicated": false,
-                    "series": "Intel Iris Xe Series",
-                    "boost_clock": "1.20 GHz"
+                    "dedicated": false
                 },
                 "network": {
                     "wifi": "Wi-Fi 6",
@@ -3682,14 +3797,13 @@
                 "sku": "82TTR008R0",
                 "machine_type": "82TT",
                 "product_name": "Lenovo V15 G3 IAP"
-            },
-            "last_checked": "2026-08-27 20:30:36"
+            }
         },
         {
             "id": "83A0R000R0",
-            "model_name": "Lenovo V14 Gen 4 (14, Intel)",
+            "model_name": "V14 Gen 4 (14, Intel)",
             "internal_model_code": "83A0R000R0",
-            "title": "Lenovo V14 Gen 4 (14, Intel)",
+            "title": "V14 Gen 4 (14, Intel)",
             "description": "The Lenovo V14 Gen 4 (14, Intel) is a portable and affordable laptop designed for small businesses. It offers Intel processing, FHD display, ThinkShield security, and smart conferencing features, making it ideal for efficient work.",
             "availability": "in stock",
             "price": "49090.00 INR",
@@ -3720,19 +3834,12 @@
                     "brand": "Intel",
                     "model": "Core i5-13420H",
                     "full_model": "Intel Core i5-13420H",
-                    "series": "Core 13th Gen",
-                    "cores": 8,
-                    "threads": 12,
-                    "boost_clock": "4.60 GHz",
-                    "igpu": "Intel UHD Graphics for 13th Gen Intel Processors",
-                    "igpu_series": "Intel UHD Graphics Series"
+                    "series": "Core 13th Gen"
                 },
                 "graphics": {
-                    "model": "Intel UHD Graphics for 13th Gen Intel Processors",
+                    "model": null,
                     "vram": "Shared",
-                    "dedicated": false,
-                    "series": "Intel UHD Graphics Series",
-                    "boost_clock": "1.40 GHz"
+                    "dedicated": false
                 },
                 "network": {
                     "wifi": "Wi-Fi 6",
@@ -3826,14 +3933,13 @@
                 "sku": "83A0R000R0",
                 "machine_type": "83A0",
                 "product_name": "Lenovo V14 G4 IRU"
-            },
-            "last_checked": "2026-08-27 20:30:36"
+            }
         },
         {
             "id": "83CQR001R0",
-            "model_name": "Lenovo V15 Gen 4 (15, AMD)",
+            "model_name": "V15 Gen 4 (15, AMD)",
             "internal_model_code": "83CQR001R0",
-            "title": "Lenovo V15 Gen 4 (15, AMD)",
+            "title": "V15 Gen 4 (15, AMD)",
             "description": "The Lenovo V15 Gen 4 (15, AMD) is a lightweight laptop designed for small businesses and everyday multitasking. It features powerful AMD Ryzen 7000 processors, a 15.6-inch FHD display with low-blue light, and customizable configurations for your needs.",
             "availability": "in stock",
             "price": "52590.00 INR",
@@ -3858,27 +3964,18 @@
                 },
                 "storage": {
                     "capacity": "512 GB",
-                    "type": "SSD Gen4 TLC"
+                    "type": "SSD Gen4"
                 },
                 "processor": {
                     "brand": "AMD",
                     "model": "Ryzen 5 7520U",
                     "full_model": "AMD Ryzen 5 7520U",
-                    "series": "Ryzen 7000 Series",
-                    "cores": 4,
-                    "threads": 8,
-                    "base_clock": "2.8 GHz",
-                    "boost_clock": "Up to 4.3 GHz",
-                    "igpu": "AMD Radeon 610M",
-                    "igpu_series": "Radeon 600M Series"
+                    "series": "Ryzen 7000 Series"
                 },
                 "graphics": {
-                    "model": "AMD Radeon 610M",
+                    "model": "Integrated AMD Radeon 610M",
                     "vram": "Shared",
-                    "dedicated": false,
-                    "series": "Radeon 600M Series",
-                    "boost_clock": "1900 MHz",
-                    "cus": 2
+                    "dedicated": false
                 },
                 "network": {
                     "wifi": "Wi-Fi 6",
@@ -3952,7 +4049,26 @@
             "price_median": 52590,
             "price_usual": 52590,
             "has_history": true,
-            "last_checked": "2026-08-27 20:30:36"
+            "spec_origin": {
+                "network": "psref_platform",
+                "power": "psref_platform",
+                "battery": "psref_platform",
+                "ports": "psref_platform",
+                "camera": "psref_platform",
+                "keyboard": "psref_platform",
+                "dimensions": "psref_platform",
+                "build": "psref_platform",
+                "software": "psref_platform",
+                "audio": "psref_platform",
+                "memory_slots": "psref_platform",
+                "storage_slots": "psref_platform"
+            },
+            "psref_enrichment": {
+                "tier": "psref_platform",
+                "sku": "83CQR001R0",
+                "machine_type": "83CQ",
+                "product_name": "Lenovo V15 G4 AMN"
+            }
         }
     ],
     "ThinkPad": [
@@ -3985,7 +4101,7 @@
                 },
                 "storage": {
                     "capacity": "512 GB",
-                    "type": "SSD Gen4 TLC"
+                    "type": "SSD Gen4"
                 },
                 "processor": {
                     "brand": "Intel",
@@ -4076,7 +4192,26 @@
             "price_median": 44191,
             "price_usual": 44191,
             "has_history": true,
-            "last_checked": "2026-08-27 20:30:36"
+            "spec_origin": {
+                "network": "psref_platform",
+                "power": "psref_platform",
+                "battery": "psref_platform",
+                "ports": "psref_platform",
+                "camera": "psref_platform",
+                "keyboard": "psref_platform",
+                "dimensions": "psref_platform",
+                "build": "psref_platform",
+                "software": "psref_platform",
+                "audio": "psref_platform",
+                "memory_slots": "psref_platform",
+                "storage_slots": "psref_platform"
+            },
+            "psref_enrichment": {
+                "tier": "psref_platform",
+                "sku": "21JKR007R0",
+                "machine_type": "21JK",
+                "product_name": "ThinkPad E14 Gen 5 (Intel)"
+            }
         },
         {
             "id": "21E6R001R0",
@@ -4107,7 +4242,7 @@
                 },
                 "storage": {
                     "capacity": "512 GB",
-                    "type": "SSD Gen4 TLC"
+                    "type": "SSD Gen4"
                 },
                 "processor": {
                     "brand": "Intel",
@@ -4197,7 +4332,26 @@
             "price_median": 50491,
             "price_usual": 50491,
             "has_history": true,
-            "last_checked": "2026-08-27 20:30:36"
+            "spec_origin": {
+                "network": "psref_platform",
+                "power": "psref_platform",
+                "battery": "psref_platform",
+                "ports": "psref_platform",
+                "camera": "psref_platform",
+                "keyboard": "psref_platform",
+                "dimensions": "psref_platform",
+                "build": "psref_platform",
+                "software": "psref_platform",
+                "audio": "psref_platform",
+                "memory_slots": "psref_platform",
+                "storage_slots": "psref_platform"
+            },
+            "psref_enrichment": {
+                "tier": "psref_platform",
+                "sku": "21E6R001R0",
+                "machine_type": "21E6",
+                "product_name": "ThinkPad E15 Gen 4 (Intel)"
+            }
         },
         {
             "id": "21JKR002R0",
@@ -4228,25 +4382,18 @@
                 },
                 "storage": {
                     "capacity": "512 GB",
-                    "type": "SSD Gen4 TLC"
+                    "type": "SSD Gen4"
                 },
                 "processor": {
                     "brand": "Intel",
                     "model": "Core i5-1335U",
                     "full_model": "Intel Core i5-1335U",
-                    "series": "Core 13th Gen",
-                    "cores": 10,
-                    "threads": 12,
-                    "boost_clock": "4.6 GHz",
-                    "igpu": "Intel Iris Xe Graphics eligible",
-                    "igpu_series": "Intel Iris Xe Series"
+                    "series": "Core 13th Gen"
                 },
                 "graphics": {
-                    "model": "Intel Iris Xe Graphics eligible",
+                    "model": null,
                     "vram": "Shared",
-                    "dedicated": false,
-                    "series": "Intel Iris Xe Series",
-                    "boost_clock": "1.25 GHz"
+                    "dedicated": false
                 },
                 "network": {
                     "wifi": "Wi-Fi 6E",
@@ -4319,7 +4466,26 @@
             "price_median": 66290,
             "price_usual": 66290,
             "has_history": true,
-            "last_checked": "2026-08-27 20:30:36"
+            "spec_origin": {
+                "network": "psref_platform",
+                "power": "psref_platform",
+                "battery": "psref_platform",
+                "ports": "psref_platform",
+                "camera": "psref_platform",
+                "keyboard": "psref_platform",
+                "dimensions": "psref_platform",
+                "build": "psref_platform",
+                "software": "psref_platform",
+                "audio": "psref_platform",
+                "memory_slots": "psref_platform",
+                "storage_slots": "psref_platform"
+            },
+            "psref_enrichment": {
+                "tier": "psref_platform",
+                "sku": "21JKR002R0",
+                "machine_type": "21JK",
+                "product_name": "ThinkPad E14 Gen 5 (Intel)"
+            }
         },
         {
             "id": "21JKR00ER0",
@@ -4350,25 +4516,18 @@
                 },
                 "storage": {
                     "capacity": "512 GB",
-                    "type": "SSD Gen4 TLC"
+                    "type": "SSD Gen4"
                 },
                 "processor": {
                     "brand": "Intel",
                     "model": "Core i5-1335U",
                     "full_model": "Intel Core i5-1335U",
-                    "series": "Core 13th Gen",
-                    "cores": 10,
-                    "threads": 12,
-                    "boost_clock": "4.6 GHz",
-                    "igpu": "Intel Iris Xe Graphics eligible",
-                    "igpu_series": "Intel Iris Xe Series"
+                    "series": "Core 13th Gen"
                 },
                 "graphics": {
-                    "model": "Intel Iris Xe Graphics eligible",
+                    "model": null,
                     "vram": "Shared",
-                    "dedicated": false,
-                    "series": "Intel Iris Xe Series",
-                    "boost_clock": "1.25 GHz"
+                    "dedicated": false
                 },
                 "network": {
                     "wifi": "Wi-Fi 6E",
@@ -4441,7 +4600,26 @@
             "price_median": 66591,
             "price_usual": 66591,
             "has_history": true,
-            "last_checked": "2026-08-27 20:30:36"
+            "spec_origin": {
+                "network": "psref_platform",
+                "power": "psref_platform",
+                "battery": "psref_platform",
+                "ports": "psref_platform",
+                "camera": "psref_platform",
+                "keyboard": "psref_platform",
+                "dimensions": "psref_platform",
+                "build": "psref_platform",
+                "software": "psref_platform",
+                "audio": "psref_platform",
+                "memory_slots": "psref_platform",
+                "storage_slots": "psref_platform"
+            },
+            "psref_enrichment": {
+                "tier": "psref_platform",
+                "sku": "21JKR00ER0",
+                "machine_type": "21JK",
+                "product_name": "ThinkPad E14 Gen 5 (Intel)"
+            }
         },
         {
             "id": "21TAR001R0",
@@ -4561,7 +4739,26 @@
             "price_median": 73591,
             "price_usual": 73591,
             "has_history": true,
-            "last_checked": "2026-08-27 20:30:36"
+            "spec_origin": {
+                "network": "psref_platform",
+                "power": "psref_platform",
+                "battery": "psref_platform",
+                "ports": "psref_platform",
+                "camera": "psref_platform",
+                "keyboard": "psref_platform",
+                "dimensions": "psref_platform",
+                "build": "psref_platform",
+                "software": "psref_platform",
+                "audio": "psref_platform",
+                "memory_slots": "psref_platform",
+                "storage_slots": "psref_platform"
+            },
+            "psref_enrichment": {
+                "tier": "psref_platform",
+                "sku": "21TAR001R0",
+                "machine_type": "21TA",
+                "product_name": "ThinkPad E14 Gen 7 (Intel)"
+            }
         },
         {
             "id": "21JKR00CR0",
@@ -4592,25 +4789,18 @@
                 },
                 "storage": {
                     "capacity": "512 GB",
-                    "type": "SSD Gen4 TLC"
+                    "type": "SSD Gen4"
                 },
                 "processor": {
                     "brand": "Intel",
                     "model": "Core i5-1335U",
                     "full_model": "Intel Core i5-1335U",
-                    "series": "Core 13th Gen",
-                    "cores": 10,
-                    "threads": 12,
-                    "boost_clock": "4.6 GHz",
-                    "igpu": "Intel Iris Xe Graphics eligible",
-                    "igpu_series": "Intel Iris Xe Series"
+                    "series": "Core 13th Gen"
                 },
                 "graphics": {
-                    "model": "Intel Iris Xe Graphics eligible",
+                    "model": null,
                     "vram": "Shared",
-                    "dedicated": false,
-                    "series": "Intel Iris Xe Series",
-                    "boost_clock": "1.25 GHz"
+                    "dedicated": false
                 },
                 "network": {
                     "wifi": "Wi-Fi 6E",
@@ -4683,7 +4873,26 @@
             "price_median": 73591,
             "price_usual": 73591,
             "has_history": true,
-            "last_checked": "2026-08-27 20:30:36"
+            "spec_origin": {
+                "network": "psref_platform",
+                "power": "psref_platform",
+                "battery": "psref_platform",
+                "ports": "psref_platform",
+                "camera": "psref_platform",
+                "keyboard": "psref_platform",
+                "dimensions": "psref_platform",
+                "build": "psref_platform",
+                "software": "psref_platform",
+                "audio": "psref_platform",
+                "memory_slots": "psref_platform",
+                "storage_slots": "psref_platform"
+            },
+            "psref_enrichment": {
+                "tier": "psref_platform",
+                "sku": "21JKR00CR0",
+                "machine_type": "21JK",
+                "product_name": "ThinkPad E14 Gen 5 (Intel)"
+            }
         },
         {
             "id": "21JKR003R0",
@@ -4714,25 +4923,18 @@
                 },
                 "storage": {
                     "capacity": "512 GB",
-                    "type": "SSD Gen4 TLC"
+                    "type": "SSD Gen4"
                 },
                 "processor": {
                     "brand": "Intel",
                     "model": "Core i7-1355U",
                     "full_model": "Intel Core i7-1355U",
-                    "series": "Core 13th Gen",
-                    "cores": 10,
-                    "threads": 12,
-                    "boost_clock": "5 GHz",
-                    "igpu": "Intel Iris Xe Graphics eligible",
-                    "igpu_series": "Intel Iris Xe Series"
+                    "series": "Core 13th Gen"
                 },
                 "graphics": {
-                    "model": "Intel Iris Xe Graphics eligible",
+                    "model": null,
                     "vram": "Shared",
-                    "dedicated": false,
-                    "series": "Intel Iris Xe Series",
-                    "boost_clock": "1.3 GHz"
+                    "dedicated": false
                 },
                 "network": {
                     "wifi": "Wi-Fi 6E",
@@ -4805,7 +5007,26 @@
             "price_median": 73591,
             "price_usual": 73591,
             "has_history": true,
-            "last_checked": "2026-08-27 20:30:36"
+            "spec_origin": {
+                "network": "psref_platform",
+                "power": "psref_platform",
+                "battery": "psref_platform",
+                "ports": "psref_platform",
+                "camera": "psref_platform",
+                "keyboard": "psref_platform",
+                "dimensions": "psref_platform",
+                "build": "psref_platform",
+                "software": "psref_platform",
+                "audio": "psref_platform",
+                "memory_slots": "psref_platform",
+                "storage_slots": "psref_platform"
+            },
+            "psref_enrichment": {
+                "tier": "psref_platform",
+                "sku": "21JKR003R0",
+                "machine_type": "21JK",
+                "product_name": "ThinkPad E14 Gen 5 (Intel)"
+            }
         },
         {
             "id": "21JKR000R0",
@@ -4836,25 +5057,18 @@
                 },
                 "storage": {
                     "capacity": "512 GB",
-                    "type": "SSD Gen4 TLC"
+                    "type": "SSD Gen4"
                 },
                 "processor": {
                     "brand": "Intel",
                     "model": "Core i7-1355U",
                     "full_model": "Intel Core i7-1355U",
-                    "series": "Core 13th Gen",
-                    "cores": 10,
-                    "threads": 12,
-                    "boost_clock": "5 GHz",
-                    "igpu": "Intel Iris Xe Graphics eligible",
-                    "igpu_series": "Intel Iris Xe Series"
+                    "series": "Core 13th Gen"
                 },
                 "graphics": {
-                    "model": "Intel Iris Xe Graphics eligible",
+                    "model": null,
                     "vram": "Shared",
-                    "dedicated": false,
-                    "series": "Intel Iris Xe Series",
-                    "boost_clock": "1.3 GHz"
+                    "dedicated": false
                 },
                 "network": {
                     "wifi": "Wi-Fi 6E",
@@ -4927,7 +5141,26 @@
             "price_median": 80590,
             "price_usual": 80590,
             "has_history": true,
-            "last_checked": "2026-08-27 20:30:36"
+            "spec_origin": {
+                "network": "psref_platform",
+                "power": "psref_platform",
+                "battery": "psref_platform",
+                "ports": "psref_platform",
+                "camera": "psref_platform",
+                "keyboard": "psref_platform",
+                "dimensions": "psref_platform",
+                "build": "psref_platform",
+                "software": "psref_platform",
+                "audio": "psref_platform",
+                "memory_slots": "psref_platform",
+                "storage_slots": "psref_platform"
+            },
+            "psref_enrichment": {
+                "tier": "psref_platform",
+                "sku": "21JKR000R0",
+                "machine_type": "21JK",
+                "product_name": "ThinkPad E14 Gen 5 (Intel)"
+            }
         },
         {
             "id": "21JLR000R0",
@@ -4958,7 +5191,7 @@
                 },
                 "storage": {
                     "capacity": "256 GB",
-                    "type": "SSD Gen4 TLC"
+                    "type": "SSD Gen4"
                 },
                 "processor": {
                     "brand": "Intel",
@@ -5049,7 +5282,26 @@
             "price_median": 80590,
             "price_usual": 80590,
             "has_history": true,
-            "last_checked": "2026-08-27 20:30:36"
+            "spec_origin": {
+                "network": "psref_platform",
+                "power": "psref_platform",
+                "battery": "psref_platform",
+                "ports": "psref_platform",
+                "camera": "psref_platform",
+                "keyboard": "psref_platform",
+                "dimensions": "psref_platform",
+                "build": "psref_platform",
+                "software": "psref_platform",
+                "audio": "psref_platform",
+                "memory_slots": "psref_platform",
+                "storage_slots": "psref_platform"
+            },
+            "psref_enrichment": {
+                "tier": "psref_platform",
+                "sku": "21JLR000R0",
+                "machine_type": "21JL",
+                "product_name": "ThinkPad E14 Gen 5 (Intel)"
+            }
         },
         {
             "id": "21QGR000R0",
@@ -5080,36 +5332,25 @@
                 },
                 "storage": {
                     "capacity": "512 GB",
-                    "type": "SSD Gen4 TLC"
+                    "type": "SSD Gen4"
                 },
                 "processor": {
                     "brand": "Intel",
                     "model": "Core Ultra 5 226V",
                     "full_model": "Intel Core Ultra 5 226V",
-                    "series": "Core Ultra Series 2",
-                    "cores": 8,
-                    "threads": 8,
-                    "base_clock": "2.1 GHz",
-                    "boost_clock": "4.5 GHz",
-                    "igpu": "Intel Arc 130V GPU",
-                    "igpu_series": "Intel Arc V-Series",
-                    "xe_cores": "7 Xe-Cores"
+                    "series": "Core Ultra Series 2"
                 },
                 "graphics": {
-                    "model": "Intel Arc 130V GPU",
+                    "model": "Integrated Intel Arc 130V GPU",
                     "vram": "Shared",
-                    "dedicated": false,
-                    "xe_cores": "7",
-                    "series": "Intel Arc V-Series",
-                    "boost_clock": "1.85 GHz",
-                    "ai_tops": "53 TOPS"
+                    "dedicated": false
                 },
                 "network": {
                     "wifi": "Wi-Fi 7",
                     "bluetooth": "5.4"
                 },
                 "power": {
-                    "adapter": "65W USB-C (3-pin)",
+                    "adapter": "65W USB-C (2-pin)",
                     "watt": 65
                 },
                 "battery": {
@@ -5129,7 +5370,7 @@
                     "model": "5.0MP + IR Discrete with Privacy Shutter"
                 },
                 "keyboard": {
-                    "type": "Backlit, English"
+                    "type": "Backlit, Canadian French"
                 },
                 "dimensions": {
                     "size": "315.9 x 223.7 x 10.9/16.13 (front/rear), 21.8 (maximum) mm; 12.44 x 8.81 x 0.43/0.64 (front/rear), 0.86 (maximum) inches",
@@ -5140,8 +5381,8 @@
                     "material": "PC + 20% CF (Top), PC + 20% CF (Bottom)"
                 },
                 "software": {
-                    "os": "Windows 11 Home, English (US) / English (UK)",
-                    "bundled": "Lenovo AI Now"
+                    "os": "Windows 11 Pro, French / Canadian French / English",
+                    "bundled": "Intel Connectivity Performance Suite + Lenovo AI Now"
                 },
                 "audio": {
                     "chip": "High Definition (HD) Audio, Realtek ALC3287 codec",
@@ -5175,7 +5416,26 @@
             "price_median": 87091,
             "price_usual": 87091,
             "has_history": true,
-            "last_checked": "2026-08-27 20:30:36"
+            "spec_origin": {
+                "network": "psref_platform",
+                "power": "psref_platform",
+                "battery": "psref_platform",
+                "ports": "psref_platform",
+                "camera": "psref_platform",
+                "keyboard": "psref_platform",
+                "dimensions": "psref_platform",
+                "build": "psref_platform",
+                "software": "psref_platform",
+                "audio": "psref_platform",
+                "memory_slots": "psref_platform",
+                "storage_slots": "psref_platform"
+            },
+            "psref_enrichment": {
+                "tier": "psref_platform",
+                "sku": "21QGR000R0",
+                "machine_type": "21QG",
+                "product_name": "ThinkPad T14 Gen 6 (Intel)"
+            }
         },
         {
             "id": "21QDR001R0",
@@ -5206,29 +5466,18 @@
                 },
                 "storage": {
                     "capacity": "512 GB",
-                    "type": "SSD Gen4 TLC"
+                    "type": "SSD Gen4"
                 },
                 "processor": {
                     "brand": "Intel",
                     "model": "Core Ultra 5 235U",
                     "full_model": "Intel Core Ultra 5 235U",
-                    "series": "Core Ultra Series 2",
-                    "cores": 12,
-                    "threads": 14,
-                    "base_clock": "2 GHz",
-                    "boost_clock": "4.9 GHz",
-                    "igpu": "Intel Graphics",
-                    "igpu_series": "Intel UHD Graphics Series",
-                    "xe_cores": "4 Xe-Cores"
+                    "series": "Core Ultra Series 2"
                 },
                 "graphics": {
-                    "model": "Intel Graphics",
+                    "model": "Integrated Intel",
                     "vram": "Shared",
-                    "dedicated": false,
-                    "xe_cores": "4",
-                    "series": "Intel UHD Graphics Series",
-                    "boost_clock": "2.05 GHz",
-                    "ai_tops": "8 TOPS"
+                    "dedicated": false
                 },
                 "network": {
                     "wifi": "Wi-Fi 7",
@@ -5301,13 +5550,32 @@
             "price_median": 110691,
             "price_usual": 110691,
             "has_history": true,
-            "last_checked": "2026-08-27 20:30:36"
+            "spec_origin": {
+                "network": "psref_platform",
+                "power": "psref_platform",
+                "battery": "psref_platform",
+                "ports": "psref_platform",
+                "camera": "psref_platform",
+                "keyboard": "psref_platform",
+                "dimensions": "psref_platform",
+                "build": "psref_platform",
+                "software": "psref_platform",
+                "audio": "psref_platform",
+                "memory_slots": "psref_platform",
+                "storage_slots": "psref_platform"
+            },
+            "psref_enrichment": {
+                "tier": "psref_platform",
+                "sku": "21QDR001R0",
+                "machine_type": "21QD",
+                "product_name": "ThinkPad T14 Gen 6 (Intel)"
+            }
         },
         {
             "id": "21LTR000R0",
-            "model_name": "ThinkPad T14s",
+            "model_name": "ThinkPad T14s Gen 5 (14, Intel)",
             "internal_model_code": "21LTR000R0",
-            "title": "ThinkPad T14s - Ultra 5, 16 GB RAM, 512 SSD ThinkPad T14s - Ultra 5, 16 GB RAM, 512 SSD Lenovo ThinkPad T14s Gen 5 14 Intel",
+            "title": "ThinkPad T14s Gen 5 (14, Intel)",
             "description": "The ThinkPad T14s Gen 5 is a sleek, lightweight business laptop designed for professionals on the go. Powered by AI and Intel Core Ultra processors, it offers customizable features, improved thermal design, and long battery life for enhanced productivity.",
             "availability": "in stock",
             "price": "111391.00 INR",
@@ -5338,23 +5606,12 @@
                     "brand": "Intel",
                     "model": "Core Ultra 5 135U",
                     "full_model": "Intel Core Ultra 5 135U",
-                    "series": "Core Ultra Series 1",
-                    "cores": 12,
-                    "threads": 14,
-                    "base_clock": "1.6 GHz",
-                    "boost_clock": "4.4 GHz",
-                    "igpu": "Intel Graphics",
-                    "igpu_series": "Intel UHD Graphics Series",
-                    "xe_cores": "4 Xe-Cores"
+                    "series": "Core Ultra Series 1"
                 },
                 "graphics": {
-                    "model": "Intel Graphics",
+                    "model": "Integrated Intel",
                     "vram": "Shared",
-                    "dedicated": false,
-                    "xe_cores": "4",
-                    "series": "Intel UHD Graphics Series",
-                    "boost_clock": "1.9 GHz",
-                    "ai_tops": "8 TOPS"
+                    "dedicated": false
                 },
                 "network": {
                     "wifi": "Wi-Fi 6E",
@@ -5365,7 +5622,7 @@
                     "watt": 65
                 },
                 "battery": {
-                    "capacity": "58.0Wh"
+                    "capacity": "58Wh"
                 },
                 "ports": {
                     "items": [
@@ -5445,8 +5702,7 @@
                 "sku": "21LTR000R0",
                 "machine_type": "21LT",
                 "product_name": "ThinkPad T14s Gen 5"
-            },
-            "last_checked": "2026-08-27 20:30:36"
+            }
         },
         {
             "id": "21AHR001R0",
@@ -5588,14 +5844,13 @@
                 "sku": "21AHR001R0",
                 "machine_type": "21AH",
                 "product_name": "ThinkPad T14 Gen 3 (Intel)"
-            },
-            "last_checked": "2026-08-27 20:30:36"
+            }
         },
         {
             "id": "20Y0R00WR0",
-            "model_name": "ThinkPad X1 Yoga Gen 6 (16, Intel)",
+            "model_name": "ThinkPad X1 Yoga Gen 6",
             "internal_model_code": "20Y0R00WR0",
-            "title": "ThinkPad X1 Yoga Gen 6 (16, Intel)",
+            "title": "ThinkPad X1 Yoga Gen 6",
             "description": "The ThinkPad X1 Yoga Gen 6 is a premium 2-in-1 laptop with a lightweight design and Intel® Evo™ platform for top performance. It features a rechargeable garaged pen for creativity, AI security with one-touch login, and a long-lasting battery for uninterrupted work.",
             "availability": "in stock",
             "price": "140091.00 INR",
@@ -5620,7 +5875,7 @@
                 },
                 "storage": {
                     "capacity": "1 TB",
-                    "type": "SSD TLC"
+                    "type": "SSD"
                 },
                 "processor": {
                     "brand": "Intel",
@@ -5702,7 +5957,26 @@
             "price_median": 140091,
             "price_usual": 140091,
             "has_history": true,
-            "last_checked": "2026-08-27 20:30:36"
+            "spec_origin": {
+                "network": "psref_platform",
+                "power": "psref_platform",
+                "battery": "psref_platform",
+                "ports": "psref_platform",
+                "camera": "psref_platform",
+                "keyboard": "psref_platform",
+                "dimensions": "psref_platform",
+                "build": "psref_platform",
+                "software": "psref_platform",
+                "audio": "psref_platform",
+                "memory_slots": "psref_platform",
+                "storage_slots": "psref_platform"
+            },
+            "psref_enrichment": {
+                "tier": "psref_platform",
+                "sku": "20Y0R00WR0",
+                "machine_type": "20Y0",
+                "product_name": "ThinkPad X1 Yoga Gen 6"
+            }
         },
         {
             "id": "21MMR002R0",
@@ -5733,29 +6007,18 @@
                 },
                 "storage": {
                     "capacity": "512 GB",
-                    "type": "SSD Gen4 TLC"
+                    "type": "SSD Gen4"
                 },
                 "processor": {
                     "brand": "Intel",
                     "model": "Core Ultra 7 165U",
                     "full_model": "Intel Core Ultra 7 165U",
-                    "series": "Core Ultra Series 1",
-                    "cores": 12,
-                    "threads": 14,
-                    "base_clock": "1.7 GHz",
-                    "boost_clock": "4.9 GHz",
-                    "igpu": "Intel Graphics",
-                    "igpu_series": "Intel UHD Graphics Series",
-                    "xe_cores": "4 Xe-Cores"
+                    "series": "Core Ultra Series 1"
                 },
                 "graphics": {
-                    "model": "Intel Graphics",
+                    "model": "Integrated Intel",
                     "vram": "Shared",
-                    "dedicated": false,
-                    "xe_cores": "4",
-                    "series": "Intel UHD Graphics Series",
-                    "boost_clock": "2 GHz",
-                    "ai_tops": "8 TOPS"
+                    "dedicated": false
                 },
                 "network": {
                     "wifi": "Wi-Fi 6E",
@@ -5827,7 +6090,26 @@
             "price_median": 140091,
             "price_usual": 140091,
             "has_history": true,
-            "last_checked": "2026-08-27 20:30:36"
+            "spec_origin": {
+                "network": "psref_platform",
+                "power": "psref_platform",
+                "battery": "psref_platform",
+                "ports": "psref_platform",
+                "camera": "psref_platform",
+                "keyboard": "psref_platform",
+                "dimensions": "psref_platform",
+                "build": "psref_platform",
+                "software": "psref_platform",
+                "audio": "psref_platform",
+                "memory_slots": "psref_platform",
+                "storage_slots": "psref_platform"
+            },
+            "psref_enrichment": {
+                "tier": "psref_platform",
+                "sku": "21MMR002R0",
+                "machine_type": "21MM",
+                "product_name": "ThinkPad T14 Gen 5 (Intel)"
+            }
         },
         {
             "id": "21M7R002R0",
@@ -5858,29 +6140,18 @@
                 },
                 "storage": {
                     "capacity": "512 GB",
-                    "type": "SSD Gen4 TLC"
+                    "type": "SSD Gen4"
                 },
                 "processor": {
                     "brand": "Intel",
                     "model": "Core Ultra 7 155H",
                     "full_model": "Intel Core Ultra 7 155H",
-                    "series": "Core Ultra Series 1",
-                    "cores": 16,
-                    "threads": 22,
-                    "base_clock": "1.4 GHz",
-                    "boost_clock": "4.8 GHz",
-                    "igpu": "Intel Arc graphics",
-                    "igpu_series": "Intel Arc Graphics Series",
-                    "xe_cores": "8 Xe-Cores"
+                    "series": "Core Ultra Series 1"
                 },
                 "graphics": {
-                    "model": "Intel Arc Graphics",
+                    "model": "Integrated Intel Arc",
                     "vram": "Shared",
-                    "dedicated": false,
-                    "xe_cores": "8",
-                    "series": "Intel Arc Graphics Series",
-                    "boost_clock": "2.25 GHz",
-                    "ai_tops": "18 TOPS"
+                    "dedicated": false
                 },
                 "network": {
                     "wifi": "Wi-Fi 6E",
@@ -5954,13 +6225,32 @@
             "price_median": 145185,
             "price_usual": 145185,
             "has_history": true,
-            "last_checked": "2026-08-27 20:30:36"
+            "spec_origin": {
+                "network": "psref_platform",
+                "power": "psref_platform",
+                "battery": "psref_platform",
+                "ports": "psref_platform",
+                "camera": "psref_platform",
+                "keyboard": "psref_platform",
+                "dimensions": "psref_platform",
+                "build": "psref_platform",
+                "software": "psref_platform",
+                "audio": "psref_platform",
+                "memory_slots": "psref_platform",
+                "storage_slots": "psref_platform"
+            },
+            "psref_enrichment": {
+                "tier": "psref_platform",
+                "sku": "21M7R002R0",
+                "machine_type": "21M7",
+                "product_name": "ThinkPad E14 Gen 6 (Intel)"
+            }
         },
         {
             "id": "21QYR000R0",
-            "model_name": "ThinkPad T14s",
+            "model_name": "ThinkPad T14s Gen 6 (14, Intel)",
             "internal_model_code": "21QYR000R0",
-            "title": "ThinkPad T14s - Ultra 7, 32 GB RAM, 512 SSD ThinkPad T14s - Ultra 7, 32 GB RAM, 512 SSD ThinkPad T14s Gen 6 14 Intel",
+            "title": "ThinkPad T14s Gen 6 (14, Intel)",
             "description": "The ThinkPad T14s Gen 6 is an ultrathin, lightweight laptop designed for productivity and efficiency. Powered by AI and Intel® Core™ Ultra processors, it offers customizable features to adapt to your business needs.",
             "availability": "in stock",
             "price": "150590.00 INR",
@@ -5991,23 +6281,12 @@
                     "brand": "Intel",
                     "model": "Core Ultra 7 268V",
                     "full_model": "Intel Core Ultra 7 268V",
-                    "series": "Core Ultra Series 2",
-                    "cores": 8,
-                    "threads": 8,
-                    "base_clock": "2.2 GHz",
-                    "boost_clock": "5 GHz",
-                    "igpu": "Intel Arc 140V GPU",
-                    "igpu_series": "Intel Arc V-Series",
-                    "xe_cores": "8 Xe-Cores"
+                    "series": "Core Ultra Series 2"
                 },
                 "graphics": {
-                    "model": "Intel Arc 140V GPU",
+                    "model": "Integrated Intel Arc 140V GPU",
                     "vram": "Shared",
-                    "dedicated": false,
-                    "xe_cores": "8",
-                    "series": "Intel Arc V-Series",
-                    "boost_clock": "2 GHz",
-                    "ai_tops": "66 TOPS"
+                    "dedicated": false
                 },
                 "network": {
                     "wifi": "Wi-Fi 7",
@@ -6078,7 +6357,26 @@
             "price_median": 150590,
             "price_usual": 150590,
             "has_history": true,
-            "last_checked": "2026-08-27 20:30:36"
+            "spec_origin": {
+                "network": "psref_platform",
+                "power": "psref_platform",
+                "battery": "psref_platform",
+                "ports": "psref_platform",
+                "camera": "psref_platform",
+                "keyboard": "psref_platform",
+                "dimensions": "psref_platform",
+                "build": "psref_platform",
+                "software": "psref_platform",
+                "audio": "psref_platform",
+                "memory_slots": "psref_platform",
+                "storage_slots": "psref_platform"
+            },
+            "psref_enrichment": {
+                "tier": "psref_platform",
+                "sku": "21QYR000R0",
+                "machine_type": "21QY",
+                "product_name": "ThinkPad T14s Gen 6 (Intel)"
+            }
         },
         {
             "id": "21HMR000R0",
@@ -6109,25 +6407,18 @@
                 },
                 "storage": {
                     "capacity": "1 TB",
-                    "type": "SSD Gen4 TLC"
+                    "type": "SSD Gen4"
                 },
                 "processor": {
                     "brand": "Intel",
                     "model": "Core i7-1355U",
                     "full_model": "Intel Core i7-1355U",
-                    "series": "Core 13th Gen",
-                    "cores": 10,
-                    "threads": 12,
-                    "boost_clock": "5 GHz",
-                    "igpu": "Intel Iris Xe Graphics eligible",
-                    "igpu_series": "Intel Iris Xe Series"
+                    "series": "Core 13th Gen"
                 },
                 "graphics": {
-                    "model": "Intel Iris Xe Graphics eligible",
+                    "model": "Integrated Intel Iris Xe",
                     "vram": "Shared",
-                    "dedicated": false,
-                    "series": "Intel Iris Xe Series",
-                    "boost_clock": "1.3 GHz"
+                    "dedicated": false
                 },
                 "network": {
                     "wifi": "Wi-Fi 6E",
@@ -6199,13 +6490,32 @@
             "price_median": 154090,
             "price_usual": 154090,
             "has_history": true,
-            "last_checked": "2026-08-27 20:30:36"
+            "spec_origin": {
+                "network": "psref_platform",
+                "power": "psref_platform",
+                "battery": "psref_platform",
+                "ports": "psref_platform",
+                "camera": "psref_platform",
+                "keyboard": "psref_platform",
+                "dimensions": "psref_platform",
+                "build": "psref_platform",
+                "software": "psref_platform",
+                "audio": "psref_platform",
+                "memory_slots": "psref_platform",
+                "storage_slots": "psref_platform"
+            },
+            "psref_enrichment": {
+                "tier": "psref_platform",
+                "sku": "21HMR000R0",
+                "machine_type": "21HM",
+                "product_name": "ThinkPad X1 Carbon Gen 11"
+            }
         },
         {
             "id": "21FCR000R0",
-            "model_name": "ThinkPad P16v Gen 1 (16, Intel)",
+            "model_name": "ThinkPad P16v (16, Intel)",
             "internal_model_code": "21FCR000R0",
-            "title": "ThinkPad P16v Gen 1 (16, Intel)",
+            "title": "ThinkPad P16v (16, Intel)",
             "description": "The ThinkPad P16v (16, Intel) is a powerful mobile workstation designed for professionals seeking performance and mobility. It features 13th Gen Intel Core processors, advanced cooling, and optional discrete graphics to handle heavy workloads with ease.",
             "availability": "in stock",
             "price": "154090.00 INR",
@@ -6230,18 +6540,13 @@
                 },
                 "storage": {
                     "capacity": "1 TB",
-                    "type": "SSD Gen4 TLC"
+                    "type": "SSD Gen4"
                 },
                 "processor": {
                     "brand": "Intel",
                     "model": "Core i7-13700H",
                     "full_model": "Intel Core i7-13700H",
-                    "series": "Core 13th Gen",
-                    "cores": 14,
-                    "threads": 20,
-                    "boost_clock": "5 GHz",
-                    "igpu": "Intel Iris Xe Graphics eligible",
-                    "igpu_series": "Intel Iris Xe Series"
+                    "series": "Core 13th Gen"
                 },
                 "graphics": {
                     "model": "RTX A500 4 GB GDDR6",
@@ -6319,7 +6624,26 @@
             "price_median": 154090,
             "price_usual": 154090,
             "has_history": true,
-            "last_checked": "2026-08-27 20:30:36"
+            "spec_origin": {
+                "network": "psref_platform",
+                "power": "psref_platform",
+                "battery": "psref_platform",
+                "ports": "psref_platform",
+                "camera": "psref_platform",
+                "keyboard": "psref_platform",
+                "dimensions": "psref_platform",
+                "build": "psref_platform",
+                "software": "psref_platform",
+                "audio": "psref_platform",
+                "memory_slots": "psref_platform",
+                "storage_slots": "psref_platform"
+            },
+            "psref_enrichment": {
+                "tier": "psref_platform",
+                "sku": "21FCR000R0",
+                "machine_type": "21FC",
+                "product_name": "ThinkPad P16v Gen 1 (Intel)"
+            }
         },
         {
             "id": "21QWR000R0",
@@ -6356,23 +6680,12 @@
                     "brand": "Intel",
                     "model": "Core Ultra 7 255H",
                     "full_model": "Intel Core Ultra 7 255H",
-                    "series": "Core Ultra Series 2",
-                    "cores": 16,
-                    "threads": 16,
-                    "base_clock": "2 GHz",
-                    "boost_clock": "5.1 GHz",
-                    "igpu": "Intel Arc 140T GPU",
-                    "igpu_series": "Intel Arc Graphics Series",
-                    "xe_cores": "8 Xe-Cores"
+                    "series": "Core Ultra Series 2"
                 },
                 "graphics": {
-                    "model": "Intel Arc 140T GPU",
+                    "model": "Integrated Intel Arc 140T GPU",
                     "vram": "Shared",
-                    "dedicated": false,
-                    "xe_cores": "8",
-                    "series": "Intel Arc Graphics Series",
-                    "boost_clock": "2.25 GHz",
-                    "ai_tops": "74 TOPS"
+                    "dedicated": false
                 },
                 "network": {
                     "wifi": "Wi-Fi 7",
@@ -6397,7 +6710,7 @@
                     ]
                 },
                 "camera": {
-                    "model": "5.0MP + IR with Privacy Shutter and Human Presence Detection"
+                    "model": "5.0MP with Privacy Shutter"
                 },
                 "keyboard": {
                     "type": "Backlit, Spanish (LA)"
@@ -6411,8 +6724,7 @@
                     "material": "Aluminium (Top), Aluminium (Bottom)"
                 },
                 "software": {
-                    "os": "Windows 11 Pro, Spanish / Mexican Spanish / English",
-                    "bundled": "Lenovo AI Now + Intel Connectivity Performance Suite"
+                    "os": "Windows 11 Pro, Spanish / Mexican Spanish / English"
                 },
                 "audio": {
                     "chip": "High Definition (HD) Audio, Realtek ALC3287 codec",
@@ -6465,8 +6777,7 @@
                 "sku": "21QWR000R0",
                 "machine_type": "21QW",
                 "product_name": "ThinkPad P16s Gen 4 (Intel)"
-            },
-            "last_checked": "2026-08-27 20:30:36"
+            }
         },
         {
             "id": "21KSR002R0",
@@ -6503,21 +6814,13 @@
                     "brand": "Intel",
                     "model": "Core Ultra 7 155H",
                     "full_model": "Intel Core Ultra 7 155H",
-                    "series": "Core Ultra Series 1",
-                    "cores": 16,
-                    "threads": 22,
-                    "base_clock": "1.4 GHz",
-                    "boost_clock": "4.8 GHz",
-                    "igpu": "Intel Arc graphics",
-                    "igpu_series": "Intel Arc Graphics Series",
-                    "xe_cores": "8 Xe-Cores"
+                    "series": "Core Ultra Series 1"
                 },
                 "graphics": {
                     "model": "RTX 500 Ada Generation 4 GB GDDR6",
                     "vram": "4 GB",
                     "dedicated": true,
-                    "series": "RTX 40 Series",
-                    "cuda_cores": 1792
+                    "series": "RTX 40 Series"
                 },
                 "network": {
                     "wifi": "Wi-Fi 6E",
@@ -6610,14 +6913,13 @@
                 "sku": "21KSR002R0",
                 "machine_type": "21KS",
                 "product_name": "ThinkPad P16s Gen 3 (Intel)"
-            },
-            "last_checked": "2026-08-27 20:30:36"
+            }
         },
         {
             "id": "21NTR000R0",
-            "model_name": "ThinkPad X1 Carbon Gen 13 (13, Intel)",
+            "model_name": "ThinkPad X1 Carbon Aura Edition Gen 13 (13, Intel)",
             "internal_model_code": "21NTR000R0",
-            "title": "ThinkPad X1 Carbon Gen 13 (13, Intel)",
+            "title": "ThinkPad X1 Carbon Aura Edition Gen 13 (13, Intel)",
             "description": "The ThinkPad X1 Carbon Gen 13 Aura Edition is a lightweight, premium AI-powered laptop designed for business professionals. It features exceptional battery life, a customer-replaceable battery, and sustainable design, making it ideal for productivity and eco-conscious users.",
             "availability": "in stock",
             "price": "210091.00 INR",
@@ -6642,36 +6944,25 @@
                 },
                 "storage": {
                     "capacity": "512 GB",
-                    "type": "SSD Gen4 TLC"
+                    "type": "SSD Gen4"
                 },
                 "processor": {
                     "brand": "Intel",
                     "model": "Core Ultra 7 268V",
                     "full_model": "Intel Core Ultra 7 268V",
-                    "series": "Core Ultra Series 2",
-                    "cores": 8,
-                    "threads": 8,
-                    "base_clock": "2.2 GHz",
-                    "boost_clock": "5 GHz",
-                    "igpu": "Intel Arc 140V GPU",
-                    "igpu_series": "Intel Arc V-Series",
-                    "xe_cores": "8 Xe-Cores"
+                    "series": "Core Ultra Series 2"
                 },
                 "graphics": {
-                    "model": "Intel Arc 140V GPU",
+                    "model": "Integrated Intel Arc 140V GPU",
                     "vram": "Shared",
-                    "dedicated": false,
-                    "xe_cores": "8",
-                    "series": "Intel Arc V-Series",
-                    "boost_clock": "2 GHz",
-                    "ai_tops": "66 TOPS"
+                    "dedicated": false
                 },
                 "network": {
                     "wifi": "Wi-Fi 7",
                     "bluetooth": "5.4"
                 },
                 "power": {
-                    "adapter": "65W USB-C (3-pin)",
+                    "adapter": "65W USB-C Slim GaN (2-pin)",
                     "watt": 65
                 },
                 "battery": {
@@ -6690,7 +6981,7 @@
                     "model": "FHD 1080p + IR Discrete with Privacy Shutter"
                 },
                 "keyboard": {
-                    "type": "Backlit, Traditional Chinese"
+                    "type": "Backlit, Canadian French"
                 },
                 "dimensions": {
                     "size": "312.80 x 214.75 x 8.38/14.77 (front/rear), 17.95 (maximum) mm; 12.31 x 8.45 x 0.33/0.58 (front/rear), 0.71 (maximum) inches",
@@ -6701,8 +6992,8 @@
                     "material": "Carbon Fiber (Top), Aluminium (Bottom)"
                 },
                 "software": {
-                    "os": "Windows 11 Pro, Traditional Chinese / English",
-                    "bundled": "Intel Connectivity Performance Suite"
+                    "os": "Windows 11 Pro, French / Canadian French / English",
+                    "bundled": "Intel Connectivity Performance Suite + Lenovo AI Now"
                 },
                 "audio": {
                     "chip": "Lunar Lake: SoundWire, Realtek ALC713 codec",
@@ -6736,13 +7027,32 @@
             "price_median": 210091,
             "price_usual": 210091,
             "has_history": true,
-            "last_checked": "2026-08-27 20:30:36"
+            "spec_origin": {
+                "network": "psref_platform",
+                "power": "psref_platform",
+                "battery": "psref_platform",
+                "ports": "psref_platform",
+                "camera": "psref_platform",
+                "keyboard": "psref_platform",
+                "dimensions": "psref_platform",
+                "build": "psref_platform",
+                "software": "psref_platform",
+                "audio": "psref_platform",
+                "memory_slots": "psref_platform",
+                "storage_slots": "psref_platform"
+            },
+            "psref_enrichment": {
+                "tier": "psref_platform",
+                "sku": "21NTR000R0",
+                "machine_type": "21NT",
+                "product_name": "ThinkPad X1 Carbon Gen 13 Aura Edition"
+            }
         },
         {
             "id": "21FBR000R0",
-            "model_name": "ThinkPad P16s Gen 2 (16, Intel)",
+            "model_name": "ThinkPad P16 Gen 2 (16, Intel)",
             "internal_model_code": "21FBR000R0",
-            "title": "ThinkPad P16s Gen 2 (16, Intel)",
+            "title": "ThinkPad P16 Gen 2 (16, Intel)",
             "description": "The ThinkPad P16 Gen 2 offers unmatched power and performance in a portable design. Ideal for business professionals, it features 13th Gen Intel® Core™ processors, optional NVIDIA® discrete graphics, and stunning display options, including OLED touchscreen.",
             "availability": "in stock",
             "price": "630091.00 INR",
@@ -6767,7 +7077,7 @@
                 },
                 "storage": {
                     "capacity": "2 TB",
-                    "type": "SSD Gen4 TLC"
+                    "type": "SSD Gen4"
                 },
                 "processor": {
                     "brand": "Intel",
@@ -6784,8 +7094,7 @@
                     "model": "RTX 5000 Ada Generation 16 GB GDDR6",
                     "vram": "16 GB",
                     "dedicated": true,
-                    "series": "RTX 40 Series",
-                    "cuda_cores": 3072
+                    "series": "RTX 40 Series"
                 },
                 "network": {
                     "wifi": "Wi-Fi 6E",
@@ -6858,131 +7167,6 @@
             "price_median": 630091,
             "price_usual": 630091,
             "has_history": true,
-            "last_checked": "2026-08-27 20:30:36"
-        }
-    ],
-    "Lenovo LOQ Laptops": [
-        {
-            "id": "83GSR008R0",
-            "model_name": "Lenovo LOQ Gen 9 (15, Intel)",
-            "internal_model_code": "83GSR008R0",
-            "title": "Lenovo LOQ Gen 9 (15, Intel)",
-            "description": "The Lenovo LOQ 15IAX9 is a powerful gaming laptop with Intel® Core™ HX processors and NVIDIA® GeForce RTX™ GPUs. Its advanced thermal design ensures cool and quiet gaming, while its durable build meets military-grade standards for lasting performance.",
-            "availability": "in stock",
-            "price": "63091.00 INR",
-            "mrp": "98057.00 INR",
-            "image": "https://p4-ofp.static.pub//fes/cms/2024/05/20/d6onrgwtki5a57q687ztkqftuog5mf017643.png",
-            "affiliate_link": "https://lenovo-in.zlvv.net/c/5890822/608695/9634?prodsku=83GSR008R0&u=https%3A%2F%2Fwww.lenovo.com%2Fin%2Foutletin%2Fen%2Fp%2Flaptops%2Floq-laptops%2Flenovo-loq-15iax9%2F83gsr008r0&intsrc=CATF_4639",
-            "store_link": "https://www.lenovo.com/in/outletin/en/p/laptops/loq-laptops/lenovo-loq-15iax9/83gsr008r0",
-            "listing_date": "2024-05-20",
-            "tech_specs": {
-                "display": {
-                    "size": "15.6\"",
-                    "res": "1920x1080",
-                    "refresh": "144Hz",
-                    "type": "IPS",
-                    "brightness": "300 nits",
-                    "color": "100% sRGB"
-                },
-                "memory": {
-                    "amount": "16 GB",
-                    "type": "DDR5",
-                    "speed": "4800 MHz"
-                },
-                "storage": {
-                    "capacity": "512 GB",
-                    "type": "SSD Gen4"
-                },
-                "processor": {
-                    "brand": "Intel",
-                    "model": "Core i5-12450HX",
-                    "full_model": "Intel Core i5-12450HX",
-                    "series": "Core 12th Gen",
-                    "cores": 8,
-                    "threads": 12,
-                    "boost_clock": "4.40 GHz",
-                    "igpu": "Intel UHD Graphics for 12th Gen Intel Processors",
-                    "igpu_series": "Intel UHD Graphics Series"
-                },
-                "graphics": {
-                    "model": "RTX 3050 6 GB GDDR6",
-                    "vram": "6 GB",
-                    "dedicated": true,
-                    "series": "RTX 30 Series",
-                    "cuda_cores": 2048
-                },
-                "network": {
-                    "wifi": "Wi-Fi 6",
-                    "bluetooth": "5.2"
-                },
-                "power": {
-                    "adapter": "170W Slim Tip (3-pin)",
-                    "watt": 170
-                },
-                "battery": {
-                    "capacity": "60Wh"
-                },
-                "ports": {
-                    "items": [
-                        "3x USB-A (USB 5Gbps / USB 3.2 Gen 1)",
-                        "1x USB-C (USB 10Gbps / USB 3.2 Gen 2), with Lenovo PD 140W and DisplayPort 1.4",
-                        "1x HDMI 2.1, up to 8K/60Hz",
-                        "1x Headphone / microphone combo jack (3.5mm)",
-                        "1x Ethernet (RJ-45)",
-                        "1x Slim tip Power connector"
-                    ]
-                },
-                "camera": {
-                    "model": "HD 720p with E-shutter"
-                },
-                "keyboard": {
-                    "type": "White Backlit, Spanish (LA)"
-                },
-                "dimensions": {
-                    "size": "359.86 x 258.7 x 21.9-23.9 mm (14.17 x 10.19 x 0.86-0.94 inches)",
-                    "weight": "Starting at 2.38 kg (5.25 lbs)"
-                },
-                "build": {
-                    "color": "Luna Grey",
-                    "material": "PC-ABS (Top), PC-ABS (Bottom)",
-                    "surface": "Painting"
-                },
-                "software": {
-                    "os": "Windows 11 Home Single Language, Spanish",
-                    "bundled": "Office Trial"
-                },
-                "audio": {
-                    "chip": "High Definition (HD) Audio, Realtek ALC3287 codec",
-                    "speakers": "Stereo speakers, 2W x2, optimized with Nahimic Audio",
-                    "microphone": "2x, Array"
-                },
-                "memory_slots": {
-                    "raw": "Two DDR5 SODIMM slots, dual-channel capable",
-                    "max_memory": "Up to 32GB DDR5-4800"
-                },
-                "storage_slots": {
-                    "raw": "Two M.2 2280 PCIe 4.0 x4 slots",
-                    "max_storage": "Up to two drives, 2x M.2 SSD • M.2 2242 SSD up to 1TB each"
-                }
-            },
-            "spec_source": "lenovo_outlet",
-            "vendor": "lenovo",
-            "brand": "Lenovo",
-            "series": "Lenovo LOQ Laptops",
-            "product_condition": "CERTIFIED REFURBISHED",
-            "product_metadata": {
-                "brand": "Lenovo",
-                "series": "Lenovo LOQ Laptops",
-                "part_number": "83GSR008R0",
-                "model_number": "83GSR008R0",
-                "manufacturer": "Lenovo",
-                "warranty": "1 Year Courier or Carry-in Warranty",
-                "condition": "Certified Refurbished"
-            },
-            "price_mean": 63091,
-            "price_median": 63091,
-            "price_usual": 63091,
-            "has_history": true,
             "spec_origin": {
                 "network": "psref_platform",
                 "power": "psref_platform",
@@ -6999,17 +7183,18 @@
             },
             "psref_enrichment": {
                 "tier": "psref_platform",
-                "sku": "83GSR008R0",
-                "machine_type": "83GS",
-                "product_name": "LOQ 15IAX9"
-            },
-            "last_checked": "2026-08-27 20:30:36"
-        },
+                "sku": "21FBR000R0",
+                "machine_type": "21FB",
+                "product_name": "ThinkPad P16 Gen 2"
+            }
+        }
+    ],
+    "Lenovo LOQ Laptops": [
         {
             "id": "83JER004R0",
-            "model_name": "Lenovo LOQ Gen 10 (15, Intel)",
+            "model_name": "LOQ 15irx10 (15, Intel)",
             "internal_model_code": "83JER004R0",
-            "title": "Lenovo LOQ Gen 10 (15, Intel)",
+            "title": "LOQ 15irx10 (15, Intel)",
             "description": "The Lenovo LOQ 15IRX10 is designed for students and gamers, offering smooth visuals on a 15.6-inch display. Powered by Intel Core HX processors and NVIDIA GeForce RTX graphics, it features Hyperchamber cooling for quiet, efficient performance.",
             "availability": "in stock",
             "price": "142648.00 INR",
@@ -7034,36 +7219,30 @@
                 },
                 "storage": {
                     "capacity": "1 TB",
-                    "type": "SSD Gen4 QLC"
+                    "type": "SSD Gen4"
                 },
                 "processor": {
                     "brand": "Intel",
                     "model": "Core i7-13700HX",
                     "full_model": "Intel Core i7-13700HX",
-                    "series": "Core 13th Gen",
-                    "cores": 16,
-                    "threads": 24,
-                    "boost_clock": "5.00 GHz",
-                    "igpu": "Intel UHD Graphics for 13th Gen Intel Processors",
-                    "igpu_series": "Intel UHD Graphics Series"
+                    "series": "Core 13th Gen"
                 },
                 "graphics": {
                     "model": "RTX 5050 8 GB GDDR7",
                     "vram": "8 GB",
                     "dedicated": true,
-                    "series": "RTX 50 Series",
-                    "cuda_cores": 2560
+                    "series": "RTX 50 Series"
                 },
                 "network": {
                     "wifi": "Wi-Fi 6",
                     "bluetooth": "5.2"
                 },
                 "power": {
-                    "adapter": "245W Slim Tip (3-pin)",
-                    "watt": 245
+                    "adapter": "170W Slim Tip (3-pin)",
+                    "watt": 170
                 },
                 "battery": {
-                    "capacity": "80Wh"
+                    "capacity": "60Wh"
                 },
                 "ports": {
                     "items": [
@@ -7079,7 +7258,7 @@
                     "model": "5.0MP with E-shutter"
                 },
                 "keyboard": {
-                    "type": "24-Zone RGB Backlit, English"
+                    "type": "White Backlit, Arabic"
                 },
                 "dimensions": {
                     "size": "359.86 x 258.7 x 21.9-23.9 mm (14.17 x 10.19 x 0.86-0.94 inches)",
@@ -7090,10 +7269,7 @@
                     "material": "PC-ABS (Top), PC-ABS (Bottom)",
                     "surface": "Painting"
                 },
-                "software": {
-                    "os": "Windows 11 Home Single Language, English",
-                    "bundled": "Microsoft 365 Basic + Office Home 2024 + Lenovo AI Now"
-                },
+                "software": {},
                 "audio": {
                     "chip": "High Definition (HD) Audio, Realtek ALC3287 codec",
                     "speakers": "Stereo speakers, 2W x2, optimized with Nahimic Audio",
@@ -7126,15 +7302,34 @@
             "price_median": 142648,
             "price_usual": 142648,
             "has_history": true,
-            "last_checked": "2026-08-27 20:30:36"
+            "spec_origin": {
+                "network": "psref_platform",
+                "power": "psref_platform",
+                "battery": "psref_platform",
+                "ports": "psref_platform",
+                "camera": "psref_platform",
+                "keyboard": "psref_platform",
+                "dimensions": "psref_platform",
+                "build": "psref_platform",
+                "software": "psref_platform",
+                "audio": "psref_platform",
+                "memory_slots": "psref_platform",
+                "storage_slots": "psref_platform"
+            },
+            "psref_enrichment": {
+                "tier": "psref_platform",
+                "sku": "83JER004R0",
+                "machine_type": "83JE",
+                "product_name": "LOQ 15IRX10"
+            }
         }
     ],
     "Yoga": [
         {
             "id": "82A2R000R0",
-            "model_name": "Yoga Slim 7 Gen 05 (14, AMD)",
+            "model_name": "Yoga Slim 7 14ARE05",
             "internal_model_code": "82A2R000R0",
-            "title": "Yoga Slim 7 Gen 05 (14, AMD)",
+            "title": "Yoga Slim 7 14ARE05",
             "description": "The Yoga Slim 7 (14, AMD) offers sleek design and powerful AMD Ryzen processors for top-tier performance. Enjoy vibrant FHD visuals with Dolby Vision, immersive Dolby Atmos sound, and smart features like motion-sensing auto logoff.",
             "availability": "in stock",
             "price": "53991.00 INR",
@@ -7165,20 +7360,12 @@
                     "brand": "AMD",
                     "model": "Ryzen 7 4800U",
                     "full_model": "AMD Ryzen 7 4800U",
-                    "series": "Ryzen 4000 Series",
-                    "cores": 8,
-                    "threads": 16,
-                    "base_clock": "1.8 GHz",
-                    "boost_clock": "Up to 4.2 GHz",
-                    "igpu": "AMD Radeon Graphics",
-                    "igpu_series": "Integrated Graphics"
+                    "series": "Ryzen 4000 Series"
                 },
                 "graphics": {
-                    "model": "AMD Radeon Graphics",
+                    "model": "Integrated AMD Radeon",
                     "vram": "Shared",
-                    "dedicated": false,
-                    "series": "Integrated Graphics",
-                    "boost_clock": "1750 MHz"
+                    "dedicated": false
                 },
                 "network": {
                     "wifi": "Wi-Fi 6",
@@ -7271,8 +7458,7 @@
                 "sku": "82A2R000R0",
                 "machine_type": "82A2",
                 "product_name": "Yoga Slim 7 14ARE05"
-            },
-            "last_checked": "2026-08-27 20:30:36"
+            }
         },
         {
             "id": "83CVR001R0",
@@ -7309,23 +7495,12 @@
                     "brand": "Intel",
                     "model": "Core Ultra 5 125H",
                     "full_model": "Intel Core Ultra 5 125H",
-                    "series": "Core Ultra Series 1",
-                    "cores": 14,
-                    "threads": 18,
-                    "base_clock": "1.2 GHz",
-                    "boost_clock": "4.5 GHz",
-                    "igpu": "Intel Arc graphics",
-                    "igpu_series": "Intel Arc Graphics Series",
-                    "xe_cores": "7 Xe-Cores"
+                    "series": "Core Ultra Series 1"
                 },
                 "graphics": {
-                    "model": "Intel Arc Graphics",
+                    "model": "Integrated Intel Arc",
                     "vram": "Shared",
-                    "dedicated": false,
-                    "xe_cores": "7",
-                    "series": "Intel Arc Graphics Series",
-                    "boost_clock": "2.2 GHz",
-                    "ai_tops": "18 TOPS"
+                    "dedicated": false
                 },
                 "network": {
                     "wifi": "Wi-Fi 6E",
@@ -7416,8 +7591,7 @@
                 "sku": "83CVR001R0",
                 "machine_type": "83CV",
                 "product_name": "Yoga Slim 7 14IMH9"
-            },
-            "last_checked": "2026-08-27 20:30:36"
+            }
         },
         {
             "id": "83DJR006R0",
@@ -7454,23 +7628,12 @@
                     "brand": "Intel",
                     "model": "Core Ultra 5 125H",
                     "full_model": "Intel Core Ultra 5 125H",
-                    "series": "Core Ultra Series 1",
-                    "cores": 14,
-                    "threads": 18,
-                    "base_clock": "1.2 GHz",
-                    "boost_clock": "4.5 GHz",
-                    "igpu": "Intel Arc graphics",
-                    "igpu_series": "Intel Arc Graphics Series",
-                    "xe_cores": "7 Xe-Cores"
+                    "series": "Core Ultra Series 1"
                 },
                 "graphics": {
-                    "model": "Intel Arc Graphics",
+                    "model": "Integrated Intel Arc",
                     "vram": "Shared",
-                    "dedicated": false,
-                    "xe_cores": "7",
-                    "series": "Intel Arc Graphics Series",
-                    "boost_clock": "2.2 GHz",
-                    "ai_tops": "18 TOPS"
+                    "dedicated": false
                 },
                 "network": {
                     "wifi": "Wi-Fi 6E",
@@ -7562,134 +7725,7 @@
                 "sku": "83DJR006R0",
                 "machine_type": "83DJ",
                 "product_name": "Yoga 7 2-in-1 14IML9"
-            },
-            "last_checked": "2026-08-27 20:30:36"
-        },
-        {
-            "id": "83JXR002R0",
-            "model_name": "Yoga Slim 7i Gen 10 (14, Intel)",
-            "internal_model_code": "83JXR002R0",
-            "title": "Yoga Slim 7i Gen 10 (14, Intel)",
-            "description": "The Yoga Slim 7i Aura Edition Gen 10 offers powerful Intel Core Ultra processors for seamless performance. Its AI-enabled features enhance productivity, while the vivid 14-inch PureSight Pro display is perfect for creators. Ideal for creative professionals.",
-            "availability": "in stock",
-            "price": "77191.00 INR",
-            "mrp": "135693.00 INR",
-            "image": "https://p2-ofp.static.pub//fes/cms/2025/04/03/ocokuaha01uxuu174rylwkkngccgnv383641.jpg",
-            "affiliate_link": "https://lenovo-in.zlvv.net/c/5890822/608695/9634?prodsku=83JXR002R0&u=https%3A%2F%2Fwww.lenovo.com%2Fin%2Foutletin%2Fen%2Fp%2Flaptops%2Fyoga%2Fyoga-s-series%2Flenovo-yoga-slim-7i-aura-edition-gen-10-14-inch-intel%2F83jxr002r0&intsrc=CATF_4639",
-            "store_link": "https://www.lenovo.com/in/outletin/en/p/laptops/yoga/yoga-s-series/lenovo-yoga-slim-7i-aura-edition-gen-10-14-inch-intel/83jxr002r0",
-            "listing_date": "2025-04-02",
-            "tech_specs": {
-                "display": {
-                    "size": "14\"",
-                    "res": "1920x1200",
-                    "refresh": "60Hz",
-                    "type": "OLED",
-                    "brightness": "400 nits",
-                    "color": "100% DCI-P3"
-                },
-                "memory": {
-                    "amount": "16 GB",
-                    "type": "DDR5",
-                    "speed": "8533 MHz"
-                },
-                "storage": {
-                    "capacity": "1 TB",
-                    "type": "SSD Gen4 TLC"
-                },
-                "processor": {
-                    "brand": "Intel",
-                    "model": "Core Ultra 5 226V",
-                    "full_model": "Intel Core Ultra 5 226V",
-                    "series": "Core Ultra Series 2",
-                    "cores": 8,
-                    "threads": 8,
-                    "base_clock": "2.1 GHz",
-                    "boost_clock": "4.5 GHz",
-                    "igpu": "Intel Arc 130V GPU",
-                    "igpu_series": "Intel Arc V-Series",
-                    "xe_cores": "7 Xe-Cores"
-                },
-                "graphics": {
-                    "model": "Intel Arc 130V GPU",
-                    "vram": "Shared",
-                    "dedicated": false,
-                    "xe_cores": "7",
-                    "series": "Intel Arc V-Series",
-                    "boost_clock": "1.85 GHz",
-                    "ai_tops": "53 TOPS"
-                },
-                "network": {
-                    "wifi": "Wi-Fi 7",
-                    "bluetooth": "5.4"
-                },
-                "power": {
-                    "adapter": "65W USB-C Slim (2-pin, Wall-mount)",
-                    "watt": 65
-                },
-                "battery": {
-                    "capacity": "70Wh"
-                },
-                "ports": {
-                    "items": [
-                        "1x USB-A (USB 5Gbps), Always On",
-                        "2x Thunderbolt 4, with USB PD 45-65W and DisplayPort 2.1",
-                        "1x HDMI 2.1, up to 4K/60Hz",
-                        "1x Headphone / microphone combo jack (3.5mm)",
-                        "1x microSD card reader"
-                    ]
-                },
-                "camera": {
-                    "model": "5.0MP + IR with E-shutter"
-                },
-                "keyboard": {
-                    "type": "Backlit, Turkish"
-                },
-                "dimensions": {
-                    "size": "312 x 219.3 x 13.9 mm (12.28 x 8.63 x 0.55 inches)",
-                    "weight": "Starting at 1.19 kg (2.62 lbs)"
-                },
-                "build": {
-                    "color": "Seashell",
-                    "material": "Aluminium (Top), Aluminium (Bottom)",
-                    "surface": "Aluminium Stamping (Anodized with Sandblasting)"
-                },
-                "software": {
-                    "os": "Windows 11 Home Single Language, Turkish / English",
-                    "bundled": "Office Trial"
-                },
-                "audio": {
-                    "chip": "SoundWire, Cirrus Logic CS42L43 codec",
-                    "speakers": "4 stereo speakers, 2W x2 (woofers), 2W x2 (tweeters), optimized with Dolby Atmos, Smart Amplifier (AMP)",
-                    "microphone": "4x, Array"
-                },
-                "memory_slots": {
-                    "raw": "Memory soldered to systemboard, no slots, dual-channel",
-                    "max_memory": "16GB soldered memory, not upgradable"
-                },
-                "storage_slots": {
-                    "raw": "One M.2 2242 PCIe 4.0 x4 slot",
-                    "max_storage": "One drive, up to 1TB M.2 2242 SSD"
-                }
-            },
-            "spec_source": "lenovo_outlet",
-            "vendor": "lenovo",
-            "brand": "Lenovo",
-            "series": "Yoga",
-            "product_condition": "CERTIFIED REFURBISHED",
-            "product_metadata": {
-                "brand": "Lenovo",
-                "series": "Yoga",
-                "part_number": "83JXR002R0",
-                "model_number": "83JXR002R0",
-                "manufacturer": "Lenovo",
-                "warranty": "1 Year Courier or Carry-in Warranty",
-                "condition": "Certified Refurbished"
-            },
-            "price_mean": 77191,
-            "price_median": 77191,
-            "price_usual": 77191,
-            "has_history": true,
-            "last_checked": "2026-08-27 20:30:36"
+            }
         },
         {
             "id": "82Y7R000R0",
@@ -7720,25 +7756,18 @@
                 },
                 "storage": {
                     "capacity": "1 TB",
-                    "type": "SSD Gen4 TLC"
+                    "type": "SSD Gen4"
                 },
                 "processor": {
                     "brand": "Intel",
                     "model": "Core i7-13700H",
                     "full_model": "Intel Core i7-13700H",
-                    "series": "Core 13th Gen",
-                    "cores": 14,
-                    "threads": 20,
-                    "boost_clock": "5 GHz",
-                    "igpu": "Intel Iris Xe Graphics eligible",
-                    "igpu_series": "Intel Iris Xe Series"
+                    "series": "Core 13th Gen"
                 },
                 "graphics": {
-                    "model": "Intel Iris Xe Graphics eligible",
+                    "model": "Integrated Intel Iris Xe",
                     "vram": "Shared",
-                    "dedicated": false,
-                    "series": "Intel Iris Xe Series",
-                    "boost_clock": "1.5 GHz"
+                    "dedicated": false
                 },
                 "network": {
                     "wifi": "Wi-Fi 6E",
@@ -7811,13 +7840,32 @@
             "price_median": 91090,
             "price_usual": 91090,
             "has_history": true,
-            "last_checked": "2026-08-27 20:30:36"
+            "spec_origin": {
+                "network": "psref_platform",
+                "power": "psref_platform",
+                "battery": "psref_platform",
+                "ports": "psref_platform",
+                "camera": "psref_platform",
+                "keyboard": "psref_platform",
+                "dimensions": "psref_platform",
+                "build": "psref_platform",
+                "software": "psref_platform",
+                "audio": "psref_platform",
+                "memory_slots": "psref_platform",
+                "storage_slots": "psref_platform"
+            },
+            "psref_enrichment": {
+                "tier": "psref_platform",
+                "sku": "82Y7R000R0",
+                "machine_type": "82Y7",
+                "product_name": "Yoga Pro 7 14IRH8"
+            }
         },
         {
             "id": "83HMR001R0",
-            "model_name": "Yoga Slim 7i Gen 9 (15, Intel)",
+            "model_name": "Yoga Slim 7i Aura Edition Gen 9 (15, Intel)",
             "internal_model_code": "83HMR001R0",
-            "title": "Yoga Slim 7i Gen 9 (15, Intel)",
+            "title": "Yoga Slim 7i Aura Edition Gen 9 (15, Intel)",
             "description": "The Yoga Slim 7i Gen 9 Aura Edition is an ultrapremium laptop with Intel Core Ultra processors and a stunning 2.8K display. It offers seamless AI experiences, multiday battery life up to 18+ hours, and smart features like Smart Share, Smart Modes, and Smart Care.",
             "availability": "in stock",
             "price": "136591.00 INR",
@@ -7842,29 +7890,18 @@
                 },
                 "storage": {
                     "capacity": "1 TB",
-                    "type": "SSD Gen4 TLC"
+                    "type": "SSD Gen4"
                 },
                 "processor": {
                     "brand": "Intel",
                     "model": "Core Ultra 7 258V",
                     "full_model": "Intel Core Ultra 7 258V",
-                    "series": "Core Ultra Series 2",
-                    "cores": 8,
-                    "threads": 8,
-                    "base_clock": "2.2 GHz",
-                    "boost_clock": "4.8 GHz",
-                    "igpu": "Intel Arc 140V GPU",
-                    "igpu_series": "Intel Arc V-Series",
-                    "xe_cores": "8 Xe-Cores"
+                    "series": "Core Ultra Series 2"
                 },
                 "graphics": {
-                    "model": "Intel Arc 140V GPU",
+                    "model": "Integrated Intel Arc 140V GPU",
                     "vram": "Shared",
-                    "dedicated": false,
-                    "xe_cores": "8",
-                    "series": "Intel Arc V-Series",
-                    "boost_clock": "1.95 GHz",
-                    "ai_tops": "64 TOPS"
+                    "dedicated": false
                 },
                 "network": {
                     "wifi": "Wi-Fi 7",
@@ -7936,7 +7973,26 @@
             "price_median": 136591,
             "price_usual": 136591,
             "has_history": true,
-            "last_checked": "2026-08-27 20:30:36"
+            "spec_origin": {
+                "network": "psref_platform",
+                "power": "psref_platform",
+                "battery": "psref_platform",
+                "ports": "psref_platform",
+                "camera": "psref_platform",
+                "keyboard": "psref_platform",
+                "dimensions": "psref_platform",
+                "build": "psref_platform",
+                "software": "psref_platform",
+                "audio": "psref_platform",
+                "memory_slots": "psref_platform",
+                "storage_slots": "psref_platform"
+            },
+            "psref_enrichment": {
+                "tier": "psref_platform",
+                "sku": "83HMR001R0",
+                "machine_type": "83HM",
+                "product_name": "Yoga Slim 7 15ILL9"
+            }
         },
         {
             "id": "83EDR000R0",
@@ -7967,13 +8023,13 @@
                 },
                 "storage": {
                     "capacity": "1 TB",
-                    "type": "SSD Gen4 TLC"
+                    "type": "SSD Gen4"
                 },
                 "processor": {
                     "brand": "Qualcomm",
                     "model": "X Elite X1E-78-100",
-                    "full_model": "X Elite X1E-78-100",
-                    "series": "Other Mobile"
+                    "full_model": "Qualcomm X Elite X1E-78-100",
+                    "series": "Snapdragon X Series"
                 },
                 "graphics": {
                     "model": "Integrated Qualcomm Adreno GPU",
@@ -8047,15 +8103,34 @@
             "price_median": 147091,
             "price_usual": 147091,
             "has_history": true,
-            "last_checked": "2026-08-27 20:30:36"
+            "spec_origin": {
+                "network": "psref_platform",
+                "power": "psref_platform",
+                "battery": "psref_platform",
+                "ports": "psref_platform",
+                "camera": "psref_platform",
+                "keyboard": "psref_platform",
+                "dimensions": "psref_platform",
+                "build": "psref_platform",
+                "software": "psref_platform",
+                "audio": "psref_platform",
+                "memory_slots": "psref_platform",
+                "storage_slots": "psref_platform"
+            },
+            "psref_enrichment": {
+                "tier": "psref_platform",
+                "sku": "83EDR000R0",
+                "machine_type": "83ED",
+                "product_name": "Yoga Slim 7 14Q8X9"
+            }
         }
     ],
     "Legion Laptops": [
         {
             "id": "82B5R000R0",
-            "model_name": "Legion 5 Gen 05 (15, AMD)",
+            "model_name": "Legion 5 Inch, Gaming (15, AMD)",
             "internal_model_code": "82B5R000R0",
-            "title": "Legion 5 Gen 05 (15, AMD)",
+            "title": "Legion 5 Inch, Gaming (15, AMD)",
             "description": "Legion 5 15 - AMD Ryzen 5, 8 GB RAM, 256 SSD",
             "availability": "in stock",
             "price": "61690.00 INR",
@@ -8086,20 +8161,13 @@
                     "brand": "AMD",
                     "model": "Ryzen 5 4600H",
                     "full_model": "AMD Ryzen 5 4600H",
-                    "series": "Ryzen 4000 Series",
-                    "cores": 6,
-                    "threads": 12,
-                    "base_clock": "3 GHz",
-                    "boost_clock": "Up to 4 GHz",
-                    "igpu": "AMD Radeon Graphics",
-                    "igpu_series": "Integrated Graphics"
+                    "series": "Ryzen 4000 Series"
                 },
                 "graphics": {
                     "model": "GTX 1650 4 GB GDDR6",
                     "vram": "4 GB",
                     "dedicated": true,
-                    "series": "GTX 16 Series",
-                    "cuda_cores": 1024
+                    "series": "GTX 16 Series"
                 },
                 "network": {
                     "wifi": "Wi-Fi 6",
@@ -8110,7 +8178,7 @@
                     "watt": 170
                 },
                 "battery": {
-                    "capacity": "60.0Wh"
+                    "capacity": "60Wh"
                 },
                 "camera": {
                     "model": "720p with Privacy Shutter"
@@ -8164,8 +8232,7 @@
                 "sku": "82B5R000R0",
                 "machine_type": "82B5",
                 "product_name": "Lenovo Legion 5 15ARH05"
-            },
-            "last_checked": "2026-08-27 20:30:36"
+            }
         },
         {
             "id": "82JKR001R0",
@@ -8202,19 +8269,13 @@
                     "brand": "Intel",
                     "model": "Core i7-11800H",
                     "full_model": "Intel Core i7-11800H",
-                    "series": "Core 11th Gen",
-                    "cores": 8,
-                    "threads": 16,
-                    "boost_clock": "4.60 GHz",
-                    "igpu": "Intel UHD Graphics for 11th Gen Intel Processors",
-                    "igpu_series": "Intel UHD Graphics Series"
+                    "series": "Core 11th Gen"
                 },
                 "graphics": {
                     "model": "RTX 3050 Ti 4 GB GDDR6",
                     "vram": "4 GB",
                     "dedicated": true,
-                    "series": "RTX 30 Series",
-                    "cuda_cores": 2560
+                    "series": "RTX 30 Series"
                 },
                 "network": {
                     "wifi": "Wi-Fi 6",
@@ -8290,13 +8351,32 @@
             "price_median": 92491,
             "price_usual": 92491,
             "has_history": true,
-            "last_checked": "2026-08-27 20:30:36"
+            "spec_origin": {
+                "network": "psref_platform",
+                "power": "psref_platform",
+                "battery": "psref_platform",
+                "ports": "psref_platform",
+                "camera": "psref_platform",
+                "keyboard": "psref_platform",
+                "dimensions": "psref_platform",
+                "build": "psref_platform",
+                "software": "psref_platform",
+                "audio": "psref_platform",
+                "memory_slots": "psref_platform",
+                "storage_slots": "psref_platform"
+            },
+            "psref_enrichment": {
+                "tier": "psref_platform",
+                "sku": "82JKR001R0",
+                "machine_type": "82JK",
+                "product_name": "Legion 5 15ITH6"
+            }
         },
         {
             "id": "82JUR005R0",
-            "model_name": "Legion 5 Gen 6 (15, AMD)",
+            "model_name": "Legion 5 Gaming Gen 6 (15, AMD)",
             "internal_model_code": "82JUR005R0",
-            "title": "Legion 5 Gen 6 (15, AMD)",
+            "title": "Legion 5 Gaming Gen 6 (15, AMD)",
             "description": "Legion 5 15 - AMD Ryzen 7, 16 GB RAM, 1TB SSD",
             "availability": "in stock",
             "price": "116891.00 INR",
@@ -8327,20 +8407,13 @@
                     "brand": "AMD",
                     "model": "Ryzen 7 5800H",
                     "full_model": "AMD Ryzen 7 5800H",
-                    "series": "Ryzen 5000 Series",
-                    "cores": 8,
-                    "threads": 16,
-                    "base_clock": "3.2 GHz",
-                    "boost_clock": "Up to 4.4 GHz",
-                    "igpu": "AMD Radeon Graphics",
-                    "igpu_series": "Integrated Graphics"
+                    "series": "Ryzen 5000 Series"
                 },
                 "graphics": {
                     "model": "RTX 3060 6 GB GDDR6",
                     "vram": "6 GB",
                     "dedicated": true,
-                    "series": "RTX 30 Series",
-                    "cuda_cores": 3840
+                    "series": "RTX 30 Series"
                 },
                 "network": {
                     "wifi": "Wi-Fi 6",
@@ -8416,7 +8489,26 @@
             "price_median": 116891,
             "price_usual": 116891,
             "has_history": true,
-            "last_checked": "2026-08-27 20:30:36"
+            "spec_origin": {
+                "network": "psref_platform",
+                "power": "psref_platform",
+                "battery": "psref_platform",
+                "ports": "psref_platform",
+                "camera": "psref_platform",
+                "keyboard": "psref_platform",
+                "dimensions": "psref_platform",
+                "build": "psref_platform",
+                "software": "psref_platform",
+                "audio": "psref_platform",
+                "memory_slots": "psref_platform",
+                "storage_slots": "psref_platform"
+            },
+            "psref_enrichment": {
+                "tier": "psref_platform",
+                "sku": "82JUR005R0",
+                "machine_type": "82JU",
+                "product_name": "Legion 5 15ACH6H"
+            }
         },
         {
             "id": "83FDR001R0",
@@ -8465,8 +8557,7 @@
                     "model": "RTX 4060 8 GB GDDR6",
                     "vram": "8 GB",
                     "dedicated": true,
-                    "series": "RTX 40 Series",
-                    "cuda_cores": 3072
+                    "series": "RTX 40 Series"
                 },
                 "network": {
                     "wifi": "Wi-Fi 6E",
@@ -8543,13 +8634,32 @@
             "price_median": 161691,
             "price_usual": 161691,
             "has_history": true,
-            "last_checked": "2026-08-27 20:30:36"
+            "spec_origin": {
+                "network": "psref_platform",
+                "power": "psref_platform",
+                "battery": "psref_platform",
+                "ports": "psref_platform",
+                "camera": "psref_platform",
+                "keyboard": "psref_platform",
+                "dimensions": "psref_platform",
+                "build": "psref_platform",
+                "software": "psref_platform",
+                "audio": "psref_platform",
+                "memory_slots": "psref_platform",
+                "storage_slots": "psref_platform"
+            },
+            "psref_enrichment": {
+                "tier": "psref_platform",
+                "sku": "83FDR001R0",
+                "machine_type": "83FD",
+                "product_name": "Legion 7 16IRX9"
+            }
         },
         {
             "id": "82RGR000R0",
-            "model_name": "Legion 5 Gen 7 (16, AMD)",
+            "model_name": "Legion 5 Pro Gen 7 (16, AMD)",
             "internal_model_code": "82RGR000R0",
-            "title": "Legion 5 Gen 7 (16, AMD)",
+            "title": "Legion 5 Pro Gen 7 (16, AMD)",
             "description": "The Legion 5 Pro Gen 7 (16, AMD) delivers exceptional gaming performance with AMD Ryzen™ 6000 processors and NVIDIA RTX™ 30 GPUs. Enjoy stunning visuals on its 16-inch WQXGA display with up to 240Hz refresh rate, enhanced cooling, and DDR5 memory for seamless gameplay.",
             "availability": "in stock",
             "price": "182091.00 INR",
@@ -8580,20 +8690,13 @@
                     "brand": "AMD",
                     "model": "Ryzen 7 6800H",
                     "full_model": "AMD Ryzen 7 6800H",
-                    "series": "Ryzen 6000 Series",
-                    "cores": 8,
-                    "threads": 16,
-                    "base_clock": "3.2 GHz",
-                    "boost_clock": "Up to 4.7 GHz",
-                    "igpu": "AMD Radeon 680M",
-                    "igpu_series": "Radeon 600M Series"
+                    "series": "Ryzen 6000 Series"
                 },
                 "graphics": {
                     "model": "RTX 3070 8 GB GDDR6",
                     "vram": "8 GB",
                     "dedicated": true,
-                    "series": "RTX 30 Series",
-                    "cuda_cores": 5120
+                    "series": "RTX 30 Series"
                 },
                 "network": {
                     "wifi": "Wi-Fi 6E",
@@ -8604,7 +8707,7 @@
                     "watt": 300
                 },
                 "battery": {
-                    "capacity": "80.0Wh"
+                    "capacity": "80Wh"
                 },
                 "ports": {
                     "items": [
@@ -8686,8 +8789,7 @@
                 "sku": "82RGR000R0",
                 "machine_type": "82RG",
                 "product_name": "Legion 5 Pro 16ARH7H"
-            },
-            "last_checked": "2026-08-27 20:30:36"
+            }
         }
     ]
 }

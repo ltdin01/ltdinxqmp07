@@ -57,8 +57,23 @@ class LenovoOutletClient:
         if hasattr(self.session, "cookies"):
             self.session.cookies.set("user_country", "IN", domain=".lenovo.com")
 
+    def discover_page_filter_id(self) -> str:
+        """Dynamically extract pageFilterId / facetId from the live outlet laptops page."""
+        try:
+            url = f"{OUTLET_SITE_BASE}/laptops/"
+            headers = base_lenovo.request_headers(OUTLET_SITE_BASE)
+            resp = self.session.get(url, headers=headers, timeout=15)
+            if resp.status_code == 200:
+                m = re.search(r'<div class=[\"\']facetId[\"\']>([a-f0-9\-]+)</div>', resp.text) or re.search(r'[\"\']facetId[\"\']\s*:\s*[\"\']([a-f0-9\-]+)[\"\']', resp.text)
+                if m:
+                    return m.group(1)
+        except Exception:
+            pass
+        return OUTLET_DLP_PAGE_FILTER_ID
+
     def fetch_all_laptops(self, *, limit: int | None = None) -> list[dict[str, Any]]:
         """Fetch all laptop items from the Lenovo Outlet DLP search API."""
+        filter_id = self.discover_page_filter_id()
         page = 1
         page_count = 1
         laptops: list[dict[str, Any]] = []
@@ -68,10 +83,10 @@ class LenovoOutletClient:
                 self.sleep()
             params = {
                 "classificationGroupIds": OUTLET_DLP_GROUP_ID,
-                "pageFilterId": OUTLET_DLP_PAGE_FILTER_ID,
+                "pageFilterId": filter_id,
                 "facets": [],
                 "page": str(page),
-                "pageSize": 30,
+                "pageSize": 50,
                 "groupCode": "",
                 "init": True if page == 1 else False,
                 "sorts": ["priceUp"],
@@ -80,7 +95,7 @@ class LenovoOutletClient:
                 "subseriesCode": "",
             }
             encoded = quote(quote(json.dumps(params, separators=(",", ":"))))
-            url = f"{OUTLET_OPENAPI_BASE}/ofp/search/dlp/product/query/get/_tsc?pageFilterId={OUTLET_DLP_PAGE_FILTER_ID}&subSeriesCode=&loyalty=false&params={encoded}"
+            url = f"{OUTLET_OPENAPI_BASE}/ofp/search/dlp/product/query/get/_tsc?pageFilterId={filter_id}&subSeriesCode=&loyalty=false&params={encoded}"
             
             headers = base_lenovo.request_headers(OUTLET_SITE_BASE)
             response = self.session.get(url, headers=headers, timeout=45)
