@@ -475,7 +475,8 @@ def format_catalog(
     psref_sku_map: dict[str, Any] = {}
     if psref_map and psref_map.exists():
         psref_sku_map = read_json(psref_map, {})
-    formatted: OrderedDict[str, list[dict[str, Any]]] = OrderedDict()
+    all_processed_products: dict[str, dict[str, Any]] = {}
+    product_target_category: dict[str, str] = {}
     psref_applied = 0
     count = 0
     for _, rows in (groups or {}).items():
@@ -579,20 +580,20 @@ def format_catalog(
                     for field in ("processor", "graphics", "memory", "storage", "display"):
                         if not row_specs.get(field) and def_cto.get(field):
                             row_specs[field] = def_cto[field]
-            category = category_from_product(product)
-            formatted.setdefault(category, []).append(row)
-            count += 1
+            all_processed_products[sku] = row
+            product_target_category[sku] = category
 
     # Preserve all existing products from existing data that weren't re-scraped
-    processed_ids = {normalize_id(row.get("id")) for rows in formatted.values() for row in rows}
     for sku, existing_product in existing.items():
-        if sku in processed_ids:
+        if sku in all_processed_products:
             continue
         cat = "Uncategorized"
         fc = existing_product.get("full_category", "")
         parts = [x.strip() for x in fc.split(">")]
-        if len(parts) >= 3:
+        if len(parts) >= 3 and parts[2] not in {"Other", "Uncategorized"}:
             cat = parts[2]
+        else:
+            cat = existing_product.get("series") or existing_product.get("category") or "Uncategorized"
         row = dict(existing_product)
         row["vendor"] = row.get("vendor") or "lenovo"
         if "CTO" in sku:
@@ -606,8 +607,39 @@ def format_catalog(
                 row["spec_source"] = "psref"
                 psref_applied += 1
                 row["psref"] = {k: v for k, v in psref_entry.items() if k not in ("tech_specs", "raw_psref", "diagnostics")}
-        formatted.setdefault(cat, []).append(row)
-        count += 1
+        all_processed_products[sku] = row
+        product_target_category[sku] = cat
+
+    # Strictly preserve existing category order and product order from existing data
+    existing_raw = read_json(existing_data or output_path, {})
+    existing_categories = list(existing_raw.keys()) if isinstance(existing_raw, dict) else []
+    existing_order_by_cat = {
+        cat: [p.get("id") for p in prods if isinstance(p, dict) and p.get("id")]
+        for cat, prods in (existing_raw.items() if isinstance(existing_raw, dict) else [])
+        if isinstance(prods, list)
+    }
+
+    formatted: OrderedDict[str, list[dict[str, Any]]] = OrderedDict()
+    placed_skus: set[str] = set()
+
+    # 1. Place products in existing categories according to their exact original order
+    for cat in existing_categories:
+        formatted[cat] = []
+        for sku in existing_order_by_cat.get(cat, []):
+            if sku in all_processed_products and sku not in placed_skus:
+                formatted[cat].append(all_processed_products[sku])
+                placed_skus.add(sku)
+
+    # 2. Append newly discovered products to their respective category
+    for sku, row in all_processed_products.items():
+        if sku not in placed_skus:
+            cat = product_target_category.get(sku, "Uncategorized")
+            formatted.setdefault(cat, []).append(row)
+            placed_skus.add(sku)
+
+    # 3. Clean up empty categories
+    formatted = OrderedDict((k, v) for k, v in formatted.items() if v)
+    count = sum(len(rows) for rows in formatted.values())
 
     # Post-process: normalize titles by PSREF product_key group so products
     # sharing the same model series get a consistent consumer-friendly name.
