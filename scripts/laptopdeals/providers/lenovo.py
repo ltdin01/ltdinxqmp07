@@ -377,7 +377,14 @@ def scrape_catalog(
                         ef_pid = normalize_id(ef_prod.get("id") or ef_prod.get("product_code"))
                         if ef_pid and ef_pid.upper() in live_seen_skus:
                             if not bool(ef_prod.get("archived") or ef_prod.get("archived_at")):
-                                existing_map[ef_pid.upper()] = ef_prod
+                                p_copy = dict(ef_prod)
+                                if "image" in p_copy and "images" not in p_copy:
+                                    p_copy["images"] = [p_copy["image"]] if p_copy["image"] else []
+                                if "full_category" in p_copy and "breadcrumb_path" not in p_copy:
+                                    p_copy["breadcrumb_path"] = p_copy["full_category"]
+                                if "series" in p_copy and "series_filter" not in p_copy:
+                                    p_copy["series_filter"] = p_copy["series"]
+                                existing_map[ef_pid.upper()] = p_copy
         for product in products:
             pid = product.get("id")
             if pid:
@@ -411,7 +418,14 @@ def scrape_catalog(
 
 
 def category_from_product(product: dict[str, Any]) -> str:
-    combined = " ".join(str(x).lower() for x in [product.get("breadcrumb_path"), product.get("series_filter")])
+    fc = str(product.get("full_category") or "")
+    parts = [x.strip() for x in fc.split(">")]
+    if len(parts) >= 3 and parts[2] not in {"Other", "Uncategorized"}:
+        return parts[2]
+    series = str(product.get("series") or product.get("category") or "")
+    if series and series not in {"Other", "Uncategorized"}:
+        return series
+    combined = " ".join(str(x).lower() for x in [product.get("breadcrumb_path"), product.get("series_filter"), product.get("title")])
     if "ideapad" in combined:
         return "Ideapad"
     if "legion" in combined:
@@ -424,6 +438,8 @@ def category_from_product(product: dict[str, Any]) -> str:
         return "Thinkbook"
     if "yoga" in combined:
         return "Yoga"
+    if "ideacentre" in combined or "aio" in combined:
+        return "Ideacentre"
     return "Other"
 
 
@@ -488,7 +504,21 @@ def format_catalog(
                 existing_title = clean_text(existing_product.get("title") or existing_product.get("model_name"))
                 if is_display_name(existing_title, sku):
                     title = existing_title
-            full_category = " > ".join(path_from_breadcrumb(breadcrumb_from_product(product), title, sku, category_from_product(product)))
+            category = category_from_product(product)
+            if category == "Other" and existing_product:
+                cat_existing = existing_product.get("series") or existing_product.get("category") or ""
+                if not cat_existing:
+                    parts = [x.strip() for x in str(existing_product.get("full_category") or "").split(">")]
+                    if len(parts) >= 3:
+                        cat_existing = parts[2]
+                if cat_existing and cat_existing not in {"Other", "Uncategorized"}:
+                    category = cat_existing
+
+            raw_fc = str(product.get("full_category") or "")
+            if raw_fc and "Other" not in raw_fc and "Uncategorized" not in raw_fc:
+                full_category = raw_fc
+            else:
+                full_category = " > ".join(path_from_breadcrumb(breadcrumb_from_product(product), title, sku, category))
             store_link = product.get("store_link", "")
             affiliate = ""
             if store_link and sku:
@@ -499,6 +529,7 @@ def format_catalog(
             raw_m = product.get("mrp")
             raw_m_match = re.search(r"\d+(?:\.\d+)?", str(raw_m or ""))
             raw_m_val = int(float(raw_m_match.group(0))) if raw_m_match else 0
+            img = (product.get("images") or [product.get("image") or (existing_product.get("image") if existing_product else "") or ""])[0]
             row = {
                 "id": sku,
                 "model_name": model_name(title),
@@ -508,7 +539,7 @@ def format_catalog(
                 "availability": product.get("availability", "unknown"),
                 "price": f"{current}.00 INR" if current else (f"{raw_p_val}.00 INR" if raw_p_val else 0),
                 "mrp": f"{raw_m_val}.00 INR" if raw_m_val else 0,
-                "image": (product.get("images") or [""])[0],
+                "image": img,
                 "affiliate_link": affiliate,
                 "store_link": store_link,
                 "full_category": full_category,
@@ -520,7 +551,7 @@ def format_catalog(
                 "vendor": "lenovo",
                 "product_metadata": {
                     "brand": "Lenovo",
-                    "series": category_from_product(product),
+                    "series": category,
                     "part_number": sku,
                     "model_number": sku,
                     "manufacturer": "Lenovo",
