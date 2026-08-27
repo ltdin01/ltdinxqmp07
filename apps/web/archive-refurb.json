@@ -553,7 +553,7 @@
             },
             "price_mean": 46291,
             "price_median": 46291,
-            "price_usual": 46833,
+            "price_usual": 46684,
             "has_history": true,
             "spec_origin": {
                 "network": "psref_platform",
@@ -721,147 +721,6 @@
             },
             "archived": true,
             "archived_at": "2026-08-16"
-        },
-        {
-            "id": "83ERR000R0",
-            "model_name": "IdeaPad Slim 3i Gen 8 (15, Intel)",
-            "internal_model_code": "83ERR000R0",
-            "title": "IdeaPad Slim 3i Gen 8 (15, Intel)",
-            "description": "The IdeaPad Slim 3i 13th Gen (15, Intel) is a lightweight laptop designed for mobility and performance. It features a low blue-light display, rapid charging, Dolby Audio, and a privacy shutter webcam, making it ideal for students and professionals.",
-            "availability": "out of stock",
-            "price": "45691.00 INR",
-            "mrp": "48306.00 INR",
-            "image": "https://p2-ofp.static.pub//fes/cms/2023/07/17/cb33s6cv4scvgl4k2mxwpjhnmqfjgg628756.png",
-            "affiliate_link": "https://lenovo-in.zlvv.net/c/5890822/608695/9634?prodsku=83ERR000R0&u=https%3A%2F%2Fwww.lenovo.com%2Fin%2Foutletin%2Fen%2Fp%2Flaptops%2Fideapad%2Fideapad-s-series%2Fideapad-slim-3i-gen-8-15-inch-intel%2F83err000r0&intsrc=CATF_4639",
-            "store_link": "https://www.lenovo.com/in/outletin/en/p/laptops/ideapad/ideapad-s-series/ideapad-slim-3i-gen-8-15-inch-intel/83err000r0",
-            "listing_date": "2023-07-17",
-            "tech_specs": {
-                "display": {
-                    "size": "15.6\"",
-                    "res": "1920x1080",
-                    "refresh": "60Hz",
-                    "type": "IPS",
-                    "brightness": "300 nits",
-                    "color": "45% NTSC"
-                },
-                "memory": {
-                    "amount": "16 GB",
-                    "type": "DDR5",
-                    "speed": "4800 MHz"
-                },
-                "storage": {
-                    "capacity": "512 GB",
-                    "type": "SSD Gen4"
-                },
-                "processor": {
-                    "brand": "Intel",
-                    "model": "Core i5-12450H",
-                    "full_model": "Intel Core i5-12450H",
-                    "series": "Core 12th Gen",
-                    "cores": 8,
-                    "threads": 12,
-                    "boost_clock": "4.40 GHz",
-                    "igpu": "Intel UHD Graphics for 12th Gen Intel Processors",
-                    "igpu_series": "Intel UHD Graphics Series"
-                },
-                "graphics": {
-                    "model": "Intel UHD Graphics for 12th Gen Intel Processors",
-                    "vram": "Shared",
-                    "dedicated": false,
-                    "series": "Intel UHD Graphics Series",
-                    "boost_clock": "1.20 GHz"
-                },
-                "network": {
-                    "wifi": "Wi-Fi 6",
-                    "bluetooth": "5.2"
-                },
-                "power": {
-                    "adapter": "65W Round Tip (3-pin)",
-                    "watt": 65
-                },
-                "battery": {
-                    "capacity": "47Wh"
-                },
-                "ports": {
-                    "items": [
-                        "2x USB 3.2 Gen 1",
-                        "1x USB-C 3.2 Gen 1 (support data transfer, Power Delivery and DisplayPort 1.2)",
-                        "1x HDMI 1.4",
-                        "1x Headphone / microphone combo jack (3.5mm)",
-                        "1x Card reader",
-                        "1x Round tip power connector"
-                    ]
-                },
-                "camera": {
-                    "model": "FHD 1080p with Privacy Shutter"
-                },
-                "keyboard": {
-                    "type": "Non-backlit, Spanish (LA)"
-                },
-                "dimensions": {
-                    "size": "359.3 x 235 x 17.9 mm (14.15 x 9.25 x 0.70 inches)",
-                    "weight": "Starting at 1.62 kg (3.57 lbs)"
-                },
-                "build": {
-                    "color": "Frost Blue",
-                    "material": "PC-ABS (Top), PC-ABS (Bottom)",
-                    "surface": "IMR (In-Mold Decoration by Roller)"
-                },
-                "software": {},
-                "audio": {
-                    "chip": "High Definition (HD) Audio",
-                    "speakers": "User-facing stereo speakers, 1.5W x2, optimized with Dolby Audio",
-                    "microphone": "2x, Array"
-                },
-                "memory_slots": {
-                    "raw": "Memory soldered to systemboard, no slots, dual-channel (16GB models)",
-                    "max_memory": "16GB soldered memory, not upgradable"
-                },
-                "storage_slots": {
-                    "raw": "One M.2 PCIe 4.0 x4 slot",
-                    "max_storage": "One drive, up to 1TB M.2 2242 SSD"
-                }
-            },
-            "spec_source": "lenovo_outlet",
-            "vendor": "lenovo",
-            "brand": "Lenovo",
-            "series": "Ideapad",
-            "product_condition": "CERTIFIED REFURBISHED",
-            "product_metadata": {
-                "brand": "Lenovo",
-                "series": "Ideapad",
-                "part_number": "83ERR000R0",
-                "model_number": "83ERR000R0",
-                "manufacturer": "Lenovo",
-                "warranty": "1 Year Courier or Carry-in Warranty",
-                "condition": "Certified Refurbished"
-            },
-            "price_mean": 41840,
-            "price_median": 41341,
-            "price_usual": 41531,
-            "has_history": true,
-            "spec_origin": {
-                "network": "psref_platform",
-                "power": "psref_platform",
-                "battery": "psref_platform",
-                "ports": "psref_platform",
-                "camera": "psref_platform",
-                "keyboard": "psref_platform",
-                "dimensions": "psref_platform",
-                "build": "psref_platform",
-                "software": "psref_platform",
-                "audio": "psref_platform",
-                "memory_slots": "psref_platform",
-                "storage_slots": "psref_platform"
-            },
-            "psref_enrichment": {
-                "tier": "psref_platform",
-                "sku": "83ERR000R0",
-                "machine_type": "83ER",
-                "product_name": "IdeaPad Slim 3 15IAH8"
-            },
-            "archived": true,
-            "archived_at": "2026-08-27"
         },
         {
             "id": "83J1R000R0",
@@ -3697,152 +3556,6 @@
             "archived_at": "2026-08-27"
         },
         {
-            "id": "82XTR003R0",
-            "model_name": "LOQ 15aph8 (15, AMD)",
-            "internal_model_code": "82XTR003R0",
-            "title": "LOQ 15aph8 (15, AMD)",
-            "description": "The Lenovo LOQ Gen 8 (15, AMD) is designed for gamers seeking high performance and immersive visuals. Powered by AMD Ryzen™ processors and NVIDIA® GPUs, it features a 15.6\" FHD display, advanced cooling, and customizable options for ultimate gaming.",
-            "availability": "out of stock",
-            "price": "56090.00 INR",
-            "mrp": "86611.00 INR",
-            "image": "https://p4-ofp.static.pub//fes/cms/2024/03/18/ab4w8ynydhfc74fk828mvatajrgbrl479137.png",
-            "affiliate_link": "https://lenovo-in.zlvv.net/c/5890822/608695/9634?prodsku=82XTR003R0&u=https%3A%2F%2Fwww.lenovo.com%2Fin%2Foutletin%2Fen%2Fp%2Flaptops%2Floq-laptops%2Flenovo-loq-15aph8%2F82xtr003r0&intsrc=CATF_4639",
-            "store_link": "https://www.lenovo.com/in/outletin/en/p/laptops/loq-laptops/lenovo-loq-15aph8/82xtr003r0",
-            "listing_date": "2024-02-21",
-            "tech_specs": {
-                "display": {
-                    "size": "15.6\"",
-                    "res": "1920x1080",
-                    "refresh": "144Hz",
-                    "type": "IPS",
-                    "brightness": "350 nits",
-                    "color": "45% NTSC"
-                },
-                "memory": {
-                    "amount": "16 GB",
-                    "type": "DDR5",
-                    "speed": "5600 MHz"
-                },
-                "storage": {
-                    "capacity": "512 GB",
-                    "type": "SSD Gen4"
-                },
-                "processor": {
-                    "brand": "AMD",
-                    "model": "Ryzen 5 7640HS",
-                    "full_model": "AMD Ryzen 5 7640HS",
-                    "series": "Ryzen 7000 Series",
-                    "cores": 6,
-                    "threads": 12,
-                    "base_clock": "4.3 GHz",
-                    "boost_clock": "Up to 5 GHz",
-                    "igpu": "AMD Radeon 760M",
-                    "igpu_series": "Radeon 700M Series"
-                },
-                "graphics": {
-                    "model": "RTX 3050 6 GB GDDR6",
-                    "vram": "6 GB",
-                    "dedicated": true,
-                    "series": "RTX 30 Series",
-                    "cuda_cores": 2048
-                },
-                "network": {
-                    "wifi": "Wi-Fi 6",
-                    "bluetooth": "5.2"
-                },
-                "power": {
-                    "adapter": "230W Slim Tip (3-pin)",
-                    "watt": 230
-                },
-                "battery": {
-                    "capacity": "60Wh"
-                },
-                "ports": {
-                    "items": [
-                        "1x USB 2.0",
-                        "2x USB 3.2 Gen 2",
-                        "1x USB-C 3.2 Gen 2 (support data transfer, Lenovo Power Delivery 140W and DisplayPort 1.4)",
-                        "1x HDMI 2.1, up to 8K/60Hz",
-                        "1x Headphone / microphone combo jack (3.5mm)",
-                        "1x Ethernet (RJ-45)",
-                        "1x Power connector"
-                    ]
-                },
-                "camera": {
-                    "model": "HD 720p with E-shutter"
-                },
-                "keyboard": {
-                    "type": "White Backlit, French"
-                },
-                "dimensions": {
-                    "size": "359.6 x 264.8 x 22.1-25.2 mm (14.16 x 10.43 x 0.87-0.99 inches)",
-                    "weight": "Starting at 2.4 kg (5.29 lbs)"
-                },
-                "build": {
-                    "color": "Storm Grey",
-                    "material": "PC-ABS (Top), PC-ABS (Bottom)",
-                    "surface": "Painting"
-                },
-                "software": {
-                    "os": "Windows 11 Home, French",
-                    "bundled": "Office Trial"
-                },
-                "audio": {
-                    "chip": "High Definition (HD) Audio, Realtek ALC3287 codec",
-                    "speakers": "Stereo speakers, 2W x2, optimized with Nahimic Gaming Audio",
-                    "microphone": "2x, Array"
-                },
-                "memory_slots": {
-                    "raw": "Two DDR5 SO-DIMM slots, dual-channel capable",
-                    "max_memory": "Up to 32GB DDR5-5600"
-                },
-                "storage_slots": {
-                    "raw": "Two M.2 slots • One M.2 2242 PCIe 4.0 x4 slot • One M.2 2280 PCIe 4.0 x4 slot",
-                    "max_storage": "Up to two drives, 2x M.2 SSD • M.2 2242 SSD up to 1TB each"
-                }
-            },
-            "spec_source": "lenovo_outlet",
-            "vendor": "lenovo",
-            "brand": "Lenovo",
-            "series": "Lenovo LOQ Laptops",
-            "product_condition": "CERTIFIED REFURBISHED",
-            "product_metadata": {
-                "brand": "Lenovo",
-                "series": "Lenovo LOQ Laptops",
-                "part_number": "82XTR003R0",
-                "model_number": "82XTR003R0",
-                "manufacturer": "Lenovo",
-                "warranty": "1 Year Courier or Carry-in Warranty",
-                "condition": "Certified Refurbished"
-            },
-            "price_mean": 56090,
-            "price_median": 56090,
-            "price_usual": 56090,
-            "has_history": true,
-            "spec_origin": {
-                "network": "psref_platform",
-                "power": "psref_platform",
-                "battery": "psref_platform",
-                "ports": "psref_platform",
-                "camera": "psref_platform",
-                "keyboard": "psref_platform",
-                "dimensions": "psref_platform",
-                "build": "psref_platform",
-                "software": "psref_platform",
-                "audio": "psref_platform",
-                "memory_slots": "psref_platform",
-                "storage_slots": "psref_platform"
-            },
-            "psref_enrichment": {
-                "tier": "psref_platform",
-                "sku": "82XTR003R0",
-                "machine_type": "82XT",
-                "product_name": "LOQ 15APH8"
-            },
-            "archived": true,
-            "archived_at": "2026-08-27"
-        },
-        {
             "id": "83GSR000R0",
             "model_name": "Lenovo LOQ Gen 9 (15, Intel)",
             "internal_model_code": "83GSR000R0",
@@ -5519,149 +5232,6 @@
             },
             "archived": true,
             "archived_at": "2026-08-19"
-        },
-        {
-            "id": "83K1R002R0",
-            "model_name": "IdeaPad Slim 3i Gen 10 (15, Intel)",
-            "internal_model_code": "83K1R002R0",
-            "title": "IdeaPad Slim 3i Gen 10 (15, Intel)",
-            "description": "The Lenovo IdeaPad Slim 3i Gen 10 is a 15-inch everyday laptop designed for students and multitaskers. It features Intel Core processors, immersive audio, a privacy shutter, and rapid charging, making it ideal for both work and study.",
-            "availability": "out of stock",
-            "price": "58191.00 INR",
-            "mrp": "88939.00 INR",
-            "image": "https://ap-img.static.pub/ss/img/2026/06/22/img.20260622132804983130.png",
-            "affiliate_link": "https://lenovo-in.zlvv.net/c/5890822/608695/9634?prodsku=83K1R002R0&u=https%3A%2F%2Fwww.lenovo.com%2Fin%2Foutletin%2Fen%2Fp%2Flaptops%2Fideapad%2Fideapad-300%2Flenovo-ideapad-slim-3i-gen-10-15-inch-intel%2F83k1r002r0&intsrc=CATF_4639",
-            "store_link": "https://www.lenovo.com/in/outletin/en/p/laptops/ideapad/ideapad-300/lenovo-ideapad-slim-3i-gen-10-15-inch-intel/83k1r002r0",
-            "listing_date": "2024-11-21",
-            "tech_specs": {
-                "display": {
-                    "size": "15.3\"",
-                    "res": "1920x1200",
-                    "refresh": "60Hz",
-                    "type": "IPS",
-                    "brightness": "300 nits",
-                    "color": "45% NTSC"
-                },
-                "memory": {
-                    "amount": "16 GB",
-                    "type": "DDR5",
-                    "speed": "4800 MHz"
-                },
-                "storage": {
-                    "capacity": "512 GB",
-                    "type": "SSD Gen4"
-                },
-                "processor": {
-                    "brand": "Intel",
-                    "model": "Core i7-13620H",
-                    "full_model": "Intel Core i7-13620H",
-                    "series": "Core 13th Gen",
-                    "cores": 10,
-                    "threads": 16,
-                    "boost_clock": "4.90 GHz",
-                    "igpu": "Intel UHD Graphics for 13th Gen Intel Processors",
-                    "igpu_series": "Intel UHD Graphics Series"
-                },
-                "graphics": {
-                    "model": "Intel UHD Graphics for 13th Gen Intel Processors",
-                    "vram": "Shared",
-                    "dedicated": false,
-                    "series": "Intel UHD Graphics Series",
-                    "boost_clock": "1.50 GHz"
-                },
-                "network": {
-                    "wifi": "Wi-Fi 6",
-                    "bluetooth": "5.2"
-                },
-                "power": {
-                    "adapter": "No Power Adapter"
-                },
-                "battery": {
-                    "capacity": "50Wh"
-                },
-                "ports": {
-                    "items": [
-                        "2x USB-A (USB 5Gbps / USB 3.2 Gen 1)",
-                        "1x USB-C (USB 5Gbps / USB 3.2 Gen 1), with USB PD 45-65W and DisplayPort 1.2",
-                        "1x HDMI 1.4",
-                        "1x Headphone / microphone combo jack (3.5mm)",
-                        "1x SD card reader",
-                        "1x Round tip power connector"
-                    ]
-                },
-                "camera": {
-                    "model": "HD 720p with Privacy Shutter"
-                },
-                "keyboard": {
-                    "type": "Non-backlit, Italian"
-                },
-                "dimensions": {
-                    "size": "343.4 x 239.5 x 17.9-18.9 mm (13.52 x 9.43 x 0.70-0.74 inches)",
-                    "weight": "Starting at 1.59 kg (3.51 lbs)"
-                },
-                "build": {
-                    "color": "Luna Grey",
-                    "material": "PC-ABS (Top), PC-ABS (Bottom)",
-                    "surface": "IMR (Top), Texture (Bottom)"
-                },
-                "software": {
-                    "os": "Windows 11 Home, Italian / English",
-                    "bundled": "Office Trial"
-                },
-                "audio": {
-                    "chip": "High Definition (HD) Audio",
-                    "speakers": "Stereo speakers, 2W x2, optimized with Dolby Audio",
-                    "microphone": "2x, Array"
-                },
-                "memory_slots": {
-                    "raw": "One DDR5 SODIMM slot",
-                    "max_memory": "Up to 16GB DDR5-4800 offering"
-                },
-                "storage_slots": {
-                    "raw": "Two M.2 2242 PCIe 4.0 x4 slots",
-                    "max_storage": "Up to two drives, 2x M.2 SSD • M.2 2242 SSD up to 1TB"
-                }
-            },
-            "spec_source": "lenovo_outlet",
-            "vendor": "lenovo",
-            "brand": "Lenovo",
-            "series": "Ideapad",
-            "product_condition": "CERTIFIED REFURBISHED",
-            "product_metadata": {
-                "brand": "Lenovo",
-                "series": "Ideapad",
-                "part_number": "83K1R002R0",
-                "model_number": "83K1R002R0",
-                "manufacturer": "Lenovo",
-                "warranty": "1 Year Courier or Carry-in Warranty",
-                "condition": "Certified Refurbished"
-            },
-            "price_mean": 57210,
-            "price_median": 57491,
-            "price_usual": 57489,
-            "has_history": true,
-            "spec_origin": {
-                "network": "psref_platform",
-                "power": "psref_platform",
-                "battery": "psref_platform",
-                "ports": "psref_platform",
-                "camera": "psref_platform",
-                "keyboard": "psref_platform",
-                "dimensions": "psref_platform",
-                "build": "psref_platform",
-                "software": "psref_platform",
-                "audio": "psref_platform",
-                "memory_slots": "psref_platform",
-                "storage_slots": "psref_platform"
-            },
-            "psref_enrichment": {
-                "tier": "psref_platform",
-                "sku": "83K1R002R0",
-                "machine_type": "83K1",
-                "product_name": "IdeaPad Slim 3 15IRH10"
-            },
-            "archived": true,
-            "archived_at": "2026-08-27"
         },
         {
             "id": "21JKR00AR0",
@@ -8331,7 +7901,7 @@
                     "watt": 65
                 },
                 "battery": {
-                    "capacity": "45.0Wh"
+                    "capacity": "45Wh"
                 },
                 "ports": {
                     "items": [
@@ -8912,7 +8482,7 @@
                     "watt": 170
                 },
                 "battery": {
-                    "capacity": "45.0Wh"
+                    "capacity": "45Wh"
                 },
                 "ports": {
                     "items": [
@@ -9056,7 +8626,7 @@
                     "watt": 65
                 },
                 "battery": {
-                    "capacity": "60.0Wh"
+                    "capacity": "60Wh"
                 },
                 "ports": {
                     "items": [
@@ -9347,7 +8917,7 @@
                     "watt": 100
                 },
                 "battery": {
-                    "capacity": "84.0Wh"
+                    "capacity": "84Wh"
                 },
                 "ports": {
                     "items": [
@@ -9493,7 +9063,7 @@
                     "watt": 100
                 },
                 "battery": {
-                    "capacity": "84.0Wh"
+                    "capacity": "84Wh"
                 },
                 "ports": {
                     "items": [
@@ -10216,7 +9786,7 @@
                     "watt": 135
                 },
                 "battery": {
-                    "capacity": "57.0Wh"
+                    "capacity": "57Wh"
                 },
                 "ports": {
                     "items": [
@@ -11980,6 +11550,152 @@
             "archived_at": "2026-08-27"
         },
         {
+            "id": "83KAR001R0",
+            "model_name": "IdeaPad Slim 3 Gen 10 (15, AMD)",
+            "internal_model_code": "83KAR001R0",
+            "title": "IdeaPad Slim 3 Gen 10 (15, AMD)",
+            "description": "The Lenovo IdeaPad Slim 3 Gen 10 offers sleek design and robust performance with AI-enabled AMD Ryzen processors. Its 15-inch display, Dolby Audio, and long battery life make it ideal for students seeking productivity and immersive visuals.",
+            "availability": "out of stock",
+            "price": "67990.00 INR",
+            "mrp": "107660.00 INR",
+            "image": "https://p2-ofp.static.pub//fes/cms/2025/02/11/f74rsuhiwcam1hrqfaxj94s661k18s984611.png",
+            "affiliate_link": "https://lenovo-in.zlvv.net/c/5890822/608695/9634?prodsku=83KAR001R0&u=https%3A%2F%2Fwww.lenovo.com%2Fin%2Foutletin%2Fen%2Fp%2Flaptops%2Fideapad%2Fideapad-s-series%2Flenovo-ideapad-slim-3-gen-10-15-inch-amd%2F83kar001r0&intsrc=CATF_4639",
+            "store_link": "https://www.lenovo.com/in/outletin/en/p/laptops/ideapad/ideapad-s-series/lenovo-ideapad-slim-3-gen-10-15-inch-amd/83kar001r0",
+            "listing_date": "2025-02-11",
+            "tech_specs": {
+                "display": {
+                    "size": "15.3\"",
+                    "res": "1920x1200",
+                    "refresh": "60Hz",
+                    "type": "IPS",
+                    "brightness": "300 nits",
+                    "color": "45% NTSC"
+                },
+                "memory": {
+                    "amount": "24 GB",
+                    "type": "DDR5",
+                    "speed": "5600 MHz"
+                },
+                "storage": {
+                    "capacity": "1 TB",
+                    "type": "SSD Gen4"
+                },
+                "processor": {
+                    "brand": "AMD",
+                    "model": "Ryzen 7 8840HS",
+                    "full_model": "AMD Ryzen 7 8840HS",
+                    "series": "Ryzen 8000 Series",
+                    "cores": 8,
+                    "threads": 16,
+                    "base_clock": "3.3 GHz",
+                    "boost_clock": "Up to 5.1 GHz",
+                    "igpu": "AMD Radeon 780M",
+                    "igpu_series": "Radeon 700M Series"
+                },
+                "graphics": {
+                    "model": "AMD Radeon 780M",
+                    "vram": "Shared",
+                    "dedicated": false,
+                    "series": "Radeon 700M Series",
+                    "boost_clock": "2700 MHz",
+                    "cus": 12
+                },
+                "network": {
+                    "wifi": "Wi-Fi 6",
+                    "bluetooth": "5.3"
+                },
+                "power": {
+                    "adapter": "65W Round Tip (3-pin)",
+                    "watt": 65
+                },
+                "battery": {
+                    "capacity": "50.0Wh"
+                },
+                "ports": {
+                    "items": [
+                        "2x USB-A (USB 5Gbps / USB 3.2 Gen 1)",
+                        "1x USB-C (USB 5Gbps / USB 3.2 Gen 1), with USB PD 45-65W and DisplayPort 1.2",
+                        "1x HDMI 1.4",
+                        "1x Headphone / microphone combo jack (3.5mm)",
+                        "1x SD card reader",
+                        "1x Round tip power connector"
+                    ]
+                },
+                "camera": {
+                    "model": "FHD 1080p + IR with Privacy Shutter"
+                },
+                "keyboard": {
+                    "type": "Backlit, English"
+                },
+                "dimensions": {
+                    "size": "343.4 x 239.5 x 16.9-17.9 mm (13.52 x 9.51 x 0.67-0.70 inches)",
+                    "weight": "Starting at 1.59 kg (3.51 lbs)"
+                },
+                "build": {
+                    "color": "Luna Grey",
+                    "material": "Aluminium (Top), PC-ABS (Bottom)",
+                    "surface": "Aluminium Stamping Anodized (Top), Texture (Bottom)"
+                },
+                "software": {
+                    "os": "Windows 11 Home Single Language, English",
+                    "bundled": "Microsoft 365 Basic + Office Home 2024"
+                },
+                "audio": {
+                    "chip": "High Definition (HD) Audio",
+                    "speakers": "Stereo speakers, 2W x2, optimized with Dolby Audio",
+                    "microphone": "2x, Array"
+                },
+                "memory_slots": {
+                    "raw": "One memory soldered to systemboard, one DDR5 SODIMM slot, dual-channel capable",
+                    "max_memory": "Up to 24GB (8GB soldered + 16GB SODIMM) DDR5-5600 offering"
+                },
+                "storage_slots": {
+                    "raw": "Two M.2 2242 PCIe 4.0 x4 slots",
+                    "max_storage": "Up to two drives, 2x M.2 SSD • M.2 2242 SSD up to 1TB"
+                }
+            },
+            "spec_source": "lenovo_outlet",
+            "vendor": "lenovo",
+            "brand": "Lenovo",
+            "series": "Ideapad",
+            "product_condition": "CERTIFIED REFURBISHED",
+            "product_metadata": {
+                "brand": "Lenovo",
+                "series": "Ideapad",
+                "part_number": "83KAR001R0",
+                "model_number": "83KAR001R0",
+                "manufacturer": "Lenovo",
+                "warranty": "1 Year Courier or Carry-in Warranty",
+                "condition": "Certified Refurbished"
+            },
+            "price_mean": 67990,
+            "price_median": 67990,
+            "price_usual": 67990,
+            "has_history": true,
+            "spec_origin": {
+                "network": "psref_platform",
+                "power": "psref_platform",
+                "battery": "psref_platform",
+                "ports": "psref_platform",
+                "camera": "psref_platform",
+                "keyboard": "psref_platform",
+                "dimensions": "psref_platform",
+                "build": "psref_platform",
+                "software": "psref_platform",
+                "audio": "psref_platform",
+                "memory_slots": "psref_platform",
+                "storage_slots": "psref_platform"
+            },
+            "psref_enrichment": {
+                "tier": "psref_platform",
+                "sku": "83KAR001R0",
+                "machine_type": "83KA",
+                "product_name": "IdeaPad Slim 3 15AHP10"
+            },
+            "archived": true,
+            "archived_at": "2026-08-27"
+        },
+        {
             "id": "82RKR002R0",
             "model_name": "IdeaPad 3i Gen 7 (15, Intel)",
             "internal_model_code": "82RKR002R0",
@@ -12120,6 +11836,144 @@
                 "sku": "82RKR002R0",
                 "machine_type": "82RK",
                 "product_name": "IdeaPad 3 15IAU7"
+            },
+            "archived": true,
+            "archived_at": "2026-08-27"
+        },
+        {
+            "id": "21KSR002R0",
+            "model_name": "ThinkPad P16s Gen 3 (16, Intel)",
+            "internal_model_code": "21KSR002R0",
+            "title": "ThinkPad P16s Gen 3 (16, Intel)",
+            "description": "The ThinkPad P16s Gen 3 is a powerful mobile workstation designed for professionals on the go. With AI-driven productivity, Intel Core Ultra processors, and vivid 16-inch display, it's perfect for architects and engineers.",
+            "availability": "out of stock",
+            "price": "162491.00 INR",
+            "mrp": "213012.00 INR",
+            "image": "https://p3-ofp.static.pub//fes/cms/2024/04/29/r73s76nlov735cmjfw9684xx3pqtwp438577.png",
+            "affiliate_link": "https://lenovo-in.zlvv.net/c/5890822/608695/9634?prodsku=21KSR002R0&u=https%3A%2F%2Fwww.lenovo.com%2Fin%2Foutletin%2Fen%2Fp%2Flaptops%2Fthinkpad%2Fthinkpadp%2Flenovo-thinkpad-p16s-gen-3-16-inch-intel-mobile-workstation%2F21ksr002r0&intsrc=CATF_4639",
+            "store_link": "https://www.lenovo.com/in/outletin/en/p/laptops/thinkpad/thinkpadp/lenovo-thinkpad-p16s-gen-3-16-inch-intel-mobile-workstation/21ksr002r0",
+            "listing_date": "2024-04-29",
+            "tech_specs": {
+                "display": {
+                    "size": "16\"",
+                    "res": "1920x1200",
+                    "refresh": "60Hz",
+                    "type": "IPS",
+                    "brightness": "300 nits",
+                    "color": "45% NTSC"
+                },
+                "memory": {
+                    "amount": "32 GB",
+                    "type": "DDR5",
+                    "speed": "5600 MHz"
+                },
+                "storage": {
+                    "capacity": "1 TB",
+                    "type": "SSD Gen4"
+                },
+                "processor": {
+                    "brand": "Intel",
+                    "model": "Core Ultra 7 155H",
+                    "full_model": "Intel Core Ultra 7 155H",
+                    "series": "Core Ultra Series 1"
+                },
+                "graphics": {
+                    "model": "RTX 500 Ada Generation 4 GB GDDR6",
+                    "vram": "4 GB",
+                    "dedicated": true,
+                    "series": "RTX 40 Series"
+                },
+                "network": {
+                    "wifi": "Wi-Fi 6E",
+                    "bluetooth": "5.3"
+                },
+                "power": {
+                    "adapter": "135W USB-C Slim (3-pin)",
+                    "watt": 135
+                },
+                "battery": {
+                    "capacity": "75Wh"
+                },
+                "ports": {
+                    "items": [
+                        "1x USB-A (USB 5Gbps / USB 3.2 Gen 1)",
+                        "1x USB-A (USB 5Gbps / USB 3.2 Gen 1), Always On",
+                        "2x USB-C (Thunderbolt 4 / USB4 40Gbps), with USB PD 3.0 and DisplayPort 2.1",
+                        "1x HDMI 2.1, up to 4K/60Hz",
+                        "1x Headphone / microphone combo jack (3.5mm)",
+                        "1x Ethernet (GbE RJ-45)",
+                        "1x Kensington Nano Security Slot"
+                    ]
+                },
+                "camera": {
+                    "model": "5.0MP with Privacy Shutter"
+                },
+                "keyboard": {
+                    "type": "Backlit, Nordic (DK/FI/NO/SV)"
+                },
+                "dimensions": {
+                    "size": "361.5 x 248.6 x 21.13 mm (14.24 x 9.79 x 0.83 inches)",
+                    "weight": "Starting at 1.82 kg (4.01 lbs)"
+                },
+                "build": {
+                    "color": "Black",
+                    "material": "Aluminium (Top), Aluminium (Bottom)"
+                },
+                "software": {
+                    "os": "Windows 11 Pro, Nordic (DK/FI/SV/NO/EN)",
+                    "bundled": "Intel Connectivity Performance Suite"
+                },
+                "audio": {
+                    "chip": "High Definition (HD) Audio, Realtek ALC3287 codec",
+                    "speakers": "Stereo speakers, 2W x2, Dolby Audio",
+                    "microphone": "2x, Array"
+                },
+                "memory_slots": {
+                    "raw": "Two DDR5 SODIMM slots, dual-channel capable",
+                    "max_memory": "Up to 96GB (2x 48GB DDR5 SODIMM)"
+                },
+                "storage_slots": {
+                    "raw": "One M.2 2280 PCIe 4.0 x4 slot",
+                    "max_storage": "One drive, up to 2TB M.2 2280 SSD"
+                }
+            },
+            "spec_source": "lenovo_outlet",
+            "vendor": "lenovo",
+            "brand": "Lenovo",
+            "series": "ThinkPad",
+            "product_condition": "CERTIFIED REFURBISHED",
+            "product_metadata": {
+                "brand": "Lenovo",
+                "series": "ThinkPad",
+                "part_number": "21KSR002R0",
+                "model_number": "21KSR002R0",
+                "manufacturer": "Lenovo",
+                "warranty": "1 Year Courier or Carry-in Warranty",
+                "condition": "Certified Refurbished"
+            },
+            "price_mean": 162491,
+            "price_median": 162491,
+            "price_usual": 162491,
+            "has_history": true,
+            "spec_origin": {
+                "network": "psref_platform",
+                "power": "psref_platform",
+                "battery": "psref_platform",
+                "ports": "psref_platform",
+                "camera": "psref_platform",
+                "keyboard": "psref_platform",
+                "dimensions": "psref_platform",
+                "build": "psref_platform",
+                "software": "psref_platform",
+                "audio": "psref_platform",
+                "memory_slots": "psref_platform",
+                "storage_slots": "psref_platform"
+            },
+            "psref_enrichment": {
+                "tier": "psref_platform",
+                "sku": "21KSR002R0",
+                "machine_type": "21KS",
+                "product_name": "ThinkPad P16s Gen 3 (Intel)"
             },
             "archived": true,
             "archived_at": "2026-08-27"
@@ -12536,6 +12390,504 @@
                 "machine_type": "82RG",
                 "product_name": "Legion 5 Pro 16ARH7H"
             },
+            "archived": true,
+            "archived_at": "2026-08-27"
+        },
+        {
+            "id": "21HMR000R0",
+            "model_name": "ThinkPad X1 Carbon Gen 11 (14, Intel)",
+            "internal_model_code": "21HMR000R0",
+            "title": "ThinkPad X1 Carbon Gen 11 (14, Intel)",
+            "description": "The ThinkPad X1 Carbon Gen 11 is an ultralight, premium laptop designed for business professionals. It features 13th Gen Intel Core processors, a stunning 2.8K OLED display, and customizable options for tailored performance.",
+            "availability": "out of stock",
+            "price": "154090.00 INR",
+            "mrp": "311746.00 INR",
+            "image": "https://p1-ofp.static.pub/fes/cms/2023/04/28/iu6t7jqpekoy7o76vbn0c9a9b7rbsb543440.png",
+            "affiliate_link": "https://lenovo-in.zlvv.net/c/5890822/608695/9634?prodsku=21HMR000R0&u=https%3A%2F%2Fwww.lenovo.com%2Fin%2Foutletin%2Fen%2Fp%2Flaptops%2Fthinkpad%2Fthinkpadx1%2Fthinkpad-x1-carbon-gen-11-14-inch-intel%2F21hmr000r0&intsrc=CATF_4639",
+            "store_link": "https://www.lenovo.com/in/outletin/en/p/laptops/thinkpad/thinkpadx1/thinkpad-x1-carbon-gen-11-14-inch-intel/21hmr000r0",
+            "listing_date": "2023-04-28",
+            "tech_specs": {
+                "display": {
+                    "size": "14\"",
+                    "res": "1920x1200",
+                    "refresh": "60Hz",
+                    "type": "IPS",
+                    "brightness": "400 nits",
+                    "color": "100% sRGB"
+                },
+                "memory": {
+                    "amount": "16 GB",
+                    "type": "DDR5",
+                    "speed": "6400 MHz"
+                },
+                "storage": {
+                    "capacity": "1 TB",
+                    "type": "SSD Gen4"
+                },
+                "processor": {
+                    "brand": "Intel",
+                    "model": "Core i7-1355U",
+                    "full_model": "Intel Core i7-1355U",
+                    "series": "Core 13th Gen",
+                    "cores": 10,
+                    "threads": 12,
+                    "boost_clock": "5 GHz",
+                    "igpu": "Intel Iris Xe Graphics eligible",
+                    "igpu_series": "Intel Iris Xe Series"
+                },
+                "graphics": {
+                    "model": "Intel Iris Xe Graphics eligible",
+                    "vram": "Shared",
+                    "dedicated": false,
+                    "series": "Intel Iris Xe Series",
+                    "boost_clock": "1.3 GHz"
+                },
+                "network": {
+                    "wifi": "Wi-Fi 6E",
+                    "bluetooth": "5.3"
+                },
+                "power": {
+                    "adapter": "65W USB-C Slim (3-pin)",
+                    "watt": 65
+                },
+                "battery": {
+                    "capacity": "57Wh"
+                },
+                "ports": {
+                    "items": [
+                        "1x USB 3.2 Gen 1",
+                        "1x USB 3.2 Gen 1 (Always On)",
+                        "2x Thunderbolt 4 / USB4 40Gbps (support data transfer, Power Delivery 3.0 and DisplayPort 1.4a)",
+                        "1x HDMI 2.1, up to 4K/60Hz",
+                        "1x Headphone / microphone combo jack (3.5mm)"
+                    ]
+                },
+                "camera": {
+                    "model": "FHD 1080p with Privacy Shutter"
+                },
+                "keyboard": {
+                    "type": "Backlit, French"
+                },
+                "dimensions": {
+                    "size": "315.6 x 222.5 x 15.36 mm (12.43 x 8.76 x 0.60 inches)",
+                    "weight": "Starting at 1.12 kg (2.48 lbs)"
+                },
+                "build": {
+                    "color": "Deep Black, Paint",
+                    "material": "Carbon Fiber (Top), Aluminium (Bottom)"
+                },
+                "software": {
+                    "os": "Windows 11 Pro, French",
+                    "bundled": "Intel Connectivity Performance Suite"
+                },
+                "audio": {
+                    "chip": "High Definition (HD) Audio, Realtek ALC3306 codec",
+                    "speakers": "Stereo speakers, 2W x2 woofers and 0.8W x2 tweeters, Dolby Atmos",
+                    "microphone": "4x, Array"
+                },
+                "memory_slots": {
+                    "raw": "Memory soldered to systemboard, no slots, 8-channel",
+                    "max_memory": "16GB soldered memory, not upgradable"
+                },
+                "storage_slots": {
+                    "raw": "One M.2 2280 PCIe 4.0 x4 slot",
+                    "max_storage": "One drive, up to 2TB M.2 2280 SSD"
+                }
+            },
+            "spec_source": "lenovo_outlet",
+            "vendor": "lenovo",
+            "brand": "Lenovo",
+            "series": "ThinkPad",
+            "product_condition": "CERTIFIED REFURBISHED",
+            "product_metadata": {
+                "brand": "Lenovo",
+                "series": "ThinkPad",
+                "part_number": "21HMR000R0",
+                "model_number": "21HMR000R0",
+                "manufacturer": "Lenovo",
+                "warranty": "1 Year Courier or Carry-in Warranty",
+                "condition": "Certified Refurbished"
+            },
+            "price_mean": 154090,
+            "price_median": 154090,
+            "price_usual": 154090,
+            "has_history": true,
+            "archived": true,
+            "archived_at": "2026-08-27"
+        },
+        {
+            "id": "21FCR000R0",
+            "model_name": "ThinkPad P16v (16, Intel)",
+            "internal_model_code": "21FCR000R0",
+            "title": "ThinkPad P16v (16, Intel)",
+            "description": "The ThinkPad P16v (16, Intel) is a powerful mobile workstation designed for professionals seeking performance and mobility. It features 13th Gen Intel Core processors, advanced cooling, and optional discrete graphics to handle heavy workloads with ease.",
+            "availability": "out of stock",
+            "price": "154090.00 INR",
+            "mrp": "211266.00 INR",
+            "image": "https://p2-ofp.static.pub//fes/cms/2023/06/09/n81xemcvt1p2v8oyhockoj3a871mm4348434.png",
+            "affiliate_link": "https://lenovo-in.zlvv.net/c/5890822/608695/9634?prodsku=21FCR000R0&u=https%3A%2F%2Fwww.lenovo.com%2Fin%2Foutletin%2Fen%2Fp%2Flaptops%2Fthinkpad%2Fthinkpadp%2Fthinkpad-p16v-16-inch-intel-mobile-workstation%2F21fcr000r0&intsrc=CATF_4639",
+            "store_link": "https://www.lenovo.com/in/outletin/en/p/laptops/thinkpad/thinkpadp/thinkpad-p16v-16-inch-intel-mobile-workstation/21fcr000r0",
+            "listing_date": "2023-06-09",
+            "tech_specs": {
+                "display": {
+                    "size": "16\"",
+                    "res": "1920x1200",
+                    "refresh": "60Hz",
+                    "type": "IPS",
+                    "brightness": "300 nits",
+                    "color": "45% NTSC"
+                },
+                "memory": {
+                    "amount": "16 GB",
+                    "type": "DDR5",
+                    "speed": "5600 MHz"
+                },
+                "storage": {
+                    "capacity": "1 TB",
+                    "type": "SSD Gen4"
+                },
+                "processor": {
+                    "brand": "Intel",
+                    "model": "Core i7-13700H",
+                    "full_model": "Intel Core i7-13700H",
+                    "series": "Core 13th Gen",
+                    "cores": 14,
+                    "threads": 20,
+                    "boost_clock": "5 GHz",
+                    "igpu": "Intel Iris Xe Graphics eligible",
+                    "igpu_series": "Intel Iris Xe Series"
+                },
+                "graphics": {
+                    "model": "RTX A500 4 GB GDDR6",
+                    "vram": "4 GB",
+                    "dedicated": true,
+                    "series": "GeForce RTX/GTX"
+                },
+                "network": {
+                    "wifi": "Wi-Fi 6E",
+                    "bluetooth": "5.3"
+                },
+                "power": {
+                    "adapter": "170W Slim Tip (3-pin)",
+                    "watt": 170
+                },
+                "battery": {
+                    "capacity": "90Wh"
+                },
+                "ports": {
+                    "items": [
+                        "2x USB-C (Thunderbolt 4 / USB4 40Gbps), with DisplayPort 1.4",
+                        "2x USB 3.2 Gen 1 (one Always On)",
+                        "1x HDMI 2.1, up to 8K/60Hz",
+                        "1x Headphone / microphone combo jack (3.5mm)",
+                        "1x SD Express 7.0 card reader",
+                        "1x Kensington Nano Security Slot"
+                    ]
+                },
+                "camera": {
+                    "model": "5.0MP + IR with Privacy Shutter and Human Presence Detection"
+                },
+                "keyboard": {
+                    "type": "Backlit, English (UK)"
+                },
+                "dimensions": {
+                    "size": "365 x 262 x 24.66 mm (14.37 x 10.32 x 0.97 inches)",
+                    "weight": "Starting at 2.2 kg (4.85 lbs)"
+                },
+                "build": {
+                    "color": "Thunder Black",
+                    "material": "PC-ABS (Top), PC-ABS (Bottom)"
+                },
+                "software": {
+                    "os": "Windows 11 Pro, English"
+                },
+                "audio": {
+                    "chip": "High Definition (HD) Audio, Realtek ALC3287 codec",
+                    "speakers": "Stereo speakers, 2W x2, Dolby Audio Premium",
+                    "microphone": "2x, Array"
+                },
+                "memory_slots": {
+                    "raw": "Two DDR5 SODIMM slots, dual-channel capable",
+                    "max_memory": "Up to 64GB (2x 32GB DDR5 SODIMM)"
+                },
+                "storage_slots": {
+                    "raw": "Two M.2 2280 PCIe 4.0 x4 slots",
+                    "max_storage": "Up to two drives, 2x M.2 SSD • M.2 2280 SSD up to 4TB, 2TB each"
+                }
+            },
+            "spec_source": "lenovo_outlet",
+            "vendor": "lenovo",
+            "brand": "Lenovo",
+            "series": "ThinkPad",
+            "product_condition": "CERTIFIED REFURBISHED",
+            "product_metadata": {
+                "brand": "Lenovo",
+                "series": "ThinkPad",
+                "part_number": "21FCR000R0",
+                "model_number": "21FCR000R0",
+                "manufacturer": "Lenovo",
+                "warranty": "1 Year Courier or Carry-in Warranty",
+                "condition": "Certified Refurbished"
+            },
+            "price_mean": 154090,
+            "price_median": 154090,
+            "price_usual": 154090,
+            "has_history": true,
+            "archived": true,
+            "archived_at": "2026-08-27"
+        },
+        {
+            "id": "21QWR000R0",
+            "model_name": "ThinkPad P16s Gen 4 (16, Intel)",
+            "internal_model_code": "21QWR000R0",
+            "title": "ThinkPad P16s Gen 4 (16, Intel)",
+            "description": "The ThinkPad P16s Gen 4 is a lightweight, AI-ready mobile workstation designed for professionals on the go. It offers enterprise-grade performance, upgradable memory, and customer-replaceable components, making it ideal for business users.",
+            "availability": "out of stock",
+            "price": "162491.00 INR",
+            "mrp": "227099.00 INR",
+            "image": "https://p1-ofp.static.pub//fes/cms/2025/08/11/urzxopamnfopyuk27rm04xdcv4jkda622518.png",
+            "affiliate_link": "https://lenovo-in.zlvv.net/c/5890822/608695/9634?prodsku=21QWR000R0&u=https%3A%2F%2Fwww.lenovo.com%2Fin%2Foutletin%2Fen%2Fp%2Flaptops%2Fthinkpad%2Fthinkpadp%2Flenovo-thinkpad-p16s-gen-4-16-inch-intel-mobile-workstation%2F21qwr000r0&intsrc=CATF_4639",
+            "store_link": "https://www.lenovo.com/in/outletin/en/p/laptops/thinkpad/thinkpadp/lenovo-thinkpad-p16s-gen-4-16-inch-intel-mobile-workstation/21qwr000r0",
+            "listing_date": "2025-08-11",
+            "tech_specs": {
+                "display": {
+                    "size": "16\"",
+                    "res": "1920x1200",
+                    "refresh": "60Hz",
+                    "type": "IPS",
+                    "brightness": "400 nits",
+                    "color": "45% NTSC"
+                },
+                "memory": {
+                    "amount": "32 GB",
+                    "type": "DDR5",
+                    "speed": "5600 MHz"
+                },
+                "storage": {
+                    "capacity": "1 TB",
+                    "type": "SSD Gen4"
+                },
+                "processor": {
+                    "brand": "Intel",
+                    "model": "Core Ultra 7 255H",
+                    "full_model": "Intel Core Ultra 7 255H",
+                    "series": "Core Ultra Series 2",
+                    "cores": 16,
+                    "threads": 16,
+                    "base_clock": "2 GHz",
+                    "boost_clock": "5.1 GHz",
+                    "igpu": "Intel Arc 140T GPU",
+                    "igpu_series": "Intel Arc Graphics Series",
+                    "xe_cores": "8 Xe-Cores"
+                },
+                "graphics": {
+                    "model": "Intel Arc 140T GPU",
+                    "vram": "Shared",
+                    "dedicated": false,
+                    "xe_cores": "8",
+                    "series": "Intel Arc Graphics Series",
+                    "boost_clock": "2.25 GHz",
+                    "ai_tops": "74 TOPS"
+                },
+                "network": {
+                    "wifi": "Wi-Fi 7",
+                    "bluetooth": "5.4"
+                },
+                "power": {
+                    "adapter": "100W USB-C Slim (3-pin)",
+                    "watt": 100
+                },
+                "battery": {
+                    "capacity": "75Wh"
+                },
+                "ports": {
+                    "items": [
+                        "1x USB-A (USB 5Gbps / USB 3.2 Gen 1)",
+                        "1x USB-A (USB 5Gbps / USB 3.2 Gen 1), Always On",
+                        "2x Thunderbolt 4, with USB PD 3.0",
+                        "1x HDMI 2.1, up to 4K/60Hz",
+                        "1x Headphone / microphone combo jack (3.5mm)",
+                        "1x Ethernet (GbE RJ-45)",
+                        "1x Kensington Nano Security Slot"
+                    ]
+                },
+                "camera": {
+                    "model": "5.0MP with Privacy Shutter"
+                },
+                "keyboard": {
+                    "type": "Backlit, Spanish (LA)"
+                },
+                "dimensions": {
+                    "size": "361.5 x 248.6 x 12.6 / 18.17 (front / rear), 25.35 (maximum) mm 14.24 x 9.79 x 0.49 / 0.71 (front / rear), 1.00 (maximum) inches",
+                    "weight": "Starting at 1.82 kg (4.01 lbs)"
+                },
+                "build": {
+                    "color": "Black",
+                    "material": "Aluminium (Top), Aluminium (Bottom)"
+                },
+                "software": {
+                    "os": "Windows 11 Pro, Spanish / Mexican Spanish / English"
+                },
+                "audio": {
+                    "chip": "High Definition (HD) Audio, Realtek ALC3287 codec",
+                    "speakers": "Stereo speakers, 2W x2, Dolby Audio",
+                    "microphone": "2x, Array"
+                },
+                "memory_slots": {
+                    "raw": "Two DDR5 SODIMM / CSODIMM slots, dual-channel capable",
+                    "max_memory": "Up to 96GB (2x 48GB DDR5 CSODIMM)"
+                },
+                "storage_slots": {
+                    "raw": "One M.2 2280 PCIe 4.0 x4 slot",
+                    "max_storage": "Up to one 2TB M.2 2280 Gen 5 Performance SSD"
+                }
+            },
+            "spec_source": "lenovo_outlet",
+            "vendor": "lenovo",
+            "brand": "Lenovo",
+            "series": "ThinkPad",
+            "product_condition": "CERTIFIED REFURBISHED",
+            "product_metadata": {
+                "brand": "Lenovo",
+                "series": "ThinkPad",
+                "part_number": "21QWR000R0",
+                "model_number": "21QWR000R0",
+                "manufacturer": "Lenovo",
+                "warranty": "1 Year Courier or Carry-in Warranty",
+                "condition": "Certified Refurbished"
+            },
+            "price_mean": 162491,
+            "price_median": 162491,
+            "price_usual": 162491,
+            "has_history": true,
+            "archived": true,
+            "archived_at": "2026-08-27"
+        },
+        {
+            "id": "83FDR001R0",
+            "model_name": "Legion 7i Gen 9 (16, Intel)",
+            "internal_model_code": "83FDR001R0",
+            "title": "Legion 7i Gen 9 (16, Intel)",
+            "description": "The Legion 7i Gen 9 offers powerful gaming performance with Intel® Core™ processors and NVIDIA® GeForce RTX™ graphics. Stay cool with Legion ColdFront Hyper technology and enjoy precision control on the customizable TrueStrike keyboard with vibrant lighting.",
+            "availability": "out of stock",
+            "price": "161691.00 INR",
+            "mrp": "223284.00 INR",
+            "image": "https://p2-ofp.static.pub//fes/cms/2024/09/13/g4xtpizd3epy99ubdix3oaiy0xx2ii069099.png",
+            "affiliate_link": "https://lenovo-in.zlvv.net/c/5890822/608695/9634?prodsku=83FDR001R0&u=https%3A%2F%2Fwww.lenovo.com%2Fin%2Foutletin%2Fen%2Fp%2Flaptops%2Flegion-laptops%2Flegion-7-series%2Flegion-7i-gen-9-16-inch-intel%2F83fdr001r0&intsrc=CATF_4639",
+            "store_link": "https://www.lenovo.com/in/outletin/en/p/laptops/legion-laptops/legion-7-series/legion-7i-gen-9-16-inch-intel/83fdr001r0",
+            "listing_date": "2024-08-07",
+            "tech_specs": {
+                "display": {
+                    "size": "16\"",
+                    "res": "3200x2000",
+                    "refresh": "165Hz",
+                    "type": "IPS",
+                    "brightness": "430 nits",
+                    "color": "100% DCI-P3"
+                },
+                "memory": {
+                    "amount": "16 GB",
+                    "type": "DDR5",
+                    "speed": "5600 MHz"
+                },
+                "storage": {
+                    "capacity": "1 TB",
+                    "type": "SSD Gen4"
+                },
+                "processor": {
+                    "brand": "Intel",
+                    "model": "Core i9-14900HX",
+                    "full_model": "Intel Core i9-14900HX",
+                    "series": "Core 14th Gen",
+                    "cores": 24,
+                    "threads": 32,
+                    "base_clock": "2.2 GHz",
+                    "boost_clock": "5.8 GHz",
+                    "igpu": "Intel UHD Graphics for 14th Gen Intel Processors",
+                    "igpu_series": "Intel UHD Graphics Series"
+                },
+                "graphics": {
+                    "model": "RTX 4060 8 GB GDDR6",
+                    "vram": "8 GB",
+                    "dedicated": true,
+                    "series": "RTX 40 Series",
+                    "cuda_cores": 3072
+                },
+                "network": {
+                    "wifi": "Wi-Fi 6E",
+                    "bluetooth": "5.3"
+                },
+                "power": {
+                    "adapter": "230W Slim Tip (3-pin)",
+                    "watt": 230
+                },
+                "battery": {
+                    "capacity": "99.9Wh"
+                },
+                "ports": {
+                    "items": [
+                        "1x USB-A (USB 5Gbps / USB 3.2 Gen 1)",
+                        "1x USB-A (USB 5Gbps / USB 3.2 Gen 1), Always On",
+                        "1x USB-C (USB 5Gbps / USB 3.2 Gen 1)",
+                        "1x USB-C (USB 10Gbps / USB 3.2 Gen 2), with Lenovo PD 140W and DisplayPort 1.4",
+                        "1x USB-C (Thunderbolt 4 / USB4 40Gbps), with Lenovo PD 140W and DisplayPort 1.4",
+                        "1x HDMI 2.1, up to 8K/60Hz",
+                        "1x Headphone / microphone combo jack (3.5mm)",
+                        "1x Card reader",
+                        "1x Slim tip Power connector"
+                    ]
+                },
+                "camera": {
+                    "model": "FHD 1080p with E-shutter"
+                },
+                "keyboard": {
+                    "type": "White Backlit, English"
+                },
+                "dimensions": {
+                    "size": "357.7 x 262.5 x 17.6-19.8 mm (14.08 x 10.33 x 0.69-0.78 inches)",
+                    "weight": "Starting at 2.24 kg (4.94 lbs)"
+                },
+                "build": {
+                    "color": "Eclipse Black (with White Backlit Keyboard)",
+                    "material": "Aluminium (Top), Aluminium (Bottom)",
+                    "surface": "Anodizing"
+                },
+                "software": {
+                    "os": "Windows 11 Home Single Language, Simplified Chinese / English",
+                    "bundled": "Office Home 2024"
+                },
+                "audio": {
+                    "chip": "High Definition (HD) Audio, Realtek ALC3287 codec",
+                    "speakers": "Stereo speakers, 2W x2, audio by HARMAN, optimized with Nahimic Audio",
+                    "microphone": "2x, Array"
+                },
+                "memory_slots": {
+                    "raw": "Two DDR5 SODIMM slots, dual-channel capable",
+                    "max_memory": "Up to 32GB DDR5-5600 offering"
+                },
+                "storage_slots": {
+                    "raw": "Two M.2 2280 PCIe 4.0 x4 slots",
+                    "max_storage": "Up to two drives, 2x M.2 SSD • M.2 2280 SSD up to 1TB each"
+                }
+            },
+            "spec_source": "lenovo_outlet",
+            "vendor": "lenovo",
+            "brand": "Lenovo",
+            "series": "Legion Laptops",
+            "product_condition": "CERTIFIED REFURBISHED",
+            "product_metadata": {
+                "brand": "Lenovo",
+                "series": "Legion Laptops",
+                "part_number": "83FDR001R0",
+                "model_number": "83FDR001R0",
+                "manufacturer": "Lenovo",
+                "warranty": "1 Year Courier or Carry-in Warranty",
+                "condition": "Certified Refurbished"
+            },
+            "price_mean": 161691,
+            "price_median": 161691,
+            "price_usual": 161691,
+            "has_history": true,
             "archived": true,
             "archived_at": "2026-08-27"
         }
