@@ -334,18 +334,22 @@ def scrape_catalog(
         grouped.setdefault(category, []).append(product)
         total_count += 1
 
+    in_stock_cnt = sum(1 for rows in grouped.values() for p in rows if p.get("availability") == "in stock")
+    oos_cnt = sum(1 for rows in grouped.values() for p in rows if p.get("availability") != "in stock")
     payload = OrderedDict(
         [
             ("generated_at", datetime.now(timezone.utc).isoformat()),
             ("source", "Lenovo Outlet India DLP API"),
             ("total_products", total_count),
+            ("in_stock_count", in_stock_cnt),
+            ("out_of_stock_count", oos_cnt),
             ("groups", grouped),
         ]
     )
     write_json(output, payload, indent=4)
     if verbose:
-        print(f"[refurb] Saved raw catalog to {output} ({total_count} products across {len(grouped)} categories)")
-    return {"total": total_count, "categories": len(grouped)}
+        print(f"[refurb] Saved raw catalog to {output} ({in_stock_cnt} in stock, {oos_cnt} out of stock across {len(grouped)} categories)")
+    return {"total": total_count, "in_stock": in_stock_cnt, "out_of_stock": oos_cnt, "categories": len(grouped)}
 
 
 def format_catalog(
@@ -522,7 +526,11 @@ def format_catalog(
                 row["archived"] = True
                 row["archived_at"] = now_date
                 archived_map[sku] = row
+                if sku in existing and not bool(existing[sku].get("archived")):
+                    print(f"[refurb-archive] Out-of-stock model moved to archive: {sku} - {title}")
             else:
+                if sku in archived_map:
+                    print(f"[refurb-restore] Restoring model from archive -> active: {sku} - {title} ({row.get('price')})")
                 archived_map.pop(sku, None)
                 formatted.setdefault(category, []).append(row)
                 count += 1
@@ -537,6 +545,7 @@ def format_catalog(
         row["archived_at"] = row.get("archived_at") or now_date
         row["availability"] = "out of stock"
         archived_map[sku] = row
+        print(f"[refurb-archive] Delisted model moved to archive: {sku} - {existing_product.get('title')}")
 
     archived_list = list(archived_map.values())
 
@@ -544,6 +553,8 @@ def format_catalog(
         build_inventory_indices()
         write_json(output_path, formatted, indent=4)
         write_json(archive_path, {"products": archived_list}, indent=4)
+
+    print(f"[refurb-summary] Active in-stock catalog: {count} laptops across {len(formatted)} categories. Archived: {len(archived_list)} laptops.")
 
     return {
         "formatted": count,

@@ -75,10 +75,9 @@ class LenovoOutletClient:
         """Fetch all laptop items from the Lenovo Outlet DLP search API."""
         filter_id = self.discover_page_filter_id()
         page = 1
-        page_count = 1
         laptops: list[dict[str, Any]] = []
 
-        while page <= page_count:
+        while True:
             if page > 1:
                 self.sleep()
             params = {
@@ -103,22 +102,29 @@ class LenovoOutletClient:
             res_json = response.json()
 
             data_block = res_json.get("data", {})
-            page_count = int(data_block.get("pageCount") or page_count)
             groups = data_block.get("data", [])
+            page_products = [p for g in groups for p in g.get("products", [])]
+            if not page_products:
+                break
 
-            for group in groups:
-                for product in group.get("products", []):
-                    product_url = str(product.get("url") or "")
-                    fl_code = str(product.get("flCode") or "")
-                    # Strictly filter for laptops
-                    if "/p/laptops/" in product_url or fl_code == "laptops":
-                        laptops.append(product)
-                        if limit and len(laptops) >= limit:
-                            return laptops[:limit]
+            page_laptops: list[dict[str, Any]] = []
+            for product in page_products:
+                product_url = str(product.get("url") or "")
+                fl_code = str(product.get("flCode") or "")
+                # Strictly filter for laptops
+                if "/p/laptops/" in product_url or fl_code == "laptops":
+                    page_laptops.append(product)
+
+            if self.verbose:
+                print(f"[lenovo-outlet] Page {page}: fetched {len(page_laptops)} laptops ({len(page_products)} total items)")
+
+            laptops.extend(page_laptops)
+            if limit and len(laptops) >= limit:
+                return laptops[:limit]
             page += 1
 
         if self.verbose:
-            print(f"[lenovo-outlet] Fetched {len(laptops)} laptops across {page_count} pages")
+            print(f"[lenovo-outlet] Fetched {len(laptops)} laptops across {page - 1} pages")
         return laptops
 
     def fetch_batch_inventory(self, skus: list[str], *, chunk_size: int = 25) -> dict[str, str]:
