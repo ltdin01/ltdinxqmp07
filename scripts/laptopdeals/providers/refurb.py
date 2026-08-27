@@ -496,6 +496,10 @@ def format_catalog(
             existing_prod = existing.get(sku)
             if not force_psref and existing_prod and existing_prod.get("tech_specs", {}).get("ports", {}).get("items"):
                 row["tech_specs"] = existing_prod["tech_specs"]
+                if "spec_origin" in existing_prod:
+                    row["spec_origin"] = existing_prod["spec_origin"]
+                if "psref_enrichment" in existing_prod:
+                    row["psref_enrichment"] = existing_prod["psref_enrichment"]
                 psref_applied += 1
             else:
                 # Enrich with PSREF platform defaults (battery, power, ports, memory slots, etc.)
