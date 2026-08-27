@@ -245,15 +245,25 @@ jobs:
           echo "=== Checking Git Diff and Committing to Target Website Repository ==="
           git config user.email "${GIT_COMMIT_AUTHOR_EMAIL}"
           git config user.name "${GIT_COMMIT_AUTHOR_NAME}"
-          git add apps/web/data.json apps/web/archive.json apps/web/price_history/ apps/web/cto_configs/ data/spec_inventory.json data/lenovo_psref/
+          git add apps/web/ data/ || true
           git status
           if [[ -n "$(git status --porcelain)" ]]; then
             git commit -m "Catalog hygiene - $(date +'%Y-%m-%d %H:%M:%S IST')"
+            git checkout -- . 2>/dev/null || true
+            git clean -fd 2>/dev/null || true
             for attempt in {1..5}; do
               git fetch origin "${TARGET_REPO_BRANCH}"
               if git rebase "origin/${TARGET_REPO_BRANCH}"; then
                 if git push origin "${TARGET_REPO_BRANCH}"; then
                   echo "Successfully pushed changes to ${TARGET_REPO_OWNER}/${TARGET_REPO_NAME} branch ${TARGET_REPO_BRANCH}"
+                  break
+                fi
+              else
+                echo "Rebase conflict or failure, aborting rebase and merging remote changes..."
+                git rebase --abort 2>/dev/null || true
+                git merge -X theirs "origin/${TARGET_REPO_BRANCH}" -m "Merge remote branch '${TARGET_REPO_BRANCH}'" 2>/dev/null || true
+                if git push origin "${TARGET_REPO_BRANCH}"; then
+                  echo "Successfully pushed changes after merge resolution"
                   break
                 fi
               fi

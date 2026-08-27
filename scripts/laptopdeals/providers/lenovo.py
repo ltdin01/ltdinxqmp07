@@ -493,6 +493,12 @@ def format_catalog(
             affiliate = ""
             if store_link and sku:
                 affiliate = f"https://lenovo-in.zlvv.net/c/5890822/608695/9634?prodsku={sku}&u={quote(store_link, safe='')}&intsrc=CATF_4639"
+            raw_p = product.get("price")
+            raw_p_match = re.search(r"\d+(?:\.\d+)?", str(raw_p or ""))
+            raw_p_val = int(float(raw_p_match.group(0))) if raw_p_match else 0
+            raw_m = product.get("mrp")
+            raw_m_match = re.search(r"\d+(?:\.\d+)?", str(raw_m or ""))
+            raw_m_val = int(float(raw_m_match.group(0))) if raw_m_match else 0
             row = {
                 "id": sku,
                 "model_name": model_name(title),
@@ -500,8 +506,8 @@ def format_catalog(
                 "title": title,
                 "description": product.get("summary", ""),
                 "availability": product.get("availability", "unknown"),
-                "price": f"{current}.00 INR" if current else 0,
-                "mrp": 0,
+                "price": f"{current}.00 INR" if current else (f"{raw_p_val}.00 INR" if raw_p_val else 0),
+                "mrp": f"{raw_m_val}.00 INR" if raw_m_val else 0,
                 "image": (product.get("images") or [""])[0],
                 "affiliate_link": affiliate,
                 "store_link": store_link,

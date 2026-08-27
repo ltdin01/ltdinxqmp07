@@ -131,17 +131,26 @@ jobs:
           git config user.name "${GIT_COMMIT_AUTHOR_NAME}"
           git config user.email "${GIT_COMMIT_AUTHOR_EMAIL}"
 
-          git add apps/web/data-refurb.json apps/web/archive-refurb.json apps/web/price_history_refurb/ data/refurb-catalog.json || true
+          git add apps/web/ data/ || true
           
           if git diff --staged --quiet; then
             echo "No changes to commit in local repository."
           else
             git commit -m "Auto-refresh Lenovo Refurb catalog and inventory [skip ci]"
+            git checkout -- . 2>/dev/null || true
+            git clean -fd 2>/dev/null || true
             for attempt in {1..5}; do
               git fetch origin HEAD
               if git rebase FETCH_HEAD; then
                 if git push origin HEAD; then
                   echo "Successfully pushed to local repository"
+                  break
+                fi
+              else
+                git rebase --abort 2>/dev/null || true
+                git merge -X theirs FETCH_HEAD -m "Merge remote changes" 2>/dev/null || true
+                if git push origin HEAD; then
+                  echo "Successfully pushed to local repository after merge"
                   break
                 fi
               fi
@@ -154,16 +163,25 @@ jobs:
             cd website-target
             git config user.name "${GIT_COMMIT_AUTHOR_NAME}"
             git config user.email "${GIT_COMMIT_AUTHOR_EMAIL}"
-            git add apps/web/data-refurb.json apps/web/archive-refurb.json apps/web/price_history_refurb/ || true
+            git add apps/web/ data/ || true
             if git diff --staged --quiet; then
               echo "No changes to commit in target website repository."
             else
               git commit -m "Auto-refresh Lenovo Refurb catalog and inventory [skip ci]"
+              git checkout -- . 2>/dev/null || true
+              git clean -fd 2>/dev/null || true
               for attempt in {1..5}; do
                 git fetch origin "${TARGET_REPO_BRANCH}"
                 if git rebase "origin/${TARGET_REPO_BRANCH}"; then
                   if git push origin "${TARGET_REPO_BRANCH}"; then
                     echo "Successfully pushed changes to target website repository"
+                    break
+                  fi
+                else
+                  git rebase --abort 2>/dev/null || true
+                  git merge -X theirs "origin/${TARGET_REPO_BRANCH}" -m "Merge remote branch '${TARGET_REPO_BRANCH}'" 2>/dev/null || true
+                  if git push origin "${TARGET_REPO_BRANCH}"; then
+                    echo "Successfully pushed changes to target website repository after merge"
                     break
                   fi
                 fi
