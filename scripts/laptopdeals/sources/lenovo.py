@@ -391,6 +391,44 @@ def fetch_current_price(product_id: str) -> tuple[int | None, int | None]:
     return price, mrp
 
 
+def fetch_batch_prices(product_ids: list[str], chunk_size: int = 50) -> dict[str, tuple[int | None, int | None]]:
+    """Fetch current prices and MRPs for multiple Lenovo SKUs in chunked batch API requests."""
+    req = require_requests()
+    results: dict[str, tuple[int | None, int | None]] = {}
+    if not product_ids:
+        return results
+
+    headers = request_headers(SITE_BASE)
+    for i in range(0, len(product_ids), chunk_size):
+        chunk = [pid for pid in product_ids[i : i + chunk_size] if pid]
+        if not chunk:
+            continue
+        url = f"{OPENAPI_BASE}/detail/price/batch/get?preSelect=1&mcode={','.join(chunk)}&configId=&enteredCode="
+        try:
+            response = req.get(url, headers=headers, impersonate="chrome120", timeout=30)
+            if response.status_code != 200:
+                continue
+            payload = response.json()
+            data_map = payload.get("data") or {}
+            for pid in chunk:
+                product_data = data_map.get(pid)
+                if not isinstance(product_data, list):
+                    continue
+                price = int(product_data[4]) if len(product_data) > 4 and str(product_data[4]).isdigit() else None
+                bau = extract_night_deal_bau_price(product_data)
+                if bau is not None and price is not None and bau > price:
+                    price = bau
+                mrp = None
+                if len(product_data) > 13 and isinstance(product_data[13], list) and len(product_data[13]) > 3:
+                    raw_mrp = product_data[13][3]
+                    mrp = int(raw_mrp) if str(raw_mrp).isdigit() else None
+                if price:
+                    results[pid] = (price, mrp)
+        except Exception:
+            continue
+    return results
+
+
 def fetch_page_availability(store_link: str) -> str:
     req = require_requests()
     if not store_link:

@@ -333,10 +333,15 @@ def scrape_catalog(
             print(f"[catalog] {series_name} {sku}")
         return product
 
+    live_seen_skus: set[str] = set()
     for series_name in series:
         try:
             cards = client.listing_products(series_name, limit=limit_per_series)
             source_urls[series_name] = getattr(client, "result_urls", {}).get(series_name, source_urls[series_name])
+            for card in cards:
+                c_sku = lenovo.clean_text(card.get("productCode") or card.get("productNumber"))
+                if c_sku and not lenovo.GROUP_CODE_RE.match(c_sku):
+                    live_seen_skus.add(c_sku.upper())
         except Exception as exc:
             failed_series.append(series_name)
             print(f"[catalog-series-failed] {series_name}: {exc}")
@@ -354,13 +359,23 @@ def scrape_catalog(
                 products.append(product)
 
     merge_mode = only_new or bool(target_ids)
-    if merge_mode and isinstance(output_existing, dict) and isinstance(output_existing.get("groups"), dict):
+    if merge_mode:
         existing_map: dict[str, dict[str, Any]] = {}
-        for group_path, items in output_existing["groups"].items():
-            if isinstance(items, list):
-                for item in items:
-                    if isinstance(item, dict) and item.get("id"):
-                        existing_map[item["id"].upper()] = item
+        if isinstance(output_existing, dict) and isinstance(output_existing.get("groups"), dict):
+            for group_path, items in output_existing["groups"].items():
+                if isinstance(items, list):
+                    for item in items:
+                        if isinstance(item, dict) and item.get("id"):
+                            existing_map[item["id"].upper()] = item
+        if existing_files and live_seen_skus:
+            for ef in existing_files:
+                if ef.exists():
+                    ef_data = read_json(ef, {})
+                    for _, ef_prod in iter_products(ef_data):
+                        ef_pid = normalize_id(ef_prod.get("id") or ef_prod.get("product_code"))
+                        if ef_pid and ef_pid.upper() in live_seen_skus:
+                            if not bool(ef_prod.get("archived") or ef_prod.get("archived_at")):
+                                existing_map[ef_pid.upper()] = ef_prod
         for product in products:
             pid = product.get("id")
             if pid:

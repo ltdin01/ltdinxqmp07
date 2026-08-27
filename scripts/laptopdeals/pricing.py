@@ -26,14 +26,22 @@ def update_from_lenovo(
     products = selected_products(data, ids)
     result = {"checked": 0, "changed": 0, "failed": 0, "products": []}
 
+    all_skus = [normalize_id(p.get("id")) for p in products if normalize_id(p.get("id"))]
+    batch_prices = lenovo.fetch_batch_prices(all_skus) if all_skus else {}
+
     def process(product: dict[str, Any]) -> dict[str, Any]:
         pid = normalize_id(product.get("id"))
         if not pid:
             return {"id": "", "status": "skip"}
-        time.sleep(random.uniform(delay_min, delay_max))
         try:
-            availability = lenovo.fetch_page_availability(product.get("store_link", ""))
-            price, mrp = lenovo.fetch_current_price(pid)
+            price_pair = batch_prices.get(pid)
+            if price_pair:
+                price, mrp = price_pair
+                availability = "in stock"
+            else:
+                price, mrp = lenovo.fetch_current_price(pid)
+                availability = "in stock" if price else "out of stock"
+
             if not price:
                 product["availability"] = "out of stock"
                 product["last_checked"] = ist_stamp()
