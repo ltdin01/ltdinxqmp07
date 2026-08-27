@@ -7,7 +7,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
-from laptopdeals.datafile import product_index
+from laptopdeals.datafile import iter_products, product_index
 from laptopdeals.enrich_lenovo import PsrefIndex, enrich_lenovo_row
 from laptopdeals.history import latest_price, load_history, stats, write_history
 from laptopdeals.ids import normalize_id
@@ -209,6 +209,8 @@ def scrape_catalog(
     output: Path,
     limit: int | None = None,
     delay: tuple[float, float] = (0.5, 1.5),
+    existing_files: list[Path] | None = None,
+    new_ids_output: Path | None = None,
     verbose: bool = False,
     **kwargs: Any,
 ) -> dict[str, Any]:
@@ -219,6 +221,20 @@ def scrape_catalog(
     cards = client.fetch_all_laptops(limit=limit)
     skus = [lenovo_outlet.base_lenovo.clean_text(c.get("productCode")) for c in cards if c.get("productCode")]
     
+    known_ids: set[str] = set()
+    if existing_files:
+        for ef in existing_files:
+            if ef.exists():
+                for _, p in iter_products(read_json(ef, {})):
+                    pid = normalize_id(p.get("id") or p.get("product_code"))
+                    if pid:
+                        known_ids.add(pid)
+    new_ids = sorted(sku for sku in skus if sku and normalize_id(sku) not in known_ids)
+    if new_ids_output:
+        write_json(new_ids_output, new_ids, indent=4)
+        if verbose:
+            print(f"[refurb] Wrote {len(new_ids)} new IDs to {new_ids_output}")
+
     if verbose:
         print(f"[refurb] Pre-fetching batch inventory for {len(skus)} SKUs...")
     batch_inventory = client.fetch_batch_inventory(skus)

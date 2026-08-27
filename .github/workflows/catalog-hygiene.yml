@@ -150,6 +150,18 @@ jobs:
           echo "=== Restoring reappeared archive entries ==="
           python -u scripts/archive.py restore --raw-catalog data/lenovo-catalog.json --ids-file data/lenovo-new-ids.json --data website-target/apps/web/data.json --archive website-target/apps/web/archive.json --apply
 
+      - name: Archive stale Lenovo models
+        if: github.event_name == 'schedule' || env.ARCHIVE_STALE == 'true'
+        shell: bash
+        run: |
+          echo "=== Archive Check for Unavailable Models ==="
+          args=(check --apply --max-archive "${ARCHIVE_MAX}" --data website-target/apps/web/data.json --archive website-target/apps/web/archive.json --raw-catalog data/lenovo-catalog.json)
+          ids="${ARCHIVE_PRODUCT_IDS//,/ }"
+          for product_id in ${ids}; do
+            args+=(--id "${product_id}")
+          done
+          python -u scripts/archive.py "${args[@]}"
+
       - name: Count new Lenovo IDs
         id: new_ids
         run: |
@@ -219,18 +231,6 @@ jobs:
         run: |
           echo "=== Refreshing Live Lenovo Current Prices ==="
           python -u scripts/prices.py --data website-target/apps/web/data.json --history-dir website-target/apps/web/price_history lenovo-current --workers "${PRICE_WORKERS}"
-
-      - name: Archive stale Lenovo models
-        if: github.event_name == 'schedule' || env.ARCHIVE_STALE == 'true'
-        shell: bash
-        run: |
-          echo "=== Archive Check for Unavailable Models ==="
-          args=(check --apply --max-archive "${ARCHIVE_MAX}" --data website-target/apps/web/data.json --archive website-target/apps/web/archive.json --raw-catalog data/lenovo-catalog.json)
-          ids="${ARCHIVE_PRODUCT_IDS//,/ }"
-          for product_id in ${ids}; do
-            args+=(--id "${product_id}")
-          done
-          python -u scripts/archive.py "${args[@]}"
 
       - name: Recalculate stats and inventory
         run: |
