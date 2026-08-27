@@ -104,8 +104,9 @@ def check_product(product: dict[str, Any], *, html_dir: Path | None = None) -> d
         (bool(ld_sku) and ld_sku.startswith("LEN") and ld_sku != pid) or
         (bool(final_url) and re.search(r"/len[0-9]", final_url.lower()) and not pid.startswith("LEN"))
     )
-    if is_subseries_conversion:
-        reasons.append("converted_to_model_selector")
+    if is_subseries_conversion and not is_cto_product(pid):
+        if not is_in_stock or (bool(final_url) and re.search(r"/len[0-9]", final_url.lower()) and not pid.startswith("LEN") and pid.lower() not in final_url.lower()):
+            reasons.append("converted_to_model_selector")
 
     if availability == "out of stock":
         reasons.append("not_in_stock")
@@ -172,13 +173,38 @@ def archive_unavailable(
         if limit and len(candidates) >= limit:
             break
 
+    # Build index of raw_catalog if provided to use initial fetch as source of truth
+    raw_index: dict[str, dict[str, Any]] = {}
+    if raw_catalog_path and raw_catalog_path.exists():
+        raw_data = read_json(raw_catalog_path, {})
+        for _, raw_prod in iter_products(raw_data):
+            r_pid = normalize_id(raw_prod.get("id") or raw_prod.get("product_code"))
+            if r_pid:
+                raw_index[r_pid] = raw_prod
+
     decisions = []
     for product in candidates:
         pid = normalize_id(product.get("id"))
-        try:
-            decision = check_product(product, html_dir=html_dir)
-        except Exception as exc:
-            decision = {"archive": False, "reasons": [f"check_failed:{exc}"], "evidence": {}}
+        if pid in raw_index:
+            raw_item = raw_index[pid]
+            raw_avail = raw_item.get("availability")
+            if raw_avail == "out of stock":
+                decision = {
+                    "archive": True,
+                    "reasons": ["not_in_stock"],
+                    "evidence": {"source": "raw_catalog", "availability": "out of stock"},
+                }
+            else:
+                decision = {
+                    "archive": False,
+                    "reasons": [],
+                    "evidence": {"source": "raw_catalog", "availability": raw_avail or "in stock"},
+                }
+        else:
+            try:
+                decision = check_product(product, html_dir=html_dir)
+            except Exception as exc:
+                decision = {"archive": False, "reasons": [f"check_failed:{exc}"], "evidence": {}}
         decisions.append({"product": product, **decision})
         print(f"[archive] {pid} {'ARCHIVE' if decision['archive'] else 'keep'} {','.join(decision['reasons'])}")
 

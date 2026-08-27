@@ -693,6 +693,72 @@ class ArchiveTests(unittest.TestCase):
             self.assertFalse(result["archive"])
             self.assertEqual(result["reasons"], [])
 
+    def test_cto_product_not_archived_on_subseries_template(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            html_dir = Path(tmp)
+            html_dir.joinpath("83M0CTO1WWIN1.json").write_text("", encoding="utf-8")
+            html_dir.joinpath("83M0CTO1WWIN1.html").write_text(
+                '<meta name="productstatus" content="Available"/>'
+                '<meta name="pageType" content="subseriespage"/>'
+                '<script type="application/ld+json">'
+                '{"@type":"Product","sku":"LEN101G0045","offers":{"availability":"https://schema.org/InStock"}}'
+                "</script>",
+                encoding="utf-8",
+            )
+            result = archive_logic.check_product(
+                {"id": "83M0CTO1WWIN1", "store_link": "https://www.lenovo.com/in/en/p/test/83m0cto1wwin1"},
+                html_dir=html_dir,
+            )
+            self.assertFalse(result["archive"])
+            self.assertEqual(result["reasons"], [])
+
+    def test_archive_unavailable_uses_raw_catalog_as_source_of_truth(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            tmp_path = Path(tmp)
+            data_path = tmp_path / "data.json"
+            archive_path = tmp_path / "archive.json"
+            raw_path = tmp_path / "raw.json"
+
+            data_path.write_text(
+                json.dumps({
+                    "Legion": [
+                        {"id": "83M0CTO1WWIN1", "store_link": "https://www.lenovo.com/in/en/p/test/83m0cto1wwin1", "availability": "in stock"},
+                        {"id": "83M0006DIN", "store_link": "https://www.lenovo.com/in/en/p/test/83m0006din", "availability": "in stock"},
+                    ]
+                }),
+                encoding="utf-8",
+            )
+            raw_path.write_text(
+                json.dumps({
+                    "groups": {
+                        "Legion": [
+                            {"id": "83M0CTO1WWIN1", "availability": "in stock"},
+                            {"id": "83M0006DIN", "availability": "out of stock"},
+                        ]
+                    }
+                }),
+                encoding="utf-8",
+            )
+            archive_path.write_text(json.dumps({"products": []}), encoding="utf-8")
+
+            res = archive_logic.archive_unavailable(
+                data_path=data_path,
+                raw_catalog_path=raw_path,
+                archive_path=archive_path,
+                ids=None,
+                limit=None,
+                max_archive=25,
+                html_dir=None,
+                apply=True,
+            )
+            self.assertEqual(res["archive"], 1)
+
+            saved_data = json.loads(data_path.read_text(encoding="utf-8"))
+            legion_prods = {p["id"]: p for p in saved_data["Legion"]}
+            self.assertFalse(legion_prods["83M0CTO1WWIN1"].get("archived"))
+            self.assertTrue(legion_prods["83M0006DIN"].get("archived"))
+            self.assertEqual(legion_prods["83M0006DIN"].get("availability"), "out of stock")
+
 
 if __name__ == "__main__":
     unittest.main()
