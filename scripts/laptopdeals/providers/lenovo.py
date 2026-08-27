@@ -531,12 +531,13 @@ def format_catalog(
             raw_m_match = re.search(r"\d+(?:\.\d+)?", str(raw_m or ""))
             raw_m_val = int(float(raw_m_match.group(0))) if raw_m_match else 0
             img = (product.get("images") or [product.get("image") or (existing_product.get("image") if existing_product else "") or ""])[0]
+            desc = product.get("summary") or product.get("card_summary") or product.get("description") or (existing_product.get("description") if existing_product else "") or ""
             row = {
                 "id": sku,
                 "model_name": model_name(title),
                 "internal_model_code": title,
                 "title": title,
-                "description": product.get("summary", ""),
+                "description": desc,
                 "availability": product.get("availability", "unknown"),
                 "price": f"{current}.00 INR" if current else (f"{raw_p_val}.00 INR" if raw_p_val else 0),
                 "mrp": f"{raw_m_val}.00 INR" if raw_m_val else 0,

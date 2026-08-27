@@ -68,12 +68,15 @@ jobs:
         run: |
           echo "=== Starting Lenovo Outlet Catalog Scrape ==="
           target_data="website-target/apps/web/data-refurb.json"
+          target_arch="website-target/apps/web/archive-refurb.json"
           if [[ ! -f "${target_data}" && -f "apps/web/data-refurb.json" ]]; then
             target_data="apps/web/data-refurb.json"
+            target_arch="apps/web/archive-refurb.json"
           fi
           python -u scripts/catalog.py --provider refurb scrape \
             --output data/refurb-catalog.json \
             --existing-file "${target_data}" \
+            --existing-file "${target_arch}" \
             --new-ids-output data/refurb-new-ids.json \
             --workers "${WORKERS}" \
             --verbose
@@ -116,77 +119,35 @@ jobs:
             --workers 1 \
             --delay 1.5 || true
 
-      - name: Sync Artifacts to Workspace
-        run: |
-          if [[ -d "website-target/apps/web" ]]; then
-            mkdir -p apps/web
-            cp -rf website-target/apps/web/data-refurb.json apps/web/ 2>/dev/null || true
-            cp -rf website-target/apps/web/archive-refurb.json apps/web/ 2>/dev/null || true
-            cp -rf website-target/apps/web/price_history_refurb apps/web/ 2>/dev/null || true
-          fi
-
-      - name: Commit and Push Changes
-        if: env.COMMIT_CHANGES == 'true'
+      - name: Commit and Push Changes to Target Website Repository
+        if: env.COMMIT_CHANGES == 'true' && env.TARGET_REPO_PAT != ''
+        working-directory: website-target
         run: |
           git config user.name "${GIT_COMMIT_AUTHOR_NAME}"
           git config user.email "${GIT_COMMIT_AUTHOR_EMAIL}"
-
           git add apps/web/ data/ || true
-          
-          if git diff --staged --quiet; then
-            echo "No changes to commit in local repository."
-          else
+          if [[ -n "$(git status --porcelain)" ]]; then
             git commit -m "Auto-refresh Lenovo Refurb catalog and inventory [skip ci]"
             git checkout -- . 2>/dev/null || true
             git clean -fd 2>/dev/null || true
             for attempt in {1..5}; do
-              git fetch origin HEAD
-              if git rebase FETCH_HEAD; then
-                if git push origin HEAD; then
-                  echo "Successfully pushed to local repository"
+              git fetch origin "${TARGET_REPO_BRANCH}"
+              if git rebase "origin/${TARGET_REPO_BRANCH}"; then
+                if git push origin "${TARGET_REPO_BRANCH}"; then
+                  echo "Successfully pushed changes to target website repository"
                   break
                 fi
               else
                 git rebase --abort 2>/dev/null || true
-                git merge -X theirs FETCH_HEAD -m "Merge remote changes" 2>/dev/null || true
-                if git push origin HEAD; then
-                  echo "Successfully pushed to local repository after merge"
+                git merge -X theirs "origin/${TARGET_REPO_BRANCH}" -m "Merge remote branch '${TARGET_REPO_BRANCH}'" 2>/dev/null || true
+                if git push origin "${TARGET_REPO_BRANCH}"; then
+                  echo "Successfully pushed changes to target website repository after merge"
                   break
                 fi
               fi
-              echo "Local push failed; retrying in 3s (attempt ${attempt}/5)..."
+              echo "Target website push failed; retrying in 3s (attempt ${attempt}/5)..."
               sleep 3
             done
-          fi
-
-          if [[ -n "${TARGET_REPO_PAT}" && -d "website-target/.git" ]]; then
-            cd website-target
-            git config user.name "${GIT_COMMIT_AUTHOR_NAME}"
-            git config user.email "${GIT_COMMIT_AUTHOR_EMAIL}"
-            git add apps/web/ data/ || true
-            if git diff --staged --quiet; then
-              echo "No changes to commit in target website repository."
-            else
-              git commit -m "Auto-refresh Lenovo Refurb catalog and inventory [skip ci]"
-              git checkout -- . 2>/dev/null || true
-              git clean -fd 2>/dev/null || true
-              for attempt in {1..5}; do
-                git fetch origin "${TARGET_REPO_BRANCH}"
-                if git rebase "origin/${TARGET_REPO_BRANCH}"; then
-                  if git push origin "${TARGET_REPO_BRANCH}"; then
-                    echo "Successfully pushed changes to target website repository"
-                    break
-                  fi
-                else
-                  git rebase --abort 2>/dev/null || true
-                  git merge -X theirs "origin/${TARGET_REPO_BRANCH}" -m "Merge remote branch '${TARGET_REPO_BRANCH}'" 2>/dev/null || true
-                  if git push origin "${TARGET_REPO_BRANCH}"; then
-                    echo "Successfully pushed changes to target website repository after merge"
-                    break
-                  fi
-                fi
-                echo "Target website push failed; retrying in 3s (attempt ${attempt}/5)..."
-                sleep 3
-              done
-            fi
+          else
+            echo "No changes to commit in target website repository."
           fi
