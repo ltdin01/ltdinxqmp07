@@ -267,11 +267,31 @@ def refresh_cto_configs(
     data: Any,
     *,
     output_dir: Path,
+    raw_catalog_data: Any = None,
     ids: set[str] | None = None,
     workers: int = 4,
     dry_run: bool = False,
 ) -> dict[str, Any]:
-    products = [p for p in selected_products(data, ids) if "CTO" in normalize_id(p.get("id"))]
+    seen_pids: set[str] = set()
+    products: list[dict[str, Any]] = []
+
+    # 1. Active in-stock CTO models from data.json
+    for p in selected_products(data, ids):
+        pid = normalize_id(p.get("id"))
+        if "CTO" in pid and pid not in seen_pids:
+            if ids or (p.get("availability") != "out of stock" and not p.get("archived")):
+                seen_pids.add(pid)
+                products.append(p)
+
+    # 2. Newly discovered live in-stock CTO models from raw_catalog
+    if raw_catalog_data:
+        for p in selected_products(raw_catalog_data, ids):
+            pid = normalize_id(p.get("id"))
+            if "CTO" in pid and pid not in seen_pids:
+                if ids or (p.get("availability") != "out of stock" and not p.get("archived")):
+                    seen_pids.add(pid)
+                    products.append(p)
+
     result = {"checked": 0, "changed": 0, "failed": 0}
 
     def process(product: dict[str, Any]) -> tuple[str, dict[str, Any] | None, str | None]:

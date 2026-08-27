@@ -366,7 +366,9 @@ def scrape_catalog(
                 if isinstance(items, list):
                     for item in items:
                         if isinstance(item, dict) and item.get("id"):
-                            existing_map[item["id"].upper()] = item
+                            item_id_upper = item["id"].upper()
+                            if not live_seen_skus or item_id_upper in live_seen_skus:
+                                existing_map[item_id_upper] = item
         if existing_files and live_seen_skus:
             for ef in existing_files:
                 if ef.exists():

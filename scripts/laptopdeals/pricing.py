@@ -23,7 +23,10 @@ def update_from_lenovo(
     delay_max: float = 4.0,
     dry_run: bool = False,
 ) -> dict[str, Any]:
-    products = selected_products(data, ids)
+    products = [
+        p for p in selected_products(data, ids)
+        if bool(ids) or (p.get("availability") != "out of stock" and not p.get("archived"))
+    ]
     result = {"checked": 0, "changed": 0, "failed": 0, "products": []}
 
     all_skus = [normalize_id(p.get("id")) for p in products if normalize_id(p.get("id"))]

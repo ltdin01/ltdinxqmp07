@@ -37,7 +37,7 @@ on:
       archive_max:
         description: 'Abort if more products would archive'
         required: false
-        default: '25'
+        default: '100'
       limit_per_series:
         description: 'Optional debug limit per series'
         required: false
@@ -85,7 +85,7 @@ jobs:
       FETCH_CTO: ${{ github.event_name == 'schedule' && 'true' || inputs.fetch_cto_configs }}
       ARCHIVE_STALE: ${{ github.event_name == 'schedule' && 'true' || inputs.archive_stale_models }}
       ARCHIVE_PRODUCT_IDS: ${{ github.event.inputs.archive_product_ids || '' }}
-      ARCHIVE_MAX: ${{ github.event.inputs.archive_max || '25' }}
+      ARCHIVE_MAX: ${{ github.event.inputs.archive_max || '100' }}
       LIMIT_PER_SERIES: ${{ github.event.inputs.limit_per_series || '' }}
       SCRAPE_WORKERS: ${{ github.event.inputs.scrape_workers || '8' }}
       SCRAPE_ALL: ${{ github.event_name == 'schedule' && 'false' || inputs.scrape_all }}
@@ -175,7 +175,7 @@ jobs:
         if: env.FETCH_CTO == 'true'
         run: |
           echo "=== Refreshing Lenovo CTO Options ==="
-          python -u scripts/cto.py --data website-target/apps/web/data.json --output-dir website-target/apps/web/cto_configs --workers "${CTO_WORKERS}"
+          python -u scripts/cto.py --data website-target/apps/web/data.json --raw-catalog data/lenovo-catalog.json --output-dir website-target/apps/web/cto_configs --workers "${CTO_WORKERS}"
 
 
       - name: Build PSREF specs

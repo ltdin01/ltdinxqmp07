@@ -11,6 +11,7 @@ from laptopdeals.jsonio import read_json
 def main() -> int:
     parser = argparse.ArgumentParser(description="Refresh Lenovo CTO configuration files")
     parser.add_argument("--data", default=str(paths.APP_DATA))
+    parser.add_argument("--raw-catalog", default="")
     parser.add_argument("--output-dir", default=str(paths.CTO_CONFIGS))
     parser.add_argument("--id", action="append", default=[], help="Target CTO product ID(s)")
     parser.add_argument("--ids-file", default="")
@@ -23,9 +24,12 @@ def main() -> int:
         result = cto.reenrich_all_cto(paths.resolve(args.output_dir), force=args.force)
         print(result)
         return 0
+    raw_cat_path = paths.resolve(args.raw_catalog) if args.raw_catalog else None
+    raw_cat_data = read_json(raw_cat_path, {}) if raw_cat_path and raw_cat_path.exists() else None
     result = cto.refresh_cto_configs(
         read_json(paths.resolve(args.data), {}),
         output_dir=paths.resolve(args.output_dir),
+        raw_catalog_data=raw_cat_data,
         ids=ids_from_args(args),
         workers=args.workers,
         dry_run=args.dry_run,

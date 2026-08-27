@@ -6,13 +6,16 @@ from pathlib import Path
 def _find_repo_root() -> Path:
     p = Path(__file__).resolve().parent
     top = p
+    candidate = None
     while p != p.parent:
-        if (p / "apps/web").exists() or (p / "pnpm-workspace.yaml").exists():
+        if (p / "pnpm-workspace.yaml").exists() or (p / "pnpm-lock.yaml").exists() or (p / "apps/web/data.json").exists():
             return p
+        if (p / "apps/web").exists() and candidate is None:
+            candidate = p
         if (p / ".git").exists():
             top = p
         p = p.parent
-    return top
+    return candidate or top
 
 
 REPO_ROOT = _find_repo_root()
