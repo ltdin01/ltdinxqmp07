@@ -177,6 +177,11 @@ def archive_unavailable(
     raw_index: dict[str, dict[str, Any]] = {}
     if raw_catalog_path and raw_catalog_path.exists():
         raw_data = read_json(raw_catalog_path, {})
+        if apply and raw_data.get("snapshot_complete") is not True:
+            raise SystemExit(
+                "Abort: raw Lenovo catalog is incomplete or has no completeness marker; "
+                "refusing to archive models from missing listings"
+            )
         for _, raw_prod in iter_products(raw_data):
             r_pid = normalize_id(raw_prod.get("id") or raw_prod.get("product_code"))
             if r_pid:

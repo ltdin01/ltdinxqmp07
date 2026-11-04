@@ -738,6 +738,12 @@ class LenovoCatalogClient:
             return []
 
         skus = self.extract_group_skus(group_url)
+        expected = int(card.get("modelsCount") or 0)
+        if expected > len(skus):
+            raise RuntimeError(
+                f"Lenovo group {code} advertises {expected} models but only "
+                f"{len(skus)} SKUs were discovered at {group_url}"
+            )
         if not skus:
             print(f"[catalog-group] Discarding group card {code} — no individual SKUs found")
             return []

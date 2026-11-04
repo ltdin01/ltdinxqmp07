@@ -61,6 +61,10 @@ def main() -> int:
             ids=ids_from_args(args),
         )
         result = catalog.scrape_catalog(provider=args.provider, **scrape_kwargs)
+        if (args.provider == "lenovo" and set(series or []) == set(DEFAULT_SERIES["lenovo"] or [])
+                and not args.limit_per_series and not ids_from_args(args)
+                and result.get("snapshot_complete") is False):
+            raise SystemExit("[catalog] incomplete Lenovo discovery; refusing to continue the catalog workflow")
     else:
         result = catalog.format_catalog(
             provider=args.provider,

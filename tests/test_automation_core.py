@@ -53,6 +53,25 @@ class BitBnsTests(unittest.TestCase):
 
 
 class LenovoAvailabilityTests(unittest.TestCase):
+    def test_group_discovery_uses_current_sku_and_rejects_missing_models(self) -> None:
+        client = lenovo_source.LenovoCatalogClient(delay=(0, 0))
+        group_url = "https://www.lenovo.com/in/en/p/legion/len101g0051"
+        html = (
+            '<meta name="productname" content="83Q7CTO1WWIN2,83Q7009JIN,83Q7009KIN"/>'
+            '<meta name="productcodeimpressions" content="83Q7CTO1WW,83Q7009JIN,83Q7009KIN"/>'
+        )
+        card = {"productCode": "LEN101G0051", "url": group_url, "modelsCount": 3}
+        with patch.object(client, "get_text", return_value=html):
+            expanded = client.expand_group_card(card)
+        self.assertEqual([item["productCode"] for item in expanded], [
+            "83Q7CTO1WWIN2", "83Q7009JIN", "83Q7009KIN",
+        ])
+        self.assertTrue(expanded[0]["url"].endswith("/83Q7CTO1WWIN2"))
+
+        with patch.object(client, "get_text", return_value='<meta name="productname" content="83Q7CTO1WWIN2"/>'):
+            with self.assertRaisesRegex(RuntimeError, "advertises 3 models but only 1"):
+                client.expand_group_card(card)
+
     def test_availability_ignores_body_out_of_stock_when_meta_is_available(self) -> None:
         html = (
             '<meta name="productstatus" content="Available"/>'
@@ -250,6 +269,31 @@ class PricingTests(unittest.TestCase):
 
 
 class CatalogFormatTests(unittest.TestCase):
+    def test_full_lenovo_discovery_marks_complete_snapshot(self) -> None:
+        class FakeClient:
+            def __init__(self, *args, **kwargs) -> None:
+                pass
+
+            def listing_products(self, series: str, limit: int | None = None) -> list[dict[str, str]]:
+                sku = f"83Q7{lenovo_source.DEFAULT_SERIES.index(series):04d}IN"
+                return [{"productCode": sku, "url": f"/in/en/p/test/{sku.lower()}", "summary": f"Lenovo {series}"}]
+
+            def detail(self, url: str):
+                sku = url.rsplit("/", 1)[-1].upper()
+                return ([], {"name": sku, "sku": sku, "offers": {"price": "100"}}, ([], {}, {}))
+
+        with tempfile.TemporaryDirectory() as tmp:
+            output = Path(tmp) / "catalog.json"
+            with patch.object(catalog.lenovo, "LenovoCatalogClient", FakeClient):
+                result = catalog.scrape_catalog(
+                    series=lenovo_source.DEFAULT_SERIES, output=output,
+                    only_new=False, existing_files=[], new_ids_output=None,
+                    limit_per_series=None, delay=(0, 0), workers=1, verbose=False,
+                )
+            self.assertTrue(result["snapshot_complete"])
+            self.assertTrue(read_json(output)["snapshot_complete"])
+            self.assertEqual(result["total"], 6)
+
     def test_scrape_catalog_parallel_writes_raw_catalog_once_per_product(self) -> None:
         class FakeClient:
             def __init__(self, *args, **kwargs) -> None:
@@ -285,7 +329,7 @@ class CatalogFormatTests(unittest.TestCase):
                 )
             payload = read_json(output)
             products = [item for rows in payload["groups"].values() for item in rows]
-            self.assertEqual(result, {"products": 2, "total": 2, "failed_series": []})
+            self.assertEqual(result, {"products": 2, "total": 2, "failed_series": [], "snapshot_complete": False})
             self.assertEqual(payload["total_products"], 2)
             self.assertEqual([item["id"] for item in products], ["ABC", "DEF"])
 
@@ -320,7 +364,8 @@ class CatalogFormatTests(unittest.TestCase):
                     workers=1,
                     verbose=False,
                 )
-            self.assertEqual(result, {"products": 1, "total": 1, "failed_series": ["Bad"]})
+            self.assertEqual(result, {"products": 1, "total": 1, "failed_series": ["Bad"], "snapshot_complete": False})
+            self.assertFalse(read_json(output)["snapshot_complete"])
 
     def test_scrape_catalog_rejects_lenovo_internal_codes_as_titles(self) -> None:
         class FakeClient:
@@ -730,6 +775,7 @@ class ArchiveTests(unittest.TestCase):
             )
             raw_path.write_text(
                 json.dumps({
+                    "snapshot_complete": True,
                     "groups": {
                         "Legion": [
                             {"id": "83M0CTO1WWIN1", "availability": "in stock"},
@@ -758,6 +804,52 @@ class ArchiveTests(unittest.TestCase):
             self.assertFalse(legion_prods["83M0CTO1WWIN1"].get("archived"))
             self.assertTrue(legion_prods["83M0006DIN"].get("archived"))
             self.assertEqual(legion_prods["83M0006DIN"].get("availability"), "out of stock")
+
+    def test_archive_refuses_partial_raw_snapshot(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            data_path = root / "data.json"
+            archive_path = root / "archive.json"
+            raw_path = root / "raw.json"
+            original = {"Legion": [{
+                "id": "83Q7CTO1WWIN1",
+                "store_link": "https://www.lenovo.com/in/en/p/test/83q7cto1wwin1",
+                "availability": "in stock",
+            }]}
+            write_json(data_path, original)
+            write_json(archive_path, {"products": []})
+            write_json(raw_path, {"snapshot_complete": False, "failed_series": ["Legion"], "groups": {}})
+            with self.assertRaisesRegex(SystemExit, "raw Lenovo catalog is incomplete"):
+                archive_logic.archive_unavailable(
+                    data_path=data_path, raw_catalog_path=raw_path,
+                    archive_path=archive_path, ids=None, limit=None,
+                    max_archive=25, html_dir=None, apply=True,
+                )
+            self.assertEqual(read_json(data_path), original)
+            self.assertEqual(read_json(archive_path), {"products": []})
+
+    def test_restore_reappeared_lenovo_model_from_live_snapshot(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            data_path = root / "data.json"
+            archive_path = root / "archive.json"
+            raw_path = root / "raw.json"
+            archived = {"id": "83Q7CTO1WWIN2", "archived": True,
+                        "archived_at": "2026-10-19", "availability": "out of stock"}
+            write_json(data_path, {"Legion": [dict(archived)]})
+            write_json(archive_path, {"products": [dict(archived)]})
+            write_json(raw_path, {"snapshot_complete": True, "groups": {
+                "Legion": [{"id": "83Q7CTO1WWIN2", "availability": "in stock"}]
+            }})
+            result = archive_logic.restore_ids(
+                data_path=data_path, archive_path=archive_path, ids=set(),
+                raw_catalog_path=raw_path, apply=True,
+            )
+            self.assertEqual(result["restored_ids"], ["83Q7CTO1WWIN2"])
+            self.assertEqual(read_json(archive_path)["products"], [])
+            restored = read_json(data_path)["Legion"][0]
+            self.assertFalse(restored.get("archived"))
+            self.assertEqual(restored["availability"], "in stock")
 
 
 if __name__ == "__main__":

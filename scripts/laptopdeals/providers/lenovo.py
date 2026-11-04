@@ -401,6 +401,19 @@ def scrape_catalog(
         [
             ("generated_at", datetime.now(timezone.utc).isoformat()),
             ("source_urls", source_urls),
+            ("requested_series", series),
+            ("failed_series", failed_series),
+            ("snapshot_complete", (
+                set(series) == set(lenovo.DEFAULT_SERIES)
+                and not failed_series
+                and limit_per_series is None
+                and not target_ids
+                and bool(live_seen_skus)
+                and live_seen_skus.issubset({
+                    normalize_id(item.get("id"))
+                    for rows in grouped.values() for item in rows
+                })
+            )),
             ("total_products", sum(len(rows) for rows in grouped.values())),
             ("groups", grouped),
         ]
@@ -414,7 +427,12 @@ def scrape_catalog(
             if normalize_id(item.get("id")) and normalize_id(item.get("id")) not in actual_existing
         ]
         write_json(new_ids_output, new_ids, indent=2)
-    return {"products": len(products), "total": payload["total_products"], "failed_series": failed_series}
+    return {
+        "products": len(products),
+        "total": payload["total_products"],
+        "failed_series": failed_series,
+        "snapshot_complete": payload["snapshot_complete"],
+    }
 
 
 def category_from_product(product: dict[str, Any]) -> str:
