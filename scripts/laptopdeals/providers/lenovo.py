@@ -73,6 +73,12 @@ def discover_all_laptops(
         print(f"[catalog-discovery] {message}; falling back to per-series listings")
         return None
 
+    lookup_groups = getattr(client, "subseries_cards", None)
+    if lookup_groups is not None:
+        known = [item for item in series if item in lenovo.KNOWN_SERIES]
+        matched = lenovo.apply_group_names(cards, lookup_groups(known) if known else {})
+        print(f"[catalog-discovery] model names from subseries listings: {matched}/{len(cards)} SKUs")
+
     requested = {item.lower() for item in series}
     full_run = {item.lower() for item in lenovo.KNOWN_SERIES} <= requested
     batches: OrderedDict[str, list[dict[str, Any]]] = OrderedDict((item, []) for item in series)
@@ -237,6 +243,7 @@ def select_title(
     page_title: str,
     card: dict[str, Any],
     sku: str,
+    prefer_breadcrumb: bool = False,
 ) -> str:
     # Priority order:
     # 1. card.summary — the listing API's curated marketing name, e.g.
@@ -246,9 +253,15 @@ def select_title(
     # 3. Page <title> tag from the PDP, stripped of "| Lenovo India".
     # 4. Product JSON-LD "name" from the PDP.
     # 5. card.productName — often a technical internal string.
+    #
+    # prefer_breadcrumb swaps 1 and 2 for SKU cards from the all-laptops listing:
+    # their summary is a per-SKU line ("Legion Pro 7 Intel Core Ultra - 40.64cms"),
+    # while the PDP breadcrumb carries the model name the group card used to give
+    # ("Legion Pro 7i Gen 10 (16,Intel)").
+    summary = lenovo.clean_text(card.get("summary"))
+    model_names = breadcrumb_model_candidates(breadcrumb)
     candidates = [
-        lenovo.clean_text(card.get("summary")),
-        *breadcrumb_model_candidates(breadcrumb),
+        *(model_names + [summary] if prefer_breadcrumb else [summary] + model_names),
         clean_page_title(page_title, sku),
         collapse_repeated_name(product_ld.get("name")) if isinstance(product_ld, dict) else "",
         lenovo.clean_text(card.get("productName")),
@@ -364,7 +377,13 @@ def scrape_catalog(
 
         listing_specs = lenovo.spec_list_to_maps(card.get("classification") or [])
         spec_rows, by_label, by_code = lenovo.merge_specs(listing_specs, detail_specs)
-        title = select_title(product_ld=product_ld, breadcrumb=breadcrumb, page_title=page_title, card=card, sku=sku)
+        # An all-laptops SKU card without its subseries name falls back to the PDP breadcrumb.
+        sku_card = bool(card.get("_series")) and not card.get("_group_named")
+        title = select_title(
+            product_ld=product_ld, breadcrumb=breadcrumb, page_title=page_title, card=card, sku=sku, prefer_breadcrumb=sku_card
+        )
+        # Per-series cards carry the group's model name as "summary"; keep that meaning for SKU cards.
+        summary = title if sku_card and title != sku else lenovo.clean_text(card.get("summary"))
         path_parts = path_from_breadcrumb(breadcrumb, title, sku, series_name)
         images = product_ld.get("image") or []
         if isinstance(images, str):
@@ -378,7 +397,7 @@ def scrape_catalog(
                 ("product_code", sku),
                 ("series_filter", series_name),
                 ("title", title),
-                ("summary", lenovo.clean_text(card.get("summary"))),
+                ("summary", summary),
                 ("product_name", lenovo.clean_text(card.get("productName"))),
                 ("listing_date", lenovo.listing_date_from_images(images)),
                 ("store_link", store_link),

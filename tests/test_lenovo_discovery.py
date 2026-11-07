@@ -15,16 +15,44 @@ from laptopdeals.providers import lenovo as lenovo_provider
 from laptopdeals.sources import lenovo as lenovo_source
 
 
-def card(code: str, category: str, name: str = "", url: str = "") -> dict:
+def card(code: str, category: str, name: str = "", url: str = "", group: str = "", summary: str = "") -> dict:
     """A listing card shaped like the live all-laptops DLP response (Nov 2026)."""
-    return {
+    item = {
         "productCode": code,
         "productName": name or f"Laptop {code}",
+        "summary": summary or f"Per-SKU line {code}",
         "url": url or f"/p/laptops/{category}/some-model/{code.lower()}",
         "categoryPath": ["ROOTPMI", "laptops", category, f"{category}-series"],
         "finalPrice": "100000.00",
         "marketingStatus": "Available",
     }
+    if group:
+        item["categoryPath"].append(group)
+        item["parentSubseriesId"] = group
+    return item
+
+
+class NormalizeSkuCardTests(unittest.TestCase):
+    def test_group_code_moves_out_of_category_path_and_sku_is_upper_cased(self) -> None:
+        raw = card("83f5cto1wwin2", "legion-laptops", group="LEN101G0039",
+                   url="/p/laptops/legion-laptops/legion-pro-series/legion-pro-7i-gen-10-16-inch-intel/83f5cto1wwin2")
+        out = lenovo_source.normalize_sku_card(raw)
+        self.assertEqual(out["categoryPath"], ["ROOTPMI", "laptops", "legion-laptops", "legion-laptops-series"])
+        self.assertEqual(out["_subseries"], "LEN101G0039")
+        self.assertEqual(out["url"], "/p/laptops/legion-laptops/legion-pro-series/legion-pro-7i-gen-10-16-inch-intel/83F5CTO1WWIN2")
+        self.assertEqual(raw["categoryPath"][-1], "LEN101G0039", "input card must not be mutated")
+
+    def test_group_names_replace_per_sku_lines(self) -> None:
+        cards = [
+            lenovo_source.normalize_sku_card(card("21UFCTO1WWIN2", "thinkpad", group="LEN101T0001")),
+            lenovo_source.normalize_sku_card(card("83UTCTO1WWIN1", "lenovo-laptops")),
+        ]
+        groups = {"LEN101T0001": {"productCode": "LEN101T0001", "summary": "ThinkPad P1 Gen 9 (16, Intel)", "productName": "ThinkPad P1 Gen 9 16 inch Intel"}}
+        self.assertEqual(lenovo_source.apply_group_names(cards, groups), 1)
+        self.assertEqual(cards[0]["summary"], "ThinkPad P1 Gen 9 (16, Intel)")
+        self.assertEqual(cards[0]["productName"], "ThinkPad P1 Gen 9 16 inch Intel")
+        self.assertTrue(cards[0]["_group_named"])
+        self.assertNotIn("_group_named", cards[1])
 
 
 DETAIL = (
@@ -101,8 +129,8 @@ class AllLaptopProductsTests(unittest.TestCase):
 class ScrapeDiscoveryTests(unittest.TestCase):
     FULL = ["LOQ", "ThinkPad", "Legion", "IdeaPad", "ThinkBook", "Yoga"]
 
-    def fake_client(self, all_cards=None, all_error=None, series_cards=None):
-        calls = {"series": []}
+    def fake_client(self, all_cards=None, all_error=None, series_cards=None, groups=None, breadcrumb=None):
+        calls = {"series": [], "group_lookups": []}
 
         class FakeClient:
             def __init__(self, *args, **kwargs) -> None:
@@ -111,16 +139,48 @@ class ScrapeDiscoveryTests(unittest.TestCase):
             def all_laptop_products(self, limit=None):
                 if all_error:
                     raise all_error
-                return [dict(item, _series=lenovo_source.series_from_card(item)) for item in all_cards or []]
+                return [
+                    dict(lenovo_source.normalize_sku_card(item), _series=lenovo_source.series_from_card(item))
+                    for item in all_cards or []
+                ]
+
+            def subseries_cards(self, series_names):
+                calls["group_lookups"].append(list(series_names))
+                return dict(groups or {})
 
             def listing_products(self, series, limit=None):
                 calls["series"].append(series)
                 return list((series_cards or {}).get(series, []))
 
             def detail(self, url):
-                return DETAIL
+                if breadcrumb is None:
+                    return DETAIL
+                return ([{"name": name} for name in breadcrumb], DETAIL[1], DETAIL[2])
 
         return FakeClient, calls
+
+    def test_titles_and_paths_match_the_per_series_catalog(self) -> None:
+        """Group-named SKUs keep the model name; others fall back to the PDP breadcrumb."""
+        cards = [
+            card("21UFCTO1WWIN2", "thinkpad", group="LEN101T0001", name="P1 G9_21UF - P1 G9_02_IN"),
+            card("83UTCTO1WWIN1", "lenovo-laptops", summary="Lenovo V14 Gen 6 - 35.56cms"),
+        ]
+        groups = {"LEN101T0001": {"summary": "ThinkPad P1 Gen 9 (16, Intel)", "productName": "ThinkPad P1 Gen 9 16 inch Intel"}}
+        client, calls = self.fake_client(
+            all_cards=cards,
+            groups=groups,
+            breadcrumb=["Home", "Laptops", "ThinkPad", "ThinkPad P series", "ThinkPad P1 Gen 9 (16, Intel)"],
+        )
+        _, rows, _ = run_scrape(client, series=self.FULL)
+        p1 = rows["21UFCTO1WWIN2"]
+        self.assertEqual(p1["title"], "ThinkPad P1 Gen 9 (16, Intel)")
+        self.assertEqual(p1["summary"], "ThinkPad P1 Gen 9 (16, Intel)")
+        self.assertEqual(p1["product_name"], "ThinkPad P1 Gen 9 16 inch Intel")
+        self.assertEqual(p1["breadcrumb_path"], "Home > Laptops > ThinkPad > ThinkPad P series > ThinkPad P1 Gen 9 (16, Intel)")
+        self.assertEqual(p1["listing_category_path"], ["ROOTPMI", "laptops", "thinkpad", "thinkpad-series"])
+        self.assertTrue(p1["store_link"].endswith("/21UFCTO1WWIN2"))
+        self.assertEqual(rows["83UTCTO1WWIN1"]["title"], "ThinkPad P1 Gen 9 (16, Intel)", "no group: breadcrumb model name wins over the per-SKU line")
+        self.assertEqual(calls["group_lookups"], [self.FULL])
 
     def test_auto_uses_all_laptops_listing_and_keeps_new_lines(self) -> None:
         cards = [
@@ -133,7 +193,7 @@ class ScrapeDiscoveryTests(unittest.TestCase):
         self.assertEqual(set(rows), {"83Q7CTO1WWIN2", "21U3S1FD00", "83UTCTO1WWIN1"})
         self.assertEqual(rows["83Q7CTO1WWIN2"]["series_filter"], "Legion")
         self.assertEqual(rows["83UTCTO1WWIN1"]["series_filter"], lenovo_source.OTHER_SERIES)
-        self.assertEqual(rows["83Q7CTO1WWIN2"]["store_link"], "https://www.lenovo.com/in/en/p/laptops/legion-laptops/some-model/83q7cto1wwin2")
+        self.assertEqual(rows["83Q7CTO1WWIN2"]["store_link"], "https://www.lenovo.com/in/en/p/laptops/legion-laptops/some-model/83Q7CTO1WWIN2")
         self.assertEqual(calls["series"], [], "per-series listings should not be needed")
         self.assertEqual(payload["source_urls"]["Legion"], lenovo_source.LAPTOPS_URL)
         self.assertEqual(result["failed_series"], [])

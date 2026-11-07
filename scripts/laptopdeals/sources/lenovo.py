@@ -46,6 +46,54 @@ def series_from_card(card: dict[str, Any]) -> str:
     return OTHER_SERIES
 
 
+def apply_group_names(cards: list[dict[str, Any]], groups: dict[str, dict[str, Any]]) -> int:
+    """Give SKU cards their subseries card's marketing name, as the per-series path did.
+
+    The group card's "summary" is the model name the catalog uses as a title
+    ("ThinkPad P1 Gen 9 (16, Intel)"); a SKU card's own summary is a per-SKU line,
+    and the PDP breadcrumb sometimes only has the internal name ("P1 G9").
+    Returns how many cards were matched.
+    """
+    matched = 0
+    for card in cards:
+        group = groups.get(str(card.get("_subseries") or "").upper())
+        if not group:
+            continue
+        for field in ("summary", "productName"):
+            value = clean_text(group.get(field))
+            if value:
+                card[field] = value
+        card["_group_named"] = True
+        matched += 1
+    return matched
+
+
+def normalize_sku_card(card: dict[str, Any]) -> dict[str, Any]:
+    """Make an all-laptops SKU card look like the per-series (group-expanded) card.
+
+    - categoryPath ends in the parent group code (["...", "legion-pro-series",
+      "LEN101G0039"]); the code moves to "_subseries" so listing_category_path
+      stays the series path the catalog already uses.
+    - The URL ends in the lower-cased SKU; the catalog's store links use the
+      SKU as Lenovo publishes it (upper case).
+    """
+    out = dict(card)
+    path = list(card.get("categoryPath") or [])
+    subseries = clean_text(card.get("parentSubseriesId") or card.get("leadingSubseries"))
+    if path and GROUP_CODE_RE.match(str(path[-1])):
+        subseries = subseries or str(path[-1])
+        path = path[:-1]
+    out["categoryPath"] = path
+    if subseries:
+        out["_subseries"] = subseries.upper()
+    code = clean_text(card.get("productCode") or card.get("productNumber"))
+    url = str(card.get("url") or "")
+    if code and url.rstrip("/").lower().endswith("/" + code.lower()):
+        trailing = "/" if url.endswith("/") else ""
+        out["url"] = url.rstrip("/")[: -len(code)] + code.upper() + trailing
+    return out
+
+
 def get_results_url(series: str, *, encoded_colon: bool = False) -> str:
     colon = "%3A" if encoded_colon else ":"
     return f"{SITE_BASE}/laptops/subseries-results/?visibleDatas=4376{colon}{quote(series)}"
@@ -733,6 +781,32 @@ class LenovoCatalogClient:
             label=series,
         )
 
+    def subseries_cards(self, series_names: list[str]) -> dict[str, dict[str, Any]]:
+        """Group (subseries) cards from the per-series listings, keyed by group code.
+
+        Only the listing API is called; group pages are not fetched. A series
+        that fails is skipped, so a partial result is still useful.
+        """
+        groups: dict[str, dict[str, Any]] = {}
+        for series in series_names:
+            try:
+                _, form_data = self.result_config(series)
+                page, page_count = 1, 1
+                while page <= page_count:
+                    if page > 1:
+                        self.sleep()
+                    payload = self.result_page(series, form_data, page)
+                    page_count = int(payload.get("pageCount") or page_count)
+                    for group in payload.get("data") or []:
+                        for card in group.get("products") or []:
+                            code = clean_text(card.get("productCode")).upper()
+                            if GROUP_CODE_RE.match(code):
+                                groups.setdefault(code, card)
+                    page += 1
+            except Exception as exc:
+                print(f"[catalog-subseries] {series}: group listing failed ({exc})")
+        return groups
+
     def all_laptops_config(self) -> dict[str, Any]:
         """Listing config embedded in the all-laptops page (/in/en/laptops/).
 
@@ -777,7 +851,7 @@ class LenovoCatalogClient:
                         if not code or code in seen:
                             continue
                         seen.add(code)
-                        products.append({**expanded_card, "_series": series})
+                        products.append({**normalize_sku_card(expanded_card), "_series": series})
                         if limit and len(products) >= limit:
                             return products
             page += 1
