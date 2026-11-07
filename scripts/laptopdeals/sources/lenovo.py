@@ -46,6 +46,22 @@ def series_from_card(card: dict[str, Any]) -> str:
     return OTHER_SERIES
 
 
+def coupon_free_card_price(card: dict[str, Any]) -> Any:
+    """Listing price without any coupon.
+
+    finalPrice has the card's coupon (e.g. CUSTOMOFF) already taken off;
+    noCouponPrice is Lenovo's own price before that coupon.
+    """
+    no_coupon = card.get("noCouponPrice")
+    try:
+        has_no_coupon_price = float(str(no_coupon).replace(",", "")) > 0
+    except (TypeError, ValueError):
+        has_no_coupon_price = False
+    if card.get("couponCode") and has_no_coupon_price:
+        return no_coupon
+    return card.get("finalPrice")
+
+
 def apply_group_names(cards: list[dict[str, Any]], groups: dict[str, dict[str, Any]]) -> int:
     """Give SKU cards their subseries card's marketing name, as the per-series path did.
 
@@ -413,7 +429,8 @@ AUTO_COUPON_CODES = {"DOORBUSTERDEAL", "CUSTOMOFF"}
 
 def extract_night_deal_bau_price(product_data: list[Any]) -> int | None:
     """Return the BAU (business-as-usual, non-coupon) price when a coupon
-    like DOORBUSTERDEAL, CUSTOMOFF, or any promotional discount is present.
+    like DOORBUSTERDEAL (the 00:00-05:59 IST night deal) or CUSTOMOFF is present,
+    and None when no coupon row is present.
 
     The batch-get payload lists one row per pricing scheme. When a coupon
     is active Lenovo adds a coupon row (type 8) whose final value (product_data[4])
@@ -435,13 +452,18 @@ def extract_night_deal_bau_price(product_data: list[Any]) -> int | None:
         if isinstance(item[5], str) and ("BAU" in item[5] or "I-saving" in item[5]):
             bau_row = item
 
-    if coupon_row is not None:
-        if len(coupon_row) > 21 and str(coupon_row[21]).isdigit() and int(coupon_row[21]) > 0:
-            return int(coupon_row[21])
-        if len(coupon_row) > 3 and str(coupon_row[2]).isdigit() and str(coupon_row[3]).isdigit():
-            c_base = int(coupon_row[3]) + int(coupon_row[2])
-            if c_base > 0:
-                return c_base
+    # No coupon: Lenovo's final price already is the coupon-free price. The BAU
+    # row is only a fallback for reading a coupon's base price; on its own it can
+    # sit above a standing web price (e.g. 21SYS1AC00: web 137601, BAU 139990),
+    # which would show a price nobody pays.
+    if coupon_row is None:
+        return None
+    if len(coupon_row) > 21 and str(coupon_row[21]).isdigit() and int(coupon_row[21]) > 0:
+        return int(coupon_row[21])
+    if len(coupon_row) > 3 and str(coupon_row[2]).isdigit() and str(coupon_row[3]).isdigit():
+        c_base = int(coupon_row[3]) + int(coupon_row[2])
+        if c_base > 0:
+            return c_base
     if bau_row is not None and len(bau_row) > 3 and str(bau_row[3]).isdigit() and int(bau_row[3]) > 0:
         return int(bau_row[3])
     return None

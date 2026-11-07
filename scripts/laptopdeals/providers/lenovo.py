@@ -353,7 +353,7 @@ def scrape_catalog(
         if isinstance(offers, list):
             offers = offers[0] if offers else {}
 
-        raw_price = card.get("finalPrice") or offers.get("price")
+        raw_price = lenovo.coupon_free_card_price(card) or offers.get("price")
         try:
             price_val = float(re.sub(r"[^\d.]", "", str(raw_price or "0")))
         except ValueError:
@@ -404,7 +404,7 @@ def scrape_catalog(
                 ("breadcrumb", path_parts),
                 ("breadcrumb_path", " > ".join(path_parts)),
                 ("listing_category_path", card.get("categoryPath") or []),
-                ("price", card.get("finalPrice") or offers.get("price")),
+                ("price", raw_price),
                 ("mrp", card.get("webPrice")),
                 ("currency", card.get("currencyCode") or offers.get("priceCurrency")),
                 ("availability", lenovo.normalize_availability(card.get("marketingStatus") or offers.get("availability"))),
