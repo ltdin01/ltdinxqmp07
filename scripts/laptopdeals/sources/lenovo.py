@@ -16,6 +16,34 @@ BASE_URL = "https://www.lenovo.com"
 SITE_BASE = "https://www.lenovo.com/in/en"
 OPENAPI_BASE = "https://openapi.lenovo.com/in/en"
 RESULTS_URL = SITE_BASE + "/laptops/subseries-results/?visibleDatas=4376:{series}"
+LAPTOPS_URL = SITE_BASE + "/laptops/"
+ALL_LAPTOPS_PAGE_SIZE = "30"
+
+# Series name for each laptop category slug found in a listing card's categoryPath
+# (e.g. ["ROOTPMI", "laptops", "legion-laptops", "legion-5-series"]).
+SERIES_BY_CATEGORY = {
+    "thinkpad": "ThinkPad",
+    "thinkbook": "ThinkBook",
+    "ideapad": "IdeaPad",
+    "yoga": "Yoga",
+    "legion-laptops": "Legion",
+    "loq-laptops": "LOQ",
+}
+KNOWN_SERIES = tuple(SERIES_BY_CATEGORY.values())
+OTHER_SERIES = "Lenovo"
+
+
+def series_from_card(card: dict[str, Any]) -> str:
+    """Series of a listing card: categoryPath first, then the product name."""
+    for slug in card.get("categoryPath") or []:
+        series = SERIES_BY_CATEGORY.get(str(slug).strip().lower())
+        if series:
+            return series
+    name = clean_text(card.get("productName") or card.get("summary")).lower()
+    for series in KNOWN_SERIES:
+        if re.search(rf"\b{re.escape(series.lower())}\b", name):
+            return series
+    return OTHER_SERIES
 
 
 def get_results_url(series: str, *, encoded_colon: bool = False) -> str:
@@ -667,24 +695,93 @@ class LenovoCatalogClient:
             print(f"[catalog-discover] Error discovering URL for {series}: {exc}")
         return None
 
-    def result_page(self, series: str, form_data: dict[str, Any], page: int) -> dict[str, Any]:
+    def dlp_query(
+        self,
+        form_data: dict[str, Any],
+        page: int,
+        *,
+        facets: list[dict[str, Any]],
+        referer: str,
+        label: str,
+        page_size: str | None = None,
+    ) -> dict[str, Any]:
+        """One page of Lenovo's DLP product query for the listing component described by form_data."""
         page_filter_id = form_data["facetId"]
         params = {
             "classificationGroupIds": "400001",
             "pageFilterId": page_filter_id,
-            "facets": [{"facetId": RESULTS_FACET_ID, "selectedValues": series}],
+            "facets": facets,
             "page": str(page),
-            "pageSize": str(form_data.get("pageSize") or "20"),
+            "pageSize": str(page_size or form_data.get("pageSize") or "20"),
             "sorts": [form_data.get("defaultSort") or "bestSelling"],
             "version": "v2",
             "enablePreselect": form_data.get("enablePreselect"),
         }
         encoded = quote(quote(json.dumps({k: v for k, v in params.items() if v is not None}, separators=(",", ":"))))
         url = f"{OPENAPI_BASE}/ofp/search/dlp/product/query/get/_tsc?pageFilterId={page_filter_id}&subseriesCode=&loyalty=false&params={encoded}"
-        payload = json.loads(self.get_text(url, get_results_url(series)))
+        payload = json.loads(self.get_text(url, referer))
         if payload.get("status") != 200:
-            raise RuntimeError(f"Lenovo DLP query failed for {series} page {page}: {payload.get('msg')}")
+            raise RuntimeError(f"Lenovo DLP query failed for {label} page {page}: {payload.get('msg')}")
         return payload["data"]
+
+    def result_page(self, series: str, form_data: dict[str, Any], page: int) -> dict[str, Any]:
+        return self.dlp_query(
+            form_data,
+            page,
+            facets=[{"facetId": RESULTS_FACET_ID, "selectedValues": series}],
+            referer=get_results_url(series),
+            label=series,
+        )
+
+    def all_laptops_config(self) -> dict[str, Any]:
+        """Listing config embedded in the all-laptops page (/in/en/laptops/).
+
+        That page is Lenovo's stable entry point for laptops; its DLP component
+        lists every laptop SKU without a series facet, so it keeps working when
+        series names, subseries-results URLs or group pages change.
+        """
+        text = self.get_text(LAPTOPS_URL, LAPTOPS_URL, page=True)
+        form_data = extract_result_form_data(text)
+        if not form_data.get("facetId"):
+            raise RuntimeError(f"Could not find the laptop listing config on {LAPTOPS_URL}")
+        return form_data
+
+    def all_laptop_products(self, limit: int | None = None) -> list[dict[str, Any]]:
+        """Every laptop card from the all-laptops listing, tagged with "_series".
+
+        Cards are normally real SKUs. If Lenovo starts returning group codes here,
+        they are expanded the same way the per-series listing does.
+        """
+        form_data = self.all_laptops_config()
+        products: list[dict[str, Any]] = []
+        seen: set[str] = set()
+        page = 1
+        page_count = 1
+        while page <= page_count:
+            if page > 1:
+                self.sleep()
+            payload = self.dlp_query(
+                form_data,
+                page,
+                facets=[],
+                referer=LAPTOPS_URL,
+                label="all laptops",
+                page_size=ALL_LAPTOPS_PAGE_SIZE,
+            )
+            page_count = int(payload.get("pageCount") or page_count)
+            for group in payload.get("data") or []:
+                for card in group.get("products") or []:
+                    series = series_from_card(card)
+                    for expanded_card in self.expand_group_card(card):
+                        code = clean_text(expanded_card.get("productCode") or expanded_card.get("productNumber")).upper()
+                        if not code or code in seen:
+                            continue
+                        seen.add(code)
+                        products.append({**expanded_card, "_series": series})
+                        if limit and len(products) >= limit:
+                            return products
+            page += 1
+        return products
 
     def extract_group_skus(self, group_url: str) -> list[str]:
         """Fetch a group page and extract individual purchasable SKUs from its meta tags,

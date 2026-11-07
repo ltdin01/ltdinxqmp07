@@ -22,6 +22,73 @@ from laptopdeals import psref
 
 from laptopdeals.catalog import LIVE_FIELDS, existing_ids_from, is_display_name, model_name
 
+# Discovery modes for scrape_catalog:
+#   auto   - all-laptops listing first; per-series listings if it fails or looks too small
+#   all    - all-laptops listing only (fail loudly instead of falling back)
+#   series - per-series listings only (the original behaviour)
+DISCOVERY_MODES = ("auto", "all", "series")
+
+# A full all-laptops run must find at least this share of the currently active
+# catalog; fewer suggests a broken or partial listing, so auto mode falls back.
+MIN_DISCOVERY_RATIO = 0.5
+
+
+def discovery_floor(existing_files: list[Path]) -> int:
+    active = existing_ids_from(existing_files) if existing_files else set()
+    return int(len(active) * MIN_DISCOVERY_RATIO)
+
+
+def discover_all_laptops(
+    client: Any,
+    series: list[str],
+    *,
+    discovery: str,
+    limit_per_series: int | None,
+    expected_floor: int,
+) -> "OrderedDict[str, list[dict[str, Any]]] | None":
+    """Cards from the all-laptops listing, grouped by series.
+
+    Returns None when auto mode should fall back to the per-series listings.
+    A run that requests every known series also keeps cards from series not
+    in that list, so a new Lenovo laptop line is picked up without a code change.
+    """
+    if discovery == "series":
+        return None
+    fetch = getattr(client, "all_laptop_products", None)
+    if fetch is None:
+        if discovery == "all":
+            raise RuntimeError("Lenovo client has no all-laptops discovery")
+        return None
+    try:
+        cards = fetch()
+    except Exception as exc:
+        if discovery == "all":
+            raise
+        print(f"[catalog-discovery] all-laptops listing failed ({exc}); falling back to per-series listings")
+        return None
+    if len(cards) < max(1, expected_floor):
+        message = f"all-laptops listing returned {len(cards)} SKUs, expected at least {max(1, expected_floor)}"
+        if discovery == "all":
+            raise RuntimeError(message)
+        print(f"[catalog-discovery] {message}; falling back to per-series listings")
+        return None
+
+    requested = {item.lower() for item in series}
+    full_run = {item.lower() for item in lenovo.KNOWN_SERIES} <= requested
+    batches: OrderedDict[str, list[dict[str, Any]]] = OrderedDict((item, []) for item in series)
+    for card in cards:
+        card_series = card.get("_series") or lenovo.series_from_card(card)
+        if card_series.lower() not in requested and not full_run:
+            continue
+        key = next((item for item in series if item.lower() == card_series.lower()), card_series)
+        bucket = batches.setdefault(key, [])
+        if limit_per_series and len(bucket) >= limit_per_series:
+            continue
+        bucket.append(card)
+    counts = ", ".join(f"{name}={len(rows)}" for name, rows in batches.items())
+    print(f"[catalog-discovery] all-laptops listing: {len(cards)} SKUs ({counts})")
+    return batches
+
 
 def _normalize_psref_specs(specs: dict[str, Any]) -> dict[str, Any]:
     """Map PSREF detailed specs to frontend-displayable shape."""
@@ -219,8 +286,11 @@ def scrape_catalog(
     workers: int,
     verbose: bool,
     ids: set[str] | None = None,
+    discovery: str = "auto",
     **kwargs: Any,
 ) -> dict[str, Any]:
+    if discovery not in DISCOVERY_MODES:
+        raise ValueError(f"discovery must be one of {DISCOVERY_MODES}, got {discovery!r}")
     client = lenovo.LenovoCatalogClient(delay=delay, verbose=verbose)
     target_ids = {i.upper() for i in ids} if ids else set()
     known = existing_ids_from(existing_files) if (only_new and not target_ids) else set()
@@ -334,20 +404,33 @@ def scrape_catalog(
         return product
 
     live_seen_skus: set[str] = set()
-    for series_name in series:
-        try:
-            cards = client.listing_products(series_name, limit=limit_per_series)
-            source_urls[series_name] = getattr(client, "result_urls", {}).get(series_name, source_urls[series_name])
-            for card in cards:
-                c_sku = lenovo.clean_text(card.get("productCode") or card.get("productNumber"))
-                if c_sku and not lenovo.GROUP_CODE_RE.match(c_sku):
-                    live_seen_skus.add(c_sku.upper())
-        except Exception as exc:
-            failed_series.append(series_name)
-            print(f"[catalog-series-failed] {series_name}: {exc}")
-            if not only_new:
-                raise
-            continue
+    batches = discover_all_laptops(
+        client,
+        series,
+        discovery=discovery,
+        limit_per_series=limit_per_series,
+        expected_floor=0 if (limit_per_series or target_ids) else discovery_floor(existing_files),
+    )
+    if batches is not None:
+        for series_name in batches:
+            source_urls[series_name] = lenovo.LAPTOPS_URL
+    else:
+        batches = OrderedDict()
+        for series_name in series:
+            try:
+                batches[series_name] = client.listing_products(series_name, limit=limit_per_series)
+                source_urls[series_name] = getattr(client, "result_urls", {}).get(series_name, source_urls[series_name])
+            except Exception as exc:
+                failed_series.append(series_name)
+                print(f"[catalog-series-failed] {series_name}: {exc}")
+                if not only_new:
+                    raise
+
+    for series_name, cards in batches.items():
+        for card in cards:
+            c_sku = lenovo.clean_text(card.get("productCode") or card.get("productNumber"))
+            if c_sku and not lenovo.GROUP_CODE_RE.match(c_sku):
+                live_seen_skus.add(c_sku.upper())
         if workers <= 1:
             built = [build_product(series_name, card) for card in cards]
         else:
