@@ -1,0 +1,57 @@
+name: Keep Scheduled Workflows Alive
+
+# GitHub disables scheduled workflows after 60 days without repository activity.
+# This repository's jobs commit to the website repository, never to this one, so
+# the schedules here stopped on 2026-10-27 (60 days after the last commit) and the
+# Lenovo catalog froze. This job re-enables every scheduled workflow each week
+# through the API (the same approach as the keepalive-workflow action), and fails
+# loudly if the website data has gone stale, so a stopped pipeline gets noticed.
+
+on:
+  schedule:
+    - cron: '23 5 * * 1'
+  workflow_dispatch:
+
+permissions:
+  actions: write
+  contents: read
+
+jobs:
+  keepalive:
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ github.token }}
+      SCHEDULED_WORKFLOWS: catalog-hygiene.yml data-refresh.yml refurb-catalog.yml keepalive.yml
+    steps:
+      - name: Re-enable scheduled workflows
+        shell: bash
+        run: |
+          set -euo pipefail
+          for wf in ${SCHEDULED_WORKFLOWS}; do
+            state=$(gh api "repos/${GITHUB_REPOSITORY}/actions/workflows/${wf}" --jq .state)
+            echo "${wf}: ${state}"
+            gh api -X PUT "repos/${GITHUB_REPOSITORY}/actions/workflows/${wf}/enable"
+            if [[ "${state}" != "active" ]]; then
+              echo "::warning::${wf} was ${state}; re-enabled it"
+            fi
+          done
+
+      - name: Fail if the website catalog has gone stale
+        shell: bash
+        env:
+          TARGET_REPO_OWNER: ${{ secrets.TARGET_REPO_OWNER || 'kryptobolt07' }}
+          TARGET_REPO_NAME: ${{ secrets.TARGET_REPO_NAME || 'laptopdeals' }}
+          TARGET_REPO_BRANCH: ${{ secrets.TARGET_REPO_BRANCH || 'main' }}
+          TARGET_REPO_PAT: ${{ secrets.TARGET_REPO_PAT }}
+          MAX_AGE_HOURS: '48'
+        run: |
+          set -euo pipefail
+          last=$(GH_TOKEN="${TARGET_REPO_PAT}" gh api \
+            "repos/${TARGET_REPO_OWNER}/${TARGET_REPO_NAME}/commits?sha=${TARGET_REPO_BRANCH}&path=apps/web/data.json&per_page=1" \
+            --jq '.[0].commit.committer.date')
+          age_hours=$(( ( $(date -u +%s) - $(date -u -d "${last}" +%s) ) / 3600 ))
+          echo "apps/web/data.json last changed ${last} (${age_hours}h ago)"
+          if (( age_hours > MAX_AGE_HOURS )); then
+            echo "::error::Website catalog has not changed for ${age_hours}h (limit ${MAX_AGE_HOURS}h). Check the Catalog Hygiene and Data Refresh runs."
+            exit 1
+          fi

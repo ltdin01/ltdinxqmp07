@@ -31,6 +31,12 @@ def main() -> int:
     scrape.add_argument("--verbose", action="store_true")
     scrape.add_argument("--id", action="append", default=[], help="Target product ID(s). Repeatable.")
     scrape.add_argument("--ids-file", default="", help="JSON file containing product IDs.")
+    scrape.add_argument(
+        "--discovery",
+        choices=["auto", "all", "series"],
+        default="auto",
+        help="Lenovo listing discovery: auto (all-laptops page, per-series fallback), all, or series.",
+    )
 
     fmt = sub.add_parser("format", help="Format raw catalog for web app")
     fmt.add_argument("--input", default="")
@@ -59,6 +65,7 @@ def main() -> int:
             workers=args.workers,
             verbose=args.verbose,
             ids=ids_from_args(args),
+            discovery=args.discovery,
         )
         result = catalog.scrape_catalog(provider=args.provider, **scrape_kwargs)
     else:

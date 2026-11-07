@@ -675,6 +675,33 @@ class LenovoPricingTests(unittest.TestCase):
         bau = lenovo_source.extract_night_deal_bau_price(payload)
         self.assertEqual(bau, 100000)
 
+    # Rows below are copied from the live price batch-get response (2026-11-07).
+    def test_live_customoff_row_gives_lenovo_no_coupon_price(self) -> None:
+        payload = [
+            [5, "518830056734735", "14579", "121421", 0, "ConsCTO_I-saving_Public_Nov", 2, 10.0, "1793658600000", "1924885800000", 3, 0, ""],
+            [8, "519434372382725", "10000", "111421", 0, 1, 1, "CUSTOMOFF_CTO_BAU", 0, "CUSTOMOFF", "", -1, -1,
+             "eCoupon limited to 0 units", 3, False, "1770921000000", "1924972140000", False, 10000.0, "471208945778688", "121421", 3],
+            [14, "479612957360128", "0", "90910", 0, "India_LEPP_eCouponFloorprice", 1, "1699641000000", "253399688940000"],
+        ]
+        # Lenovo's listing card for 83JXCTO1WWIN2 reports noCouponPrice 121421.
+        self.assertEqual(lenovo_source.extract_night_deal_bau_price(payload), 121421)
+
+    def test_no_coupon_row_keeps_lenovo_final_price(self) -> None:
+        # 21SYS1AC00: no coupon, standing web price 137601 below the BAU row's 139990.
+        payload = [
+            [3, "484958644012009", "-4554", "137601", 0, "WebPirce", 1, "1777573800000", "253399688940000"],
+            [5, "482612855111680", "-2390", "139990", -3, "SMB_MTM_BAU_2026", 1, -1, "1770661800000", "1924972140000", 3, 0, ""],
+            [14, "434242378268672", "0", "101743", 0, "India_LEPP_eCouponFloorprice", 1, "1699641000000", "253399688940000"],
+            [8, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, "eCoupon limited to -1 units", -1, False, -1, -1, False, -1, -1, -1, -1],
+        ]
+        self.assertIsNone(lenovo_source.extract_night_deal_bau_price(payload))
+
+    def test_listing_card_price_excludes_the_card_coupon(self) -> None:
+        with_coupon = {"finalPrice": "111422.00", "noCouponPrice": "121421.00", "couponCode": "CUSTOMOFF"}
+        without_coupon = {"finalPrice": "137601.00", "noCouponPrice": None, "couponCode": None}
+        self.assertEqual(lenovo_source.coupon_free_card_price(with_coupon), "121421.00")
+        self.assertEqual(lenovo_source.coupon_free_card_price(without_coupon), "137601.00")
+
 
 class ArchiveTests(unittest.TestCase):
     def test_archive_body_text_fallback_ignored_when_structured_status_exists(self) -> None:

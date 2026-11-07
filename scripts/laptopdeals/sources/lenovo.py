@@ -16,6 +16,98 @@ BASE_URL = "https://www.lenovo.com"
 SITE_BASE = "https://www.lenovo.com/in/en"
 OPENAPI_BASE = "https://openapi.lenovo.com/in/en"
 RESULTS_URL = SITE_BASE + "/laptops/subseries-results/?visibleDatas=4376:{series}"
+LAPTOPS_URL = SITE_BASE + "/laptops/"
+ALL_LAPTOPS_PAGE_SIZE = "30"
+
+# Series name for each laptop category slug found in a listing card's categoryPath
+# (e.g. ["ROOTPMI", "laptops", "legion-laptops", "legion-5-series"]).
+SERIES_BY_CATEGORY = {
+    "thinkpad": "ThinkPad",
+    "thinkbook": "ThinkBook",
+    "ideapad": "IdeaPad",
+    "yoga": "Yoga",
+    "legion-laptops": "Legion",
+    "loq-laptops": "LOQ",
+}
+KNOWN_SERIES = tuple(SERIES_BY_CATEGORY.values())
+OTHER_SERIES = "Lenovo"
+
+
+def series_from_card(card: dict[str, Any]) -> str:
+    """Series of a listing card: categoryPath first, then the product name."""
+    for slug in card.get("categoryPath") or []:
+        series = SERIES_BY_CATEGORY.get(str(slug).strip().lower())
+        if series:
+            return series
+    name = clean_text(card.get("productName") or card.get("summary")).lower()
+    for series in KNOWN_SERIES:
+        if re.search(rf"\b{re.escape(series.lower())}\b", name):
+            return series
+    return OTHER_SERIES
+
+
+def coupon_free_card_price(card: dict[str, Any]) -> Any:
+    """Listing price without any coupon.
+
+    finalPrice has the card's coupon (e.g. CUSTOMOFF) already taken off;
+    noCouponPrice is Lenovo's own price before that coupon.
+    """
+    no_coupon = card.get("noCouponPrice")
+    try:
+        has_no_coupon_price = float(str(no_coupon).replace(",", "")) > 0
+    except (TypeError, ValueError):
+        has_no_coupon_price = False
+    if card.get("couponCode") and has_no_coupon_price:
+        return no_coupon
+    return card.get("finalPrice")
+
+
+def apply_group_names(cards: list[dict[str, Any]], groups: dict[str, dict[str, Any]]) -> int:
+    """Give SKU cards their subseries card's marketing name, as the per-series path did.
+
+    The group card's "summary" is the model name the catalog uses as a title
+    ("ThinkPad P1 Gen 9 (16, Intel)"); a SKU card's own summary is a per-SKU line,
+    and the PDP breadcrumb sometimes only has the internal name ("P1 G9").
+    Returns how many cards were matched.
+    """
+    matched = 0
+    for card in cards:
+        group = groups.get(str(card.get("_subseries") or "").upper())
+        if not group:
+            continue
+        for field in ("summary", "productName"):
+            value = clean_text(group.get(field))
+            if value:
+                card[field] = value
+        card["_group_named"] = True
+        matched += 1
+    return matched
+
+
+def normalize_sku_card(card: dict[str, Any]) -> dict[str, Any]:
+    """Make an all-laptops SKU card look like the per-series (group-expanded) card.
+
+    - categoryPath ends in the parent group code (["...", "legion-pro-series",
+      "LEN101G0039"]); the code moves to "_subseries" so listing_category_path
+      stays the series path the catalog already uses.
+    - The URL ends in the lower-cased SKU; the catalog's store links use the
+      SKU as Lenovo publishes it (upper case).
+    """
+    out = dict(card)
+    path = list(card.get("categoryPath") or [])
+    subseries = clean_text(card.get("parentSubseriesId") or card.get("leadingSubseries"))
+    if path and GROUP_CODE_RE.match(str(path[-1])):
+        subseries = subseries or str(path[-1])
+        path = path[:-1]
+    out["categoryPath"] = path
+    if subseries:
+        out["_subseries"] = subseries.upper()
+    code = clean_text(card.get("productCode") or card.get("productNumber"))
+    url = str(card.get("url") or "")
+    if code and url.rstrip("/").lower().endswith("/" + code.lower()):
+        trailing = "/" if url.endswith("/") else ""
+        out["url"] = url.rstrip("/")[: -len(code)] + code.upper() + trailing
+    return out
 
 
 def get_results_url(series: str, *, encoded_colon: bool = False) -> str:
@@ -337,7 +429,8 @@ AUTO_COUPON_CODES = {"DOORBUSTERDEAL", "CUSTOMOFF"}
 
 def extract_night_deal_bau_price(product_data: list[Any]) -> int | None:
     """Return the BAU (business-as-usual, non-coupon) price when a coupon
-    like DOORBUSTERDEAL, CUSTOMOFF, or any promotional discount is present.
+    like DOORBUSTERDEAL (the 00:00-05:59 IST night deal) or CUSTOMOFF is present,
+    and None when no coupon row is present.
 
     The batch-get payload lists one row per pricing scheme. When a coupon
     is active Lenovo adds a coupon row (type 8) whose final value (product_data[4])
@@ -359,13 +452,18 @@ def extract_night_deal_bau_price(product_data: list[Any]) -> int | None:
         if isinstance(item[5], str) and ("BAU" in item[5] or "I-saving" in item[5]):
             bau_row = item
 
-    if coupon_row is not None:
-        if len(coupon_row) > 21 and str(coupon_row[21]).isdigit() and int(coupon_row[21]) > 0:
-            return int(coupon_row[21])
-        if len(coupon_row) > 3 and str(coupon_row[2]).isdigit() and str(coupon_row[3]).isdigit():
-            c_base = int(coupon_row[3]) + int(coupon_row[2])
-            if c_base > 0:
-                return c_base
+    # No coupon: Lenovo's final price already is the coupon-free price. The BAU
+    # row is only a fallback for reading a coupon's base price; on its own it can
+    # sit above a standing web price (e.g. 21SYS1AC00: web 137601, BAU 139990),
+    # which would show a price nobody pays.
+    if coupon_row is None:
+        return None
+    if len(coupon_row) > 21 and str(coupon_row[21]).isdigit() and int(coupon_row[21]) > 0:
+        return int(coupon_row[21])
+    if len(coupon_row) > 3 and str(coupon_row[2]).isdigit() and str(coupon_row[3]).isdigit():
+        c_base = int(coupon_row[3]) + int(coupon_row[2])
+        if c_base > 0:
+            return c_base
     if bau_row is not None and len(bau_row) > 3 and str(bau_row[3]).isdigit() and int(bau_row[3]) > 0:
         return int(bau_row[3])
     return None
@@ -667,24 +765,119 @@ class LenovoCatalogClient:
             print(f"[catalog-discover] Error discovering URL for {series}: {exc}")
         return None
 
-    def result_page(self, series: str, form_data: dict[str, Any], page: int) -> dict[str, Any]:
+    def dlp_query(
+        self,
+        form_data: dict[str, Any],
+        page: int,
+        *,
+        facets: list[dict[str, Any]],
+        referer: str,
+        label: str,
+        page_size: str | None = None,
+    ) -> dict[str, Any]:
+        """One page of Lenovo's DLP product query for the listing component described by form_data."""
         page_filter_id = form_data["facetId"]
         params = {
             "classificationGroupIds": "400001",
             "pageFilterId": page_filter_id,
-            "facets": [{"facetId": RESULTS_FACET_ID, "selectedValues": series}],
+            "facets": facets,
             "page": str(page),
-            "pageSize": str(form_data.get("pageSize") or "20"),
+            "pageSize": str(page_size or form_data.get("pageSize") or "20"),
             "sorts": [form_data.get("defaultSort") or "bestSelling"],
             "version": "v2",
             "enablePreselect": form_data.get("enablePreselect"),
         }
         encoded = quote(quote(json.dumps({k: v for k, v in params.items() if v is not None}, separators=(",", ":"))))
         url = f"{OPENAPI_BASE}/ofp/search/dlp/product/query/get/_tsc?pageFilterId={page_filter_id}&subseriesCode=&loyalty=false&params={encoded}"
-        payload = json.loads(self.get_text(url, get_results_url(series)))
+        payload = json.loads(self.get_text(url, referer))
         if payload.get("status") != 200:
-            raise RuntimeError(f"Lenovo DLP query failed for {series} page {page}: {payload.get('msg')}")
+            raise RuntimeError(f"Lenovo DLP query failed for {label} page {page}: {payload.get('msg')}")
         return payload["data"]
+
+    def result_page(self, series: str, form_data: dict[str, Any], page: int) -> dict[str, Any]:
+        return self.dlp_query(
+            form_data,
+            page,
+            facets=[{"facetId": RESULTS_FACET_ID, "selectedValues": series}],
+            referer=get_results_url(series),
+            label=series,
+        )
+
+    def subseries_cards(self, series_names: list[str]) -> dict[str, dict[str, Any]]:
+        """Group (subseries) cards from the per-series listings, keyed by group code.
+
+        Only the listing API is called; group pages are not fetched. A series
+        that fails is skipped, so a partial result is still useful.
+        """
+        groups: dict[str, dict[str, Any]] = {}
+        for series in series_names:
+            try:
+                _, form_data = self.result_config(series)
+                page, page_count = 1, 1
+                while page <= page_count:
+                    if page > 1:
+                        self.sleep()
+                    payload = self.result_page(series, form_data, page)
+                    page_count = int(payload.get("pageCount") or page_count)
+                    for group in payload.get("data") or []:
+                        for card in group.get("products") or []:
+                            code = clean_text(card.get("productCode")).upper()
+                            if GROUP_CODE_RE.match(code):
+                                groups.setdefault(code, card)
+                    page += 1
+            except Exception as exc:
+                print(f"[catalog-subseries] {series}: group listing failed ({exc})")
+        return groups
+
+    def all_laptops_config(self) -> dict[str, Any]:
+        """Listing config embedded in the all-laptops page (/in/en/laptops/).
+
+        That page is Lenovo's stable entry point for laptops; its DLP component
+        lists every laptop SKU without a series facet, so it keeps working when
+        series names, subseries-results URLs or group pages change.
+        """
+        text = self.get_text(LAPTOPS_URL, LAPTOPS_URL, page=True)
+        form_data = extract_result_form_data(text)
+        if not form_data.get("facetId"):
+            raise RuntimeError(f"Could not find the laptop listing config on {LAPTOPS_URL}")
+        return form_data
+
+    def all_laptop_products(self, limit: int | None = None) -> list[dict[str, Any]]:
+        """Every laptop card from the all-laptops listing, tagged with "_series".
+
+        Cards are normally real SKUs. If Lenovo starts returning group codes here,
+        they are expanded the same way the per-series listing does.
+        """
+        form_data = self.all_laptops_config()
+        products: list[dict[str, Any]] = []
+        seen: set[str] = set()
+        page = 1
+        page_count = 1
+        while page <= page_count:
+            if page > 1:
+                self.sleep()
+            payload = self.dlp_query(
+                form_data,
+                page,
+                facets=[],
+                referer=LAPTOPS_URL,
+                label="all laptops",
+                page_size=ALL_LAPTOPS_PAGE_SIZE,
+            )
+            page_count = int(payload.get("pageCount") or page_count)
+            for group in payload.get("data") or []:
+                for card in group.get("products") or []:
+                    series = series_from_card(card)
+                    for expanded_card in self.expand_group_card(card):
+                        code = clean_text(expanded_card.get("productCode") or expanded_card.get("productNumber")).upper()
+                        if not code or code in seen:
+                            continue
+                        seen.add(code)
+                        products.append({**normalize_sku_card(expanded_card), "_series": series})
+                        if limit and len(products) >= limit:
+                            return products
+            page += 1
+        return products
 
     def extract_group_skus(self, group_url: str) -> list[str]:
         """Fetch a group page and extract individual purchasable SKUs from its meta tags,

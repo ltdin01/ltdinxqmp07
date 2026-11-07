@@ -22,6 +22,79 @@ from laptopdeals import psref
 
 from laptopdeals.catalog import LIVE_FIELDS, existing_ids_from, is_display_name, model_name
 
+# Discovery modes for scrape_catalog:
+#   auto   - all-laptops listing first; per-series listings if it fails or looks too small
+#   all    - all-laptops listing only (fail loudly instead of falling back)
+#   series - per-series listings only (the original behaviour)
+DISCOVERY_MODES = ("auto", "all", "series")
+
+# A full all-laptops run must find at least this share of the currently active
+# catalog; fewer suggests a broken or partial listing, so auto mode falls back.
+MIN_DISCOVERY_RATIO = 0.5
+
+
+def discovery_floor(existing_files: list[Path]) -> int:
+    active = existing_ids_from(existing_files) if existing_files else set()
+    return int(len(active) * MIN_DISCOVERY_RATIO)
+
+
+def discover_all_laptops(
+    client: Any,
+    series: list[str],
+    *,
+    discovery: str,
+    limit_per_series: int | None,
+    expected_floor: int,
+) -> "OrderedDict[str, list[dict[str, Any]]] | None":
+    """Cards from the all-laptops listing, grouped by series.
+
+    Returns None when auto mode should fall back to the per-series listings.
+    A run that requests every known series also keeps cards from series not
+    in that list, so a new Lenovo laptop line is picked up without a code change.
+    """
+    if discovery == "series":
+        return None
+    fetch = getattr(client, "all_laptop_products", None)
+    if fetch is None:
+        if discovery == "all":
+            raise RuntimeError("Lenovo client has no all-laptops discovery")
+        return None
+    try:
+        cards = fetch()
+    except Exception as exc:
+        if discovery == "all":
+            raise
+        print(f"[catalog-discovery] all-laptops listing failed ({exc}); falling back to per-series listings")
+        return None
+    if len(cards) < max(1, expected_floor):
+        message = f"all-laptops listing returned {len(cards)} SKUs, expected at least {max(1, expected_floor)}"
+        if discovery == "all":
+            raise RuntimeError(message)
+        print(f"[catalog-discovery] {message}; falling back to per-series listings")
+        return None
+
+    lookup_groups = getattr(client, "subseries_cards", None)
+    if lookup_groups is not None:
+        known = [item for item in series if item in lenovo.KNOWN_SERIES]
+        matched = lenovo.apply_group_names(cards, lookup_groups(known) if known else {})
+        print(f"[catalog-discovery] model names from subseries listings: {matched}/{len(cards)} SKUs")
+
+    requested = {item.lower() for item in series}
+    full_run = {item.lower() for item in lenovo.KNOWN_SERIES} <= requested
+    batches: OrderedDict[str, list[dict[str, Any]]] = OrderedDict((item, []) for item in series)
+    for card in cards:
+        card_series = card.get("_series") or lenovo.series_from_card(card)
+        if card_series.lower() not in requested and not full_run:
+            continue
+        key = next((item for item in series if item.lower() == card_series.lower()), card_series)
+        bucket = batches.setdefault(key, [])
+        if limit_per_series and len(bucket) >= limit_per_series:
+            continue
+        bucket.append(card)
+    counts = ", ".join(f"{name}={len(rows)}" for name, rows in batches.items())
+    print(f"[catalog-discovery] all-laptops listing: {len(cards)} SKUs ({counts})")
+    return batches
+
 
 def _normalize_psref_specs(specs: dict[str, Any]) -> dict[str, Any]:
     """Map PSREF detailed specs to frontend-displayable shape."""
@@ -170,6 +243,7 @@ def select_title(
     page_title: str,
     card: dict[str, Any],
     sku: str,
+    prefer_breadcrumb: bool = False,
 ) -> str:
     # Priority order:
     # 1. card.summary — the listing API's curated marketing name, e.g.
@@ -179,9 +253,15 @@ def select_title(
     # 3. Page <title> tag from the PDP, stripped of "| Lenovo India".
     # 4. Product JSON-LD "name" from the PDP.
     # 5. card.productName — often a technical internal string.
+    #
+    # prefer_breadcrumb swaps 1 and 2 for SKU cards from the all-laptops listing:
+    # their summary is a per-SKU line ("Legion Pro 7 Intel Core Ultra - 40.64cms"),
+    # while the PDP breadcrumb carries the model name the group card used to give
+    # ("Legion Pro 7i Gen 10 (16,Intel)").
+    summary = lenovo.clean_text(card.get("summary"))
+    model_names = breadcrumb_model_candidates(breadcrumb)
     candidates = [
-        lenovo.clean_text(card.get("summary")),
-        *breadcrumb_model_candidates(breadcrumb),
+        *(model_names + [summary] if prefer_breadcrumb else [summary] + model_names),
         clean_page_title(page_title, sku),
         collapse_repeated_name(product_ld.get("name")) if isinstance(product_ld, dict) else "",
         lenovo.clean_text(card.get("productName")),
@@ -219,8 +299,11 @@ def scrape_catalog(
     workers: int,
     verbose: bool,
     ids: set[str] | None = None,
+    discovery: str = "auto",
     **kwargs: Any,
 ) -> dict[str, Any]:
+    if discovery not in DISCOVERY_MODES:
+        raise ValueError(f"discovery must be one of {DISCOVERY_MODES}, got {discovery!r}")
     client = lenovo.LenovoCatalogClient(delay=delay, verbose=verbose)
     target_ids = {i.upper() for i in ids} if ids else set()
     known = existing_ids_from(existing_files) if (only_new and not target_ids) else set()
@@ -270,7 +353,7 @@ def scrape_catalog(
         if isinstance(offers, list):
             offers = offers[0] if offers else {}
 
-        raw_price = card.get("finalPrice") or offers.get("price")
+        raw_price = lenovo.coupon_free_card_price(card) or offers.get("price")
         try:
             price_val = float(re.sub(r"[^\d.]", "", str(raw_price or "0")))
         except ValueError:
@@ -294,7 +377,13 @@ def scrape_catalog(
 
         listing_specs = lenovo.spec_list_to_maps(card.get("classification") or [])
         spec_rows, by_label, by_code = lenovo.merge_specs(listing_specs, detail_specs)
-        title = select_title(product_ld=product_ld, breadcrumb=breadcrumb, page_title=page_title, card=card, sku=sku)
+        # An all-laptops SKU card without its subseries name falls back to the PDP breadcrumb.
+        sku_card = bool(card.get("_series")) and not card.get("_group_named")
+        title = select_title(
+            product_ld=product_ld, breadcrumb=breadcrumb, page_title=page_title, card=card, sku=sku, prefer_breadcrumb=sku_card
+        )
+        # Per-series cards carry the group's model name as "summary"; keep that meaning for SKU cards.
+        summary = title if sku_card and title != sku else lenovo.clean_text(card.get("summary"))
         path_parts = path_from_breadcrumb(breadcrumb, title, sku, series_name)
         images = product_ld.get("image") or []
         if isinstance(images, str):
@@ -308,14 +397,14 @@ def scrape_catalog(
                 ("product_code", sku),
                 ("series_filter", series_name),
                 ("title", title),
-                ("summary", lenovo.clean_text(card.get("summary"))),
+                ("summary", summary),
                 ("product_name", lenovo.clean_text(card.get("productName"))),
                 ("listing_date", lenovo.listing_date_from_images(images)),
                 ("store_link", store_link),
                 ("breadcrumb", path_parts),
                 ("breadcrumb_path", " > ".join(path_parts)),
                 ("listing_category_path", card.get("categoryPath") or []),
-                ("price", card.get("finalPrice") or offers.get("price")),
+                ("price", raw_price),
                 ("mrp", card.get("webPrice")),
                 ("currency", card.get("currencyCode") or offers.get("priceCurrency")),
                 ("availability", lenovo.normalize_availability(card.get("marketingStatus") or offers.get("availability"))),
@@ -334,20 +423,33 @@ def scrape_catalog(
         return product
 
     live_seen_skus: set[str] = set()
-    for series_name in series:
-        try:
-            cards = client.listing_products(series_name, limit=limit_per_series)
-            source_urls[series_name] = getattr(client, "result_urls", {}).get(series_name, source_urls[series_name])
-            for card in cards:
-                c_sku = lenovo.clean_text(card.get("productCode") or card.get("productNumber"))
-                if c_sku and not lenovo.GROUP_CODE_RE.match(c_sku):
-                    live_seen_skus.add(c_sku.upper())
-        except Exception as exc:
-            failed_series.append(series_name)
-            print(f"[catalog-series-failed] {series_name}: {exc}")
-            if not only_new:
-                raise
-            continue
+    batches = discover_all_laptops(
+        client,
+        series,
+        discovery=discovery,
+        limit_per_series=limit_per_series,
+        expected_floor=0 if (limit_per_series or target_ids) else discovery_floor(existing_files),
+    )
+    if batches is not None:
+        for series_name in batches:
+            source_urls[series_name] = lenovo.LAPTOPS_URL
+    else:
+        batches = OrderedDict()
+        for series_name in series:
+            try:
+                batches[series_name] = client.listing_products(series_name, limit=limit_per_series)
+                source_urls[series_name] = getattr(client, "result_urls", {}).get(series_name, source_urls[series_name])
+            except Exception as exc:
+                failed_series.append(series_name)
+                print(f"[catalog-series-failed] {series_name}: {exc}")
+                if not only_new:
+                    raise
+
+    for series_name, cards in batches.items():
+        for card in cards:
+            c_sku = lenovo.clean_text(card.get("productCode") or card.get("productNumber"))
+            if c_sku and not lenovo.GROUP_CODE_RE.match(c_sku):
+                live_seen_skus.add(c_sku.upper())
         if workers <= 1:
             built = [build_product(series_name, card) for card in cards]
         else:
