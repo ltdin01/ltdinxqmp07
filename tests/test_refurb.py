@@ -246,5 +246,69 @@ class TestRefurb(unittest.TestCase):
             self.assertEqual(len(archived_after), 0)
 
 
+def _listing_response(products: list[dict] | None, *, page_count: int = 2, status_code: int = 200):
+    """A DLP listing response; products=None mimics Lenovo's `"data": null` error body."""
+    response = MagicMock()
+    response.status_code = status_code
+    if products is None:
+        response.json.return_value = {"status": 200, "msg": "operation successful!", "data": None}
+    else:
+        response.json.return_value = {
+            "status": 200,
+            "msg": "operation successful!",
+            "data": {"pageCount": page_count, "data": [{"products": products}]},
+        }
+    return response
+
+
+def _laptop(sku: str) -> dict:
+    return {"productCode": sku, "url": f"/p/laptops/ideapad/{sku.lower()}"}
+
+
+class TestOutletListingPagination(unittest.TestCase):
+    def _client(self, responses):
+        with patch.object(lenovo_outlet, "curl_requests"):
+            client = lenovo_outlet.LenovoOutletClient(delay=(0, 0))
+        session = MagicMock()
+        session.get.side_effect = responses
+        client.session = session
+        client.reset_session = lambda: None  # keep the scripted session across retries
+        client.discover_page_filter_id = lambda: "filter"
+        return client, session
+
+    @patch.object(lenovo_outlet, "LISTING_RETRY_BASE_SECONDS", 0)
+    def test_null_data_page_is_retried_not_treated_as_end(self):
+        client, session = self._client([
+            _listing_response([_laptop("A1")]),
+            _listing_response(None),  # the CI failure: page 2 of 2 came back with data: null
+            _listing_response([_laptop("B2")]),
+        ])
+        laptops = client.fetch_all_laptops()
+        self.assertEqual([p["productCode"] for p in laptops], ["A1", "B2"])
+        self.assertEqual(session.get.call_count, 3)  # stops at pageCount, no past-the-end request
+
+    @patch.object(lenovo_outlet, "LISTING_RETRY_BASE_SECONDS", 0)
+    def test_page_that_keeps_failing_raises_instead_of_returning_partial_listing(self):
+        client, _ = self._client([_listing_response([_laptop("A1")])] + [_listing_response(None)] * lenovo_outlet.LISTING_PAGE_ATTEMPTS)
+        with self.assertRaisesRegex(RuntimeError, "page 2 failed"):
+            client.fetch_all_laptops()
+
+    @patch.object(lenovo_outlet, "LISTING_RETRY_BASE_SECONDS", 0)
+    def test_http_error_page_is_retried(self):
+        client, _ = self._client([
+            _listing_response([_laptop("A1")], page_count=1, status_code=429),
+            _listing_response([_laptop("A1")], page_count=1),
+        ])
+        self.assertEqual([p["productCode"] for p in client.fetch_all_laptops()], ["A1"])
+
+    def test_empty_page_without_page_count_ends_listing(self):
+        client, session = self._client([
+            _listing_response([_laptop("A1")], page_count=0),
+            _listing_response([], page_count=0),
+        ])
+        self.assertEqual([p["productCode"] for p in client.fetch_all_laptops()], ["A1"])
+        self.assertEqual(session.get.call_count, 2)
+
+
 if __name__ == "__main__":
     unittest.main()

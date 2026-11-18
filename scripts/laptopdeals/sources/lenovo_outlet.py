@@ -18,6 +18,8 @@ OUTLET_OPENAPI_BASE = "https://openapi.lenovo.com/in/outletin/en"
 OUTLET_DLP_PAGE_FILTER_ID = "afdcd3f7-d8e6-4e9e-a76a-d6060dc75ae9"
 OUTLET_DLP_GROUP_ID = "400001"
 AFFILIATE_BASE = "https://lenovo-in.zlvv.net/c/5890822/608695/9634"
+LISTING_PAGE_ATTEMPTS = 4
+LISTING_RETRY_BASE_SECONDS = 5.0
 
 
 def absolute_outlet_url(url: str | None) -> str:
@@ -71,15 +73,20 @@ class LenovoOutletClient:
             pass
         return OUTLET_DLP_PAGE_FILTER_ID
 
-    def fetch_all_laptops(self, *, limit: int | None = None) -> list[dict[str, Any]]:
-        """Fetch all laptop items from the Lenovo Outlet DLP search API."""
-        filter_id = self.discover_page_filter_id()
-        page = 1
-        laptops: list[dict[str, Any]] = []
+    def query_listing_page(self, filter_id: str, page: int) -> dict[str, Any]:
+        """Return the `data` block of one DLP listing page, retrying error responses.
 
-        while True:
-            if page > 1:
-                self.sleep()
+        A page past the end comes back as a normal block with an empty `data` list.
+        Lenovo also sheds load with HTTP 200 bodies whose `data` is null (seen on
+        GitHub runners for page 2 of 2), which is not the end of the listing. Retry
+        those with a fresh session, and raise rather than return a partial listing:
+        a short listing would drop real outlet products downstream.
+        """
+        last_error = ""
+        for attempt in range(1, LISTING_PAGE_ATTEMPTS + 1):
+            if attempt > 1:
+                time.sleep(LISTING_RETRY_BASE_SECONDS * (attempt - 1) + random.uniform(*self.delay))
+                self.reset_session()
             params = {
                 "classificationGroupIds": OUTLET_DLP_GROUP_ID,
                 "pageFilterId": filter_id,
@@ -95,15 +102,45 @@ class LenovoOutletClient:
             }
             encoded = quote(quote(json.dumps(params, separators=(",", ":"))))
             url = f"{OUTLET_OPENAPI_BASE}/ofp/search/dlp/product/query/get/_tsc?pageFilterId={filter_id}&subSeriesCode=&loyalty=false&params={encoded}"
-            
-            headers = base_lenovo.request_headers(OUTLET_SITE_BASE)
-            response = self.session.get(url, headers=headers, timeout=45)
-            response.raise_for_status()
-            res_json = response.json()
 
-            data_block = res_json.get("data", {})
-            groups = data_block.get("data", [])
-            page_products = [p for g in groups for p in g.get("products", [])]
+            headers = base_lenovo.request_headers(OUTLET_SITE_BASE)
+            try:
+                response = self.session.get(url, headers=headers, timeout=45)
+            except Exception as exc:  # network errors are retried like error bodies
+                last_error = f"request failed: {exc}"
+            else:
+                if response.status_code != 200:
+                    last_error = f"HTTP {response.status_code}"
+                else:
+                    try:
+                        payload = response.json()
+                    except ValueError:
+                        payload = None
+                    block = payload.get("data") if isinstance(payload, dict) else None
+                    if isinstance(block, dict) and isinstance(block.get("data", []), list):
+                        return block
+                    if isinstance(payload, dict):
+                        last_error = f"no data block (status={payload.get('status')!r}, msg={payload.get('msg')!r})"
+                    else:
+                        last_error = "response was not JSON"
+            print(f"[lenovo-outlet] Page {page} attempt {attempt}/{LISTING_PAGE_ATTEMPTS} failed: {last_error}")
+        raise RuntimeError(
+            f"Lenovo Outlet listing page {page} failed after {LISTING_PAGE_ATTEMPTS} attempts ({last_error}); "
+            "not continuing with a partial listing"
+        )
+
+    def fetch_all_laptops(self, *, limit: int | None = None) -> list[dict[str, Any]]:
+        """Fetch all laptop items from the Lenovo Outlet DLP search API."""
+        filter_id = self.discover_page_filter_id()
+        page = 1
+        laptops: list[dict[str, Any]] = []
+
+        while True:
+            if page > 1:
+                self.sleep()
+            data_block = self.query_listing_page(filter_id, page)
+            groups = data_block.get("data") or []
+            page_products = [p for g in groups if isinstance(g, dict) for p in g.get("products") or []]
             if not page_products:
                 break
 
@@ -122,6 +159,9 @@ class LenovoOutletClient:
             if limit and len(laptops) >= limit:
                 return laptops[:limit]
             page += 1
+            page_count = data_block.get("pageCount")
+            if isinstance(page_count, int) and 0 < page_count < page:
+                break  # the API reports its page count; skip the empty past-the-end request
 
         if self.verbose:
             print(f"[lenovo-outlet] Fetched {len(laptops)} laptops across {page - 1} pages")
